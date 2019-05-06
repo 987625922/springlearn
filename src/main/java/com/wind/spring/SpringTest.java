@@ -8,7 +8,7 @@ public class SpringTest {
 
     public static void main(String args[]) {
         ApplicationContext ac = getApplication();
-        UserBean userBean = (UserBean) ac.getBean("userBean");
+        UserBean userBean = (UserBean) ac.getBean("userbean");
         System.out.println(userBean);
     }
 

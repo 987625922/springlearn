@@ -9,10 +9,9 @@
 	http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop.xsd"
-    default-autowire="byType"
     >
 
-    <context:component-scan base-package="com.wind.spring"/>
+    <!--<context:component-scan base-package="com.wind.spring"/>-->
 
     <!-- lazy-init 默认为false 只对singleton有效，默认false，为true时，在类使用时才创建 -->
     <!-- init-method  在对象创建时，执行这个方法-->
@@ -21,6 +20,8 @@
         scope="singleton" lazy-init="true" init-method="print"
           destroy-method="print"
     />
+
+    <bean id="userbean" class="com.wind.spring.bean.UserBean" autowire="byType"/>
 
 
 </beans>
