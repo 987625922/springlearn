@@ -1,6 +1,4 @@
-<!--xml 版本的说明-->
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- spring 的命名空间 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -22,11 +20,13 @@
     <bean id="number" class="com.wind.spring.bean.Person"
           scope="singleton" lazy-init="true" init-method="print"
           destroy-method="print"/>
-    <!-- spring自动注入 -->
-    <bean id="userbean" class="com.wind.spring.bean.UserBean" autowire="byType">
-        <property name="person" ref="number"/>
+    <bean id="userbean" class="com.wind.spring.bean.UserBean">
+        <!-- 设值注入 -->
+        <property name="book" ref="book"/>
+        <!-- 构造器注入-->
+        <constructor-arg name="beanName" value="这个是bean的名称" />
     </bean>
-
+    <bean id="book" class="com.wind.spring.bean.Book"/>
 
     <!-- jdbc配置开始  -->
     <bean id="springjdbctest" class="com.wind.spring.spring.springjdbc.JdbcTemplateTest"/>

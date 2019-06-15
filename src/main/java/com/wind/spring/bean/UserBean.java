@@ -1,19 +1,18 @@
 package com.wind.spring.bean;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 @ToString
+@Getter
+@Setter
 public class UserBean {
-    private Person person;
+    private Book book;
+    private String beanName;
 
-    @Autowired
-    public void setPerson(Person person) {
-        this.person = person;
+    public UserBean(String beanName){
+        this.beanName = beanName;
     }
 
-    public Person getPerson() {
-        return person;
-    }
 }
