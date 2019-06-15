@@ -1,6 +1,7 @@
 package com.wind.spring.spring;
 
 import com.wind.spring.bean.Book;
+import com.wind.spring.bean.Person;
 import com.wind.spring.bean.UserBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -19,7 +20,7 @@ public class SpringTest {
     }
 
     public static void main(String args[]) {
-        UserBean userBean = (UserBean) getBean("userbean");
+        Person userBean = (Person) getBean("person");
        pl(userBean);
     }
 }

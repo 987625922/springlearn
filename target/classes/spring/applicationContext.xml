@@ -14,18 +14,22 @@
 
     <!-- spring bean 的学习  -->
     <!-- 学习网站https://www.imooc.com/video/3665 -->
-    <!-- lazy-init 默认为false 只对singleton有效，默认false，为true时，在类使用时才创建 -->
-    <!-- init-method  在对象创建时，执行这个方法-->
-    <!-- destroy-method 在对象销毁时，执行这个方法 -->
-    <bean id="number" class="com.wind.spring.bean.Person"
-          scope="singleton" lazy-init="true" init-method="print"
-          destroy-method="print"/>
+
+    <!-- 第一课 -->
     <bean id="userbean" class="com.wind.spring.bean.UserBean">
         <!-- 设值注入 -->
         <property name="book" ref="book"/>
         <!-- 构造器注入-->
         <constructor-arg name="beanName" value="这个是bean的名称" />
     </bean>
+
+    <!-- lazy-init 默认为false 只对singleton有效，默认false，为true时，在类使用时才创建 -->
+    <!-- init-method  在对象创建时，执行这个方法-->
+    <!-- destroy-method 在对象销毁时，执行这个方法 -->
+    <bean id="person" class="com.wind.spring.bean.Person"
+          scope="singleton" init-method="init"
+          destroy-method="destroy"/>
+
     <bean id="book" class="com.wind.spring.bean.Book"/>
 
     <!-- jdbc配置开始  -->
