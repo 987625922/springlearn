@@ -1,11 +1,12 @@
 package com.wind.spring.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.stereotype.Component;
 
 @ToString
 @Setter
+@AllArgsConstructor
 //自动注入xml bean配置
 public class Person {
     String name;

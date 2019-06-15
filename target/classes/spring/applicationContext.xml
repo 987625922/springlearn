@@ -20,9 +20,11 @@
           destroy-method="print"/>
 
     <!-- spring自动注入 -->
-    <bean id="userbean" class="com.wind.spring.bean.UserBean" autowire="byType"/>
+    <bean id="userbean" class="com.wind.spring.bean.UserBean" autowire="byType">
+        <property name="person" ref="number"/>
+    </bean>
 
-    <bean id="springjdbctest" class="com.wind.spring.springjdbc.JdbcTemplateTest" />
+    <bean id="springjdbctest" class="com.wind.spring.spring.springjdbc.JdbcTemplateTest"/>
 
     <!-- 配置c3p0数据库连接池 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
