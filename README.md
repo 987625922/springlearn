@@ -44,6 +44,18 @@
 
 8.@Autowired
 
+9.@Qualifier
+
+10.@Bean
+
+11.@ImportResource和@Value注解进行资源文件读取
+
+12.@Bean and @Scope
+
+13.基于泛型的自动装配
+
+
+
 **1.什么是ioc**
 
      ioc是控制反转，应用本身不负责依赖对象的创建和维护，而是由外部容器负责创建和维护。DI（依赖注入）是其一种实现方式。目的是创建对象并组装对象之间的关系
@@ -355,6 +367,8 @@
              </beans>
          ```
      
+         
+     
          **5.定义Bean**
      
          ```
@@ -363,6 +377,8 @@
          public class MovieFinderImpl implements MovieFinder{
          }
          ```
+     
+         
      
          **6.作用域(Scope)**
      
@@ -375,7 +391,9 @@
          }
          ```
      
-         7.@Required
+         
+     
+         **7.@Required**
      
          @Required用于注解bean属性的setter方法
      
@@ -392,11 +410,62 @@
          }
          ```
      
-         8.@Autowired
+         
+     
+         **8.@Autowired**
      
          - 首先要知道另一个东西，default-autowire，它是在xml文件中进行配置的，可以设置为byName、byType、constructor和autodetect；比如byName，不用显式的在bean中写出依赖的对象，它会自动的匹配其它bean中id名与本bean的set**相同的，并自动装载。
+     
          - @Autowired是用在JavaBean中的注解，通过byType形式，用来给指定的字段或方法注入所需的外部资源，可注解在成员变量，构造参数，和set方法上。
+     
          - 两者的功能是一样的，就是能**减少或者消除属性或构造器参数的设置**，只是配置地方不一样而已。
+     
          - 默认情况下，如果因找不到合适的bean将会导致autowiring失败抛出异常，可以通过@Autowired(required = false)避免
+     
+           ```
+           public class SimpleMovieLister {
+               private MovieFinder movieFinder;
+               @Autowired
+               public SimpleMovieLister(MovieFinder movieFinder) {
+                   this.movieFinder = movieFinder;
+               }
+           }
+           ```
+     
+         - 可以使用@Autowired注解那些众所周知的解析依赖性接口，比如：BeanFactory,ApplicationContext,Environment,ResourceLoader,ApplicationEventPublisher,MessageSource
+     
+         - 可以通过添加注解给需要该类型的数组的字段或方法，以提供ApplicationContext中所有特定类型的bean
+     
+         - 可以用于装配key为String的Map
+     
+         - 如果希望数据有序，可以让bean实现org.springframework.core.Ordered接口或使用@Order注解
+     
+         - @Autowired是由spring BeanPostProcessor处理的，所以不能在自己的BeanPostProcessor或BeanFactoryPostProcessor类型应用这些注解，这些类型必须通过XML合作Spring的@Bean注解加载
+     
+           **9.@Qualifier**
+     
+           - 按类型自动装配可能有多个bean实例的情况，可以使用spring的@Qualifier注解缩小范围（或指定唯一），也可以用于指定单独的构造器参数或方法参数
+     
+           - 可用于注解集合类型变量
+     
+             ```
+             @Component
+             public class RequiredMovieLister {
+             
+                 private MovieFinder movieFinder;
+                 @Autowired
+                 @Qualifier("jpaMovieFinder")
+                 public void setMovieFinder(MovieFinder movieFinder) {
+                     this.movieFinder = movieFinder;
+                 }}
+             ```
+     
+             
+     
+           
+     
+           
+     
+           
      
          

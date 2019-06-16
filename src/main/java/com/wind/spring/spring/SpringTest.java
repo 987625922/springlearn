@@ -1,5 +1,6 @@
 package com.wind.spring.spring;
 
+import com.wind.spring.spring.autodiscovery.RequiredMovieLister;
 import com.wind.spring.spring.resource.LearnResource;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -63,10 +64,11 @@ public class SpringTest {
         pl(getBean("moviefinderimpl"));
     }
     /*
-    * required
+    * @Required和@Qualifier和@Autowired
     * */
     private static void testRequired(){
-        pl(getBean("requiredMovieLister"));
+        RequiredMovieLister requiredMovieLister = (RequiredMovieLister) getBean("requiredMovieLister");
+        pl(requiredMovieLister.getMovieFinder().getClass().getName());
     }
 
 }
