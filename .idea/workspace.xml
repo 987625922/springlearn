@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d079783-e5ca-4cd1-9fe8-ad68e9d9be63" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/bean/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/bean/Book.java" afterDir="false" />
@@ -11,10 +12,12 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/SimpleMovieLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/SimpleMovieLister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/resource/LearnResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/resource/LearnResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,20 +82,69 @@
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
     </session>
+    <session id="-1560011119">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Markdown" value="1" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Markdown" value="14" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="test" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf>
       <file leaf-file-name="BeanG.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/BeanG.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="8" selection-start-line="8" selection-end-line="46" selection-end-column="1" />
+=======
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/SpringTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="1558">
+                <caret line="423" column="10" selection-start-line="423" selection-start-column="10" selection-end-line="423" selection-end-column="10" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -151,6 +203,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-redis.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wind/enums/ResultEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-quartz.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wind/dto/Result.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wind/entity/Book.java" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
         <option value="$PROJECT_DIR$/src/main/java/com/wind/quartz/BizQuartz.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/service/BookService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/service/impl/BookServiceImpl.java" />
@@ -198,10 +258,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/SimpleMovieLister.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/resource/LearnResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/SpringTest.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/AppDataSourceConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/Store.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/BeanG.java" />
+=======
+        <option value="$PROJECT_DIR$/README.md" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
       </list>
     </option>
   </component>
@@ -234,10 +298,17 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+<<<<<<< HEAD
     <option name="x" value="-2159" />
     <option name="y" value="130" />
     <option name="width" value="2420" />
     <option name="height" value="1244" />
+=======
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1456" />
+    <option name="height" value="886" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -306,6 +377,7 @@
               <item name="springlearn" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -380,6 +452,8 @@
               <item name="springlearn" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+=======
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -454,6 +528,9 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="JdbcTemplateTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.wind.spring.spring.springjdbc.JdbcTemplateTest" />
@@ -464,6 +541,9 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="JdbcTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.wind.spring.jdbc.JdbcTest" />
@@ -474,6 +554,9 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="ProxyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.wind.spring.proxy.ProxyTest" />
@@ -484,6 +567,9 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="SpringTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.wind.spring.spring.SpringTest" />
@@ -494,6 +580,9 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
       <item itemvalue="Application.SpringTest" />
@@ -551,6 +640,7 @@
       <workItem from="1555585542772" duration="727000" />
       <workItem from="1557021033831" duration="1621000" />
       <workItem from="1557023189308" duration="20624000" />
+      <workItem from="1560755539991" duration="913000" />
     </task>
     <servers />
   </component>
@@ -587,7 +677,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153365000" />
+    <option name="totallyTimeSpent" value="154278000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -599,9 +689,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1927" y="137" width="1550" height="848" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="886" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32845744" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3248731" />
@@ -614,22 +705,41 @@
       <window_info id="Designer" order="3" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49746192" visible="true" weight="0.24283855" />
       <window_info anchor="bottom" id="Find" order="1" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49746192" visible="true" weight="0.24513888" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24928367" />
-      <window_info id="UI Designer" order="2" />
-      <window_info id="Favorites" order="4" sideWeight="0.5025381" side_tool="true" weight="0.2454427" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.46319798" />
       <window_info id="Web" order="2" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="6" sideWeight="0.50199735" side_tool="true" weight="0.32879657" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="Favorites" order="5" sideWeight="0.5025381" side_tool="true" weight="0.2454427" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4784264" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.46319798" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+<<<<<<< HEAD
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.32978722" />
+=======
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32845744" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
       <window_info anchor="bottom" id="Spring" order="8" weight="0.32978722" />
-      <window_info anchor="right" id="Database" order="3" sideWeight="0.49800265" weight="0.32879657" />
-      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3288835" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3248731" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.32978722" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24928367" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" sideWeight="0.49800265" weight="0.32879657" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="6" sideWeight="0.49800265" weight="0.32879657" />
+      <window_info anchor="right" id="Coverage" order="7" sideWeight="0.50199735" side_tool="true" weight="0.32879657" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +758,6 @@
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -656,6 +765,15 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/AbstractList.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/RandomAccess.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/System.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/ArrayList.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/HashMap.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Queue.java" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Map.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Arrays.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/String.java" />
@@ -726,7 +844,18 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/spring-beans/4.3.21.RELEASE/spring-beans-4.3.21.RELEASE.jar!/org/springframework/beans/factory/BeanFactory.class">
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/springjdbc/BookDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.21.RELEASE/spring-beans-4.3.21.RELEASE.jar!/org/springframework/beans/factory/BeanFactory.class">
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
@@ -772,7 +901,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/spring-context/4.3.21.RELEASE/spring-context-4.3.21.RELEASE.jar!/org/springframework/context/annotation/Scope.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.21.RELEASE/spring-context-4.3.21.RELEASE.jar!/org/springframework/context/annotation/Scope.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
@@ -828,6 +957,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/AppConfig.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="252">
           <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
           <folding>
@@ -840,6 +970,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+=======
+        <state relative-caret-position="457">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
         </state>
       </provider>
     </entry>
@@ -859,13 +993,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/SimpleMovieLister.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="112">
           <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+=======
+        <state relative-caret-position="224">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="28" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/resource/LearnResource.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="448">
           <caret line="21" column="34" lean-forward="true" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
         </state>
@@ -892,6 +1032,10 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="168">
+          <caret line="6" selection-start-line="6" selection-end-line="12" selection-end-column="1" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
         </state>
       </provider>
     </entry>
@@ -900,6 +1044,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/SpringTest.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="413">
           <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
         </state>
@@ -912,16 +1057,42 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="162">
+          <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="14" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/BeanG.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="119">
           <caret line="8" selection-start-line="8" selection-end-line="46" selection-end-column="1" />
+=======
+        <state relative-caret-position="480">
+          <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+>>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1558">
+            <caret line="423" column="10" selection-start-line="423" selection-start-column="10" selection-end-line="423" selection-end-column="10" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
