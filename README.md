@@ -166,15 +166,12 @@
          public void init(){
              System.out.println("bean的初始化");
          }
-<<<<<<< HEAD
+
       }
-     ```
-=======
     }
-     
->>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
+
    
-   bean的销毁：配置destroy-method
+  bean的销毁：配置destroy-method
      
      
      <bean id="person" class="com.wind.spring.bean.Person"
@@ -183,16 +180,11 @@
          public void destroy() {
              System.out.println("bean的销毁");
          }
-<<<<<<< HEAD
+
       }
-     ```
-=======
     }
      
->>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
-   
-     
-   
+
    **9.Aware**
    
    spring中提供了一些以Aware结尾的接口，实现了Aware接口的bean在初始化之后，可以获取相应资源，通过Aware接口，可以对Spring相应资源进行操作（一定要慎重 ），为对Spring进行简单的扩展提供了方便的入口 
@@ -209,14 +201,10 @@
          public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
            System.out.println(applicationContext.getBean("moocApplicationContext"));
          }
-<<<<<<< HEAD
+
       }
-     ```
-=======
     }
-    
->>>>>>> 2b00031fc7bbc6747e6c77d32f683cb7c6a279f6
-     
+
    BeanNameAware
    
      <bean id="moocBeanName" class="com.wind.spring.aware.MoocBeanName"/>
