@@ -322,7 +322,7 @@
    
    通过在基于XML的配置如下标签（注意包含上下文命名空间）
      
-         ```
+         
          <?xml version="1.0" encoding="UTF-8"?>
          <beans xmlns="http://www.springframework.org/schema/beans"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -335,7 +335,7 @@
              
              <context:annotation-config/>
          </beans>
-         ```
+         
      
          
      
@@ -346,8 +346,8 @@
    可以通过过滤器修改上面的行为，如：下面的xml配置忽略所用的@Repository注解并用"Stub"代替
      
    还可使用use-default-filters=“false”禁用自动发现与注册
-     
-         ```
+    
+         
          <beans>
                  <context:component-scan base-package="com.wind.spring.spring.springfilter">
                      <context:include-filter type="regex"
@@ -356,18 +356,18 @@
                                              expression="org.springframework.stereotype.Repository"/>
                  </context:component-scan>
              </beans>
-         ```
+         
      
          
      
    **5.定义Bean**
      
-         ```
+         
          //自定义命名，指定类在装载到Bean容器中的id
          @Repository("mymoviefinderimpl")
          public class MovieFinderImpl implements MovieFinder{
          }
-         ```
+         
      
          
      
@@ -375,12 +375,12 @@
      
    通常情况下自动查找的Spring组件，其scope是singleton，Spring2.5提供了一个标识scope的注解@Scope
      
-         ```
+         
          @Scope("prototype")
          @Repository("moviefinderimpl")
          public class MovieFinderImpl implements MovieFinder{
          }
-         ```
+         
      
          
      
@@ -390,7 +390,7 @@
      
    这个注解表示，受影响的bean属性必须在配置时被填充，通过在bean定义或通过自动装配一个明确的属性值
      
-         ```
+          
          @Component
          public class RequiredMovieLister {
              private MovieFinder movieFinder;
@@ -399,7 +399,7 @@
                  this.movieFinder = movieFinder;
              }
          }
-         ```
+         
      
          
      
@@ -413,7 +413,7 @@
      
    - 默认情况下，如果因找不到合适的bean将会导致autowiring失败抛出异常，可以通过@Autowired(required = false)避免
      
-           ```
+           
            public class SimpleMovieLister {
                private MovieFinder movieFinder;
                @Autowired
@@ -421,7 +421,7 @@
                    this.movieFinder = movieFinder;
                }
            }
-           ```
+          
      
    - 可以使用@Autowired注解那些众所周知的解析依赖性接口，比如：BeanFactory,ApplicationContext,Environment,ResourceLoader,ApplicationEventPublisher,MessageSource
      
@@ -439,7 +439,7 @@
      
    - 可用于注解集合类型变量
      
-             ```
+             
              @Component
              public class RequiredMovieLister {
              
@@ -449,7 +449,7 @@
                  public void setMovieFinder(MovieFinder movieFinder) {
                      this.movieFinder = movieFinder;
                  }}
-             ```
+            
      
              
      
