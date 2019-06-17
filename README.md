@@ -48,19 +48,22 @@
 
 10.@Bean
 
-11.@ImportResource和@Value注解进行资源文件读取
+11.@ImportResource和@Value注解
 
 12.@Bean and @Scope
 
 13.基于泛型的自动装配
 
+14.CustomAutowireConfigurer
 
+15.Spring对JSR支持的说明
 
 **1.什么是ioc**
 
      ioc是控制反转，应用本身不负责依赖对象的创建和维护，而是由外部容器负责创建和维护。DI（依赖注入）是其一种实现方式。目的是创建对象并组装对象之间的关系
 
    
+
 
 **2.spring的配置**
 
@@ -163,7 +166,7 @@
          public void init(){
              System.out.println("bean的初始化");
          }
-   }
+      }
      ```
    
      ​	bean的销毁：配置destroy-method
@@ -175,7 +178,7 @@
          public void destroy() {
              System.out.println("bean的销毁");
          }
-   }
+      }
      ```
    
      
@@ -196,7 +199,7 @@
          public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
            System.out.println(applicationContext.getBean("moocApplicationContext"));
          }
-   }
+      }
      ```
      
      BeanNameAware
@@ -461,11 +464,124 @@
              ```
      
              
-     
+       
+             **10.@Bean**
+       
+             @Bean标识一个用于配置和初始化一个由SpringIoC容器管理的新对象方法，类似于XML配置文件的<bean/>
+       
+             ```
+         @Configuration
+             public class AppConfig {
+                 /*
+                  *  @Bean就相当于如下 ,@Bean可以去指定bean的name,还可以通过initMethod和destroyMethod注册生命周期
+                  *  <bean id="myBook" class="com.wind.spring.bean.Book"/>
+                  * */
+                 @Bean(name = "myBook",initMethod = "init",destroyMethod = "cleanup")
+                 public Book myBook() {
+                     return new Book();
+                 }
+             }
+             ```
+             
+             
            
-     
-           
-     
-           
-     
          
+
+**11.@ImportResource和@Value注解**
+
+使用xml的方式配置资源文件
+
+```
+<!-- jdbc配置开始  -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!-- 配置c3p0数据库连接池 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <bean/>
+```
+
+使用类的方式加载
+
+```
+@Configuration //声明为配置文件
+@ImportResource("classpath:jdbc.properties.xml") //导入资源文件
+public class AppDataSourceConfig {
+
+    @Value("${jdbc.driver}") 
+    private String driverClass;
+    @Value("${jdbc.url}")
+    private String jdbcUrl;
+    @Value("${jdbc.username}")
+    private String user;
+    @Value("${jdbc.password}")
+    private String password;
+
+    @Bean //声明bean对象到xml
+    public DataSource dataSource() {
+        return new DriverManagerDataSource(jdbcUrl, user, password);
+    }
+}
+```
+
+**12.@Bean and @Scope**
+
+默认@Bean是单例的，可以使用@Scope来改变bean的作用域
+
+```
+@Configuration
+public class BeanAndScope {
+    @Bean
+    @Scope(value = "prototype")
+    public Book scopeBook(){
+        return new Book();
+    }
+}
+```
+
+**13.基于泛型的自动装配**
+
+```
+@Configuration
+public class BeanG {
+
+    @Bean(name = "storeTest")
+    public Store storeTest(){
+        System.out.println("s1："+s1.getClass().getName());
+        System.out.println("s2："+s2.getClass().getName());
+        return new StringStore();
+    }
+
+    @Autowired //基于泛型的自动装配
+    private Store<String> s1;
+    @Autowired //基于泛型的自动装配
+    private Store<Integer> s2;
+
+    @Bean
+    public StringStore stringStore() {
+        return new StringStore();
+    }
+
+    @Bean
+    public IntegerStore integerStore() {
+        return new IntegerStore();
+    }
+
+    @Component
+    class IntegerStore implements Store<Integer> {
+
+    }
+
+    @Component
+    class StringStore implements Store<String> {
+
+    }
+
+    interface Store<T> {
+
+    }
+}
+```
+

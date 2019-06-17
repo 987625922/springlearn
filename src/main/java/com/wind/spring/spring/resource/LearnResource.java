@@ -7,6 +7,7 @@ import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 
+//11.Resources
 public class LearnResource implements ApplicationContextAware {
     private ApplicationContext context;
 

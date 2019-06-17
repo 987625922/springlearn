@@ -27,7 +27,9 @@ public class SpringTest {
 //        testResource();
 //        testAutoDiscovery();
 //        testAutoNameAndScope();
-        testRequired();
+//        testRequired();
+//        testBean();
+        testBeanG();
     }
 
     /*
@@ -71,4 +73,17 @@ public class SpringTest {
         pl(requiredMovieLister.getMovieFinder().getClass().getName());
     }
 
+    /*
+    * @Bean的使用
+    * */
+    private static void testBean(){
+        pl(getBean("myBook"));
+    }
+
+    /*
+    * 基于泛型的自动装配
+    * */
+    private static void testBeanG(){
+        getBean("storeTest");
+    }
 }

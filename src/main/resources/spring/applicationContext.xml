@@ -8,8 +8,6 @@
 	http://www.springframework.org/schema/context/spring-context.xsd"
 >
 
-    <!-- 导入配置文件 -->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
     <context:component-scan base-package="com.wind.spring"/>
 
     <!-- spring bean 的学习  -->
@@ -46,9 +44,10 @@
     <!-- 第五 Bean管理的注解实现及例子 -->
     <!-- 使用过滤器进行自定义扫描 -->
 
+    <bean id="springjdbctest" class="com.wind.spring.spring.springjdbc.JdbcTemplateTest"/>
 
     <!-- jdbc配置开始  -->
-    <bean id="springjdbctest" class="com.wind.spring.spring.springjdbc.JdbcTemplateTest"/>
+    <context:property-placeholder location="classpath:jdbc.properties"/>
     <!-- 配置c3p0数据库连接池 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver}"/>
