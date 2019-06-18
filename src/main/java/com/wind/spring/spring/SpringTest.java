@@ -1,6 +1,7 @@
 package com.wind.spring.spring;
 
 import com.wind.spring.spring.autodiscovery.RequiredMovieLister;
+import com.wind.spring.spring.autodiscovery.ResourceUse;
 import com.wind.spring.spring.resource.LearnResource;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -29,7 +30,8 @@ public class SpringTest {
 //        testAutoNameAndScope();
 //        testRequired();
 //        testBean();
-        testBeanG();
+//        testBeanG();
+        testResourceUse();
     }
 
     /*
@@ -85,5 +87,13 @@ public class SpringTest {
     * */
     private static void testBeanG(){
         getBean("storeTest");
+    }
+    /*
+    * @Resource使用
+    *
+    * */
+    private static void testResourceUse(){
+        ResourceUse resourceUse = (ResourceUse) getBean("resourceUse");
+        System.out.println(resourceUse.movieFinder.getClass().getSimpleName());
     }
 }

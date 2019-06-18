@@ -65,6 +65,7 @@
    
 
 
+
 **2.spring的配置**
 
    ```
@@ -152,11 +153,11 @@
      ```
    
      
-   
+
    **8.Bean的生命周期**
-   
+
    生命周期（定义（在xml文件中写上bean的class和id），初始化（导入applicationContext文件，并生成bean的实例），使用（调用bean容器的方法），销毁（bean容器停止的时候去销毁由当前这个bean容器创建的实例））
-   
+
    bean的初始化：配置init-method
      
     
@@ -166,11 +167,12 @@
          public void init(){
              System.out.println("bean的初始化");
          }
-
+    
       }
     }
 
    
+
   bean的销毁：配置destroy-method
      
      
@@ -180,13 +182,13 @@
          public void destroy() {
              System.out.println("bean的销毁");
          }
-
+    
       }
     }
-     
+
 
    **9.Aware**
-   
+
    spring中提供了一些以Aware结尾的接口，实现了Aware接口的bean在初始化之后，可以获取相应资源，通过Aware接口，可以对Spring相应资源进行操作（一定要慎重 ），为对Spring进行简单的扩展提供了方便的入口 
      
    ApplicationContexteAware
@@ -201,12 +203,12 @@
          public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
            System.out.println(applicationContext.getBean("moocApplicationContext"));
          }
-
+    
       }
     }
 
    BeanNameAware
-   
+
      <bean id="moocBeanName" class="com.wind.spring.aware.MoocBeanName"/>
      public class MoocBeanName implements BeanNameAware {
          @Override
@@ -214,12 +216,13 @@
              System.out.println();
          }
      }
-     
-     
-     
-     
+
+
+​     
+​     
+​     
    **10.bean的自动装配**
-     
+​     
    - NO：默认，不做任何操作
      
    - byname：根据属性名来自动装配。此选项将检查容器并根据名字查找与属性完全一致的bean，并将其与属性自动装配
@@ -232,13 +235,13 @@
        <!-- 在xml头添加default-autowire="byName" 或者在bean中配置autowire="constructor" -->
            <bean id="autobean" class="com.wind.spring.bean.AutoWiringBean" autowire="constructor"/>
        ```
-     
-     
-     
+
+
+​     
    **11.Resources**
-     
+​     
    针对资源文件的统一入口
-     
+​     
    - UrlResource：URL对应的资源，根据一个URL地址即可构建
      
    - ClassPathResource：获取类路径下的资源文件
@@ -254,7 +257,7 @@
        
      
    ## Bean管理的注解实现
-     
+
    - Classpath扫描与组件管理
      
    - 类的自动检测与注册Bean
@@ -273,6 +276,7 @@
      
        
      
+
    **1.Classpath扫描与组件管理**
      
    spring3.0开始，spring提供了通过java注解的方式定义bean，大大简化了xml文件，例如：在java的类名头定义@Component,@Bean,@Import,@DependsOn
@@ -287,8 +291,9 @@
      
    - @Controller通常用于Controller类，即控制层（MVC）
      
-         
+     ​    
      
+
    **2.类的自动检测及Bean的注册**
      
    Spring可以自动检测类并注册Bean到ApplicationContext中,不需要在配置文件中写bean，直接在代码中getBean（"simpleMovieLister"）就可以获取到SimpleMovieLister的实例
@@ -323,9 +328,9 @@
                  this.movieFinder = movieFinder;
              }
          }
-     
+
    **3.\<context:annotation-config/\>**
-   
+
    通过在基于XML的配置如下标签（注意包含上下文命名空间）
      
          
@@ -341,19 +346,20 @@
              
              <context:annotation-config/>
          </beans>
-         
-     
-         
-     
+
+
+​     
+​         
+​     
    **4.使用过滤器进行自定义扫描**
-     
+​     
    类被自动发现并注册bean的条件是：使用@Component，@Repository，@Service，@Controller注解或者使用@Component的自定义注解
-     
+​     
    可以通过过滤器修改上面的行为，如：下面的xml配置忽略所用的@Repository注解并用"Stub"代替
-     
+​     
    还可使用use-default-filters=“false”禁用自动发现与注册
-    
-         
+​    
+​         
          <beans>
                  <context:component-scan base-package="com.wind.spring.spring.springfilter">
                      <context:include-filter type="regex"
@@ -362,41 +368,44 @@
                                              expression="org.springframework.stereotype.Repository"/>
                  </context:component-scan>
              </beans>
-         
-     
-         
-     
+
+
+​     
+​         
+​     
    **5.定义Bean**
-     
-         
+​     
+​         
          //自定义命名，指定类在装载到Bean容器中的id
          @Repository("mymoviefinderimpl")
          public class MovieFinderImpl implements MovieFinder{
          }
-         
-     
-         
-     
+
+
+​     
+​         
+​     
    **6.作用域(Scope)**
-     
+​     
    通常情况下自动查找的Spring组件，其scope是singleton，Spring2.5提供了一个标识scope的注解@Scope
-     
-         
+​     
+​         
          @Scope("prototype")
          @Repository("moviefinderimpl")
          public class MovieFinderImpl implements MovieFinder{
          }
-         
-     
-         
-     
+
+
+​     
+​         
+​     
    **7.@Required**
-     
+​     
    @Required用于注解bean属性的setter方法
-     
+​     
    这个注解表示，受影响的bean属性必须在配置时被填充，通过在bean定义或通过自动装配一个明确的属性值
-     
-          
+​     
+​          
          @Component
          public class RequiredMovieLister {
              private MovieFinder movieFinder;
@@ -405,12 +414,13 @@
                  this.movieFinder = movieFinder;
              }
          }
-         
-     
-         
-     
+
+
+​     
+​         
+​     
    **8.@Autowired**
-     
+​     
    - 首先要知道另一个东西，default-autowire，它是在xml文件中进行配置的，可以设置为byName、byType、constructor和autodetect；比如byName，不用显式的在bean中写出依赖的对象，它会自动的匹配其它bean中id名与本bean的set**相同的，并自动装载。
      
    - @Autowired是用在JavaBean中的注解，通过byType形式，用来给指定的字段或方法注入所需的外部资源，可注解在成员变量，构造参数，和set方法上。
@@ -419,7 +429,7 @@
      
    - 默认情况下，如果因找不到合适的bean将会导致autowiring失败抛出异常，可以通过@Autowired(required = false)避免
      
-           
+     
            public class SimpleMovieLister {
                private MovieFinder movieFinder;
                @Autowired
@@ -428,7 +438,6 @@
                }
            }
           
-     
    - 可以使用@Autowired注解那些众所周知的解析依赖性接口，比如：BeanFactory,ApplicationContext,Environment,ResourceLoader,ApplicationEventPublisher,MessageSource
      
    - 可以通过添加注解给需要该类型的数组的字段或方法，以提供ApplicationContext中所有特定类型的bean
@@ -439,16 +448,17 @@
      
    - @Autowired是由spring BeanPostProcessor处理的，所以不能在自己的BeanPostProcessor或BeanFactoryPostProcessor类型应用这些注解，这些类型必须通过XML合作Spring的@Bean注解加载
      
+
    **9.@Qualifier**
      
    - 按类型自动装配可能有多个bean实例的情况，可以使用spring的@Qualifier注解缩小范围（或指定唯一），也可以用于指定单独的构造器参数或方法参数
      
    - 可用于注解集合类型变量
      
-             
+     
              @Component
              public class RequiredMovieLister {
-             
+            
                  private MovieFinder movieFinder;
                  @Autowired
                  @Qualifier("jpaMovieFinder")
@@ -457,13 +467,14 @@
                  }}
             
      
-             
+            ​     
        
-             **10.@Bean**
-       
-             @Bean标识一个用于配置和初始化一个由SpringIoC容器管理的新对象方法，类似于XML配置文件的<bean/>
-       
-             ```
+            
+        **10.@Bean**
+                   
+        @Bean标识一个用于配置和初始化一个由SpringIoC容器管理的新对象方法，类似于XML配置文件的<bean/>
+                   
+          ```
          @Configuration
              public class AppConfig {
                  /*
@@ -475,11 +486,7 @@
                      return new Book();
                  }
              }
-             ```
-             
-             
-           
-         
+          ```
 
 **11.@ImportResource和@Value注解**
 
@@ -579,3 +586,27 @@ public class BeanG {
 }
 ```
 
+**15.Spring对JSR支持的说明**
+
+@Resource
+
+Spring还支持使用JSR-250@Resource注解的变量或setter方法，这是一种在java ee 5和6中通用没事，Spring管理的对象也支持这种模式
+
+@Resource有一个name属性，并且默认Spring解释该值作为被注入bean的名称
+
+如果没有显示地指定@Resource的name，默认的名称是从属性名或者settter方法得出
+
+注解提供的名字被解析为一个bean的名称，这是由ApplicationContext中的CommonAnnotationBeanPostProcessor发现并处理的
+
+```
+@Component
+public class ResourceUse {
+    public MovieFinder movieFinder;
+    @Resource(name = "jpaMovieFinder")
+    public void setMovieFinder(MovieFinder movieFinder) {
+        this.movieFinder = movieFinder;
+    }
+}
+```
+
+@PostConstruct and @PreDestroy
