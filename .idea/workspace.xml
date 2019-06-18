@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71715234-1be8-4a19-8585-2cd19059822a" name="Default" comment="" />
+    <list default="true" id="71715234-1be8-4a19-8585-2cd19059822a" name="Default" comment="整理学习笔记">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,14 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="InjectUse.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/InjectUse.java">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="7" selection-start-line="7" selection-end-line="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="224">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -52,8 +52,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/SpringTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/ResourceUse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/InjectUse.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1849" />
+    <option name="y" value="136" />
+    <option name="width" value="2250" />
+    <option name="height" value="1232" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -71,11 +78,6 @@
             <path>
               <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
               <item name="springlearn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -179,7 +181,35 @@
       <option name="project" value="LOCAL" />
       <updated>1560872016228</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="添加AOP的md笔记">
+      <created>1560872263997</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1560872263997</updated>
+    </task>
+    <task id="LOCAL-00004" summary="添加AOP的md笔记">
+      <created>1560872273554</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1560872273554</updated>
+    </task>
+    <task id="LOCAL-00005" summary="整理学习笔记">
+      <created>1560872604702</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1560872604702</updated>
+    </task>
+    <task id="LOCAL-00006" summary="整理学习笔记">
+      <created>1560872885207</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1560872885207</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -195,7 +225,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32994923" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3125" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26888022" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -215,7 +245,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="提交@Resource使用" />
     <MESSAGE value="提交@Inject使用" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交@Inject使用" />
+    <MESSAGE value="添加AOP的md笔记" />
+    <MESSAGE value="整理学习笔记" />
+    <option name="LAST_COMMIT_MESSAGE" value="整理学习笔记" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/JpaMovieFinder.java">
@@ -250,13 +282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="1120" column="14" lean-forward="true" selection-start-line="1120" selection-start-column="14" selection-end-line="1120" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="479" column="18" selection-start-line="479" selection-start-column="12" selection-end-line="479" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -322,11 +347,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/InjectUse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" selection-start-line="7" selection-end-line="16" />
+        <state relative-caret-position="392">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
