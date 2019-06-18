@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71715234-1be8-4a19-8585-2cd19059822a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/InjectUse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/SpringTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/SpringTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/ResourceUse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/ResourceUse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/SpringTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/SpringTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="71715234-1be8-4a19-8585-2cd19059822a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -83,87 +75,7 @@
             <path>
               <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
               <item name="springlearn" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="wind" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="wind" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="wind" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="wind" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-              <item name="annotationbean" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="wind" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-              <item name="autodiscovery" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -260,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560870727701</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="提交@Inject使用">
+      <created>1560872016228</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1560872016228</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -295,7 +214,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="提交@Resource使用" />
-    <option name="LAST_COMMIT_MESSAGE" value="提交@Resource使用" />
+    <MESSAGE value="提交@Inject使用" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交@Inject使用" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/JpaMovieFinder.java">
