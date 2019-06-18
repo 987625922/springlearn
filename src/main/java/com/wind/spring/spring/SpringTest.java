@@ -1,11 +1,13 @@
 package com.wind.spring.spring;
 
+import com.wind.spring.spring.autodiscovery.InjectUse;
 import com.wind.spring.spring.autodiscovery.RequiredMovieLister;
 import com.wind.spring.spring.autodiscovery.ResourceUse;
 import com.wind.spring.spring.resource.LearnResource;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.inject.Inject;
 import java.io.IOException;
 
 public class SpringTest {
@@ -31,7 +33,8 @@ public class SpringTest {
 //        testRequired();
 //        testBean();
 //        testBeanG();
-        testResourceUse();
+//        testResourceUse();
+        testInjectUse();
     }
 
     /*
@@ -95,5 +98,13 @@ public class SpringTest {
     private static void testResourceUse(){
         ResourceUse resourceUse = (ResourceUse) getBean("resourceUse");
         System.out.println(resourceUse.movieFinder.getClass().getSimpleName());
+    }
+
+    /*
+    * @Inject使用
+    * */
+    private static void testInjectUse(){
+        InjectUse injectUse = (InjectUse)getBean("injectUse");
+        System.out.println(injectUse.movieFinder.getClass().getSimpleName());
     }
 }

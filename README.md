@@ -588,7 +588,7 @@ public class BeanG {
 
 **15.Spring对JSR支持的说明**
 
-@Resource
+@Resource（和@Autowired效果一样）
 
 Spring还支持使用JSR-250@Resource注解的变量或setter方法，这是一种在java ee 5和6中通用没事，Spring管理的对象也支持这种模式
 
@@ -609,4 +609,56 @@ public class ResourceUse {
 }
 ```
 
-@PostConstruct and @PreDestroy
+@PostConstruct and @PreDestroy(使用不多)
+
+在spring2.5中引入支持初始化回调和销毁回调，前提是CommonAnnotationBeanPostProcessor是Spring的ApplicationContext中注册的
+
+```
+@Component
+public class ResourceUse {
+    public MovieFinder movieFinder;
+    @Resource(name = "jpaMovieFinder")
+    public void setMovieFinder(MovieFinder movieFinder) {
+        this.movieFinder = movieFinder;
+    }
+    @PostConstruct
+    public void populateMovieCache(){
+        System.out.println("ResourceUse的bean初始化");
+    }
+
+    @PreDestroy
+    public void cleaMoviceCache(){
+        System.out.println("ResourceUse的bean被销毁");
+    }
+}  
+```
+
+使用JSR330标准注解
+
+使用JSR330需要依赖javax.inject包
+
+```
+<dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+```
+
+@Inject等效于@Autowired,可以使用于类，属性，方法，构造器
+
+如果想使用特定名称进行依赖注入，使用@Named，@Named与@Component等效
+
+```
+@Component
+public class InjectUse {
+    public MovieFinder movieFinder;
+    //等效于@Autowired
+    @Inject//如果想使用特定名称进行依赖注入，使用@Named，@Named与@Component等效
+    public void setMovieFinder(@Named("jpaMovieFinder")MovieFinder movieFinder) {
+        this.movieFinder = movieFinder;
+    }
+}
+
+```
+
