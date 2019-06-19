@@ -1,9 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71715234-1be8-4a19-8585-2cd19059822a" name="Default" comment="整理学习笔记">
+    <list default="true" id="71715234-1be8-4a19-8585-2cd19059822a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springaop/AOPMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springaop/Aspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springaop/AspectBiz.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/spring/application-aop.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/spring/application-jdbc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpringAOP.md" beforeDir="false" afterPath="$PROJECT_DIR$/SpringAOP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpringBean.md" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBean.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/aware/MoocApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/aware/MoocApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/aware/MoocBeanName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/aware/MoocBeanName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/cglib/CglibTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/aop/cglib/CglibTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/cglib/ProxyFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/aop/cglib/ProxyFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/proxy/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/aop/proxy/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/proxy/ProxyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/aop/proxy/ProxyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/proxy/XiaoMing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/aop/proxy/XiaoMing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/proxy/XiaoMingProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/aop/proxy/XiaoMingProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/SpringTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/SpringTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/annotationbean/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/AppDataSourceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/annotationbean/AppDataSourceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/BeanAndScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/annotationbean/BeanAndScope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/BeanG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/annotationbean/BeanG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/InjectUse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/InjectUse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/JpaMovieFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/JpaMovieFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/MovieFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/MovieFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/MovieFinderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/MovieFinderImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/RequiredMovieLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/RequiredMovieLister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/ResourceUse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/ResourceUse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/SimpleMovieLister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/SimpleMovieLister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/resource/LearnResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/resource/LearnResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/springjdbc/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/springjdbc/BookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/springjdbc/JdbcTemplateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/springjdbc/JdbcTemplateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/SpringTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/annotationbean/AppConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/annotationbean/AppDataSourceConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/annotationbean/BeanAndScope.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/annotationbean/BeanG$IntegerStore.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/annotationbean/BeanG$Store.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/annotationbean/BeanG$StringStore.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/annotationbean/BeanG.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/autodiscovery/JpaMovieFinder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/autodiscovery/MovieFinder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/autodiscovery/MovieFinderImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/autodiscovery/RequiredMovieLister.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/autodiscovery/SimpleMovieLister.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/resource/LearnResource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/springjdbc/BookDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wind/spring/spring/springjdbc/JdbcTemplateTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring/applicationContext.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +64,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="329">
+              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
             </state>
           </provider>
         </entry>
@@ -29,6 +78,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -48,19 +98,26 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/SpringTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/ResourceUse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/InjectUse.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/application-aop.fxml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/application-jdbc.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/springaop/AOPMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/springaop/Aspect.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wind/spring/springaop/AspectBiz.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/application-aop.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1849" />
-    <option name="y" value="136" />
+    <option name="x" value="-1850" />
+    <option name="y" value="135" />
     <option name="width" value="2250" />
-    <option name="height" value="1232" />
+    <option name="height" value="1233" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -78,6 +135,95 @@
             <path>
               <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
               <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="wind" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="wind" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="wind" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="springaop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="wind" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="springbean" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springlearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springlearn" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -97,14 +243,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="SpringTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wind.spring.spring.SpringTest" />
+  <component name="RunManager" selected="Application.AOPMain">
+    <configuration name="AOPMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wind.spring.springaop.AOPMain" />
       <module name="ssm" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wind.spring.spring.*" />
+          <option name="PATTERN" value="com.wind.spring.springaop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="SpringTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wind.spring.springbean.SpringTest" />
+      <module name="ssm" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wind.spring.springbean.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -150,8 +307,13 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="Application.SpringTest" />
+      <item itemvalue="Application.AOPMain" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AOPMain" />
         <item itemvalue="Application.SpringTest" />
       </list>
     </recent_temporary>
@@ -209,32 +371,40 @@
       <option name="project" value="LOCAL" />
       <updated>1560872885207</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="整理学习笔记">
+      <created>1560874267347</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1560874267347</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="137" width="1550" height="848" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" weight="0.32994923" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32994923" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Designer" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32994923" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.42131978" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Designer" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26888022" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32994923" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info id="Favorites" side_tool="true" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
@@ -250,28 +420,35 @@
     <option name="LAST_COMMIT_MESSAGE" value="整理学习笔记" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/JpaMovieFinder.java">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/JpaMovieFinder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/AppConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/annotationbean/AppConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/BeanAndScope.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/annotationbean/BeanAndScope.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/annotationbean/BeanG.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/annotationbean/BeanG.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
@@ -285,35 +462,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="45" column="21" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="45" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/SpringTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/MovieFinder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/MovieFinder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/MovieFinderImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/MovieFinderImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/RequiredMovieLister.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/RequiredMovieLister.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="13" column="30" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="30" />
@@ -324,14 +487,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/SimpleMovieLister.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/SimpleMovieLister.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/ResourceUse.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/ResourceUse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="12" column="4" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="19" />
@@ -345,7 +508,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/spring/autodiscovery/InjectUse.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/autodiscovery/InjectUse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
           <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
@@ -358,7 +521,91 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/application-aop.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/application-jdbc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springaop/Aop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="7" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/spring-context/4.3.21.RELEASE/spring-context-4.3.21.RELEASE.jar!/org/springframework/stereotype/Component.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springaop/Aspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springaop/AspectBiz.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/application-aop.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="14" column="70" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springbean/SpringTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="23" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wind/spring/springaop/AOPMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>

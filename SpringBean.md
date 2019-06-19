@@ -199,7 +199,7 @@
      
 
 ```
- <bean id="moocApplicationContext" class="com.wind.spring.aware.MoocApplicationContext"/>
+ <bean id="moocApplicationContext" class="com.wind.spring.springbean.aware.MoocApplicationContext"/>
  /*
   * 得到ioc容器的applicationcontext，在容器初始化时可对applicationcontext进行操作
   * */
@@ -216,7 +216,7 @@
    BeanNameAware
 
 ```
- <bean id="moocBeanName" class="com.wind.spring.aware.MoocBeanName"/>
+ <bean id="moocBeanName" class="com.wind.spring.springbean.aware.MoocBeanName"/>
  public class MoocBeanName implements BeanNameAware {
      @Override
      public void setBeanName(String name) {
@@ -375,7 +375,7 @@ public interface MovieFinder {
 
 ```
      <beans>
-             <context:component-scan base-package="com.wind.spring.spring.springfilter">
+             <context:component-scan base-package="com.wind.spring.springbean.springfilter">
                  <context:include-filter type="regex"
                                          expression=".*Stub.*Repository"/>
                  <context:exclude-filter type="annotation"

@@ -8,9 +8,9 @@
 	http://www.springframework.org/schema/context/spring-context.xsd"
 >
 
-    <context:component-scan base-package="com.wind.spring"/>
+    <context:component-scan base-package="com.wind.spring.springbean"/>
 
-    <!-- spring bean 的学习  -->
+    <!-- springbean bean 的学习  -->
     <!-- 学习网站https://www.imooc.com/video/3665 -->
     <!-- 笔记 https://github.com/987625922/springlearn-->
 
@@ -31,44 +31,22 @@
 
     <!-- 第二 -->
     <!-- aware -->
-    <bean id="moocApplicationContext" class="com.wind.spring.aware.MoocApplicationContext"/>
-    <bean id="moocBeanName" class="com.wind.spring.aware.MoocBeanName"/>
+    <bean id="moocApplicationContext" class="com.wind.spring.springbean.aware.MoocApplicationContext"/>
+    <bean id="moocBeanName" class="com.wind.spring.springbean.aware.MoocBeanName"/>
 
     <!-- 第三 bean的自动装配-->
     <!-- 在xml头添加default-autowire="byName" 或者在bean中配置autowire="constructor" -->
     <bean id="autobean" class="com.wind.spring.bean.AutoWiringBean" autowire="constructor"/>
 
     <!-- 第四 Resources -->
-    <bean id="learnresource" class="com.wind.spring.spring.resource.LearnResource"/>
+    <bean id="learnresource" class="com.wind.spring.springbean.resource.LearnResource"/>
 
     <!-- 第五 Bean管理的注解实现及例子 -->
     <!-- 使用过滤器进行自定义扫描 -->
 
-    <bean id="springjdbctest" class="com.wind.spring.spring.springjdbc.JdbcTemplateTest"/>
+    <bean id="springjdbctest" class="com.wind.spring.springbean.springjdbc.JdbcTemplateTest"/>
 
-    <!-- jdbc配置开始  -->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
-    <!-- 配置c3p0数据库连接池 -->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="${jdbc.driver}"/>
-        <property name="jdbcUrl" value="${jdbc.url}"/>
-        <property name="user" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}"/>
-        <!-- c3p0连接池的私有属性 -->
-        <property name="maxPoolSize" value="30"/>
-        <property name="minPoolSize" value="10"/>
-        <!-- 关闭连接后不自动commit -->
-        <property name="autoCommitOnClose" value="false"/>
-        <!-- 获取连接超时时间 -->
-        <property name="checkoutTimeout" value="10000"/>
-        <!-- 当获取连接失败重试次数 -->
-        <property name="acquireRetryAttempts" value="2"/>
-    </bean>
-    <!-- spring jdbc -->
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
-    <!-- jdbc配置结束  -->
+
 
 
 </beans>
