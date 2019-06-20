@@ -1,5 +1,6 @@
 package com.wind.spring.springaop;
 
+import com.wind.spring.springaop.introductions.Fit;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -18,7 +19,13 @@ public class AOPMain {
 
 
     public static void main(String args[]) {
-        AspectBiz aspectBiz = (AspectBiz) getBean("aspectBiz");
-        aspectBiz.biz();
+//        AspectBiz aspectBiz = (AspectBiz) getBean("aspectBiz");
+        //AOP基础
+//        aspectBiz.biz();
+        //AOP带参数的环绕通知
+//        aspectBiz.init("测试用",3);
+        /*   introductions  */
+        Fit fit = (Fit) getBean("aspectBiz");
+        fit.filter();
     }
 }
