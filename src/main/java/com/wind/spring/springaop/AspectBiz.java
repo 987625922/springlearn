@@ -1,10 +1,9 @@
 package com.wind.spring.springaop;
 
-import org.springframework.stereotype.Component;
-
+//被切的类
 public class AspectBiz {
 
-    public void biz(){
+    public void biz() {
         System.out.println("调用了AspectBiz的biz方法");
     }
 

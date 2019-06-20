@@ -19,9 +19,39 @@ Spring所有的切面和通知器都必须放在一个\<aop:config\>内（可以
 
 ```
  <aop:config>
-        //把aspect这个bean作为一个切面来声明
+        把aspect这个bean作为一个切面来声明
         <aop:aspect id="aspectAOP" ref="aspect">
         </aop:aspect>
     </aop:config>
 ```
+
+aop:pointcut（切点）
+
+横切面要切入的方法
+
+```
+<aop:config>
+        <!--把aspect这个bean作为一个切面来声明-->
+        <aop:aspect id="aspectAOP" ref="myaspect">
+            <!--配置指定包下以Biz结尾的bean的所有方法为切点-->
+            <aop:pointcut id="aspectBean" expression="execution(* com.wind.spring.springaop.*Biz.*(..))"/>
+        </aop:aspect>
+    </aop:config>
+```
+
+aop:before 
+
+```
+<aop:config>
+        <!--把aspect这个bean作为一个切面来声明-->
+        <aop:aspect id="aspectAOP" ref="myaspect">
+            <!--配置指定包下以Biz结尾的bean的所有方法为切点-->
+            <aop:pointcut id="aspectBean" expression="execution(* com.wind.spring.springaop.*Biz.*(..))"/>
+            <!-- before为在切点之前执行的方法,执行方法的切点的id为pointcut-ref,方法的名称为横切面类中的before -->
+            <aop:before method="before" pointcut-ref="aspectBean"/>
+        </aop:aspect>
+    </aop:config>
+```
+
+
 

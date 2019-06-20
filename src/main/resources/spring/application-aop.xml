@@ -13,13 +13,16 @@
 >
     <bean id="myaspect" class="com.wind.spring.springaop.Aspect"/>
     <bean id="aspectBiz" class="com.wind.spring.springaop.AspectBiz"/>
+
     <context:component-scan base-package="com.wind.spring.aop"/>
     <aop:config>
         <!--把aspect这个bean作为一个切面来声明-->
         <aop:aspect id="aspectAOP" ref="myaspect">
             <!--配置指定包下以Biz结尾的bean的所有方法为切点-->
-            <aop:pointcut id="aspectBean" expression="execution(* com.wind.spring.springaop.*Biz.*(..)"/>
+            <aop:pointcut id="aspectBean" expression="execution(* com.wind.spring.springaop.*Biz.*(..))"/>
+            <!-- before为在切点之前执行的方法,执行方法的切点的id为pointcut-ref,方法的名称为横切面类中的before -->
             <aop:before method="before" pointcut-ref="aspectBean"/>
+            <aop:after-returning method="afterReturning" pointcut-ref="aspectBean" />
         </aop:aspect>
     </aop:config>
 
