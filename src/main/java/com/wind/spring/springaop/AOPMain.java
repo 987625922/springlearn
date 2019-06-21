@@ -1,6 +1,6 @@
 package com.wind.spring.springaop;
 
-import com.wind.spring.springaop.introductions.Fit;
+import com.wind.spring.springaop.advisors.InvokeService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -25,7 +25,12 @@ public class AOPMain {
         //AOP带参数的环绕通知
 //        aspectBiz.init("测试用",3);
         /*   introductions  */
-        Fit fit = (Fit) getBean("aspectBiz");
-        fit.filter();
+//        Fit fit = (Fit) getBean("aspectBiz");
+////        fit.filter();
+        /*   advisors  */
+        InvokeService service = (InvokeService) getBean("invokeService");
+        service.invoke();
+        System.out.println();
+        service.invokeException();
     }
 }

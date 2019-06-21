@@ -139,3 +139,6 @@ advisor是一个小的自包含的方面，只有一个advice
 切面自身通过一个bean表示，并且必须实现某个advice接口，同时，advisor也可以很好的利用AspectJ的切入点表达式
 
 Spring通过配置文件中\<aop:advisor\>元素支持advisor实际使用中，大多数情况下它会和transactional（事务） advice配合使用
+
+为了定义一个advisor的优先级以便让advice可以有序，可以使用order属性来定义advisor的顺序
+
