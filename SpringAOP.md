@@ -142,3 +142,19 @@ Spring通过配置文件中\<aop:advisor\>元素支持advisor实际使用中，�
 
 为了定义一个advisor的优先级以便让advice可以有序，可以使用order属性来定义advisor的顺序
 
+```
+<!-- advisors -->
+    <bean id="concurrentOperationExecutor" class="com.wind.spring.springaop.advisors.ConcurrentOperationExecutor">
+        <property name="maxRetries" value="3"/>
+        <property name="order" value="100"/>
+    </bean>
+    <aop:config>
+        <aop:aspect id="concurrentOperationRetry" ref="concurrentOperationExecutor">
+            <aop:pointcut id="idempotentOperation"
+                          expression="execution(* com.wind.spring.springaop.advisors.*Service.*(..))"/>
+            <aop:around method="doConcurrentOperation" pointcut-ref="idempotentOperation"/>
+        </aop:aspect>
+    </aop:config>
+    <!-- advisors end -->
+```
+
