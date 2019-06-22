@@ -16,6 +16,10 @@
 
 1.Pointcut
 
+2.Before advice
+
+3.ProxyFactoryBean
+
 **1.Spring AOP简介**
 
 AOP名为面向切面的编程，通过预编译方式和运行期动态代理实现程序功能的一种技术，主要功能是日志记录，性能统计，安全控制，事务处理，异常处理等等
@@ -166,8 +170,20 @@ Spring通过配置文件中\<aop:advisor\>元素支持advisor实际使用中，�
 
 **二.Spring AOP API**
 
-1.Pointcut
+**1.Pointcut**
 
 实现之一：NameMatchMethodPointcut，根据方法名字进行匹配
 
 成员变量：mappedNames，匹配的方法名集合
+
+**2.Before advice**
+
+一个简单的通知类型
+
+只有在进入方法之前被调用，不需要MethodInvocation对象
+
+前置通知可以在连接点执行之前插入自定义行为，但不能改变返回值
+
+**3.ProxyFactoryBean**
+
+创建Spring AOP代理的基本方法是使用org.springframework.aop.framework.ProxyFactoryBean,这可以完全控制切入点和通知（advice）以及他们的顺序 
