@@ -1,5 +1,7 @@
 ### Spring AOP
 
+**一.Spring AOP的使用**
+
 1.Spring AOP简介
 
 2.配置切面aspect
@@ -9,6 +11,10 @@
 4.Introductions(简介)
 
 5.advisors
+
+**二.Spring AOP API**
+
+1.Pointcut
 
 **1.Spring AOP简介**
 
@@ -158,3 +164,10 @@ Spring通过配置文件中\<aop:advisor\>元素支持advisor实际使用中，�
     <!-- advisors end -->
 ```
 
+**二.Spring AOP API**
+
+1.Pointcut
+
+实现之一：NameMatchMethodPointcut，根据方法名字进行匹配
+
+成员变量：mappedNames，匹配的方法名集合
