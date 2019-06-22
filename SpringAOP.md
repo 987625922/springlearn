@@ -250,10 +250,9 @@ Spring通过配置文件中\<aop:advisor\>元素支持advisor实际使用中，�
 public class NotVeryUsefulAspect{}
 ```
 
-
-
 pointcut
 
 一个切入点可以通过一个普通的方法定义来提供，并且切入点表达式使用@Pointcut注解，方法返回类型必须为void
 
 定义一个名为‘anyOldTransfer’，这个切入点将匹配任何名为‘transfer’的方法执行
+
