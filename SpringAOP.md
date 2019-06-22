@@ -187,3 +187,39 @@ Spring通过配置文件中\<aop:advisor\>元素支持advisor实际使用中，�
 **3.ProxyFactoryBean**
 
 创建Spring AOP代理的基本方法是使用org.springframework.aop.framework.ProxyFactoryBean,这可以完全控制切入点和通知（advice）以及他们的顺序 
+
+```
+<bean id="beforeAdvice" class="com.wind.spring.springaop.api.BeforeAdvice"/>
+    <bean id="afterReturningAdvice" class="com.wind.spring.springaop.api.AfterReturningAdvice"/>
+    <bean id="methodInterceptor" class="com.wind.spring.springaop.api.MethodInterceptor"/>
+    <bean id="throwsAdvice" class="com.wind.spring.springaop.api.ThrowsAdavice"/>
+    <bean id="bizLogicImplTarget" class="com.wind.spring.springaop.api.BizLogicImpl" ></bean>
+
+    <bean id="pointcutBean" class="org.springframework.aop.support.NameMatchMethodPointcut">
+        <property name="mappedNames">
+            <list>
+                <value>sa*</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="defaultAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="advice" ref="beforeAdvice"/>
+        <property name="pointcut" ref="pointcutBean"/>
+    </bean>
+
+    <bean id="bizLogicImpl" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <ref bean="bizLogicImplTarget"/>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>defaultAdvisor</value>
+                <value>afterReturningAdvice</value>
+                <value>methodInterceptor</value>
+                <value>throwsAdvice</value>
+            </list>
+        </property>
+    </bean>
+```
+

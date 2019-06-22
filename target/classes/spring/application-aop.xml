@@ -11,16 +11,88 @@
     http://www.springframework.org/schema/aop/spring-aop.xsd
 "
 >
+    <context:component-scan base-package="com.wind.spring.springaop"></context:component-scan>
+
     <bean id="myaspect" class="com.wind.spring.springaop.Aspect"/>
     <bean id="aspectBiz" class="com.wind.spring.springaop.AspectBiz"/>
-    <context:component-scan base-package="com.wind.spring.aop"/>
+
+    <!-- advice -->
     <aop:config>
         <!--把aspect这个bean作为一个切面来声明-->
         <aop:aspect id="aspectAOP" ref="myaspect">
             <!--配置指定包下以Biz结尾的bean的所有方法为切点-->
-            <aop:pointcut id="aspectBean" expression="execution(* com.wind.spring.springaop.*Biz.*(..)"/>
+            <aop:pointcut id="aspectBean" expression="execution(* com.wind.spring.springaop.*Biz.*(..))"/>
+            <!-- before为在切点之前执行的方法,执行方法的切点的id为pointcut-ref,方法的名称为横切面类中的before -->
             <aop:before method="before" pointcut-ref="aspectBean"/>
+            <!-- after-returning为在切点方法执行完成之后调用 -->
+            <aop:after-returning method="afterReturning" pointcut-ref="aspectBean"/>
+            <!-- 方法抛出异常之后执行 -->
+            <aop:after-throwing method="afterThrowing" pointcut-ref="aspectBean"/>
+            <!--在afterReturning之后执行，也被称为final的advice，就算抛出异常也执行-->
+            <aop:after method="after" pointcut-ref="aspectBean"/>
+            <!-- 环绕方法的通知 -->
+            <aop:around method="around" pointcut-ref="aspectBean"/>
+            <!-- 方法带参数的环绕通知 pointcut指定切点 -->
+            <aop:around method="aroundInit"
+                        pointcut="execution(* com.wind.spring.springaop.AspectBiz.init(String,int)) and args(bizName,times)"/>
+            <!---->
+            <!-- introductions -->
+            <!-- implement-interface为指定接口 default-impl为接口实现类 types-matching为匹配的对象-->
+            <!-- type-matching匹配到后会为匹配到的类指定一个新的父类 -->
+            <aop:declare-parents
+                    types-matching="com.wind.spring.springaop.*(+)"
+                    implement-interface="com.wind.spring.springaop.introductions.Fit"
+                    default-impl="com.wind.spring.springaop.introductions.FitImpl"/>
         </aop:aspect>
     </aop:config>
+
+    <!-- advisors -->
+    <bean id="concurrentOperationExecutor" class="com.wind.spring.springaop.advisors.ConcurrentOperationExecutor">
+        <property name="maxRetries" value="3"/>
+        <property name="order" value="100"/>
+    </bean>
+    <aop:config>
+        <aop:aspect id="concurrentOperationRetry" ref="concurrentOperationExecutor">
+            <aop:pointcut id="idempotentOperation"
+                          expression="execution(* com.wind.spring.springaop.advisors.*Service.*(..))"/>
+            <aop:around method="doConcurrentOperation" pointcut-ref="idempotentOperation"/>
+        </aop:aspect>
+    </aop:config>
+    <!-- advisors end -->
+
+    <!-- Spring AOP API -->
+    <!--Pointcut-->
+    <bean id="beforeAdvice" class="com.wind.spring.springaop.api.BeforeAdvice"/>
+    <bean id="afterReturningAdvice" class="com.wind.spring.springaop.api.AfterReturningAdvice"/>
+    <bean id="methodInterceptor" class="com.wind.spring.springaop.api.MethodInterceptor"/>
+    <bean id="throwsAdvice" class="com.wind.spring.springaop.api.ThrowsAdavice"/>
+    <bean id="bizLogicImplTarget" class="com.wind.spring.springaop.api.BizLogicImpl" ></bean>
+
+    <bean id="pointcutBean" class="org.springframework.aop.support.NameMatchMethodPointcut">
+        <property name="mappedNames">
+            <list>
+                <value>sa*</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="defaultAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="advice" ref="beforeAdvice"/>
+        <property name="pointcut" ref="pointcutBean"/>
+    </bean>
+
+    <bean id="bizLogicImpl" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <ref bean="bizLogicImplTarget"/>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>defaultAdvisor</value>
+                <value>afterReturningAdvice</value>
+                <value>methodInterceptor</value>
+                <value>throwsAdvice</value>
+            </list>
+        </property>
+    </bean>
 
 </beans>
