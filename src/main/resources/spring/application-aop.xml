@@ -96,4 +96,7 @@
     </bean>
     <!-- Spring AOP API END -->
 
+    <!-- AspectJ -->
+    <aop:aspectj-autoproxy/>
+    <!-- AspectJ END -->
 </beans>

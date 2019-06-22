@@ -20,6 +20,10 @@
 
 3.ProxyFactoryBean
 
+**三.AspectJ**
+
+1.AspectJ介绍
+
 **1.Spring AOP简介**
 
 AOP名为面向切面的编程，通过预编译方式和运行期动态代理实现程序功能的一种技术，主要功能是日志记录，性能统计，安全控制，事务处理，异常处理等等
@@ -223,3 +227,33 @@ Spring通过配置文件中\<aop:advisor\>元素支持advisor实际使用中，�
     </bean>
 ```
 
+**三.AspectJ**
+
+1.AspectJ介绍
+
+对@AspectJ的支持可以使用XML或Java风格的配置
+
+```
+<!-- AspectJ -->
+    <aop:aspectj-autoproxy/>
+```
+
+@AspectJ切面使用@Aspect注解配置，拥有@Aspect的任何bean将被Spring自动识别并应用
+
+用@Aspect注解的类可以有方法和字段，他们可能包括切入点（pointcut），通知（Advice）和引入（introduction）声明
+
+@Aspect注解是不能够通过类路径自动检测发现的，所以需要配合使用@Component注释或者在xml配置bean
+
+```
+<bean id="myAspect" class="com.wind.sp"/>
+@Aspect
+public class NotVeryUsefulAspect{}
+```
+
+
+
+pointcut
+
+一个切入点可以通过一个普通的方法定义来提供，并且切入点表达式使用@Pointcut注解，方法返回类型必须为void
+
+定义一个名为‘anyOldTransfer’，这个切入点将匹配任何名为‘transfer’的方法执行
