@@ -44,7 +44,7 @@ public class Aspect {
 
     //AspectJ的环绕通知
     @Around("pointcut()")
-    public Object around(ProceedingJoinPoint pjp){
+    public Object around(ProceedingJoinPoint pjp) {
         Object obj = null;
         try {
             System.out.println("AspectJ around 1");
@@ -54,6 +54,12 @@ public class Aspect {
             throwable.printStackTrace();
         }
         return obj;
+    }
+
+    //advice带参数的扩展
+    @Around("pointcut() && args(arg)")
+    public void beforeWithParam(String arg) {
+        System.out.println("AspectJ Before:" + arg);
     }
 
 }

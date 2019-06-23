@@ -318,3 +318,31 @@ After (finally) advice
 Around advice
 
 环绕通知使用@Around来声明，通知方法的第一个尝试必须是ProceedingJoinPoint类型
+
+```
+//AspectJ的环绕通知
+    @Around("pointcut()")
+    public Object around(ProceedingJoinPoint pjp){
+        Object obj = null;
+        try {
+            System.out.println("AspectJ around 1");
+            obj = pjp.proceed();
+            System.out.println("AspectJ around 2");
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        return obj;
+    }
+```
+
+advice的扩展
+
+```
+//advice带参数的扩展
+    @Around("pointcut() && args(arg)")
+    public void beforeWithParam(String arg) {
+        System.out.println("AspectJ Before:" + arg);
+    }
+
+```
+
