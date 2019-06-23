@@ -256,3 +256,65 @@ pointcut
 
 定义一个名为‘anyOldTransfer’，这个切入点将匹配任何名为‘transfer’的方法执行
 
+```
+@Pointcut("execution(* transfer(..))")//这是pointcut的例子
+private void anyOldTransfer(){}
+```
+
+Before advice
+
+```
+//AspectJ的切入点
+@Component
+@org.aspectj.lang.annotation.Aspect
+public class Aspect {
+
+    @Pointcut("execution(* com.wind.spring.springaop.aspectj.*Asp.*(..)))")
+    public void pointcut(){}
+    
+    //在指定包下的方法前执行
+//    @Before("execution(* com.wind.spring.springaop.aspectj.*Asp.*(..))")
+    //使用共享的名称
+    @Before("pointcut()")
+    public void before(){
+        System.out.println("AspectJ before");
+    }
+}
+```
+
+After returning advice
+
+@AfterReturning
+
+```
+@AfterReturning(pointcut = "pointcut()",returning = "arg")
+    public void afterReturning(Object arg){
+        System.out.println("AspectJ afterReturning:"+arg);
+    }
+```
+
+
+
+After throwing advice
+
+```
+ @AfterThrowing(pointcut = "pointcut()", throwing = "ex")
+    public void afterThrowing(RuntimeException ex) {
+        System.out.println("AspectJ afterThrowing : " + ex.getMessage());
+    }
+```
+
+After (finally) advice
+
+最终通知必须准备处理正常和异常两种返回情况，他通常用于释放资源
+
+```
+@After("pointcut()")
+    public void finallyAdvice(){
+        System.out.println("AspectJ finallyAdvice");
+    }
+```
+
+Around advice
+
+环绕通知使用@Around来声明，通知方法的第一个尝试必须是ProceedingJoinPoint类型

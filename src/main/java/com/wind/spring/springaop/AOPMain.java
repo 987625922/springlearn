@@ -1,7 +1,6 @@
 package com.wind.spring.springaop;
 
-import com.wind.spring.springaop.advisors.InvokeService;
-import com.wind.spring.springaop.api.BizLogic;
+import com.wind.spring.springaop.aspectj.AspectJAsp;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -37,7 +36,11 @@ public class AOPMain {
 //        service.invokeException();
 
         /* spring aop api */
-        BizLogic logic = (BizLogic)getBean("bizLogicImpl");
-        logic.save();
+//        BizLogic logic = (BizLogic)getBean("bizLogicImpl");
+//        logic.save();
+
+        /*  AspectJ */
+        AspectJAsp biz = (AspectJAsp) getBean("aspectJAsp");
+        biz.test("测试AspectJ");
     }
 }
