@@ -45,9 +45,5 @@
     <!-- 第五 Bean管理的注解实现及例子 -->
     <!-- 使用过滤器进行自定义扫描 -->
 
-    <bean id="springjdbctest" class="com.wind.spring.springbean.springjdbc.JdbcTemplateTest"/>
-
-
-
 
 </beans>

@@ -1,4 +1,4 @@
-package com.wind.spring.springbean.springjdbc;
+package com.wind.spring.springjdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

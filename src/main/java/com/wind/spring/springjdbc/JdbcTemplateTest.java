@@ -1,4 +1,4 @@
-package com.wind.spring.springbean.springjdbc;
+package com.wind.spring.springjdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -18,7 +18,7 @@ public class JdbcTemplateTest {
 
     private static ApplicationContext getApplication() {
         ApplicationContext ac = new
-                ClassPathXmlApplicationContext("spring/applicationContext.xml");
+                ClassPathXmlApplicationContext("spring/application-jdbc.xml");
 
         System.out.println("application:" + ac);
 
