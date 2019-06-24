@@ -1,6 +1,9 @@
 ## Spring DAO
 ### 1.原始版本的DAO
 ### 2.使用Spring的JDBC
+### 3.JdbcTemplate查询
+### 4.事务概述
+### 5.声明式事务
 
 ### 1.原始版本的DAO
 ##### 原生的JDBC：需要手动去数据库的驱动从而拿到对应的连接
@@ -56,3 +59,53 @@
         <property name="dataSource" ref="dataSource"></property>
     </bean>
 ```
+### 3.JdbcTemplate查询
+```
+@Component
+public class BookDao {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    public void select() {
+        String sql = "select * from book";
+        List<Book> books = jdbcTemplate.query(sql, new RowMapper<Book>() {
+            @Override
+            public Book mapRow(ResultSet resultSet, int i) throws SQLException {
+                Book book = new Book();
+                book.setName(resultSet.getString("name"));
+                book.setBook_id(resultSet.getString("book_id"));
+                book.setNumber(resultSet.getString("number"));
+                return book;
+            }
+        });
+
+        System.out.println(books);
+    }
+
+    public void update() {
+        String sql = "insert into book(name,number) values('测试课本',123)";
+        jdbcTemplate.update(sql);
+    }
+}
+```
+### 4.事务概述
+##### 事务控制都是在service层做的，service层是业务逻辑层，service的方法一旦执行成功，那么说明该功能没有出错。
+##### 事务控制分为两种：
+- 编程式事务控制
+- 声明式事务控制
+### 5.声明式事务
+##### Spring提供对事务的控制管理就叫做声明式事务控制
+##### Spring给我们提供了事务的管理器类，事务管理器类又分为两种，因为JDBC的事务和Hibernate的事务是不一样的。
+##### Spring声明式事务管理器类：
+- Jdbc技术：DataSourceTransactionManager
+- Hibernate技术：HibernateTransactionManager
+##### jar包引入
+- AOP相关的jar包【因为Spring的声明式事务控制是基于AOP的，那么就需要引入AOP的jar包。】
+- 引入tx名称空间
+- 引入AOP名称空间
+- 引入jdbcjar包【jdbc.jar包和tx.jar包】
+##### 配置事务的管理器类
+    <bean id="txManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--引用数据库连接池-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
