@@ -5,6 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
+
+    <context:component-scan base-package="com.wind.spring.springdao"/>
+
     <!-- jdbc配置开始  -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
     <!-- 配置c3p0数据库连接池 -->
@@ -23,6 +26,7 @@
         <!-- 当获取连接失败重试次数 -->
         <property name="acquireRetryAttempts" value="2"/>
     </bean>
+
     <!-- springbean jdbc -->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"></property>

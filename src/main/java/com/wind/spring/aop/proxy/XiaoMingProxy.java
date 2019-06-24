@@ -1,5 +1,7 @@
 package com.wind.spring.aop.proxy;
 
+import com.wind.spring.aop.cglib.XiaoMing;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;

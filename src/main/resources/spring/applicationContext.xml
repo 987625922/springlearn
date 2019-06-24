@@ -27,6 +27,7 @@
     <bean id="person" class="com.wind.spring.bean.Person"
           scope="singleton" init-method="init"
           destroy-method="destroy"/>
+
     <bean id="book" class="com.wind.spring.bean.Book"/>
 
     <!-- 第二 -->

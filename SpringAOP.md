@@ -1,4 +1,4 @@
-### Spring AOP
+## Spring AOP
 
 **一.Spring AOP的使用**
 
@@ -11,6 +11,12 @@
 4.Introductions(简介)
 
 5.advisors
+
+6.cglib
+
+7.API
+
+8.XML实现AOP
 
 **二.Spring AOP API**
 
@@ -170,6 +176,72 @@ Spring通过配置文件中\<aop:advisor\>元素支持advisor实际使用中，�
         </aop:aspect>
     </aop:config>
     <!-- advisors end -->
+```
+6.cglib
+- 需要引入cglib – jar文件， 但是spring的核心包中已经包括了cglib功能，所以直接引入spring-core的jar。
+- 引入功能包后，就可以在内存中动态构建子类
+- 代理的类不能为final，否则报错【在内存中构建子类来做扩展，当然不能为final，有final就不能继承了】
+- 目标对象的方法如果为final/static, 那么就不会被拦截，即不会执行目标对象额外的业务方法。
+- 使用cglib就是为了弥补动态代理的不足【动态代理的目标对象一定要实现接口】
+```
+实例代码在com.wind.spring.aop.cglib的包中
+```
+
+7.API
+- @Aspect							指定一个类为切面类
+
+- @Pointcut("execution( cn.itcast.e_aop_anno..(..))")  指定切入点表达式*
+
+
+- @Before("pointCut_()")				前置通知: 目标方法之前执行
+
+
+- @After("pointCut_()")				后置通知：目标方法之后执行（始终执行）
+
+
+- @AfterReturning("pointCut_()")		    返回后通知： 执行方法结束前执行(异常不执行)
+
+
+- @AfterThrowing("pointCut_()")			异常通知:  出现异常时候执行
+
+
+- @Around("pointCut_()")				环绕通知： 环绕目标方法执行
+
+8.XML实现AOP
+不需要在类中使用任何注解
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--对象实例-->
+    <bean id="userDao" class="aa.UserDao"/>
+    <bean id="orderDao" class="aa.OrderDao"/>
+
+    <!--切面类-->
+    <bean id="aop" class="aa.AOP"/>
+
+    <!--AOP配置-->
+    <aop:config >
+
+        <!--定义切入表达式，拦截哪些方法-->
+        <aop:pointcut id="pointCut" expression="execution(* aa.*.*(..))"/>
+
+        <!--指定切面类是哪个-->
+        <aop:aspect ref="aop">
+            <!--指定来拦截的时候执行切面类的哪些方法-->
+            <aop:before method="begin" pointcut-ref="pointCut"/>
+            <aop:after method="close" pointcut-ref="pointCut"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
 ```
 
 **二.Spring AOP API**

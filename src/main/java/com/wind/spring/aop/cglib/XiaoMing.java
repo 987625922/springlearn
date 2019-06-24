@@ -1,4 +1,6 @@
-package com.wind.spring.aop.proxy;
+package com.wind.spring.aop.cglib;
+
+import com.wind.spring.aop.proxy.Person;
 
 public class XiaoMing implements Person {
     @Override

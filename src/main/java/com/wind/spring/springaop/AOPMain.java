@@ -38,9 +38,9 @@ public class AOPMain {
         /* spring aop api */
 //        BizLogic logic = (BizLogic)getBean("bizLogicImpl");
 //        logic.save();
-
         /*  AspectJ */
         AspectJAsp biz = (AspectJAsp) getBean("aspectJAsp");
+        System.out.println(biz.getClass());
         biz.test("测试AspectJ");
     }
 }

@@ -17,6 +17,7 @@ public class JdbcTest {
         //执行命令对象
         stmt = con.createStatement();
         stmt.execute(sql);
+
         stmt.close();
         con.close();
 
