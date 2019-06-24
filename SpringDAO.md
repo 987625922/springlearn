@@ -109,3 +109,18 @@ public class BookDao {
         <!--引用数据库连接池-->
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+**配置事务管理器类如何管理事务**
+
+```
+ <!--2.配置如何管理事务-->
+    <tx:advice id="txAdvice" transaction-manager="txManage">
+
+        <!--配置事务的属性-->
+        <tx:attributes>
+            <!--所有的方法，并不是只读-->
+            <tx:method name="*" read-only="false"/>
+        </tx:attributes>
+    </tx:advice>
+```
+

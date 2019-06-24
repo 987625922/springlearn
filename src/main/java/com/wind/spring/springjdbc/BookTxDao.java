@@ -10,12 +10,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-//Spring jdbc的使用
+//Spring 事务的使用
 @Component
-public class BookDao {
-
+public class BookTxDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    public void update() {
+        String sql = "insert into book(name,number) values('事务的测试',100)";
+        jdbcTemplate.update(sql);
+        int i = 1/0; //抛出异常
+        jdbcTemplate.update(sql);
+    }
 
     public void select() {
 //        String sql = "insert into book(name,number) values('测试课本',123)";
@@ -34,11 +40,4 @@ public class BookDao {
 
         System.out.println(books);
     }
-
-    public void update() {
-        String sql = "insert into book(name,number) values('测试课本',123)";
-        jdbcTemplate.update(sql);
-    }
-
-
 }
