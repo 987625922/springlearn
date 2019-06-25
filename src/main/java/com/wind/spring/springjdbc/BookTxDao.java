@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +18,15 @@ public class BookTxDao {
     private JdbcTemplate jdbcTemplate;
 
     public void update() {
+        String sql = "insert into book(name,number) values('事务的测试',100)";
+        jdbcTemplate.update(sql);
+        int i = 1/0; //抛出异常
+        jdbcTemplate.update(sql);
+    }
+
+    //使用注解的方式实现事务
+    @Transactional
+    public void upTxdate() {
         String sql = "insert into book(name,number) values('事务的测试',100)";
         jdbcTemplate.update(sql);
         int i = 1/0; //抛出异常

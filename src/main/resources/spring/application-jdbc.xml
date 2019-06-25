@@ -55,10 +55,14 @@
             <tx:method name="*" read-only="false"/>
         </tx:attributes>
     </tx:advice>
+
     <!--3.配置拦截哪些方法+事务的属性-->
     <aop:config>
-        <aop:pointcut id="pt" expression="execution(* com.wind.spring.springjdbc.**.*(..) )"/>
+        <aop:pointcut id="pt" expression="execution(* com.wind.spring.springjdbc.*.*(..) )"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pt"></aop:advisor>
     </aop:config>
+    <!-- 开启以注解的方式实现事务控制 -->
+    <tx:annotation-driven transaction-manager="txManage"/>
+
     <!-- jdbc配置结束  -->
 </beans>

@@ -13,11 +13,13 @@ public class JdbcTemplateTest {
     public static void main(String args[]) {
         ApplicationContext ac = getApplication();
         //spring jdbc的使用
-        BookDao bookDao = (BookDao) ac.getBean("bookDao");
-        bookDao.select();
-//        BookTxDao bookTxDao = (BookTxDao)ac.getBean("bookTxDao");
-//        bookTxDao.update();
-//        bookTxDao.select();
+//        BookDao bookDao = (BookDao) ac.getBean("bookDao");
+//        bookDao.select();
+        BookTxDao bookTxDao = (BookTxDao)ac.getBean("bookTxDao");
+        //xml实现事务
+        bookTxDao.update();
+        //注解方式实现事务
+        bookTxDao.upTxdate();
     }
 
     private static ApplicationContext getApplication() {

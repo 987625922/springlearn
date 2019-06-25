@@ -122,5 +122,24 @@ public class BookDao {
             <tx:method name="*" read-only="false"/>
         </tx:attributes>
     </tx:advice>
+  <!--3.配置拦截哪些方法+事务的属性-->
+    <aop:config>
+        <aop:pointcut id="pt" expression="execution(* com.wind.spring.springjdbc.*.*(..) )"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pt"></aop:advisor>
+    </aop:config>
+```
+**使用注解的方法实现事务控制**
+##### 第一步和XML的是一样的，必须配置事务管理器类：
+```
+<!--1.配置事务的管理器类:JDBC-->
+    <bean id="txManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+
+        <!--引用数据库连接池-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <!--开启以注解的方式实现事务控制-->
+    <tx:annotation-driven transaction-manager="txManage"/>
+    
 ```
 
