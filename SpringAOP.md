@@ -18,6 +18,8 @@
 
 8.XML实现AOP
 
+9.使用教程
+
 **二.Spring AOP API**
 
 1.Pointcut
@@ -243,6 +245,87 @@ Spring通过配置文件中\<aop:advisor\>元素支持advisor实际使用中，�
     </aop:config>
 </beans>
 ```
+
+**9.使用教程**、
+
+引入名称空间
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+</beans>
+```
+
+在配置文件中开启AOP注解方式
+
+```
+<!-- 开启aop注解方式 -->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+```
+
+切面类
+
+```
+//AspectJ的切入点
+@Component
+@org.aspectj.lang.annotation.Aspect //指定为切面类
+public class Aspect {
+   //里面的值为切入点表达式
+    @Pointcut("execution(* com.wind.spring.springaop.aspectj.*Asp.*(..)))")
+    public void pointcut() {
+    }
+    @Pointcut("within(com.wind.spring.springaop.aspectj.*)")
+    public void bizPointcut() {
+    }
+    //在指定包下的方法前执行
+//    @Before("execution(* com.wind.spring.springaop.aspectj.*Asp.*(..))")
+    //使用共享的名称
+    @Before("pointcut()")
+    public void before() {
+        System.out.println("AspectJ before");
+    }
+}
+```
+
+切入点表达式
+
+```
+  <!-- 【拦截所有public方法】 -->
+        <!--<aop:pointcut expression="execution(public * *(..))" id="pt"/>-->
+
+        <!-- 【拦截所有save开头的方法 】 -->
+        <!--<aop:pointcut expression="execution(* save*(..))" id="pt"/>-->
+
+        <!-- 【拦截指定类的指定方法, 拦截时候一定要定位到方法】 -->
+        <!--<aop:pointcut expression="execution(public * cn.itcast.g_pointcut.OrderDao.save(..))" id="pt"/>-->
+
+        <!-- 【拦截指定类的所有方法】 -->
+        <!--<aop:pointcut expression="execution(* cn.itcast.g_pointcut.UserDao.*(..))" id="pt"/>-->
+
+        <!-- 【拦截指定包，以及其自包下所有类的所有方法】 -->
+        <!--<aop:pointcut expression="execution(* cn..*.*(..))" id="pt"/>-->
+
+        <!-- 【多个表达式】 -->
+        <!--<aop:pointcut expression="execution(* cn.itcast.g_pointcut.UserDao.save()) || execution(* cn.itcast.g_pointcut.OrderDao.save())" id="pt"/>-->
+        <!--<aop:pointcut expression="execution(* cn.itcast.g_pointcut.UserDao.save()) or execution(* cn.itcast.g_pointcut.OrderDao.save())" id="pt"/>-->
+        <!-- 下面2个且关系的，没有意义 -->
+        <!--<aop:pointcut expression="execution(* cn.itcast.g_pointcut.UserDao.save()) &amp;&amp; execution(* cn.itcast.g_pointcut.OrderDao.save())" id="pt"/>-->
+        <!--<aop:pointcut expression="execution(* cn.itcast.g_pointcut.UserDao.save()) and execution(* cn.itcast.g_pointcut.OrderDao.save())" id="pt"/>-->
+
+        <!-- 【取非值】 -->
+        <!--<aop:pointcut expression="!execution(* cn.itcast.g_pointcut.OrderDao.save())" id="pt"/>-->
+```
+
+
 
 **二.Spring AOP API**
 
