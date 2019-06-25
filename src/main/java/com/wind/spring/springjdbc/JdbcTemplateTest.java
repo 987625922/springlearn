@@ -30,6 +30,4 @@ public class JdbcTemplateTest {
 
         return ac;
     }
-
-
 }
