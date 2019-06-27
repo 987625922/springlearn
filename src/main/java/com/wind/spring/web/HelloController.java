@@ -1,7 +1,9 @@
 package com.wind.spring.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,18 +34,20 @@ public class HelloController {
                                      javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {
         String name = httpServletRequest.getParameter("userName");
         String password = httpServletRequest.getParameter("password");
-        System.out.println("用户名："+name);
-        System.out.println("密码："+password);
+        System.out.println("用户名：" + name);
+        System.out.println("密码：" + password);
         return null;
     }
+
     //客户端跳转
     @RequestMapping("/jump")
     public String jump() {
         return "redirect: ./hello";
     }
 
-    @RequestMapping("/getrequest")
-    public void getRequest(HttpServletRequest request, HttpServletResponse response){
+    //只接受get方法
+    @RequestMapping(value = "/getrequest", method = RequestMethod.GET)
+    public void getRequest(HttpServletRequest request, HttpServletResponse response) {
         // 设置响应内容类型
         response.setContentType("text/html;charset=UTF-8");
 
@@ -58,23 +62,35 @@ public class HelloController {
                 "<!DOCTYPE html> \n";
         out.println(docType +
                 "<html>\n" +
-                "<head><meta charset=\"utf-8\"><title>" + title + "</title></head>\n"+
+                "<head><meta charset=\"utf-8\"><title>" + title + "</title></head>\n" +
                 "<body bgcolor=\"#f0f0f0\">\n" +
                 "<h1 align=\"center\">" + title + "</h1>\n" +
                 "<table width=\"100%\" border=\"1\" align=\"center\">\n" +
                 "<tr bgcolor=\"#949494\">\n" +
-                "<th>Header 名称</th><th>Header 值</th>\n"+
+                "<th>Header 名称</th><th>Header 值</th>\n" +
                 "</tr>\n");
 
         Enumeration headerNames = request.getHeaderNames();
 
-        while(headerNames.hasMoreElements()) {
-            String paramName = (String)headerNames.nextElement();
+        while (headerNames.hasMoreElements()) {
+            String paramName = (String) headerNames.nextElement();
             out.print("<tr><td>" + paramName + "</td>\n");
             String paramValue = request.getHeader(paramName);
             out.println("<td> " + paramValue + "</td></tr>\n");
         }
         out.println("</table>\n</body></html>");
+    }
+    //花括号里的参数为需要的值 http://localhost:8080/ssm_war_exploded/view/123
+    @RequestMapping(value = "/view/{courseId}")
+    public void viewCourse(@PathVariable("courseId") Integer courseId) {
+        System.out.println("viewCourse方法返回的结果是：" + courseId);
+    }
+
+    // 方法处理的路径为 http://localhost:8080/ssm_war_exploded/view?courseId=12
+    @RequestMapping(value = "/view")
+    public void viewCourse2(Integer courseId){
+        System.out.println("viewCourse2方法返回的结果是：" + courseId);
+
     }
 
 }
