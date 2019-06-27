@@ -26,28 +26,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <!--  spring应用上下文，理解层次化的applicationcontext  -->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <!--到类目录下寻找我们的配置文件-->
-        <param-value>WEB-INF/dispatcher-servlet.xml</param-value>
-    </context-param>
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
 
-    <!-- 注册springmvc框架核心控制器 -->
+    <!-- 配置 DispatcherServlet，对所有后缀为action的url进行过滤 -->
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
+        <!-- 修改 Spring MVC 配置文件的位置和名称 -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/spring-servlet.xml</param-value>
+        </init-param>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <!-- 映射路径为全部请求 -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 
     <!-- 中文过滤器 -->
     <filter>
