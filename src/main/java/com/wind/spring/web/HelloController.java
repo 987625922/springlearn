@@ -22,6 +22,12 @@ public class HelloController {
         return mav;
     }
 
+    @RequestMapping("/ajax")
+    public ModelAndView getAjax(){
+        ModelAndView mav = new ModelAndView("hello");
+        return mav;
+    }
+
     @RequestMapping("/login")
     public ModelAndView loginRequest(javax.servlet.http.HttpServletRequest httpServletRequest,
                                      javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {
@@ -88,9 +94,9 @@ public class HelloController {
 
     // 方法处理的路径为 http://localhost:8080/ssm_war_exploded/view?courseId=12
     @RequestMapping(value = "/view")
-    public void viewCourse2(Integer courseId){
+    public String viewCourse2(Integer courseId){
         System.out.println("viewCourse2方法返回的结果是：" + courseId);
-
+        return "1111";
     }
 
 }
