@@ -22,12 +22,6 @@ public class HelloController {
         return mav;
     }
 
-    @RequestMapping("/ajax")
-    public ModelAndView getAjax(){
-        ModelAndView mav = new ModelAndView("hello");
-        return mav;
-    }
-
     @RequestMapping("/login")
     public ModelAndView loginRequest(javax.servlet.http.HttpServletRequest httpServletRequest,
                                      javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {

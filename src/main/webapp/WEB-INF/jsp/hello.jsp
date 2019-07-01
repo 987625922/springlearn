@@ -1,38 +1,40 @@
-<!DOCTYPE html>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <head>
-    <meta charset="utf-8">
-    <script>
-        function loadXMLDoc()
-        {
-            var xmlhttp;
-            if (window.XMLHttpRequest)
-            {
-                //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-                xmlhttp=new XMLHttpRequest();
-            }
-            else
-            {
-                // IE6, IE5 浏览器执行代码
-                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            xmlhttp.onreadystatechange=function()
-            {
-                if (xmlhttp.readyState==4 && xmlhttp.status==200)
-                {
-                    console.log("===>>>>"+xmlhttp.responseText)
-                    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
-                }
-            }
-            xmlhttp.open("GET","/view",true);
-            xmlhttp.send();
-        }
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery
+/jquery-1.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                // $.get("/ajaxget",false, function (data, status) {
+                //     if (data != undefined && data.responseText != undefined
+                //         && data.responseText != "") {
+                //         alert("数据：" + data)
+                //     } else {
+                //         alert("数据：" + data.responseText + "\n状态：" + status);
+                //     }
+                // });
+                $.ajax({
+                    type:'get',
+                    url:'/ajaxget',
+                    dataType: 'json',
+                    async:false,
+                    complete:function(data) {
+                        if(data!=undefined && data.responseText !=undefined && data.responseText !=""){
+                            // jq ajax 请求到数据
+                            var objStr = JSON.stringify(JSON.parse(data.responseText),null,2)
+                            console.log(objStr)
+                            var obj = JSON.parse(data.responseText)
+                            console.log(obj.book_id)
+                        }
+                    }
+                });
+
+            });
+        });
     </script>
 </head>
 <body>
 
-<div id="myDiv"><h2>use ajax</h2></div>
-<button type="button" onclick="loadXMLDoc()">GET</button>
+<button>向页面发送 HTTP GET 请求，然后获得返回的结果</button>
 
 </body>
-</html>
