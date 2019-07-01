@@ -12,6 +12,7 @@
 
     <context:component-scan base-package="com.wind.spring.web"/>
 
+
     <mvc:annotation-driven/>
 
     <!--json转化器，它可以将结果转化-->

@@ -1,6 +1,8 @@
 package com.wind.spring.web;
 
 import com.wind.spring.bean.Book;
+import com.wind.spring.mybatis.BookDaoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -8,6 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AjaxController {
+
+    @Autowired
+    private BookDaoService bookDaoService;
 
     @RequestMapping("/ajax")
     public ModelAndView getAjax(javax.servlet.http.HttpServletRequest httpServletRequest,
@@ -27,5 +32,7 @@ public class AjaxController {
         book.setName("测试");
         return book;
     }
+
+
 
 }

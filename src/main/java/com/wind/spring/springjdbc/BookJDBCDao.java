@@ -12,7 +12,7 @@ import java.util.List;
 
 //Spring jdbc的使用
 @Component
-public class BookDao {
+public class BookJDBCDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
