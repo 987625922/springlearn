@@ -111,5 +111,18 @@ public class HelloController {
         return VResponse.result(amount, bookMarkBeans);
     }
 
+    @RequestMapping("/findtest2")
+    @ResponseBody
+    public VResponse<Object> findSuccess() {
+        return VResponse.success("测试成功");
+    }
+
+    @RequestMapping("/findtest3")
+    @ResponseBody
+    public VResponse<Book> findObject() {
+        Book bean = new Book();
+        bean.setName("1111");
+        return VResponse.success("测试bean", bean);
+    }
 
 }
