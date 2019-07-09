@@ -1,16 +1,21 @@
 package com.wind.spring.web;
 
+import com.wind.spring.bean.Book;
+import com.wind.spring.util.VResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 @Controller
 public class HelloController {
@@ -80,6 +85,7 @@ public class HelloController {
         }
         out.println("</table>\n</body></html>");
     }
+
     //花括号里的参数为需要的值 http://localhost:8080/ssm_war_exploded/view/123
     @RequestMapping(value = "/view/{courseId}")
     public void viewCourse(@PathVariable("courseId") Integer courseId) {
@@ -88,9 +94,22 @@ public class HelloController {
 
     // 方法处理的路径为 http://localhost:8080/ssm_war_exploded/view?courseId=12
     @RequestMapping(value = "/view")
-    public String viewCourse2(Integer courseId){
+    public String viewCourse2(Integer courseId) {
         System.out.println("viewCourse2方法返回的结果是：" + courseId);
         return "1111";
     }
+
+    /* json输出尝试 */
+    @RequestMapping("/findtest")
+    @ResponseBody
+    public VResponse<List<Book>> findAll() {
+        List<Book> bookMarkBeans = new ArrayList<>();
+        Book book = new Book();
+        book.setName("测试名字");
+        bookMarkBeans.add(book);
+        Integer amount = bookMarkBeans.size();
+        return VResponse.result(amount, bookMarkBeans);
+    }
+
 
 }

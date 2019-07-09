@@ -15,7 +15,7 @@ mysql> show global variables like 'port'; # 查看MySQL端口号
 **2.对数据库的操作**
 ```
 -- 创建一个名为 samp_db 的数据库，数据库字符编码指定为 gbk
-create database samp_db character set gbk;
+CREATE DATABASE tmall_ssm DEFAULT CHARACTER SET utf8;
 drop database samp_db; -- 删除 库名为samp_db的库
 show databases;        -- 显示数据库列表。
 use samp_db;     -- 选择创建的数据库samp_db
