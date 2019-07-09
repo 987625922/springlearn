@@ -99,7 +99,7 @@ public class HelloController {
         return "1111";
     }
 
-    /* json输出尝试 */
+    /* json输出尝试 会自动格式化成json格式输出，因为 */
     @RequestMapping("/findtest")
     @ResponseBody
     public VResponse<List<Book>> findAll() {
