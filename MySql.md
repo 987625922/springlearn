@@ -225,6 +225,32 @@ SELECT id,pic_url FROM meeting UNION ALL SELECT id,number_station AS pic_url FRO
 -- 通过 UNION 语法同时查询了 products 表 和 comments 表的总记录数，并且按照 count 排序
 SELECT 'product' AS type, count(*) as count FROM `products` union select 'comment' as type, count(*) as count FROM `comments` order by count;
 ```
+##### 外键
+```
+-- create table `person`(
+-- 	`id` int not null	AUTO_INCREMENT,
+-- 	`name` varchar(20) not null,
+-- 	PRIMARY KEY(`id`)
+-- )
+
+-- create table `subject`(
+-- 	`id` int AUTO_INCREMENT,
+-- 	`subject` varchar(10) not null,
+-- 	`pid` int not null,
+-- 	primary key(`id`),
+-- 	foreign key(`pid`) REFERENCES `person`(`id`)
+-- )
+-- INSERT INTO `person`(`id`,`name`) Values (0,'张三')
+-- INSERT INTO `person`(`name`) Values ('李四')
+-- INSERT INTO `person`(`name`) Values ('王五')
+-- INSERT INTO `subject`(`subject`,`pid`) values ('英语',1)
+
+-- select p.name,s.subject from person p,subject s where p.id = s.pid;
+-- select p.name subject.subject from person p inner join `subject` ON p.id = subject.pid
+-- select * from person left join subject on person.id = subject.id;
+
+```
+
 ##### JOIN 
 
 > 用于根据两个或多个表中的列之间的关系，从这些表中查询数据。  
