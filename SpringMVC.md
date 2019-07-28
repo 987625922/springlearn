@@ -3,6 +3,26 @@
 ##### **2.Spring MVC配置**
 ##### 在Spring MVC框架中，从“Request（请求）”开始，依次进入“DispatcherServlet（核心分发器）” —> “HandlerMapping（处理器映射）” —> “Controller（控制器）” —> “ModelAndView（模型和视图）” —> “ViewResolver（视图解析器）” —> “View（视图）” —> “Response（响应）”结束，其中DispatcherServlet、HandlerMapping和ViewResolver 只需要在XML文件中配置即可，从而大大提高了开发的效率，特别是对于 HandlerMapping 框架为其提供了默认的配置。
 
+### SpringMVC核心组件
+##### 1.DispatcherServlet:前置控制器
+##### 2.Handler:处理器，完成具体业务逻辑
+##### 3.HandlerMapping：将请求映射到Handler
+##### 4.HandlerInterceptor：处理器拦截器
+##### 5.HandlerExecutionChain：处理器执行链
+##### 6.HandlerAdapter：处理器适配器
+##### 7.ModelAndView：装载模型数据和视图信息
+##### 8.ViewResolver:视图解析器
+
+### SpringMVC实现流程
+##### 1.客户端请求被DispatcherServlet接收
+##### 2.DispatcherServlet将请求映射到Handler
+##### 3.生成Handler以及HandlerInterceptor
+##### 4.返回HandlerExecutionChain（Handler+HandlerInterceptor）
+##### 5.DispatcherServlet通过HandlerAdapter执行Handler
+##### 6.返回一个ModelAndView
+##### 7.DispatcherServlet通过ViewResolver进行解析
+##### 8.返回填充了模型数据的view，响应给客户端
+
 ##### **1.Spring MVC的jar包**
 ```
  spring-aop-3.2.2.jar                        AOP
