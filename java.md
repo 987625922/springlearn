@@ -1,6 +1,7 @@
 ## java
 ##### 1.java线程池
 ##### 2.java的io
+##### 3.java的注解
 
 ### 1.线程池
 相比new Thread，Java提供的四种线程池的好处在于：
@@ -184,3 +185,39 @@ FileOutputStream fileOutputStream = new FileOutputStream(new File("").getAbsolut
         inputStreamReader.close();
 
 ```
+### 3.java注解
+##### 一.jdk注解
+##### 1.@Override 表示继承方法的注解
+##### 2.@Deprecated 过时方法的注解
+##### 3.@Suppvisewarnings 忽略某个警告的注解 例@Suppvisewarnings("deprecation")忽略过时警告
+##### 二.自定义注解
+```
+@Target({ElementType.METHOD, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Inherited
+@Documented
+public @interface Annotation {
+    String desc();
+
+    String author();
+
+    int age() default 18;
+}
+```
+##### @Target说明了Annotation所修饰的对象范围
+##### · ElementType.CONSTRUCTOR 构造方法
+##### · ElementType.FIELD 字段声明
+##### · ElementType.LOCAL_VARIABLE 局部变量声明
+##### · ElementType.METHOD 方法声明
+##### · ElementType.PACKAGE 包声明
+##### · ElementType.PARAMETER 参数声明
+##### · ElementType.TYPE 类，接口
+###
+##### 　@Retention定义了该Annotation被保留的时间长短：某些Annotation仅出现在源代码中，而被编译器丢弃；而另一些却被编译在class文件中；编译在class文件中的Annotation可能会被虚拟机忽略，而另一些在class被装载时将被读取（请注意并不影响class的执行，因为Annotation与class在使用上是被分离的）。使用这个meta-Annotation可以对 Annotation的“生命周期”限制。
+##### · SOURCE:在源文件中有效（即源文件保留）
+##### · CLASS:在class文件中有效（即class保留）
+##### · RUNTIME:在运行时有效（即运行时保留）
+###
+##### @Inherited 允许子类继承
+###
+##### @Documented 生成javadoc时包含注解
