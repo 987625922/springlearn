@@ -11,9 +11,10 @@ public class Test {
 
         Filter f2 = new Filter();
         f2.setUserName("username");//模糊查询用户名为username的用户
+        f2.setAge(18);
 
         Filter f3 = new Filter();
-        f3.setEmail("email@sina.com,two@sina.com,777@qq.com");
+        f3.setEmail("email@sina.com");
 
         String sql1 = query(f1);
         String sql2 = query(f2);
@@ -52,15 +53,33 @@ public class Test {
             String filedName = field.getName();
             String getMethodName = "get" + filedName.substring(0, 1).toUpperCase()
                     + filedName.substring(1);
-            String fieldValue = null;
+            Object fieldValue = null;
             try {
                 Method getMethod = c.getMethod(getMethodName);
-                fieldValue = (String) getMethod.invoke(f, null);
+                fieldValue = getMethod.invoke(f);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             //4.3 拼装sql
-            sb.append("and").append(filedName).append("=").append(fieldValue);
+            if (fieldValue == null || (fieldValue instanceof Integer && (Integer) fieldValue == 0)) {
+                continue;
+            }
+            sb.append(" and ").append(filedName);
+            if (fieldValue instanceof String) {
+                if (((String) fieldValue).contains(",")) {
+                    String[] values = ((String) fieldValue).split(",");
+                    sb.append("in(");
+                    for (String v : values) {
+                        sb.append("'").append(v).append("'").append(",");
+                    }
+                    sb.deleteCharAt(sb.length() - 1);
+                    sb.append(")");
+                } else {
+                    sb.append("=").append("'").append(fieldValue).append("'");
+                }
+            } else if (fieldValue instanceof Integer) {
+                sb.append("=").append(fieldValue);
+            }
         }
         return sb.toString();
     }
