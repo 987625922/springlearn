@@ -11,9 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AjaxController {
 
-    @Autowired
-    private BookDaoService bookDaoService;
-
     @RequestMapping("/ajax")
     public ModelAndView getAjax(javax.servlet.http.HttpServletRequest httpServletRequest,
                                 javax.servlet.http.HttpServletResponse httpServletResponse) {

@@ -18,6 +18,7 @@ import java.util.Enumeration;
 import java.util.List;
 
 @Controller
+@RequestMapping("/hello")
 public class HelloController {
     @RequestMapping("/hello")
     public ModelAndView handleRequest(javax.servlet.http.HttpServletRequest httpServletRequest,
