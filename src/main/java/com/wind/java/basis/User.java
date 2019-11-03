@@ -1,6 +1,9 @@
 package com.wind.java.basis;
 
-public class User implements Person,PersonTwo {
+/**
+ * 接口内实体方法
+ */
+public class User implements Person, PersonTwo {
 
     @Override
     public void getName() {

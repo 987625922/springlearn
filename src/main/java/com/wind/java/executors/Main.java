@@ -5,6 +5,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+
+/**
+ * JAVA 线程池的使用
+ *
+ */
 public class Main {
     public static void main(String[] args) {
 //        cachedThreadPool();

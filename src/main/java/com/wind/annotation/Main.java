@@ -1,7 +1,12 @@
 package com.wind.annotation;
 
 import java.lang.reflect.Method;
-
+/*
+* java反射的使用
+*
+* 通过反射获取到ben，通过反射获取到bean上注解的参数的值
+*
+* */
 public class Main {
     public static void main(String[] args) {
         //1.使用类加载器加载类

@@ -3,6 +3,11 @@ package com.wind.annotation.product;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+/*
+* 反射的实例
+*
+* 通过反射获取类上的值，再合成sql语句请求
+* */
 public class Test {
 
     public static void main(String args[]) {

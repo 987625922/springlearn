@@ -1,5 +1,9 @@
 package com.wind.java.node;
 
+
+/*
+* 链表的实现和使用
+* */
 public class Main {
 
     private static Node head;

@@ -51,6 +51,7 @@
         <property name="maxRetries" value="3"/>
         <property name="order" value="100"/>
     </bean>
+
     <aop:config>
         <aop:aspect id="concurrentOperationRetry" ref="concurrentOperationExecutor">
             <aop:pointcut id="idempotentOperation"
