@@ -19,7 +19,7 @@
 
         <!-- hibernate的方言 -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <!-- 指定hibernate启动的时候自动创建表结构creat--update -->
+        <!-- 指定hibernate启动的时候自动创建表结构creat-update -->
 
         <property name="hbm2ddl.auto">create</property>
         <!-- 配置hibernate的映射文件所在的位置 -->
