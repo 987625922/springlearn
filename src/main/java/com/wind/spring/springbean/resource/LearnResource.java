@@ -7,7 +7,10 @@ import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 
-//11.Resources
+/**
+ * Resources
+ * spring 对文件读取的支持
+ */
 public class LearnResource implements ApplicationContextAware {
     private ApplicationContext context;
 
@@ -18,8 +21,8 @@ public class LearnResource implements ApplicationContextAware {
 
     public void resource() throws IOException {
         Resource resource = context.getResource("classpath:config.txt");
-        System.out.println("文件名字："+resource.getFilename());
-        System.out.println("文件长度："+resource.contentLength());
+        System.out.println("文件名字：" + resource.getFilename());
+        System.out.println("文件长度：" + resource.contentLength());
     }
 
 }

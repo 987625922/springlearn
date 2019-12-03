@@ -6,19 +6,19 @@
 
     <!-- 配置 DispatcherServlet，对所有后缀为action的url进行过滤 -->
 
-        <servlet>
-            <servlet-name>dispatcher</servlet-name>
-            <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-            <!-- 修改 Spring MVC 配置文件的位置和名称 -->
-            <init-param>
-                <param-name>contextConfigLocation</param-name>
-                <param-value>classpath:spring/spring-servlet.xml</param-value>
-            </init-param>
-        </servlet>
-        <servlet-mapping>
-            <servlet-name>dispatcher</servlet-name>
-            <url-pattern>/</url-pattern>
-        </servlet-mapping>
+    <servlet>
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!-- 修改 Spring MVC 配置文件的位置和名称 -->
+    <init-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring/spring-servlet.xml</param-value>
+    </init-param>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
     <!--    使用下面这个servlet，需要注释前面的dispatcher，防止监听所有网络请求-->
 
@@ -56,10 +56,6 @@
         <!--<listener-class>com.wind.java.servlet.MyListener</listener-class>-->
     <!--</listener>-->
     <!--    servlet原始的使用 end-->
-
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
 
     <!-- 中文过滤器 -->
     <filter>

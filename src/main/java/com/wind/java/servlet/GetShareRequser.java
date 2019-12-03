@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-//获取servlet的共享对象
+/**
+ * servlet获取共享对象
+ */
 public class GetShareRequser extends javax.servlet.http.HttpServlet {
 
     @Override

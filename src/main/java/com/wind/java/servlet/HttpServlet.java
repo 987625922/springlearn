@@ -7,6 +7,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Enumeration;
 
+/**
+ * servlet的使用
+ */
 public class HttpServlet extends javax.servlet.http.HttpServlet {
 
     public HttpServlet() {
@@ -51,16 +54,16 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
 
         /*  servlet共享变量  */
         /*
-        * 1. ServletContext
-        * 2.HttpSession
-        * 3.HttpServletRequest
-        * */
-        this.getServletContext().setAttribute("ctx_name","ctx_value");
+         * 1. ServletContext
+         * 2.HttpSession
+         * 3.HttpServletRequest
+         * */
+        this.getServletContext().setAttribute("ctx_name", "ctx_value");
 
         HttpSession httpSession = req.getSession();
-        httpSession.setAttribute("session_name","session_value");
+        httpSession.setAttribute("session_name", "session_value");
 
-        req.setAttribute("request_name","request_value");
+        req.setAttribute("request_name", "request_value");
 
     }
 
