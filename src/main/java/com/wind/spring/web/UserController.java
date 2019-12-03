@@ -1,6 +1,7 @@
 package com.wind.spring.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 //拦截器的学习
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
     @RequestMapping("/search")
-    public String search(){
+    public Object search(){
         System.out.println("2:interceptor===>search");
         return "user/search";
     }

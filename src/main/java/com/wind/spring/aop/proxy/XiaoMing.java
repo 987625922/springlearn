@@ -1,4 +1,4 @@
-package com.wind.spring.aop.cglib;
+package com.wind.spring.aop.proxy;
 
 import com.wind.spring.aop.proxy.Person;
 

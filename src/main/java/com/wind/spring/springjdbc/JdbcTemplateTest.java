@@ -5,6 +5,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+/**
+ * spring 自带对数据库的jdbc封装
+ */
 public class JdbcTemplateTest {
 
     @Autowired
@@ -15,7 +18,7 @@ public class JdbcTemplateTest {
         //spring jdbc的使用
 //        BookDao bookDao = (BookDao) ac.getBean("bookDao");
 //        bookDao.select();
-        BookTxDao bookTxDao = (BookTxDao)ac.getBean("bookTxDao");
+        BookTxDao bookTxDao = (BookTxDao) ac.getBean("bookTxDao");
         //xml实现事务
         bookTxDao.update();
         //注解方式实现事务

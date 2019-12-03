@@ -2,6 +2,10 @@ package com.wind.spring.jdbc;
 
 import java.sql.*;
 
+/**
+ * jdbc的使用
+ *
+ */
 public class JdbcTest {
 
     public static void main(String args[]) throws ClassNotFoundException, SQLException {

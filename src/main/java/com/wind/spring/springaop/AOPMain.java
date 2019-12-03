@@ -4,6 +4,12 @@ import com.wind.spring.springaop.aspectj.AspectJAsp;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+
+/**
+ *
+ * spring aop的使用
+ *
+ */
 public class AOPMain {
 
     public static Object getBean(String beanId) {
@@ -38,6 +44,7 @@ public class AOPMain {
         /* spring aop api */
 //        BizLogic logic = (BizLogic)getBean("bizLogicImpl");
 //        logic.save();
+
         /*  AspectJ */
         AspectJAsp biz = (AspectJAsp) getBean("aspectJAsp");
         System.out.println(biz.getClass());

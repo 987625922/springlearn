@@ -2,7 +2,12 @@ package com.wind.spring.util;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
+/**
+ * 请求返回json的固定格式
+ *
+ * @param <T>
+ */
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class VResponse<T> {
     private int code = 1;
     private Integer amount;
@@ -34,49 +39,49 @@ public class VResponse<T> {
 
     }
 
-    public static <T> VResponse<T> success(T result){
+    public static <T> VResponse<T> success(T result) {
         VResponse<T> response = new VResponse<T>(SUCCESS, null);
         response.result = result;
         return response;
     }
 
-    public static <T> VResponse<T> success(String msg){
+    public static <T> VResponse<T> success(String msg) {
         return new VResponse<T>(SUCCESS, msg);
     }
 
-    public static <T> VResponse<T> success(){
+    public static <T> VResponse<T> success() {
         return new VResponse<T>(SUCCESS, null);
     }
 
-    public static <T> VResponse<T> error(int code,String msg){
+    public static <T> VResponse<T> error(int code, String msg) {
         VResponse<T> response = new VResponse<T>();
         response.setCode(code);
         response.setMsg(msg);
         return response;
     }
 
-    public static <T> VResponse<T> errorException(int code, T result){
+    public static <T> VResponse<T> errorException(int code, T result) {
         VResponse<T> response = new VResponse<T>();
         response.setCode(code);
         response.setResult(result);
         return response;
     }
 
-    public static <T> VResponse<T> success(Integer amount,T result){
-        VResponse<T> response = new VResponse<T>(SUCCESS,amount,result);
+    public static <T> VResponse<T> success(Integer amount, T result) {
+        VResponse<T> response = new VResponse<T>(SUCCESS, amount, result);
         response.setAmount(amount);
         response.result = result;
         return response;
     }
 
-    public static <T> VResponse<T> result(Integer amount,T result){
-        VResponse<T> response = new VResponse<T>(SUCCESS,amount,result);
+    public static <T> VResponse<T> result(Integer amount, T result) {
+        VResponse<T> response = new VResponse<T>(SUCCESS, amount, result);
         response.setAmount(amount);
         response.result = result;
         return response;
     }
 
-    public static <T> VResponse<T> success(String msg,T result){
+    public static <T> VResponse<T> success(String msg, T result) {
         VResponse<T> response = new VResponse<T>(SUCCESS, msg, result);
 //        response.setAmount(amount);
 //        response.result = result;
