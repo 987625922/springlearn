@@ -1,15 +1,46 @@
-#过滤文件夹target,.idea
-/target
-/.idea
-/out
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
 *.iml
+*.ipr
+.mvn
+mvnw
+mvnw.cmd
+images/
 
-#编译文件
-*.class
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
 
-#包文件
-*.jar
-*.war
-*.zip
-*.rar
-*.tar.gz
+### VS Code ###
+.vscode/
+.gitignore
+MySql.md
+README.md
+SpringAOP.md
+SpringBean.md
+SpringDAO.md
+SpringMVC.md
+java.md
+pom.xml
+"spring\346\226\207\347\253\240.md"
+src/
