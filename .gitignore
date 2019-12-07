@@ -1,46 +1,64 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+# Compiled class file
+*.class
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Log file
+*.log
 
-### IntelliJ IDEA ###
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+### Example user template template
+### Example user template
+
+# IntelliJ project files
 .idea
-*.iws
 *.iml
-*.ipr
-.mvn
-mvnw
-mvnw.cmd
-images/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-
-### VS Code ###
-.vscode/
+out
+gen
 .gitignore
-MySql.md
-README.md
-SpringAOP.md
-SpringBean.md
-SpringDAO.md
-SpringMVC.md
-java.md
-pom.xml
-"spring\346\226\207\347\253\240.md"
-src/
+.idea/
+src/test/
+target/.gitignore
+target/classes/META-INF/
+target/classes/Test.hbm.xml
+target/classes/config.txt
+target/classes/hibernate.cfg.xml
+target/classes/jdbc.properties
+target/classes/log4j.properties
+target/classes/mapper/
+target/classes/mybatis-config.xml
+target/classes/spring/
+target/generated-sources/
+target/maven-status/
+target/ssm/HttpServlet.html
+target/ssm/META-INF/
+target/ssm/WEB-INF/admin/
+target/ssm/WEB-INF/classes/META-INF/
+target/ssm/WEB-INF/classes/Test.hbm.xml
+target/ssm/WEB-INF/classes/config.txt
+target/ssm/WEB-INF/classes/hibernate.cfg.xml
+target/ssm/WEB-INF/classes/jdbc.properties
+target/ssm/WEB-INF/classes/log4j.properties
+target/ssm/WEB-INF/classes/mapper/
+target/ssm/WEB-INF/classes/mybatis-config.xml
+target/ssm/WEB-INF/classes/spring/
+target/ssm/WEB-INF/jsp/
+target/ssm/WEB-INF/web.xml
+target/ssm/index.jsp
