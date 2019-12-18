@@ -6,6 +6,9 @@ import org.springframework.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 
+/**
+ * 通过反射创建类
+ */
 public class ProxyFactory implements MethodInterceptor {
     //维护目标对象
     private Object target;

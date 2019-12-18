@@ -1,4 +1,4 @@
-package com.wind.spring.aop.proxy;
+package com.wind.spring.aop.bean;
 
 import com.wind.spring.aop.proxy.Person;
 

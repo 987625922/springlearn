@@ -1,5 +1,7 @@
 package com.wind.spring.aop.proxy;
 
+import com.wind.spring.aop.bean.XiaoMing;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -7,6 +9,7 @@ import java.lang.reflect.Proxy;
 public class XiaoMingProxy {
     XiaoMing xiaoMing = new XiaoMing();
 
+    //反射bean
     public Person getProxy() {
         return (Person) Proxy.newProxyInstance(XiaoMingProxy.class.getClassLoader(),
                 xiaoMing.getClass().getInterfaces(), new InvocationHandler() {

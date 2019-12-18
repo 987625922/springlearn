@@ -1,6 +1,6 @@
 package com.wind.spring.aop.cglib;
 
-import com.wind.spring.aop.proxy.XiaoMing;
+import com.wind.spring.aop.bean.XiaoMing;
 
 /**
  * cglib是个反射开源库，区别于java自带的反射
