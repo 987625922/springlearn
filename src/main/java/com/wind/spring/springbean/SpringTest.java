@@ -1,6 +1,5 @@
 package com.wind.spring.springbean;
 
-import com.wind.spring.springbean.autodiscovery.InjectUse;
 import com.wind.spring.springbean.autodiscovery.RequiredMovieLister;
 import com.wind.spring.springbean.autodiscovery.ResourceUse;
 import com.wind.spring.springbean.resource.LearnResource;
@@ -33,7 +32,6 @@ public class SpringTest {
 //        testBean();
 //        testBeanG();
 //        testResourceUse();
-        testInjectUse();
     }
 
     /*
@@ -69,41 +67,37 @@ public class SpringTest {
     private static void testAutoNameAndScope() {
         pl(getBean("moviefinderimpl"));
     }
+
     /*
-    * @Required和@Qualifier和@Autowired
-    * */
-    private static void testRequired(){
+     * @Required和@Qualifier和@Autowired
+     * */
+    private static void testRequired() {
         RequiredMovieLister requiredMovieLister = (RequiredMovieLister) getBean("requiredMovieLister");
         pl(requiredMovieLister.getMovieFinder().getClass().getName());
     }
 
     /*
-    * @Bean的使用
-    * */
-    private static void testBean(){
+     * @Bean的使用
+     * */
+    private static void testBean() {
         pl(getBean("myBook"));
     }
 
     /*
-    * 基于泛型的自动装配
-    * */
-    private static void testBeanG(){
+     * 基于泛型的自动装配
+     * */
+    private static void testBeanG() {
         getBean("storeTest");
     }
+
     /*
-    * @Resource使用
-    *
-    * */
-    private static void testResourceUse(){
+     * @Resource使用
+     *
+     * */
+    private static void testResourceUse() {
         ResourceUse resourceUse = (ResourceUse) getBean("resourceUse");
         System.out.println(resourceUse.movieFinder.getClass().getSimpleName());
     }
 
-    /*
-    * @Inject使用
-    * */
-    private static void testInjectUse(){
-        InjectUse injectUse = (InjectUse)getBean("injectUse");
-        System.out.println(injectUse.movieFinder.getClass().getSimpleName());
-    }
+
 }
