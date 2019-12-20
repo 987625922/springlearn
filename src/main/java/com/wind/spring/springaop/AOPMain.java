@@ -1,14 +1,11 @@
 package com.wind.spring.springaop;
 
-import com.wind.spring.springaop.aspectj.AspectJAsp;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 /**
- *
  * spring aop的使用
- *
  */
 public class AOPMain {
 
@@ -45,9 +42,5 @@ public class AOPMain {
 //        BizLogic logic = (BizLogic)getBean("bizLogicImpl");
 //        logic.save();
 
-        /*  AspectJ */
-        AspectJAsp biz = (AspectJAsp) getBean("aspectJAsp");
-        System.out.println(biz.getClass());
-        biz.test("测试AspectJ");
     }
 }
