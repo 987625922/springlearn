@@ -67,6 +67,7 @@
         <!--引用数据库连接池-->
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <!-- xml事务的使用 -->
     <!--2.配置如何管理事务-->
     <tx:advice id="txAdvice" transaction-manager="txManage">
         <!--配置事务的属性-->
@@ -81,6 +82,9 @@
         <aop:pointcut id="pt" expression="execution(* com.wind.spring.springjdbc.*.*(..) )"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pt"></aop:advisor>
     </aop:config>
+    <!-- xml事务的使用 -->
+
+    <!-- 注解事务的使用（推荐使用，上面的xml事务只供学习） -->
     <!-- 开启以注解的方式实现事务控制 -->
     <tx:annotation-driven transaction-manager="txManage"/>
 
