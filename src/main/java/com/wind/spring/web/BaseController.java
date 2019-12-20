@@ -1,7 +1,7 @@
 package com.wind.spring.web;
 
 import com.wind.spring.bean.Book;
-import com.wind.spring.util.VResponse;
+import com.wind.spring.util.JsonData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,27 +17,35 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+/**
+ * springmvc controller基本的使用
+ */
 @Controller
-@RequestMapping("/hello")
-public class HelloController {
-    @RequestMapping("/hello")
-    public ModelAndView handleRequest(javax.servlet.http.HttpServletRequest httpServletRequest,
-                                      javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {
-        ModelAndView mav = new ModelAndView("index");
-        mav.addObject("message", "Hello Spring MVC");
-        return mav;
-    }
+@RequestMapping("/api/base")
+public class BaseController {
 
+    /**
+     * 跳转到登录界面 jsp/login.jsp
+     *
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/login")
-    public ModelAndView loginRequest(javax.servlet.http.HttpServletRequest httpServletRequest,
-                                     javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {
+    public ModelAndView loginRequest() throws Exception {
         ModelAndView mav = new ModelAndView("login");
         return mav;
     }
 
+
+    /**
+     * 模拟登陆接口（在jsp/login.jsp中请求）
+     *
+     * @param httpServletRequest
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/param")
-    public ModelAndView paramRequest(javax.servlet.http.HttpServletRequest httpServletRequest,
-                                     javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {
+    public ModelAndView paramRequest(javax.servlet.http.HttpServletRequest httpServletRequest) throws Exception {
         String name = httpServletRequest.getParameter("userName");
         String password = httpServletRequest.getParameter("password");
         System.out.println("用户名：" + name);
@@ -45,13 +53,23 @@ public class HelloController {
         return null;
     }
 
-    //客户端跳转
+
+    /**
+     * 在本项目的链接中自动跳转
+     *
+     * @return
+     */
     @RequestMapping("/jump")
     public String jump() {
-        return "redirect: ./hello";
+        return "redirect: ./login";
     }
 
-    //只接受get方法
+    /**
+     * PrintWriter的使用学习，并且接口只接受Get方法
+     *
+     * @param request
+     * @param response
+     */
     @RequestMapping(value = "/getrequest", method = RequestMethod.GET)
     public void getRequest(HttpServletRequest request, HttpServletResponse response) {
         // 设置响应内容类型
@@ -87,43 +105,35 @@ public class HelloController {
         out.println("</table>\n</body></html>");
     }
 
-    //花括号里的参数为需要的值 http://localhost:8080/ssm_war_exploded/view/123
+    /**
+     * 从请求的链接中获取到参数并绑定到courseId这个Integer类的变量中
+     * 花括号里的参数为需要的值 http://localhost:8080/ssm_war_exploded/view/123
+     *
+     * @param courseId 从链接中获取，主要是学习mvc中绑定基础数据类型类的功能
+     * @return
+     */
     @RequestMapping(value = "/view/{courseId}")
-    public void viewCourse(@PathVariable("courseId") Integer courseId) {
+    @ResponseBody
+    public Object viewCourse(@PathVariable("courseId") Integer courseId) {
         System.out.println("viewCourse方法返回的结果是：" + courseId);
+        return new JsonData(200, courseId, "从请求的链接中获取到参数并绑定到courseId这个Integer类的变量中");
     }
 
-    // 方法处理的路径为 http://localhost:8080/ssm_war_exploded/view?courseId=12
-    @RequestMapping(value = "/view")
-    public String viewCourse2(Integer courseId) {
-        System.out.println("viewCourse2方法返回的结果是：" + courseId);
-        return "1111";
-    }
 
-    /* json输出尝试 会自动格式化成json格式输出，因为 */
+    /**
+     * json输出尝试 会自动格式化成json格式输出
+     * 因为添加了 @ResponseBody 注解
+     */
     @RequestMapping("/findtest")
     @ResponseBody
-    public VResponse<List<Book>> findAll() {
+    public Object findAll() {
         List<Book> bookMarkBeans = new ArrayList<>();
         Book book = new Book();
         book.setName("测试名字");
         bookMarkBeans.add(book);
         Integer amount = bookMarkBeans.size();
-        return VResponse.result(amount, bookMarkBeans);
+        return new JsonData(200, bookMarkBeans, "BaseController类的findAll方法成功");
     }
 
-    @RequestMapping("/findtest2")
-    @ResponseBody
-    public VResponse<Object> findSuccess() {
-        return VResponse.success("测试成功");
-    }
-
-    @RequestMapping("/findtest3")
-    @ResponseBody
-    public VResponse<Book> findObject() {
-        Book bean = new Book();
-        bean.setName("1111");
-        return VResponse.success("测试bean", bean);
-    }
 
 }

@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * springmvc拦截器的使用
  *
- * @需要在spring的xml配置文件中写在<mvc:interceptors>，方法过于繁琐推荐使用继承WebMvcConfigurer类配置拦截器配置类的方式
+ * @需要在spring的xml配置文件中写在<mvc:interceptors>，
+ * 方法过于繁琐推荐使用继承WebMvcConfigurer类配置拦截器配置类的方式
  */
 public class LoginInterceptor implements HandlerInterceptor {
 

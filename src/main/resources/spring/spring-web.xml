@@ -26,8 +26,8 @@
     <!--    拦截器注册-->
     <mvc:interceptors>
         <mvc:interceptor>
-<!--            <mvc:mapping path="/user/search"/>-->
-            <mvc:mapping path="/user/*"/>
+            <mvc:mapping path="/api/interceptor/search"/>
+            <!--<mvc:mapping path="/api/interceptor/*"/>-->
             <bean class="com.wind.spring.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
