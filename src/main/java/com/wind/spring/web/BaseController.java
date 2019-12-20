@@ -30,9 +30,9 @@ public class BaseController {
      * @return
      * @throws Exception
      */
-    @RequestMapping("/login")
+    @RequestMapping("/tologin")
     public ModelAndView loginRequest() throws Exception {
-        ModelAndView mav = new ModelAndView("login");
+        ModelAndView mav = new ModelAndView("user/login");
         return mav;
     }
 

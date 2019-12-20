@@ -15,24 +15,16 @@
 
     <mvc:annotation-driven/>
 
-    <!--json转化器，它可以将结果转化-->
-    <!--<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
-    <!--<property name="supportedMediaTypes">-->
-    <!--<list>-->
-    <!--<value>text/json;charset=UTF-8</value>-->
-    <!--</list>-->
-    <!--</property>-->
-    <!--</bean>-->
     <!--    拦截器注册-->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/api/interceptor/search"/>
+            <mvc:mapping path="/api/interceptor/userinfo"/>
             <!--<mvc:mapping path="/api/interceptor/*"/>-->
             <bean class="com.wind.spring.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
-
+    <!-- InternalResourceViewResolver视图解析器，这个视图解析器一般会用来解析JSP视图 -->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>

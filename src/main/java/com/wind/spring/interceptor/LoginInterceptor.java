@@ -30,12 +30,11 @@ public class LoginInterceptor implements HandlerInterceptor {
                              HttpServletResponse httpServletResponse, Object o)
             throws Exception {
         User user = (User) httpServletRequest.getSession().getAttribute("user_session");
-        if (user == null) {
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login");
-            //注释掉 return 是因为想往下走
-//            return true;
-        }
         System.out.println("1:interceptor==>preHandle");
+        if (user == null) {
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/api/interceptor/tologin");
+            return true;
+        }
         return true;
     }
 
