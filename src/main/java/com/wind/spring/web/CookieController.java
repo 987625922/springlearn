@@ -32,7 +32,18 @@ public class CookieController {
         uidCk.setMaxAge(-1);
         response.addCookie(uidCk);
         return new JsonData(200, "", "该用户还没有cookie，已为他添加用户名为" + uuid);
+    }
 
+    @RequestMapping("session")
+    public Object addSession(HttpServletRequest request, HttpServletResponse response) {
+        String username = (String) request.getSession().getAttribute(USERNAME);
+        if (username == null){
+            String uuid = UUID.randomUUID().toString();
+            request.getSession().setAttribute(USERNAME,uuid);
+            return new JsonData(200, "", "该用户还没有session，已为他添加用户名为" + uuid);
+        }
+        return new JsonData(200, "",
+                "该用户已有session，用户名为" + username);
     }
 
 }
