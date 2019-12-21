@@ -78,10 +78,10 @@
     </tx:advice>
 
     <!--3.配置拦截哪些方法+事务的属性-->
-    <aop:config>
-        <aop:pointcut id="pt" expression="execution(* com.wind.spring.springjdbc.*.*(..) )"/>
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="pt"></aop:advisor>
-    </aop:config>
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="pt" expression="execution(* com.wind.spring.springjdbc.*.*(..) )"/>-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="pt"></aop:advisor>-->
+    <!--</aop:config>-->
     <!-- xml事务的使用 -->
 
     <!-- 注解事务的使用（推荐使用，上面的xml事务只供学习） -->
