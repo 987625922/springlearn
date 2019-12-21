@@ -34,8 +34,6 @@ public class BookTxDao {
     }
 
     public void select() {
-//        String sql = "insert into book(name,number) values('测试课本',123)";
-//        jdbcTemplate.update(sql);
         String sql = "select * from book";
         List<Book> books = jdbcTemplate.query(sql, new RowMapper<Book>() {
             @Override

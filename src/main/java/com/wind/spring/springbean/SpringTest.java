@@ -12,7 +12,7 @@ public class SpringTest {
 
     public static Object getBean(String beanId) {
         ApplicationContext context;
-        context = new ClassPathXmlApplicationContext("spring/applicationContext.xml");
+        context = new ClassPathXmlApplicationContext("spring/application-bean.xml");
         System.out.println("application的信息:" + context);
         return context.getBean(beanId);
     }

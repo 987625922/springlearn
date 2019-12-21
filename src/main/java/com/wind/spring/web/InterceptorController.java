@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 /**
  * 拦截器的学习
  * <p>
+ * 模拟用户登录
  */
 @Controller
 @RequestMapping("/api/interceptor")

@@ -3,16 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
-    http://www.springframework.org/schema/aop
-    http://www.springframework.org/schema/aop/spring-aop.xsd
-"
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
 >
     <context:component-scan base-package="com.wind.spring.mybatis"/>
     <context:component-scan base-package="com.wind.spring.springjdbc"/>
@@ -36,12 +32,15 @@
         <property name="acquireRetryAttempts" value="2"/>
     </bean>
 
-    <!-- springbean jdbc -->
+    <!-- =========== springjdbc =============== -->
+    <!-- 把连接池导入springjdbc中 -->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
+    <!-- =========== springjdbc =============== -->
 
-    <!-- 3.配置SqlSessionFactory对象 -->
+    <!-- =========== mybatis =============== -->
+    <!-- 1.配置SqlSessionFactory对象（把连接池对象导入到mybatis中） -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 注入数据库连接池 -->
         <property name="dataSource" ref="dataSource"/>
@@ -53,40 +52,42 @@
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
 
-    <!-- 4.配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
+    <!-- 2.配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 注入sqlSessionFactory -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!-- 给出需要扫描Dao接口包 -->
         <property name="basePackage" value="com.wind.spring.mybatis.dao"/>
     </bean>
+    <!-- =========== mybatis =============== -->
 
-
-    <!--1.配置事务的管理器类:JDBC-->
+    <!-- =============  spring事务配置 ================ -->
+    <!--1.配置事务的管理器类-->
     <bean id="txManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!--引用数据库连接池-->
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <!-- xml事务的使用 -->
     <!--2.配置如何管理事务-->
-    <tx:advice id="txAdvice" transaction-manager="txManage">
-        <!--配置事务的属性-->
-        <tx:attributes>
-            <!--所有的方法，并不是只读-->
-            <tx:method name="*" read-only="false"/>
-        </tx:attributes>
-    </tx:advice>
+    <!--<tx:advice id="txAdvice" transaction-manager="txManage">-->
+    <!--&lt;!&ndash;配置事务的属性&ndash;&gt;-->
+    <!--<tx:attributes>-->
+    <!--&lt;!&ndash;所有的方法，并不是只读&ndash;&gt;-->
+    <!--<tx:method name="*" read-only="false"/>-->
+    <!--</tx:attributes>-->
+    <!--</tx:advice>-->
 
     <!--3.配置拦截哪些方法+事务的属性-->
     <!--<aop:config>-->
-        <!--<aop:pointcut id="pt" expression="execution(* com.wind.spring.springjdbc.*.*(..) )"/>-->
-        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="pt"></aop:advisor>-->
+    <!--<aop:pointcut id="pt" expression="execution(* com.wind.spring.springjdbc.*.*(..) )"/>-->
+    <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="pt"></aop:advisor>-->
     <!--</aop:config>-->
     <!-- xml事务的使用 -->
 
     <!-- 注解事务的使用（推荐使用，上面的xml事务只供学习） -->
     <!-- 开启以注解的方式实现事务控制 -->
     <tx:annotation-driven transaction-manager="txManage"/>
+    <!-- =============  spring事务配置 ================ -->
 
     <!-- jdbc配置结束  -->
 </beans>
