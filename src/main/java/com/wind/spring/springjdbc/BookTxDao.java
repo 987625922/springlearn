@@ -17,6 +17,10 @@ public class BookTxDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+
+    /**
+     * 已在application-jdbc中配置本方法是基于xml的事务
+     */
     public void update() {
         String sql = "insert into book(name,number) values('事务的测试',100)";
         jdbcTemplate.update(sql);
