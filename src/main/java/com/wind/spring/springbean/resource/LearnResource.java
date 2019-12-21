@@ -20,7 +20,7 @@ public class LearnResource implements ApplicationContextAware {
     }
 
     public void resource() throws IOException {
-        Resource resource = context.getResource("classpath:config.txt");
+        Resource resource = context.getResource("classpath:spring-resources-learn.txt");
         System.out.println("文件名字：" + resource.getFilename());
         System.out.println("文件长度：" + resource.contentLength());
     }
