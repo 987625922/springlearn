@@ -17,10 +17,11 @@ public class JdbcTemplateTest {
         ApplicationContext ac = getApplication();
         //spring jdbc的使用
         BookTxDao bookTxDao = (BookTxDao) ac.getBean("bookTxDao");
+
         //xml实现事务
-//        bookTxDao.update();
+        bookTxDao.update();
         //注解方式实现事务
-        bookTxDao.upTxdate();
+//        bookTxDao.upTxdate();
     }
 
     private static ApplicationContext getApplication() {

@@ -1,14 +1,22 @@
 package com.wind.spring.springbean;
 
+import com.wind.spring.bean.User;
 import com.wind.spring.springbean.autodiscovery.RequiredMovieLister;
 import com.wind.spring.springbean.autodiscovery.ResourceUse;
 import com.wind.spring.springbean.resource.LearnResource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 
+/**
+ * spring中基于application-bean.xml配置文件的bean的使用
+ */
 public class SpringTest {
+
+    private static Logger logger = LoggerFactory.getLogger(SpringTest.class);
 
     public static Object getBean(String beanId) {
         ApplicationContext context;
@@ -22,8 +30,9 @@ public class SpringTest {
     }
 
     public static void main(String args[]) {
-//        Person userBean = (Person) getBean("person");
-//       pl(userBean);
+        User userBean = (User) getBean("userbean");
+        logger.debug("SpringTest中获取到UserBean：" + userBean.toString());
+
 //        testAuto();
 //        testResource();
 //        testAutoDiscovery();
@@ -74,20 +83,6 @@ public class SpringTest {
     private static void testRequired() {
         RequiredMovieLister requiredMovieLister = (RequiredMovieLister) getBean("requiredMovieLister");
         pl(requiredMovieLister.getMovieFinder().getClass().getName());
-    }
-
-    /*
-     * @Bean的使用
-     * */
-    private static void testBean() {
-        pl(getBean("myBook"));
-    }
-
-    /*
-     * 基于泛型的自动装配
-     * */
-    private static void testBeanG() {
-        getBean("storeTest");
     }
 
     /*

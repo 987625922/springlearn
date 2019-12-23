@@ -8,7 +8,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class Book {
     private String book_id;
     private String name;

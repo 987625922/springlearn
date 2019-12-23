@@ -216,7 +216,7 @@
    BeanNameAware
 
 ```
- <bean id="moocBeanName" class="com.wind.spring.springbean.aware.MoocBeanName"/>
+ <bean id="moocBeanName" class="com.wind.spring.springbean.aware.MoocBeanNameAware"/>
  public class MoocBeanName implements BeanNameAware {
      @Override
      public void setBeanName(String name) {

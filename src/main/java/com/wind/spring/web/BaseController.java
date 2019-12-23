@@ -109,6 +109,8 @@ public class BaseController {
      * 从请求的链接中获取到参数并绑定到courseId这个Integer类的变量中
      * 花括号里的参数为需要的值 http://localhost:8080/ssm_war_exploded/view/123
      *
+     * @PathVariable 表示从url链接中获取测参数
+     *
      * @param courseId 从链接中获取，主要是学习mvc中绑定基础数据类型类的功能
      * @return
      */
@@ -118,6 +120,8 @@ public class BaseController {
         System.out.println("viewCourse方法返回的结果是：" + courseId);
         return new JsonData(200, courseId, "从请求的链接中获取到参数并绑定到courseId这个Integer类的变量中");
     }
+
+
 
 
     /**
