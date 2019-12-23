@@ -32,8 +32,6 @@
     <!-- aware -->
     <bean id="moocApplicationContext" class="com.wind.spring.springbean.aware.MoocApplicationContext"/>
 
-    <bean id="moocBeanName" class="com.wind.spring.springbean.aware.MoocBeanNameAware"/>
-
     <!-- 第三 bean的自动装配-->
     <!-- 在xml头添加default-autowire="byName" 或者在bean中配置autowire="constructor" -->
     <bean id="autobean" class="com.wind.spring.bean.AutoWiringBean" autowire="constructor"/>
@@ -41,8 +39,6 @@
     <!-- 第四 Resources -->
     <bean id="learnresource" class="com.wind.spring.springbean.resource.LearnResource"/>
 
-    <!-- 第五 Bean管理的注解实现及例子 -->
-    <!-- 使用过滤器进行自定义扫描 -->
 
 
 </beans>

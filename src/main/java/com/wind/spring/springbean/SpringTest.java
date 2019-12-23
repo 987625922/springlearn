@@ -2,7 +2,6 @@ package com.wind.spring.springbean;
 
 import com.wind.spring.bean.User;
 import com.wind.spring.springbean.autodiscovery.RequiredMovieLister;
-import com.wind.spring.springbean.autodiscovery.ResourceUse;
 import com.wind.spring.springbean.resource.LearnResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,14 +32,9 @@ public class SpringTest {
         User userBean = (User) getBean("userbean");
         logger.debug("SpringTest中获取到UserBean：" + userBean.toString());
 
-//        testAuto();
-//        testResource();
-//        testAutoDiscovery();
-//        testAutoNameAndScope();
-//        testRequired();
-//        testBean();
-//        testBeanG();
-//        testResourceUse();
+        testAuto();
+        testResource();
+        testRequired();
     }
 
     /*
@@ -50,8 +44,9 @@ public class SpringTest {
         pl(getBean("autobean"));
     }
 
-    /*
+    /**
      * Resources
+     * spring对读取文件的支持
      * */
     private static void testResource() {
         LearnResource resource = (LearnResource) getBean("learnresource");
@@ -63,36 +58,14 @@ public class SpringTest {
         }
     }
 
-    /*
-     * 自动注册bean到applicationcontext中
-     * */
-    private static void testAutoDiscovery() {
-        pl(getBean("simplemovielister"));
-    }
-
-    /*
-     * 自动注册bean，并用注解指定bean的id和作用域
-     * */
-    private static void testAutoNameAndScope() {
-        pl(getBean("moviefinderimpl"));
-    }
-
-    /*
-     * @Required和@Qualifier和@Autowired
+    /**
+     * @Required,@PostConstruct和@Qualifier和@Autowired的使用
      * */
     private static void testRequired() {
         RequiredMovieLister requiredMovieLister = (RequiredMovieLister) getBean("requiredMovieLister");
         pl(requiredMovieLister.getMovieFinder().getClass().getName());
     }
 
-    /*
-     * @Resource使用
-     *
-     * */
-    private static void testResourceUse() {
-        ResourceUse resourceUse = (ResourceUse) getBean("resourceUse");
-        System.out.println(resourceUse.movieFinder.getClass().getSimpleName());
-    }
 
 
 }
