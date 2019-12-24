@@ -1,14 +1,23 @@
 package com.wind.spring.data.hibernate;
 
-import com.wind.spring.bean.AllPerson;
+import com.wind.spring.bean.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
+
+/**
+ * hibernate的简单使用
+ */
 public class HibernateMain {
+
+    private static Logger logger = LoggerFactory.getLogger(HibernateMain.class);
+
     public static void main(String[] args) {
         Configuration config = new Configuration().configure(); // Hibernate框架加载hibernate.cfg.xml文件
         SessionFactory sessionFactory = config.buildSessionFactory();
@@ -17,17 +26,16 @@ public class HibernateMain {
         session.beginTransaction();
 
         // 根据业务来编写代码
-        Query query = session.createQuery("from AllPerson"); // HQL语句，它类似于SQL语句
-        List<AllPerson> list = query.list();
-        System.out.println(list);
+        Query query = session.createQuery("from book"); // HQL语句，它类似于SQL语句
+        List<Book> list = query.list();
 
         // 事务提交
         session.getTransaction().commit();
         session.close();
         sessionFactory.close();
 
-        for (AllPerson allPerson:list){
-            System.out.println("hibernate使用输出："+allPerson);
+        for (Book book : list) {
+            logger.debug("hibernate使用输出：" + book);
         }
     }
 }

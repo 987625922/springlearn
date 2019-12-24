@@ -1,12 +1,8 @@
 package com.wind.spring.bean;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
+@Data
 public class Book {
     private String book_id;
     private String name;
