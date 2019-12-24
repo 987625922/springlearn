@@ -12,7 +12,7 @@
     <jmxConfigurator/>
 
     <!-- 设置 logger context 名称,一旦设置不可改变，默认为default -->
-    <contextName>sherlon</contextName>
+    <contextName>default</contextName>
 
     <!-- 定义日志文件 输出位置 -->
     <property name="log_dir" value="sherlon_log"/>
@@ -169,8 +169,9 @@
     <root>
         <!-- 打印debug级别日志及以上级别日志 -->
         <level value="DEBUG"/>
-        <!-- 控制台输出 -->
-        <appender-ref ref="STDOUT"/>
+        <!-- 控制台输出 等级 -->
+        <!--<appender-ref ref="STDOUT"/>-->
+        <appender-ref ref="DEBUG"/>
         <!-- 文件输出 -->
         <appender-ref ref="ERROR"/>
         <appender-ref ref="INFO"/>
