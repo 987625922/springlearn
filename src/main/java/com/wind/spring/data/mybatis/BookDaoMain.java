@@ -1,4 +1,4 @@
-package com.wind.spring.mybatis;
+package com.wind.spring.data.mybatis;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

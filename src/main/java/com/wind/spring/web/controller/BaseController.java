@@ -1,4 +1,4 @@
-package com.wind.spring.web;
+package com.wind.spring.web.controller;
 
 import com.wind.spring.bean.Book;
 import com.wind.spring.util.JsonData;

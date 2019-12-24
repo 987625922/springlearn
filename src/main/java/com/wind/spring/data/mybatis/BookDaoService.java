@@ -1,7 +1,7 @@
-package com.wind.spring.mybatis;
+package com.wind.spring.data.mybatis;
 
 import com.wind.spring.bean.Book;
-import com.wind.spring.mybatis.dao.BookDao;
+import com.wind.spring.data.mybatis.dao.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

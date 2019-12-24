@@ -1,9 +1,8 @@
-package com.wind.spring.hibernate;
+package com.wind.spring.data.hibernate;
 
 import com.wind.spring.bean.AllPerson;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 

@@ -1,4 +1,4 @@
-package com.wind.spring.mybatis.dao;
+package com.wind.spring.data.mybatis.dao;
 
 import com.wind.spring.bean.Book;
 import org.apache.ibatis.annotations.Param;

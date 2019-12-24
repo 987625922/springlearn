@@ -19,7 +19,7 @@
         <mvc:interceptor>
             <mvc:mapping path="/api/interceptor/userinfo"/>
             <!--<mvc:mapping path="/api/interceptor/*"/>-->
-            <bean class="com.wind.spring.interceptor.LoginInterceptor"/>
+            <bean class="com.wind.spring.web.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

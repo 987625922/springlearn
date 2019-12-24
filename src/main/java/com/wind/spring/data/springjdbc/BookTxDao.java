@@ -1,4 +1,4 @@
-package com.wind.spring.springjdbc;
+package com.wind.spring.data.springjdbc;
 
 import com.wind.spring.bean.Book;
 import org.springframework.beans.factory.annotation.Autowired;

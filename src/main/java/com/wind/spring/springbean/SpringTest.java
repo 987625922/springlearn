@@ -17,16 +17,8 @@ public class SpringTest {
 
     private static Logger logger = LoggerFactory.getLogger(SpringTest.class);
 
-    public static Object getBean(String beanId) {
-        ApplicationContext context;
-        context = new ClassPathXmlApplicationContext("spring/application-bean.xml");
-        System.out.println("application的信息:" + context);
-        return context.getBean(beanId);
-    }
-
-    public static void pl(Object object) {
-        System.out.println("bean的信息：" + object);
-    }
+    private static ApplicationContext context =
+            new ClassPathXmlApplicationContext("spring/application-bean.xml");
 
     public static void main(String args[]) {
         User userBean = (User) getBean("userbean");
@@ -37,20 +29,25 @@ public class SpringTest {
         testRequired();
     }
 
-    /*
+    public static Object getBean(String beanId) {
+        logger.debug("application的信息:" + context);
+        return context.getBean(beanId);
+    }
+
+    /**
      * 自动装配类中的成员变量
-     * */
+     */
     private static void testAuto() {
-        pl(getBean("autobean"));
+        logger.debug(getBean("autobean").toString());
     }
 
     /**
      * Resources
      * spring对读取文件的支持
-     * */
+     */
     private static void testResource() {
         LearnResource resource = (LearnResource) getBean("learnresource");
-        pl(resource);
+        logger.debug(resource.toString());
         try {
             resource.resource();
         } catch (IOException e) {
@@ -60,12 +57,12 @@ public class SpringTest {
 
     /**
      * @Required,@PostConstruct和@Qualifier和@Autowired的使用
-     * */
+     */
     private static void testRequired() {
-        RequiredMovieLister requiredMovieLister = (RequiredMovieLister) getBean("requiredMovieLister");
-        pl(requiredMovieLister.getMovieFinder().getClass().getName());
+        RequiredMovieLister requiredMovieLister =
+                (RequiredMovieLister) getBean("requiredMovieLister");
+        logger.debug(requiredMovieLister.getMovieFinder().getClass().getName());
     }
-
 
 
 }
