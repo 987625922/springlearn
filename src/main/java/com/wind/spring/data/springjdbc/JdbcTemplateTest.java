@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
- * spring 自带对数据库的jdbc封装
+ * spring 自带对数据库的jdbc封装的springjdbc的使用和对spring事务的使用
  */
 public class JdbcTemplateTest {
 
@@ -21,15 +21,12 @@ public class JdbcTemplateTest {
         //xml实现事务
         bookTxDao.update();
         //注解方式实现事务
-//        bookTxDao.upTxdate();
+        bookTxDao.upTxdate();
     }
 
     private static ApplicationContext getApplication() {
         ApplicationContext ac = new
                 ClassPathXmlApplicationContext("spring/application-jdbc.xml");
-
-        System.out.println("application:" + ac);
-
         return ac;
     }
 }
