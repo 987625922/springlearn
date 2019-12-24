@@ -22,19 +22,17 @@ public class BookTxDao {
      * 已在application-jdbc中配置本方法是基于xml的事务
      */
     public void update() {
-        String sql = "insert into book(name,number) values('事务的测试',100)";
+        String sql = "insert into book(name,number) values('事务的测试','100')";
         jdbcTemplate.update(sql);
-        int i = 1/0; //抛出异常
-        jdbcTemplate.update(sql);
+//        int i = 1/0; //抛出异常
     }
 
     //使用注解的方式实现事务
     @Transactional
     public void upTxdate() {
-        String sql = "insert into book(name,number) values('事务的测试',100)";
+        String sql = "insert into book(name,number) values('事务的测试','100')";
         jdbcTemplate.update(sql);
         int i = 1/0; //抛出异常
-        jdbcTemplate.update(sql);
     }
 
     public void select() {
@@ -44,7 +42,7 @@ public class BookTxDao {
             public Book mapRow(ResultSet resultSet, int i) throws SQLException {
                 Book book = new Book();
                 book.setName(resultSet.getString("name"));
-                book.setBook_id(resultSet.getString("book_id"));
+                book.setBook_id(resultSet.getInt("book_id"));
                 book.setNumber(resultSet.getString("number"));
                 return book;
             }

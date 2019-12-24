@@ -34,7 +34,7 @@ public class AjaxController {
         System.out.println("AJAXget请求成功");
         Book book = new Book();
         book.setNumber("121");
-        book.setBook_id("212");
+        book.setBook_id(212);
         book.setName("测试");
         return book;
     }

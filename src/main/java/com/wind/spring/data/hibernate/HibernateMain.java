@@ -26,7 +26,7 @@ public class HibernateMain {
         session.beginTransaction();
 
         // 根据业务来编写代码
-        Query query = session.createQuery("from book"); // HQL语句，它类似于SQL语句
+        Query query = session.createQuery("from Book"); // HQL语句，它类似于SQL语句
         List<Book> list = query.list();
 
         // 事务提交

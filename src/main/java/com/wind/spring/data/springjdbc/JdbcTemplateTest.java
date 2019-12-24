@@ -21,7 +21,9 @@ public class JdbcTemplateTest {
         //xml实现事务
         bookTxDao.update();
         //注解方式实现事务
-        bookTxDao.upTxdate();
+//        bookTxDao.upTxdate();
+
+//        bookTxDao.select();
     }
 
     private static ApplicationContext getApplication() {

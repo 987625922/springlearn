@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Book {
-    private String book_id;
+    private int book_id;
     private String name;
     private String number;
 

@@ -170,8 +170,8 @@
         <!-- 打印debug级别日志及以上级别日志 -->
         <level value="DEBUG"/>
         <!-- 控制台输出 等级 -->
-        <!--<appender-ref ref="STDOUT"/>-->
-        <appender-ref ref="DEBUG"/>
+        <appender-ref ref="STDOUT"/>
+<!--        <appender-ref ref="DEBUG"/>-->
         <!-- 文件输出 -->
         <appender-ref ref="ERROR"/>
         <appender-ref ref="INFO"/>
