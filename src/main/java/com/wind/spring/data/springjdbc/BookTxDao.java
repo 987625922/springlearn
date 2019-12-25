@@ -42,7 +42,7 @@ public class BookTxDao {
             public Book mapRow(ResultSet resultSet, int i) throws SQLException {
                 Book book = new Book();
                 book.setName(resultSet.getString("name"));
-                book.setBook_id(resultSet.getInt("book_id"));
+                book.setId(resultSet.getInt("id"));
                 book.setNumber(resultSet.getString("number"));
                 return book;
             }

@@ -7,24 +7,24 @@
     <select id="queryById" resultType="Book" parameterType="long">
         <!-- 具体的sql -->
         SELECT
-        book_id,
+        id,
         name,
         number
         FROM
         book
         WHERE
-        book_id = #{bookId}
+        id = #{id}
     </select>
 
     <select id="queryAll" resultType="Book">
 		SELECT
-			book_id,
+			id,
 			name,
 			number
 		FROM
 			book
 		ORDER BY
-			book_id
+			id
 		LIMIT #{offset}, #{limit}
 	</select>
 
@@ -32,7 +32,7 @@
 		UPDATE book
 		SET number = number - 1
 		WHERE
-			book_id = #{bookId}
+			id = #{id}
 		AND number > 0
 	</update>
 </mapper>

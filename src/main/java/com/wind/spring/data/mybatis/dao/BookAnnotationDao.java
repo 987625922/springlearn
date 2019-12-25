@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface BookAnnotationDao {
 
-    @Select("SELECT book_id,name,number FROM book ORDER BY book_id LIMIT #{offset}, #{limit}")
+    @Select("SELECT id,name,number FROM book ORDER BY id LIMIT #{offset}, #{limit}")
     List<Book> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 
 }
