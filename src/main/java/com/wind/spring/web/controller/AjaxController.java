@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
  * ajax使用的学习
  */
 @Controller
+@RequestMapping("/api/ajax")
 public class AjaxController {
 
     /**
@@ -17,7 +18,7 @@ public class AjaxController {
      *
      * @return
      */
-    @RequestMapping("/ajax")
+    @RequestMapping("ajaxpage")
     public ModelAndView getAjax() {
         ModelAndView mav = new ModelAndView("ajaxuse");
         return mav;
