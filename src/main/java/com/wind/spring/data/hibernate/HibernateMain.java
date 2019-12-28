@@ -1,14 +1,12 @@
 package com.wind.spring.data.hibernate;
 
-import com.wind.spring.bean.Book;
 import com.wind.spring.bean.HBook;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -16,9 +14,8 @@ import java.util.List;
 /**
  * hibernate的简单使用
  */
+@Slf4j
 public class HibernateMain {
-
-    private static Logger logger = LoggerFactory.getLogger(HibernateMain.class);
 
     public static void main(String[] args) {
 //        insertBook();
@@ -38,7 +35,7 @@ public class HibernateMain {
         sessionFactory.close();
 
         for (HBook book : list) {
-            logger.debug("hibernate使用输出：" + book);
+            log.debug("hibernate使用输出：" + book);
         }
     }
 
