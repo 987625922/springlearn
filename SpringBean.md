@@ -199,7 +199,7 @@
      
 
 ```
- <bean id="moocApplicationContext" class="com.wind.spring.springbean.aware.MoocApplicationContext"/>
+ <bean id="moocApplicationContext" class="com.wind.spring.springbean.aware.SpringContextAware"/>
  /*
   * 得到ioc容器的applicationcontext，在容器初始化时可对applicationcontext进行操作
   * */

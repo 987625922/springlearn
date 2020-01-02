@@ -43,14 +43,14 @@ import org.springframework.context.ApplicationContextAware;
  *
  *
  */
-public class MoocApplicationContext implements ApplicationContextAware {
+public class SpringContextAware implements ApplicationContextAware {
 
-    private static Logger logger = LoggerFactory.getLogger(MoocApplicationContext.class);
+    private static Logger logger = LoggerFactory.getLogger(SpringContextAware.class);
 
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        logger.debug("获取到的：" + applicationContext.getBean("moocApplicationContext") + "可以通过他对application的" +
+        logger.debug("获取到的：" + applicationContext.getBean("springContextAware") + "可以通过他对application的" +
                 "初始化进行一些操作");
     }
 }

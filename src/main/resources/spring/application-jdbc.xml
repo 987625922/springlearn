@@ -93,7 +93,7 @@
         <aop:pointcut expression="execution(* com.wind.spring.data.springjdbc.*.*(..))"
                       id="aoppoint"/>
         <!-- 切面 -->
-        <aop:advisor advice-ref="txadvice" pointcut-ref="aoppoint"/>
+        <aop:advisor advice-ref=" " pointcut-ref="aoppoint"/>
     </aop:config>
     <!-- xml事务的使用 -->
 

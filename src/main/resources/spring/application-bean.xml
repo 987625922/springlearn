@@ -2,13 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
 >
 
     <!-- 自动扫描包名下的Component的bean -->
     <context:component-scan base-package="com.wind.spring.springbean"/>
+    <context:component-scan base-package="com.wind.spring.other"/>
 
     <!-- springbean bean 的学习  -->
     <!-- 学习网站https://www.imooc.com/video/3665 -->
@@ -21,25 +22,29 @@
     <!-- Scope默认是单例模式，即scope="singleton",另外scope还有prototype、request、session、global session作用域 -->
     <bean id="userbean" class="com.wind.spring.bean.User"
           scope="singleton" init-method="init"
-          destroy-method="destroy">
+          destroy-method="myDestroy"
+          p:userName="bean方法p标签的使用"
+    >
         <!-- 设值注入 -->
         <property name="book" ref="book"/>
+        <property name="city">
+            <null/>
+        </property>
+
         <!-- 构造器注入-->
         <constructor-arg name="beanName" value="这个是bean的名称"/>
     </bean>
 
     <bean id="book" class="com.wind.spring.bean.Book"/>
-
-
-    <!-- aware -->
-    <bean id="moocApplicationContext" class="com.wind.spring.springbean.aware.MoocApplicationContext"/>
-
     <!-- 第三 bean的自动装配-->
     <!-- 在xml头添加default-autowire="byName" 或者在bean中配置autowire="constructor" -->
     <bean id="autobean" class="com.wind.spring.bean.AutoWiringBean" autowire="constructor"/>
 
-    <!-- 第四 Resources -->
-    <bean id="learnresource" class="com.wind.spring.springbean.resource.LearnResource"/>
+    <!-- Aware的使用 -->
+    <bean id="springContextAware" class="com.wind.spring.springbean.aware.SpringContextAware"/>
+
+    <!-- Resources spring对资源访问 -->
+    <bean id="learnResource" class="com.wind.spring.other.resource.LearnResource"/>
 
 
     <!-- =============   aop ===============   -->
