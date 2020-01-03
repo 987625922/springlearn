@@ -36,7 +36,7 @@ SpringMVC的核心就是DispatcherServlet，DispatcherServlet实质也是一个H
    | constructor  | 与byType类似，只不过它是针对构造函数注入                     |
    | autodetect   | 根据Bean的自省机制决定采用byType还是constructor进行自动装配。如果Bean提供了默认的构造函数，则采用byType；否则采用constructor |
 
-   4.Bean的作用域
+   ### 4.Bean的作用域
 
    | 类型          | 说明                                                         |
    | ------------- | ------------------------------------------------------------ |
@@ -47,3 +47,37 @@ SpringMVC的核心就是DispatcherServlet，DispatcherServlet实质也是一个H
 | globalSession | 同一个全局Session共享一个Bean，一般用于Portlet应用环境，该作用域仅适用于WebApplicationContext环境 |
    
    
+
+### 5.定义bean的注解（@Component，@Repository，@Service，@Controller）
+
+| @Component  | 被标注的类可以被spring容器识别 |
+| ----------- | ------------------------------ |
+| @Repository | 用于对DAO实现类进行标注        |
+| @Service    | 用于对Service实现类进行标注    |
+| @Controller | 用于对Controller实现类进行标注 |
+
+6.自动装配Bean
+
+| @Autowired          | 在变量和方法进行自动注入，@Autowired(required=false)表示即使没有匹配的Bean也不要异常抛出 |
+| ------------------- | ------------------------------------------------------------ |
+| @Qualifier          | 指定注入Bean的名称，容器有一个以上匹配的Bean，可以@Qualifier("userDao")指定注入Bean的名称 |
+| @Lazy及@Autowired   | 会延迟到调用此属性时才会注入属性值                           |
+| @Scope("protorype") | 指定Bean的作用范围,注解类                                    |
+
+Bean的生命过程 
+
+@POSTConstruct 在Bean被调用时触发，注解方法
+
+@PreDestroy 在Bean被销毁时触发，注解方法
+
+7.AOP术语
+
+| 连接点         | aop可以切入的方法，但是不一定要切的方法 |
+| -------------- | --------------------------------------- |
+| 切点           | aop要切入的方法                         |
+| 增强（Advice） | 织入连接点的一段代码                    |
+| 目标对象       | 增强逻辑织入目标类                      |
+
+### 8.aop的使用
+
+如果项目采用java 5.0则使用@AspectJ，如果项目只能使用低版本的JDK,则使用<aop:aspect>;如果使用低版本的spring aop则使用<aop:advisor>复用已存在的Advice类;如果项目只能使用低版本的spring，那么就只能使用Advisor

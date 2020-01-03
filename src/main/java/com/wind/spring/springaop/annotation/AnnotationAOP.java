@@ -20,7 +20,7 @@ public class AnnotationAOP {
      * 定义一个公共的切入点，供下面的切面方法使用
      * 相当于配置文件中的<aop:pointcut />
      */
-    @Pointcut("execution(** com.wind.spring.springaop.annotation.*Dao.*(..))")
+    @Pointcut("execution(* com.wind.spring.springaop.annotation.*Dao.*(..))")
     public void aspect() {
     }
 

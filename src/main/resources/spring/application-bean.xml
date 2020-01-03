@@ -55,15 +55,15 @@
     <!-- 启动AspectJ自动代理,即基于注解的aop使用-->
     <aop:aspectj-autoproxy/>
 
-    <!-- 实例化切面类 -->
+    <!-- 实例化切面类（就是增强方法所在的类） -->
     <bean id="transactionAop" class="com.wind.spring.springaop.base.TransactionAop"></bean>
 
     <!-- Aop相关配置 -->
     <aop:config>
-        <!-- 切入点表达式定义 -->
+        <!-- 切入点表达式定义（定义了一个id为transactionPointcut的切点表达式） -->
         <aop:pointcut expression="execution(* com.wind.spring.springaop.base.*Dao.*(..))"
                       id="transactionPointcut"/>
-        <!-- 切面配置 -->
+        <!-- 切面配置 ref使用id为transactionAop的bean为增强方法的bean -->
         <aop:aspect ref="transactionAop">
             <!-- 【环绕通知】 -->
             <aop:around method="arroud" pointcut-ref="transactionPointcut"/>
