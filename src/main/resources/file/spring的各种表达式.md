@@ -199,3 +199,61 @@ A事务撤销时，把已经提交的B事务的更新数据掩盖了
 
 ### 15.Quartz,JDKTime,Executor
 
+### 16.配置DispatcherServlet
+
+`
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 修改 Spring MVC 配置文件的位置和名称 -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/spring-web.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    </web-app>
+```
+
+`
+
+### 17.配置视图解析器
+
+`
+
+```
+<bean id="viewResolver"
+class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<property name="prefix" value="/WEB-INF/jsp/"/>
+<property name="suffix" value=".jsp"/>
+</bean>
+```
+
+`
+
+### 18.注解驱动控制器
+
+| @RequestMapping   | 通过前期URL进行映射,如@RequestMapping("/getInfo")                                                         @RequestMapping除了可以使用请求URL映射外，还可以使用请求方法，请求参数（报文体和URL包含的请求参数）映射请求 @RequestMapping(path="/delete",method=RequestMethod.Post,headers="content-type=text/*") |
+| ----------------- | ------------------------------------------------------------ |
+| @PathVariable     | 通过@PathVariable可以将URL中的占位符参数绑定到控制器处理方法的入参中 @RequestMapping("/{bookId}")                                                                                            public String showinfo(@PathVariable("bookId")String bookId){} |
+| @RequestParam     |                                                              |
+| @RequestBody      |                                                              |
+| @CookieValue      | public ModelAndView getInfo(@CookieValue("JSESSIONID")String sessionId)将Cookie值绑定到入参中 |
+| @RequestHeader    | publice ModelAndView getInfo(@RequestHeader("Accept-Language")String accpetLanguage)将报文头属性绑定到入参中 |
+| @ResponseBody     |                                                              |
+| @RestController   | @ResponseBody和@Controller的集合                             |
+| @ModelAttribute   |                                                              |
+| @ExceptionHandler |                                                              |
+
+### 19.`<mvc:resources>和<mvc:default-servelet-handler>`
