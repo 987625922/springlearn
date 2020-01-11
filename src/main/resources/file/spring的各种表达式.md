@@ -246,11 +246,11 @@ class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
 | @RequestMapping   | 通过前期URL进行映射,如@RequestMapping("/getInfo")                                                         @RequestMapping除了可以使用请求URL映射外，还可以使用请求方法，请求参数（报文体和URL包含的请求参数）映射请求 @RequestMapping(path="/delete",method=RequestMethod.Post,headers="content-type=text/*") |
 | ----------------- | ------------------------------------------------------------ |
-| @PathVariable     | 通过@PathVariable可以将URL中的占位符参数绑定到控制器处理方法的入参中 @RequestMapping("/{bookId}")                                                                                            public String showinfo(@PathVariable("bookId")String bookId){} |
-| @RequestParam     |                                                              |
+| @PathVariable     | 通过@PathVariable可以将URL中的**占位符**参数绑定到控制器处理方法的入参中 @RequestMapping("/{bookId}")                                                                                            public String showinfo(@PathVariable("bookId")String bookId){} |
+| @RequestParam     | @RequestParam(value=”参数名”,required=”true/false”,defaultValue=””) 用于将请求参数区域的数据映射到控制层方法的参数上，可以映射URL和表单中的数据 |
 | @RequestBody      |                                                              |
 | @CookieValue      | public ModelAndView getInfo(@CookieValue("JSESSIONID")String sessionId)将Cookie值绑定到入参中 |
-| @RequestHeader    | publice ModelAndView getInfo(@RequestHeader("Accept-Language")String accpetLanguage)将报文头属性绑定到入参中 |
+| @RequestHeader    | publice ModelAndView getInfo(@RequestHeader("Accept-Language")String accpetLanguage)将报文头属性绑定到入参中，能获取到请求头中的数据 |
 | @ResponseBody     |                                                              |
 | @RestController   | @ResponseBody和@Controller的集合                             |
 | @ModelAttribute   |                                                              |

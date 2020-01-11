@@ -1,21 +1,15 @@
 package com.wind.spring.web.controller;
 
-import com.wind.spring.bean.Book;
-import com.wind.spring.util.JsonData;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
 
 /**
  * springmvc controller基本的使用
@@ -34,23 +28,6 @@ public class BaseController {
     public ModelAndView loginRequest() throws Exception {
         ModelAndView mav = new ModelAndView("user/login");
         return mav;
-    }
-
-
-    /**
-     * 模拟登陆接口（在jsp/login.jsp中请求）
-     *
-     * @param httpServletRequest
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping("/param")
-    public ModelAndView paramRequest(javax.servlet.http.HttpServletRequest httpServletRequest) throws Exception {
-        String name = httpServletRequest.getParameter("userName");
-        String password = httpServletRequest.getParameter("password");
-        System.out.println("用户名：" + name);
-        System.out.println("密码：" + password);
-        return null;
     }
 
 
@@ -105,39 +82,17 @@ public class BaseController {
         out.println("</table>\n</body></html>");
     }
 
+
     /**
-     * 从请求的链接中获取到参数并绑定到courseId这个Integer类的变量中
-     * 花括号里的参数为需要的值 http://localhost:8080/ssm_war_exploded/view/123
+     * 拦截器的使用
+     * 在spring-web.xml中配置了对/api/interceptor/* 这个链接下的拦截（拦截器为LoginInterceptor）
      *
-     * @PathVariable 表示从url链接中获取测参数
-     *
-     * @param courseId 从链接中获取，主要是学习mvc中绑定基础数据类型类的功能
      * @return
      */
-    @RequestMapping(value = "/view/{courseId}")
-    @ResponseBody
-    public Object viewCourse(@PathVariable("courseId") Integer courseId) {
-        System.out.println("viewCourse方法返回的结果是：" + courseId);
-        return new JsonData(200, courseId, "从请求的链接中获取到参数并绑定到courseId这个Integer类的变量中");
+    @RequestMapping("/userinfo")
+    public String userinfo() {
+        System.out.println("2:interceptor===>search");
+        return "user/userinfo";
     }
-
-
-
-
-    /**
-     * json输出尝试 会自动格式化成json格式输出
-     * 因为添加了 @ResponseBody 注解
-     */
-    @RequestMapping("/findtest")
-    @ResponseBody
-    public Object findAll() {
-        List<Book> bookMarkBeans = new ArrayList<>();
-        Book book = new Book();
-        book.setName("测试名字");
-        bookMarkBeans.add(book);
-        Integer amount = bookMarkBeans.size();
-        return new JsonData(200, bookMarkBeans, "BaseController类的findAll方法成功");
-    }
-
 
 }
