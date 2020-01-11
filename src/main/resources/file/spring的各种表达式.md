@@ -248,10 +248,10 @@ class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 | ----------------- | ------------------------------------------------------------ |
 | @PathVariable     | 通过@PathVariable可以将URL中的**占位符**参数绑定到控制器处理方法的入参中 @RequestMapping("/{bookId}")                                                                                            public String showinfo(@PathVariable("bookId")String bookId){} |
 | @RequestParam     | @RequestParam(value=”参数名”,required=”true/false”,defaultValue=””) 用于将请求参数区域的数据映射到控制层方法的参数上，可以映射URL和表单中的数据 |
-| @RequestBody      |                                                              |
+| @RequestBody      | @RequestBody用来接收前端传递给后端的json字符串中的数据的(请求体中的数据的) |
 | @CookieValue      | public ModelAndView getInfo(@CookieValue("JSESSIONID")String sessionId)将Cookie值绑定到入参中 |
 | @RequestHeader    | publice ModelAndView getInfo(@RequestHeader("Accept-Language")String accpetLanguage)将报文头属性绑定到入参中，能获取到请求头中的数据 |
-| @ResponseBody     |                                                              |
+| @ResponseBody     | @ResponseBody 表示该方法的返回结果直接写入 HTTP response body 中 |
 | @RestController   | @ResponseBody和@Controller的集合                             |
 | @ModelAttribute   |                                                              |
 | @ExceptionHandler |                                                              |
