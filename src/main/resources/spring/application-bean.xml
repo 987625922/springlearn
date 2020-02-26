@@ -3,13 +3,22 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:cache="http://www.springframework.org/schema/cache"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/cache
+	http://www.springframework.org/schema/cache/spring-cache.xsd"
+
 >
 
     <!-- 自动扫描包名下的Component的bean -->
     <context:component-scan base-package="com.wind.spring.springbean"/>
     <context:component-scan base-package="com.wind.spring.other"/>
+    <context:component-scan base-package="com.wind.spring.springcache"/>
 
     <!-- springbean bean 的学习  -->
     <!-- 学习网站https://www.imooc.com/video/3665 -->
@@ -78,5 +87,21 @@
         </aop:aspect>
     </aop:config>
 
+
+    <!-- spring cache -->
+    <cache:annotation-driven/>
+    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+        <property name="caches">
+            <set>
+                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
+                    <property name="name" value="default"/>
+                </bean>
+                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
+                    <property name="name" value="cacheUse"/>
+                </bean>
+            </set>
+        </property>
+    </bean>
+    <!-- spring cache END-->
 
 </beans>
