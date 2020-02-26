@@ -1,8 +1,8 @@
-package com.wind.spring.data.mybatis;
+package com.wind.spring.databases.mybatis;
 
-import com.wind.spring.bean.Book;
-import com.wind.spring.data.mybatis.dao.BookAnnotationDao;
-import com.wind.spring.data.mybatis.dao.BookDao;
+import com.wind.spring.other.bean.Book;
+import com.wind.spring.databases.mybatis.dao.BookAnnotationDao;
+import com.wind.spring.databases.mybatis.dao.BookDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;

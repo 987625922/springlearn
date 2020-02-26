@@ -1,6 +1,6 @@
 package com.wind.spring.web.interceptor;
 
-import com.wind.spring.bean.User;
+import com.wind.spring.other.bean.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

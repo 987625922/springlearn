@@ -1,4 +1,4 @@
-package com.wind.spring.data.hibernate;
+package com.wind.spring.databases.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

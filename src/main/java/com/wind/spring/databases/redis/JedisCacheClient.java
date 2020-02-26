@@ -1,4 +1,4 @@
-package com.wind.spring.data.redis;
+package com.wind.spring.databases.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
 package com.wind.spring.springbean;
 
-import com.wind.spring.bean.Book;
+import com.wind.spring.other.bean.Book;
 import com.wind.spring.springbean.annotationbean.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

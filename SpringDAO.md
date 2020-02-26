@@ -124,7 +124,7 @@ public class BookDao {
     </tx:advice>
   <!--3.配置拦截哪些方法+事务的属性-->
     <aop:config>
-        <aop:pointcut id="pt" expression="execution(* com.wind.spring.data.springjdbc.*.*(..) )"/>
+        <aop:pointcut id="pt" expression="execution(* com.wind.spring.databases.springjdbc.*.*(..) )"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pt"></aop:advisor>
     </aop:config>
 ```

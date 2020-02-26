@@ -1,4 +1,4 @@
-package com.wind.spring.util;
+package com.wind.spring.other.dto;
 
 import lombok.Data;
 

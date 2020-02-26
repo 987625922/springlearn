@@ -1,14 +1,11 @@
 package com.wind.spring.springbean;
 
-import com.wind.spring.bean.User;
+import com.wind.spring.other.bean.User;
 import com.wind.spring.springbean.autodiscovery.RequiredMovieLister;
-import com.wind.spring.other.resource.LearnResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.io.IOException;
 
 /**
  * spring中基于application-bean.xml配置文件的bean的使用

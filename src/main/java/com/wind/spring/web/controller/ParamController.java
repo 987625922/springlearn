@@ -1,6 +1,6 @@
 package com.wind.spring.web.controller;
 
-import com.wind.spring.bean.Book;
+import com.wind.spring.other.bean.Book;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;

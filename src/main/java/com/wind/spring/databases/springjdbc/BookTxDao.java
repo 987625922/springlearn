@@ -1,6 +1,6 @@
-package com.wind.spring.data.springjdbc;
+package com.wind.spring.databases.springjdbc;
 
-import com.wind.spring.bean.Book;
+import com.wind.spring.other.bean.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;

@@ -1,6 +1,6 @@
-package com.wind.spring.data.mybatis.dao;
+package com.wind.spring.databases.mybatis.dao;
 
-import com.wind.spring.bean.Book;
+import com.wind.spring.other.bean.Book;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 

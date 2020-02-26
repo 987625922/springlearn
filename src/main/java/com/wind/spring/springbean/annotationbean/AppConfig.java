@@ -1,10 +1,9 @@
 package com.wind.spring.springbean.annotationbean;
 
-import com.wind.spring.bean.Book;
+import com.wind.spring.other.bean.Book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;

@@ -1,4 +1,4 @@
-package com.wind.spring.bean;
+package com.wind.spring.other.bean;
 
 import lombok.Getter;
 import lombok.Setter;

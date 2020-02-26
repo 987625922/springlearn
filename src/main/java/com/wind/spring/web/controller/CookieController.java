@@ -1,6 +1,6 @@
 package com.wind.spring.web.controller;
 
-import com.wind.spring.util.JsonData;
+import com.wind.spring.other.dto.JsonData;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

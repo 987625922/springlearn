@@ -241,7 +241,7 @@
 
   ```
   <!-- 在xml头添加default-autowire="byName" 或者在bean中配置autowire="constructor" -->
-      <bean id="autobean" class="com.wind.spring.bean.AutoWiringBean" autowire="constructor"/>
+      <bean id="autobean" class="AutoWiringBean" autowire="constructor"/>
   ```
 
 ​     
@@ -499,7 +499,7 @@ public interface MovieFinder {
       public class AppConfig {
           /*
            *  @Bean就相当于如下 ,@Bean可以去指定bean的name,还可以通过initMethod和destroyMethod注册生命周期
-           *  <bean id="myBook" class="com.wind.spring.bean.Book"/>
+           *  <bean id="myBook" class="Book"/>
            * */
           @Bean(name = "myBook",initMethod = "init",destroyMethod = "cleanup")
           public Book myBook() {

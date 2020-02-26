@@ -1,4 +1,4 @@
-package com.wind.spring.data.redis;
+package com.wind.spring.databases.redis;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

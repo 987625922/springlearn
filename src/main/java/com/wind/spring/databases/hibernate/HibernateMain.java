@@ -1,6 +1,6 @@
-package com.wind.spring.data.hibernate;
+package com.wind.spring.databases.hibernate;
 
-import com.wind.spring.bean.HBook;
+import com.wind.spring.other.bean.HBook;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
