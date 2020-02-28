@@ -10,6 +10,7 @@
     <properties>
         <spring.version>4.3.21.RELEASE</spring.version>
         <kotlin.version>1.3.50</kotlin.version>
+        <shiro.version>1.4.0</shiro.version>
     </properties>
     <dependencies>
         <!--              spring                   -->
@@ -46,7 +47,7 @@
         </dependency>
         <!--              spring                   -->
         <!--              spring                   -->
-
+        <!-- database -->
         <!-- mysql -->
         <!-- mysql连接池 -->
         <dependency>
@@ -91,7 +92,9 @@
             <artifactId>spring-data-redis</artifactId>
             <version>2.2.3.RELEASE</version>
         </dependency>
+        <!-- database END -->
 
+        <!-- wed -->
         <!-- thymeleaf -->
         <dependency>
             <groupId>org.thymeleaf</groupId>
@@ -103,6 +106,14 @@
             <artifactId>thymeleaf</artifactId>
             <version>3.0.9.RELEASE</version>
         </dependency>
+        <!-- java servlet的api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- web END -->
 
 
         <!-- aop框架 -->
@@ -119,22 +130,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.6</version>
         </dependency>
-
-        <!-- java servlet的api -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- 单元测试 -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-
         <!-- 日志 -->
         <!-- 日志框架使用slf4j+logback+spring -->
         <!-- logback-classic(其中包含logback-core,slf4j-api,不需要额外再配置logback-core和slf4j-api) -->
@@ -158,6 +159,35 @@
             <version>1.7.25</version>
         </dependency>
         <!-- 日志 end -->
+        <!-- 工具 END -->
+
+        <!-- shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-quartz</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <!-- shiro END -->
 
     </dependencies>
     <build>

@@ -10,7 +10,10 @@
         <!-- 修改 Spring MVC 配置文件的位置和名称 -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/spring-web.xml</param-value>
+            <param-value>
+                classpath:spring/spring-web.xml,
+                classpath:spring/spring-shiro-web.xml
+            </param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
@@ -32,6 +35,24 @@
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <!-- shiro filter start -->
+    <!--配置shiroFilter过滤器，过滤器名称shiroFilter一定要和spring-shiro-web.xml中声明的shiroFilter保存一致-->
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>
+            org.springframework.web.filter.DelegatingFilterProxy
+        </filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- shiro filter end -->
 
     <!-- 添加日志监听器 -->
     <context-param>

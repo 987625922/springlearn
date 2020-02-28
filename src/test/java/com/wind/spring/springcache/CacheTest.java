@@ -1,5 +1,6 @@
 package com.wind.spring.springcache;
 
+import com.wind.spring.other.bean.Book;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class CacheTest {
         cacheUseService.getValueByName("123");
         cacheUseService.getValueByName("123");
         cacheUseService.getValueByName("12");
+        Book book = new Book();
+        book.setName("12345");
+        cacheUseService.updateAccount(book);
+        cacheUseService.getValueByName("123");
     }
 
 }
