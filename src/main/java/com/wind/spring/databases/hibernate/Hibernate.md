@@ -1,4 +1,47 @@
-1. ## Hibernate 映射类型
+1. Hibernate核心API
+
+   - Configuration 类
+     启动hibernate程序，加载hibernate.cfg.xml配置文件
+
+   - SeesionFactory 接口
+
+     加载连接数据，扩展参数，映射信息，通过这些映射信息帮助我们创建Session
+
+   - Session 接口
+
+     操作数据库
+
+     常用方法：
+
+     ​	save() 保存对象
+
+     ​	update() 更新对象
+
+     ​	delete() 删除对象
+
+     ​	get() 查询对象
+
+   - Transaction 接口
+
+     begin() 开启事务
+
+     commit() 提交事务
+
+     rollback() 回滚事务
+
+   - Query 接口
+
+     执行HQL查询
+
+   - Criteria
+
+     执行基于对象的查询(QBC查询)
+
+     
+
+   
+
+2. ## Hibernate 映射类型
 - 原始类型
 | 映射类型    | Java 类型                    | ANSI SQL 类型        |
 | :---------- | :--------------------------- | :------------------- |
@@ -87,7 +130,7 @@
 - @ToString : 注解在类上, 为类提供 toString() 方法
 
 - @EqualsAndHashCode : 注解在类上, 为类提供 equals() 和 hashCode() 方法
- 
+
 - @NoArgsConstructor, @RequiredArgsConstructor, @AllArgsConstructor : 注解在类上, 为类提供无参,有指定必须参数, 全参构造函数
 
 - 构造函数
