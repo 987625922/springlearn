@@ -3,6 +3,7 @@ package com.wind.spring.databases.hibernate.bean;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Data
 public class HBook implements Serializable {
@@ -14,4 +15,13 @@ public class HBook implements Serializable {
 
     private String name;
 
+    private Set<HBookOrder> hBookOrders;
+
+    public Set<HBookOrder> gethBookOrders() {
+        return hBookOrders;
+    }
+
+    public void sethBookOrders(Set<HBookOrder> hBookOrders) {
+        this.hBookOrders = hBookOrders;
+    }
 }

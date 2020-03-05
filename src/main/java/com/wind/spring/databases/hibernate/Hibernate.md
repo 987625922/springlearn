@@ -1,4 +1,4 @@
-1. Hibernate核心API
+1. ## Hibernate核心API
 
    - Configuration 类
      启动hibernate程序，加载hibernate.cfg.xml配置文件
@@ -39,9 +39,60 @@
 
      
 
+2. ## generator主键生成策略
+
+   - identity:利用数据库的自增长能力，例如mysql的auto_increment
+- sequence:利用数据库的序列生成能力，例如oracle的sequence
+   - native：本地策略，由hibernate自动根据不同的数据选择最优策略
+- uuid：由hibernate自动生成32位16进制的无效字符串
+   - increment:由hibernate自动生成递进的数值（数据库最大id+1）
+- assigned：由开发者自己设置id
    
 
-2. ## Hibernate 映射类型
+   
+3. ## Hibernate 注释
+
+   - @NonNull : 注解在参数上, 如果该类参数为 null , 就会报出异常,  throw new NullPointException(参数名)
+
+   - @Cleanup : 注释在引用变量前, 自动回收资源 默认调用 close() 方法
+
+   - @Getter/@Setter : 注解在类上, 为类提供读写属性
+
+   - @Getter(lazy=true) :
+
+   - @ToString : 注解在类上, 为类提供 toString() 方法
+
+   - @EqualsAndHashCode : 注解在类上, 为类提供 equals() 和 hashCode() 方法
+
+   - @NoArgsConstructor, @RequiredArgsConstructor, @AllArgsConstructor : 注解在类上, 为类提供无参,有指定必须参数, 全参构造函数
+
+   - 构造函数
+   - @AllArgsConstructor
+     会生成一个包含所有变量，同时如果变量使用了NotNull annotation ， 会进行是否为空的校验， 全部参数的构造函数的自动生成，该注解的作用域也是只有在实体类上，参数的顺序与属性定义的顺序一致。
+
+   - @NoArgsConstructor
+     无参构造函数
+     @RequiredArgsConstructor
+     会生成一个包含常量（final），和标识了@NotNull的变量 的构造方法。
+
+   - @Data : 注解在类上, 为类提供读写属性, 此外还提供了 equals()、hashCode()、toString() 方法
+
+   - @Value :
+
+   - @Builder : 注解在类上, 为类提供一个内部的 Builder
+
+   - @SneakThrows :
+
+   - @Synchronized : 注解在方法上, 为方法提供同步锁
+
+   - @Log :
+
+   - @Log4j : 注解在类上, 为类提供一个属性名为 log 的 log4j 的日志对象
+
+   - @Slf4j : 注解在类上, 为类提供一个属性名为 log 的 log4j 的日志对象
+
+4. ## Hibernate 映射类型
+
 - 原始类型
 | 映射类型    | Java 类型                    | ANSI SQL 类型        |
 | :---------- | :--------------------------- | :------------------- |
@@ -86,9 +137,7 @@
 | locale   | java.util.Locale   | VARCHAR       |
 | timezone | java.util.TimeZone | VARCHAR       |
 | currency | java.util.Currency | VARCHAR       |
-
-2. ## Hibernate O/R 映射
-
+4. ## Hibernate O/R 映射
 
 - 集合映射
 如果一个实例或者类中有特定变量的值的集合，那么我们可以应用 Java 中的任何的可用的接口来映射这些值。Hibernate 可以保存 **java.util.Map, java.util.Set, java.util.SortedMap, java.util.SortedSet, java.util.List** 和其它持续的实例或者值的任何**数组**的实例。
@@ -117,43 +166,7 @@
 | **One-to-Many**  | 使用 Hibernate 映射一对多关系 |
 | **Many-to-Many** | 使用 Hibernate 映射多对多关系 |
 
-3. Hibernate 注释
+5. 
 
-- @NonNull : 注解在参数上, 如果该类参数为 null , 就会报出异常,  throw new NullPointException(参数名)
 
-- @Cleanup : 注释在引用变量前, 自动回收资源 默认调用 close() 方法
 
-- @Getter/@Setter : 注解在类上, 为类提供读写属性
-
-- @Getter(lazy=true) :
-
-- @ToString : 注解在类上, 为类提供 toString() 方法
-
-- @EqualsAndHashCode : 注解在类上, 为类提供 equals() 和 hashCode() 方法
-
-- @NoArgsConstructor, @RequiredArgsConstructor, @AllArgsConstructor : 注解在类上, 为类提供无参,有指定必须参数, 全参构造函数
-
-- 构造函数
-- @AllArgsConstructor
-会生成一个包含所有变量，同时如果变量使用了NotNull annotation ， 会进行是否为空的校验， 全部参数的构造函数的自动生成，该注解的作用域也是只有在实体类上，参数的顺序与属性定义的顺序一致。
-
-- @NoArgsConstructor
-无参构造函数
-@RequiredArgsConstructor
-会生成一个包含常量（final），和标识了@NotNull的变量 的构造方法。
-
-- @Data : 注解在类上, 为类提供读写属性, 此外还提供了 equals()、hashCode()、toString() 方法
-
-- @Value :
-
-- @Builder : 注解在类上, 为类提供一个内部的 Builder
-
-- @SneakThrows :
-
-- @Synchronized : 注解在方法上, 为方法提供同步锁
-
-- @Log :
-
-- @Log4j : 注解在类上, 为类提供一个属性名为 log 的 log4j 的日志对象
-
-- @Slf4j : 注解在类上, 为类提供一个属性名为 log 的 log4j 的日志对象

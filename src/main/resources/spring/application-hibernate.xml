@@ -17,12 +17,14 @@
 
     <!-- =============  spring事务配置 ================ -->
     <!-- Jpa 事务配置 -->
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="sessionFactory"/>
+    <!-- config translation 事务控制-->
+    <bean id="txManager"
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 
     <!-- 事务声明配置 -->
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    <tx:advice id="txAdvice" transaction-manager="txManager">
         <tx:attributes>
             <tx:method name="save*" propagation="REQUIRED"/>
             <tx:method name="create*" propagation="REQUIRED"/>
@@ -41,7 +43,7 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
     <!-- 注解事务 -->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <tx:annotation-driven transaction-manager="txManager"/>
     <!-- =============  spring事务配置 ================ -->
 
 
@@ -71,7 +73,21 @@
         <!-- 配置数据源属性 -->
         <property name="dataSource" ref="dataSource"></property>
         <!-- 配置 hibernate 配置文件的位置及名称 -->
-        <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+        <!--<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>-->
+        <!-- hibernate properties config hibernate属性配置-->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+        <!-- hibernate mapping file hibernate映射文件加载-->
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:hmapper/*.hbm.xml</value>
+            </list>
+        </property>
     </bean>
 
 </beans>

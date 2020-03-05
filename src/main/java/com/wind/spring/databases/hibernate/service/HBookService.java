@@ -5,6 +5,8 @@ import com.wind.spring.databases.hibernate.dao.HBookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HBookService {
 
@@ -13,5 +15,9 @@ public class HBookService {
 
     public void save(HBook book){
         dao.save(book);
+    }
+
+    public List<HBook> list(){
+        return dao.list();
     }
 }

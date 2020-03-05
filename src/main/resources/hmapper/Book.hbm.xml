@@ -8,7 +8,7 @@
         table：映射到数据库里面的那个表的名称
         catalog：数据库的名称
      -->
-    <class name="com.wind.spring.databases.hibernate.bean.HBook" table="hvideo">
+    <class name="com.wind.spring.databases.hibernate.bean.HBook" table="h_book">
         <!-- class下必须要有一个id的子元素 -->
         <!-- id是用于描述主键的 -->
         <!--主键映射，属性名为book_id，列名也为book_id-->
@@ -23,5 +23,13 @@
         -->
         <!--非主键映射，属性和列名一一对应-->
         <property name="name" column="name" length="100"></property>
+
+        <!--<many-to-one name="hAuthor" column="auther_id" class="HAuthor"/>-->
+
+        <set name="hBookOrders" inverse="true">
+            <key column="book_id"></key>
+            <one-to-many class="HBookOrder"></one-to-many>
+        </set>
+
     </class>
 </hibernate-mapping>

@@ -6,12 +6,12 @@
     <!-- 通常，一个session-factory节点代表一个数据库 -->
     <session-factory>
         <!-- 1. 数据库连接配置 -->
-        <!--<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>-->
-        <!--<property name="hibernate.connection.url">-->
-            <!--jdbc:mysql://localhost:3306/learn?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8-->
-        <!--</property>-->
-        <!--<property name="hibernate.connection.username">root</property>-->
-        <!--<property name="hibernate.connection.password">root</property>-->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306/learn?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8
+        </property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
 
         <!--            数据库方法配置， hibernate在运行的时候，会根据不同的方言生成符合当前数据库语法的sql         -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -25,7 +25,7 @@
             create 每次都重新建表； 如果表已经存在就先删除再创建
             update 如果表不存在就创建； 表存在就不创建；
             validate (生成环境时候) 执行验证： 当映射文件的内容与数据库表结构不一样的时候就报错！-->
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- 3. 加载所有映射-->
         <mapping resource="hmapper/Book.hbm.xml"/>
