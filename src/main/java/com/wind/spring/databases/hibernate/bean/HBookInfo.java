@@ -1,18 +1,15 @@
 package com.wind.spring.databases.hibernate.bean;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
-public class HAuthor implements Serializable {
+public class HBookInfo implements Serializable {
 
-    private static final long serialVersionUID = 5516215546168184576L;
-
+    private static final long serialVersionUID = -8797330300269686280L;
     private long id;
 
     private String name;
 
-    private Set<HBook> hBooks = new HashSet<>();
+    private HBook hBook;
 
     public long getId() {
         return id;
@@ -30,11 +27,11 @@ public class HAuthor implements Serializable {
         this.name = name;
     }
 
-    public Set<HBook> gethBooks() {
-        return hBooks;
+    public HBook gethBook() {
+        return hBook;
     }
 
-    public void sethBooks(Set<HBook> hBooks) {
-        this.hBooks = hBooks;
+    public void sethBook(HBook hBook) {
+        this.hBook = hBook;
     }
 }

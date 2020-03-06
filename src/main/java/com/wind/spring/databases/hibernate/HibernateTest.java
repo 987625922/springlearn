@@ -1,6 +1,5 @@
 package com.wind.spring.databases.hibernate;
 
-import com.wind.spring.databases.hibernate.bean.HAuthor;
 import com.wind.spring.databases.hibernate.bean.HBook;
 import com.wind.spring.databases.hibernate.service.HBookService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +25,6 @@ public class HibernateTest {
     @Autowired
     private HBookService service;
 
-
     /**
      * 插入数据
      */
@@ -43,9 +41,39 @@ public class HibernateTest {
     @Test
     public void testTransaction() {
         HBook hBook = new HBook();
-        hBook.setName("书本名字");
-        service.save(hBook);
+        hBook.setName("测试xml事务");
+        service.saveTransaction(hBook);
     }
+
+
+    /**
+     * 一对多关系映射 inverse
+     * 级联 cascade
+     */
+    @Test
+    public void testOneToMany() {
+        service.saveBookAndOrderOneToMore();
+    }
+
+    /**
+     * 一对一关系映射 inverse
+     * 级联 cascade
+     */
+    @Test
+    public void testOneToOne() {
+        service.saveBookAndInfoOneToOne();
+    }
+
+
+    /**
+     * 多对多关系映射 inverse
+     * 级联 cascade
+     */
+    @Test
+    public void testMoreToMore() {
+        service.saveBookAndAuthorMoreToMore();
+    }
+
 
     /**
      * 最基础的hibernate使用

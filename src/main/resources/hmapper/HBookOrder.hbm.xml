@@ -3,12 +3,13 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.wind.spring.databases.hibernate.bean">
-    <class name="com.wind.spring.databases.hibernate.bean.HBookOrder" table="h_book_order">
+    <class name="com.wind.spring.databases.hibernate.bean.HBookOrder" table="h_book_order" >
         <id name="id" column="id">
             <generator class="native"/>
         </id>
         <property name="price" column="price"></property>
 
-        <many-to-one name="hBook" class="HBook" column="book_id"/>
+        <!-- cascade 表示指定级联操作 -->
+        <many-to-one name="hBook" class="HBook" column="book_id" cascade="save-update"/>
     </class>
 </hibernate-mapping>

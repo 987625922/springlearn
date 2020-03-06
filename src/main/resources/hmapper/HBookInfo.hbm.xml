@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.wind.spring.databases.hibernate.bean">
+    <!--
+    dynamic-insert 和 dynamic-update 为 true 时，sql语句中只有值变化或者不为空的属性才会加上，用于更新部分属性
+    -->
+    <class name="HBookInfo" table="h_author_info" dynamic-insert="true"
+           dynamic-update="true">
+        <id name="id" column="id">
+            <!--<generator class="native"/>-->
+            <!--
+            主键与外键表的主键同步
+             -->
+            <generator class="foreign">
+                <param name="property">hBook</param>
+            </generator>
+        </id>
+        <property name="name" column="name" length="100"></property>
+
+        <!--
+         需要在同步主键的一方加上 constrained="true" 使用给主键加上外键约束
+          -->
+        <one-to-one name="hBook" class="HBook" constrained="true"/>
+
+    </class>
+</hibernate-mapping>

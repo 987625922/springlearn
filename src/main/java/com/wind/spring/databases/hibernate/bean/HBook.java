@@ -1,11 +1,9 @@
 package com.wind.spring.databases.hibernate.bean;
 
-import lombok.Data;
-
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
-@Data
 public class HBook implements Serializable {
 
 
@@ -15,7 +13,19 @@ public class HBook implements Serializable {
 
     private String name;
 
-    private Set<HBookOrder> hBookOrders;
+    private HBookInfo hBookInfo;
+
+    private Set<HBookOrder> hBookOrders = new HashSet<>();
+
+    private Set<HAuthor> hAuthors = new HashSet<>();
+
+    public HBookInfo gethBookInfo() {
+        return hBookInfo;
+    }
+
+    public void sethAuthor(HBookInfo hBookInfo) {
+        this.hBookInfo = hBookInfo;
+    }
 
     public Set<HBookOrder> gethBookOrders() {
         return hBookOrders;
@@ -23,5 +33,29 @@ public class HBook implements Serializable {
 
     public void sethBookOrders(Set<HBookOrder> hBookOrders) {
         this.hBookOrders = hBookOrders;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<HAuthor> gethAuthors() {
+        return hAuthors;
+    }
+
+    public void sethAuthors(Set<HAuthor> hAuthors) {
+        this.hAuthors = hAuthors;
     }
 }

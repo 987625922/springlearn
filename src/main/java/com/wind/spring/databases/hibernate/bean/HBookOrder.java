@@ -1,10 +1,7 @@
 package com.wind.spring.databases.hibernate.bean;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
-@Data
 public class HBookOrder implements Serializable {
 
     private static final long serialVersionUID = 1820858305983746211L;
@@ -21,5 +18,21 @@ public class HBookOrder implements Serializable {
 
     public void sethBook(HBook hBook) {
         this.hBook = hBook;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 }

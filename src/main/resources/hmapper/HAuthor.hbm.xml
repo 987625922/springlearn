@@ -8,7 +8,7 @@
         table：映射到数据库里面的那个表的名称
         catalog：数据库的名称
      -->
-    <class name="com.wind.spring.databases.hibernate.bean.HBook" table="h_book">
+    <class name="com.wind.spring.databases.hibernate.bean.HAuthor" table="h_author">
         <!-- class下必须要有一个id的子元素 -->
         <!-- id是用于描述主键的 -->
         <!--主键映射，属性名为book_id，列名也为book_id-->
@@ -24,22 +24,10 @@
         <!--非主键映射，属性和列名一一对应-->
         <property name="name" column="name" length="100"></property>
 
-        <!--
-                inverse 为 true 表示放弃维护关系，留给对方来维护，
-                一般是一对多中 一的一方放弃，由多的一放维护，
-                这个时候删除对象时，需要手动将关联的对象外键引用移除
-         -->
-        <set name="hBookOrders" inverse="true" >
-            <key column="book_id"></key>
-            <one-to-many class="HBookOrder"></one-to-many>
+        <set name="hBooks" table="h_author_book">
+            <key column="author_id"></key>
+            <many-to-many class="HBook" column="b_id"/>
         </set>
-
-        <set name="hAuthors" table="h_author_book" inverse="true">
-            <key column="b_id"></key>
-            <many-to-many class="HAuthor" column="author_id" />
-        </set>
-
-        <one-to-one name="hBookInfo" class="com.wind.spring.databases.hibernate.bean.HBookInfo"  />
-
     </class>
+
 </hibernate-mapping>
