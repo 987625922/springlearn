@@ -10,9 +10,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * spring中基于application-bean.xml配置文件的bean的使用
  */
-public class SpringTest {
+public class SpringBeanTest {
 
-    private static Logger logger = LoggerFactory.getLogger(SpringTest.class);
+    private static Logger logger = LoggerFactory.getLogger(SpringBeanTest.class);
 
     private static ApplicationContext context =
             new ClassPathXmlApplicationContext("spring/application-bean.xml");

@@ -16,7 +16,7 @@ public class UserDao implements IUserDao {
 
     @Override
     public void save() {
-        int i = 1/0;
+//        int i = 1/0;
         logger.debug("JDK AOP的切点方法 UserDao类的save方法");
     }
 }

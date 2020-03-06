@@ -75,33 +75,34 @@ public class HBookService {
         authorDao.save(hBookInfo);
     }
 
+
     public void saveBookAndAuthorMoreToMore(){
-//        HBook hBook = new HBook();
-//        hBook.setName("多对多映射1");
-//
-//        HBook hBook1 = new HBook();
-//        hBook1.setName("多对多映射2");
-//
-//        HAuthor hAuthor = new HAuthor();
-//        hAuthor.setName("多对多映射1");
-//
-//        HAuthor hAuthor1 = new HAuthor();
-//        hAuthor1.setName("多对多映射2");
-//
-//        hBook.gethAuthors().add(hAuthor);
-//        hBook.gethAuthors().add(hAuthor1);
-//        hBook1.gethAuthors().add(hAuthor);
-//        hBook1.gethAuthors().add(hAuthor1);
-//
-//        hAuthor.gethBooks().add(hBook);
-//        hAuthor.gethBooks().add(hBook1);
-//        hAuthor1.gethBooks().add(hBook);
-//        hAuthor1.gethBooks().add(hBook1);
-//
-//        hBookDao.save(hBook);
-//        hBookDao.save(hBook1);
-//        hAuthorDao.save(hAuthor);
-//        hAuthorDao.save(hAuthor1);
+        HBook hBook = new HBook();
+        hBook.setName("多对多映射1");
+
+        HBook hBook1 = new HBook();
+        hBook1.setName("多对多映射2");
+
+        HAuthor hAuthor = new HAuthor();
+        hAuthor.setName("多对多映射1");
+
+        HAuthor hAuthor1 = new HAuthor();
+        hAuthor1.setName("多对多映射2");
+
+        hBook.gethAuthors().add(hAuthor);
+        hBook.gethAuthors().add(hAuthor1);
+        hBook1.gethAuthors().add(hAuthor);
+        hBook1.gethAuthors().add(hAuthor1);
+
+        hAuthor.gethBooks().add(hBook);
+        hAuthor.gethBooks().add(hBook1);
+        hAuthor1.gethBooks().add(hBook);
+        hAuthor1.gethBooks().add(hBook1);
+
+        hBookDao.save(hBook);
+        hBookDao.save(hBook1);
+        hAuthorDao.save(hAuthor);
+        hAuthorDao.save(hAuthor1);
     }
 
     public List<HBook> list() {
