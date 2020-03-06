@@ -69,7 +69,7 @@ public class HBookService {
         hBook.setName("一对一关系映射");
 
         hBookInfo.sethBook(hBook);
-        hBook.sethAuthor(hBookInfo);
+        hBook.sethBookInfo(hBookInfo);
 
         hBookDao.save(hBook);
         authorDao.save(hBookInfo);

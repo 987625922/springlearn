@@ -23,7 +23,7 @@ public class HBook implements Serializable {
         return hBookInfo;
     }
 
-    public void sethAuthor(HBookInfo hBookInfo) {
+    public void sethBookInfo(HBookInfo hBookInfo) {
         this.hBookInfo = hBookInfo;
     }
 
