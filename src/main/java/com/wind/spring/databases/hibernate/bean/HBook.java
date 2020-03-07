@@ -58,4 +58,12 @@ public class HBook implements Serializable {
     public void sethAuthors(Set<HAuthor> hAuthors) {
         this.hAuthors = hAuthors;
     }
+
+    @Override
+    public String toString() {
+        return "HBook{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

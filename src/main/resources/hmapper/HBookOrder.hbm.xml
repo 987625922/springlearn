@@ -9,7 +9,10 @@
         </id>
         <property name="price" column="price"></property>
 
-        <!-- cascade 表示指定级联操作 -->
+        <!--
+        cascade 表示指定级联操作
+        级联是对一个对象进行操作的时候，与它相关联的对象也会一并进行响应的操作。
+        -->
         <many-to-one name="hBook" class="HBook" column="book_id" cascade="save-update"/>
     </class>
 </hibernate-mapping>

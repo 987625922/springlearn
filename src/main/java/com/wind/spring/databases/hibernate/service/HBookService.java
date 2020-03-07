@@ -8,6 +8,7 @@ import com.wind.spring.databases.hibernate.dao.HAuthorDao;
 import com.wind.spring.databases.hibernate.dao.HBookInfoDao;
 import com.wind.spring.databases.hibernate.dao.HBookDao;
 import com.wind.spring.databases.hibernate.dao.HBookOrderDao;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +34,11 @@ public class HBookService {
     }
 
     public void saveTransaction(HBook book) {
-        hBookDao.save(book);
+        hBookDao.saveTransaction(book);
         int i = 1/0;
         HBook book1 = new HBook();
         book1.setName("测试事务");
-        hBookDao.save(book1);
+        hBookDao.saveTransaction(book1);
     }
 
     public void saveBookAndOrderOneToMore(){
@@ -98,14 +99,43 @@ public class HBookService {
         hAuthor.gethBooks().add(hBook1);
         hAuthor1.gethBooks().add(hBook);
         hAuthor1.gethBooks().add(hBook1);
-
-        hBookDao.save(hBook);
-        hBookDao.save(hBook1);
+//
+//        hBookDao.save(hBook);
+//        hBookDao.save(hBook1);
         hAuthorDao.save(hAuthor);
         hAuthorDao.save(hAuthor1);
+    }
+
+    public void selectBookAndAuthorMoreToMore(){
+
     }
 
     public List<HBook> list() {
         return hBookDao.list();
     }
+
+
+    public HBook getAndLoad(long id){
+        return hBookDao.getAndLoad(id);
+    }
+
+    public List<HBook> listSQL(){
+        return hBookDao.listSQL();
+    }
+
+    public HBook firstLevelCache(long id){
+        HBook hBook = hBookDao.firstLevelCache(id);
+        hBook.setName("hibernate的一级缓存");
+        return hBook;
+    }
+
+    public HBook lazyLoad(long id){
+        HBook hBook = hBookDao.lazyLoad(id);
+        return hBook;
+    }
+
+    public HBook lazyMoreToMoreLoad(long id){
+        return hBookDao.lazyMoreToMoreLoad(id);
+    }
+
 }

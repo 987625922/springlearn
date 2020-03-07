@@ -39,59 +39,174 @@
 
      
 
-2. ## generator主键生成策略
+2. ## 核心配置
 
-   - identity:利用数据库的自增长能力，例如mysql的auto_increment
-- sequence:利用数据库的序列生成能力，例如oracle的sequence
-   - native：本地策略，由hibernate自动根据不同的数据选择最优策略
-- uuid：由hibernate自动生成32位16进制的无效字符串
-   - increment:由hibernate自动生成递进的数值（数据库最大id+1）
-- assigned：由开发者自己设置id
+   - 普通属性
    
-
+     ```
+     <hibernate-mapping> 
+                 package 用于配置PO类所在包
+                     例如： package="com.itheima.d_hbm"
+             <class> 配置 PO类 和 表 之间对应关系
+                 name：PO类全限定类名
+                     例如：name="com.itheima.d_hbm.Person"
+                     如果配置 package，name的取值可以是简单类名 name="Person"
+                 table : 数据库对应的表名
+                 dynamic-insert="false" 是否支持动态生成insert语句
+                 dynamic-update="false" 是否支持动态生成update语句
+                     如果设置true，hibernate底层将判断提供数据是否为null，如果为null，insert或update语句将没有此项。
+             普通字段
+                 <property>
+                     name : PO类的属性
+                     column : 表中的列名，默认name的值相同
+                     type:表中列的类型。默认hibernate自己通过getter获得类型，一般情况不用设置
+                         取值1： hibernate类型
+                             string 字符串
+                             integer 整形
+                         取值2： java类型 （全限定类名）
+                             java.lang.String 字符串
+                         取值3：数据库类型
+                             varchar(长度) 字符串
+                             int 整形
+                             <property name="birthday">
+                                  <column name="birthday" sql-type="datetime"></column>
+                              </property>
+                              javabean 一般使用类型 java.util.Date
+                              jdbc规范提供3中
+                                  java类型                mysql类型
+                                  java.sql.Date        date
+                                  java.sql.time        time
+                                  java.sql.timestamp    timestamp
+                                  null                datetime
+     
+                                  以上三个类型都是java.util.Date子类
+     
+                     length : 列的长度。默认值：255
+                     not-null : 是否为null
+                     unique : 是否唯一
+                     access：设置映射使用PO类属性或字段
+                         property : 使用PO类属性，必须提供setter、getter方法
+                         field : 使用PO类字段，一般很少使用。
+                     insert 生成insert语句时，是否使用当前字段。
+                     update 生成update语句时，是否使用当前字段。
+                         默认情况：hibernate生成insert或update语句，使用配置文件所有项
+             注意：配置文件如果使用关键字，列名必须使用重音符
+     ```
    
-3. ## Hibernate 注释
+   - 主键
+   
+     ```
+     <id>配置主键
+     name:属性名称
+     access="" 设置使用属性还是字段
+     column=""  表的列名
+     length=""  长度
+     type="" 类型
+     <generator> class属性用于设置主键生成策略
+     1.increment 由hibernate自己维护自动增长
+         底层通过先查询max值，再+1策略
+         不建议使用，存在线程并发问题
+     2.identity hibernate底层采用数据库本身自动增长列
+         例如：mysql auto_increment
+     3.sequence hibernate底层采用数据库序列
+         例如：oracle 提供序列
+     4.hilo 
+     
+         </generator>
+     5.native 根据底层数据库的能力选择 identity、sequence 或者 hilo 中的一个。【】
+     ##以上策略使用整形，long, short 或者 int 类型
+     6.uuid 采用字符串唯一值【】
+     ##以上策略 代理主键，有hibernate维护。
+     7.assigned 自然主键，由程序自己维护。【】
+     ```
 
-   - @NonNull : 注解在参数上, 如果该类参数为 null , 就会报出异常,  throw new NullPointException(参数名)
+3. ## Hibernate 一级缓存
 
-   - @Cleanup : 注释在引用变量前, 自动回收资源 默认调用 close() 方法
+   - #### 三种状态
 
-   - @Getter/@Setter : 注解在类上, 为类提供读写属性
+     - 瞬时态：transient，session没有缓存对象，数据库也没有对应记录。
+       OID特点：没有值
+     - 持久态：persistent，session缓存对象，数据库最终会有记录。（事务没有提交）
+       OID特点：有值
+     - 脱管态：detached，session没有缓存对象，数据库有记录。
+       OID特点：有值
+     - ![https://user-gold-cdn.xitu.io/2017/4/13/61ba9104130852790a6608803be72c0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1]()
 
-   - @Getter(lazy=true) :
+   - ### 一级缓存
 
-   - @ToString : 注解在类上, 为类提供 toString() 方法
+     一级缓存：又称为session级别的缓存。当获得一次会话（session），hibernate在session中创建多个集合（map），用于存放操作数据（PO对象），为程序优化服务，如果之后需要相应的数据，hibernate优先从session缓存中获取，如果有就使用；如果没有再查询数据库。当session关闭时，一级缓存销毁。
 
-   - @EqualsAndHashCode : 注解在类上, 为类提供 equals() 和 hashCode() 方法
+   - ### 快照
 
-   - @NoArgsConstructor, @RequiredArgsConstructor, @AllArgsConstructor : 注解在类上, 为类提供无参,有指定必须参数, 全参构造函数
+     与一级缓存一样的存放位置，对一级缓存数据备份。保证数据库的数据与 一级缓存的数据必须一致。如果一级缓存修改了，在执行commit提交时，将自动刷新一级缓存，执行update语句，将一级缓存的数据更新到数据库。
 
-   - 构造函数
-   - @AllArgsConstructor
-     会生成一个包含所有变量，同时如果变量使用了NotNull annotation ， 会进行是否为空的校验， 全部参数的构造函数的自动生成，该注解的作用域也是只有在实体类上，参数的顺序与属性定义的顺序一致。
+     当缓存和数据库数据不一样且在提交之前，可以调用 refresh 强制刷新缓存。
 
-   - @NoArgsConstructor
-     无参构造函数
-     @RequiredArgsConstructor
-     会生成一个包含常量（final），和标识了@NotNull的变量 的构造方法。
+   - ### 级联
 
-   - @Data : 注解在类上, 为类提供读写属性, 此外还提供了 equals()、hashCode()、toString() 方法
+     cascade 表示指定级联操作的类型。
 
-   - @Value :
+     - save-update : 增加或更新 A 时，自动增加或更新 B。
+     - delete : 删除 A 时，自动删除 B
+     - all : 上面两项效果叠加
+     - delete-orphan (孤儿删除) : 删除所有和当前对象解除关联关系的对象
+     - all-delete-orphan : all + delete-orphan 效果叠加
 
-   - @Builder : 注解在类上, 为类提供一个内部的 Builder
+   - 一级缓存的数据操作
 
-   - @SneakThrows :
+     - session.evict(Object)
+     - session.clear()  //清除session里面的一级缓存
 
-   - @Synchronized : 注解在方法上, 为方法提供同步锁
+4. ## 抓取策略
 
-   - @Log :
+   ### 检索方式
 
-   - @Log4j : 注解在类上, 为类提供一个属性名为 log 的 log4j 的日志对象
+   - 立即检索：立即查询，在执行查询语句时，立即查询所有的数据。
+   - 延迟检索：延迟查询，在执行查询语句之后，在需要时在查询。（懒加载）
 
-   - @Slf4j : 注解在类上, 为类提供一个属性名为 log 的 log4j 的日志对象
+   ### 检索策略
 
-4. ## Hibernate 映射类型
+   - 类级别检索：当前的类的属性获取是否需要延迟。
+   - 关联级别的检索：当前类 关联 另一个类是否需要延迟。
+
+   ### 类级别检索
+
+   - get：立即检索。get方法一执行，立即查询所有字段的数据。
+
+   - load：延迟检索。默认情况，load方法执行后，如果只使用OID的值不进行查询，如果要使用其他属性值将查询。可以配置是否延迟检索：
+
+     ```
+       <class  lazy="true | false">
+       lazy 默认值true，表示延迟检索，如果设置false表示立即检索。
+     ```
+
+   ### 关联级别检索
+
+   容器<set> 提供两个属性：fetch、lazy，用于控制关联检索。
+
+   - fetch：确定使用sql格式
+     - join：底层使用迫切左外连接
+     - select：使用多个select语句（默认值）
+     - subselect：使用子查询
+   - lazy：关联对象是否延迟。
+     - false：立即
+     - true：延迟（默认值）
+     - extra：极其懒惰，调用 size 时，sql 查询 count。（用于只需要获取个数的时候）
+
+   ### 批量查询
+
+   一次加载多行数据，用于减少 sql 语句数量
+   `<set batch-size="5">`
+
+   比如： 当客户关联查询订单时，默认给每一个客户生产一个select语句查询订单。开启批量查询后，使用in语句减少查询订单语句个数。
+
+   ```
+   默认：select * from t_order where customer_id = ?
+   批量：select * from t_order where customer_id in (?,?,?,?)
+   ```
+
+5. ## Hibernate 映射类型
+
 
 - 原始类型
 | 映射类型    | Java 类型                    | ANSI SQL 类型        |
@@ -137,36 +252,7 @@
 | locale   | java.util.Locale   | VARCHAR       |
 | timezone | java.util.TimeZone | VARCHAR       |
 | currency | java.util.Currency | VARCHAR       |
-4. ## Hibernate O/R 映射
 
-- 集合映射
-如果一个实例或者类中有特定变量的值的集合，那么我们可以应用 Java 中的任何的可用的接口来映射这些值。Hibernate 可以保存 **java.util.Map, java.util.Set, java.util.SortedMap, java.util.SortedSet, java.util.List** 和其它持续的实例或者值的任何**数组**的实例。
-
-| **集合类型**              | **映射和描述**                                               |
-| :------------------------ | :----------------------------------------------------------- |
-| **java.util.Set**         | 它和 \<set> 元素匹配并且用 java.util.HashSet 初始化。        |
-| **java.util.SortedSet**   | 它和 \<set> 元素匹配并且用 java.util.TreeSet 初始化。**sort** 属性可以设置成比较器或者自然排序。 |
-| **java.util.List**        | 它和 \<list> 元素匹配并且用 java.util.ArrayList 初始化。     |
-| **java.util.Collection**  | 它和 \<bag> 或者 \<ibag> 元素匹配以及用 java.util.ArrayList 初始化。 |
-| **java.util.Map**         | 它和 \<map> 元素匹配并且用 java.util.HashMap 初始化。        |
-| **java.util.SortedMap**") | 它和 \<map> 元素匹配并且用 java.util.TreeMap 初始化。**sort** 属性可以设置成比较器或者 自然排序。 |
-
-对于 Java 的原始数值 Hibernate 采用``支持数组，对于 Java 的其它数值 Hibernate 采用``支持数组。然而它们很少被应用，因此我也就不在本指导中讨论它们。
-
-如果你想要映射一个用户定义的集合接口而这个接口不是 Hibernate 直接支持的话，那么你需要告诉 Hibernate 你定义的这个集合的语法，这个很难操作而且不推荐使用。
-
-- 关联映射
-
-实体类之间的关联映射以及表之间的关系是 ORM 的灵魂之处。对象间的关系的子集可以用下列四种方式解释。关联映射可以是单向的也可以是双向的。
-
-| **映射类型**     | **描述**                      |
-| :--------------- | :---------------------------- |
-| **Many-to-One**  | 使用 Hibernate 映射多对一关系 |
-| **One-to-One**   | 使用 Hibernate 映射一对一关系 |
-| **One-to-Many**  | 使用 Hibernate 映射一对多关系 |
-| **Many-to-Many** | 使用 Hibernate 映射多对多关系 |
-
-5. 
 
 
 

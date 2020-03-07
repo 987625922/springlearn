@@ -1,5 +1,6 @@
 package com.wind.spring.databases.hibernate;
 
+import com.wind.spring.databases.hibernate.bean.HAuthor;
 import com.wind.spring.databases.hibernate.bean.HBook;
 import com.wind.spring.databases.hibernate.service.HBookService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -74,6 +76,87 @@ public class HibernateTest {
         service.saveBookAndAuthorMoreToMore();
     }
 
+    /**
+     * get和load的使用
+     */
+    @Test
+    public void getAndLoad() {
+        log.debug("hibernate中get和load的使用=》" + service.getAndLoad(1).toString());
+    }
+
+    /**
+     *   HQL
+     */
+/**
+ *   QBC
+ */
+
+
+    /**
+     * Hibernate SQL
+     */
+    @Test
+    public void sqlList() {
+        List<HBook> list = service.listSQL();
+        for (int i = 0; i < list.size(); i++) {
+            log.debug("hibernate SQL的使用   " + list.get(i).getName());
+        }
+    }
+
+    /**
+     * hibernate 的一级缓存
+     * <p>
+     * 当一个对象处于持久态时，修改其参数不需要update这个对象也可以
+     * 修改数据库，当事务提交了之后就会对比快照里面的这个对象是否修改了数据，然后修改数据库
+     */
+    @Test
+    public void firstLevelCache() {
+        service.firstLevelCache(1);
+    }
+
+    /**
+     * 类级别的延迟加载
+     * load
+     *
+     * @todo 无效，有空看看
+     */
+    @Test
+    public void lazyLoad() {
+        service.lazyLoad(1);
+    }
+
+    /**
+     * 关联级别的延迟加载（一对多：<set>）
+     * @todo 无效，有空看看
+     */
+    @Test
+    public void lazyMoreToMoreLoad() {
+        HBook hBook = service.lazyMoreToMoreLoad(1);
+        Set<HAuthor> set = hBook.gethAuthors();
+        for (HAuthor hAuthor : set) {
+            log.debug("关联级别的延迟加载 == " + hAuthor);
+        }
+    }
+
+    /**
+     *  抓取策略（使用下面两个策略，延迟加载就没用了）
+     *  默认<set fetch="select">
+     *
+     *  使用左外连接
+     * （一对多：<set fetch="join">）
+     *  使用子查询
+     * （一对多：<set fetch="subselect">）
+     *  先获取一方的数据，再通过一方数据的id把所有多方查询出来，当需要大量查询
+     *  关联数据时使用，只会出现2个SQL语句
+     */
+    @Test
+    public void test() {
+        HBook hBook = service.lazyMoreToMoreLoad(1);
+        Set<HAuthor> set = hBook.gethAuthors();
+        for (HAuthor hAuthor : set) {
+            log.debug("关联级别的延迟加载 == " + hAuthor);
+        }
+    }
 
     /**
      * 最基础的hibernate使用

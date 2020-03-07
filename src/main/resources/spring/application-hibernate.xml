@@ -35,7 +35,8 @@
             <tx:method name="get*" propagation="REQUIRED"/>
             <tx:method name="find*" propagation="REQUIRED"/>
             <tx:method name="do*" propagation="REQUIRED"/>
-            <tx:method name="*" propagation="REQUIRED" read-only="true"/>
+            <!--            read-only="true" -->
+            <tx:method name="*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
     <aop:config>
