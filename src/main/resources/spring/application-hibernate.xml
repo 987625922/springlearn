@@ -82,6 +82,9 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!--        开启hibernate的threadlocal-->
+                <prop key="current_session_context_class">thread</prop>
+
             </props>
         </property>
         <!-- hibernate mapping file hibernate映射文件加载-->
@@ -89,6 +92,15 @@
             <list>
                 <value>classpath:hmapper/*.hbm.xml</value>
             </list>
+        </property>
+        <!-- jpa注解的类       -->
+        <property name="annotatedClasses">
+        <list>
+            <value>com.wind.spring.databases.hibernate.bean.HJPAONE</value>
+            <value>com.wind.spring.databases.hibernate.bean.HJPAONE2</value>
+            <value>com.wind.spring.databases.hibernate.bean.HJPAMORE1</value>
+            <value>com.wind.spring.databases.hibernate.bean.HJPAMORE2</value>
+        </list>
         </property>
     </bean>
 

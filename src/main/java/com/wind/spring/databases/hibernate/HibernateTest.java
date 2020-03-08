@@ -159,6 +159,21 @@ public class HibernateTest {
     }
 
     /**
+     * 使用Threadload管理session
+     *
+     * 1) <!--        开启hibernate的threadlocal-->
+     *   <property name="current_session_context_class">thread</property>
+     *
+     * 2) sessionFactory.getCurrentSession()
+     *
+     * 在同一个进程将会使用同一个session
+     */
+    @Test
+    public void hibernateSession(){
+        service.hibernateSession(1);
+    }
+
+    /**
      * 最基础的hibernate使用
      * 搜索
      */

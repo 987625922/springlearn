@@ -8,12 +8,14 @@ import com.wind.spring.databases.hibernate.dao.HAuthorDao;
 import com.wind.spring.databases.hibernate.dao.HBookInfoDao;
 import com.wind.spring.databases.hibernate.dao.HBookDao;
 import com.wind.spring.databases.hibernate.dao.HBookOrderDao;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class HBookService {
 
@@ -136,6 +138,14 @@ public class HBookService {
 
     public HBook lazyMoreToMoreLoad(long id){
         return hBookDao.lazyMoreToMoreLoad(id);
+    }
+
+    public void hibernateSession(long id){
+        hBookDao.get(id);
+        log.debug("====");
+        hBookDao.get(id);
+        hBookDao.get(id);
+
     }
 
 }

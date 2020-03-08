@@ -20,12 +20,16 @@ public class HBookDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public Session getSession() {
+    private Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
     public void save(HBook book){
         getSession().save(book);
+    }
+
+    public HBook get(long id){
+        return getSession().get(HBook.class,id);
     }
 
     public void saveTransaction(HBook book){

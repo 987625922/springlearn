@@ -205,7 +205,11 @@
    批量：select * from t_order where customer_id in (?,?,?,?)
    ```
 
-5. ## Hibernate 映射类型
+5. ## JPA的使用
+
+   
+
+6. ## Hibernate 映射类型
 
 
 - 原始类型

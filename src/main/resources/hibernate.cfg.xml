@@ -30,5 +30,6 @@
         <property name="current_session_context_class">thread</property>
         <!-- 3. 加载所有映射-->
         <mapping resource="hmapper/Book.hbm.xml"/>
+        <mapping class="com.wind.spring.databases.hibernate.bean.HJPAONE"/>
     </session-factory>
 </hibernate-configuration>
