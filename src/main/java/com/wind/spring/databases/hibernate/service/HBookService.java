@@ -1,20 +1,23 @@
 package com.wind.spring.databases.hibernate.service;
 
 import com.wind.spring.databases.hibernate.bean.HAuthor;
-import com.wind.spring.databases.hibernate.bean.HBookInfo;
 import com.wind.spring.databases.hibernate.bean.HBook;
+import com.wind.spring.databases.hibernate.bean.HBookInfo;
 import com.wind.spring.databases.hibernate.bean.HBookOrder;
 import com.wind.spring.databases.hibernate.dao.HAuthorDao;
-import com.wind.spring.databases.hibernate.dao.HBookInfoDao;
 import com.wind.spring.databases.hibernate.dao.HBookDao;
+import com.wind.spring.databases.hibernate.dao.HBookInfoDao;
 import com.wind.spring.databases.hibernate.dao.HBookOrderDao;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
+@Transactional(propagation = Propagation.REQUIRED)
 @Slf4j
 @Service
 public class HBookService {
@@ -37,13 +40,13 @@ public class HBookService {
 
     public void saveTransaction(HBook book) {
         hBookDao.saveTransaction(book);
-        int i = 1/0;
+        int i = 1 / 0;
         HBook book1 = new HBook();
         book1.setName("测试事务");
         hBookDao.saveTransaction(book1);
     }
 
-    public void saveBookAndOrderOneToMore(){
+    public void saveBookAndOrderOneToMore() {
         HBook book = new HBook();
         book.setName("测试一对多关系映射");
 
@@ -64,7 +67,7 @@ public class HBookService {
 
     }
 
-    public void saveBookAndInfoOneToOne(){
+    public void saveBookAndInfoOneToOne() {
         HBookInfo hBookInfo = new HBookInfo();
         hBookInfo.setName("一对一关系映射");
 
@@ -79,7 +82,7 @@ public class HBookService {
     }
 
 
-    public void saveBookAndAuthorMoreToMore(){
+    public void saveBookAndAuthorMoreToMore() {
         HBook hBook = new HBook();
         hBook.setName("多对多映射1");
 
@@ -108,7 +111,7 @@ public class HBookService {
         hAuthorDao.save(hAuthor1);
     }
 
-    public void selectBookAndAuthorMoreToMore(){
+    public void selectBookAndAuthorMoreToMore() {
 
     }
 
@@ -117,35 +120,72 @@ public class HBookService {
     }
 
 
-    public HBook getAndLoad(long id){
+    public HBook getAndLoad(long id) {
         return hBookDao.getAndLoad(id);
     }
 
-    public List<HBook> listSQL(){
+    public List<HBook> listSQL() {
         return hBookDao.listSQL();
     }
 
-    public HBook firstLevelCache(long id){
+    public HBook firstLevelCache(long id) {
         HBook hBook = hBookDao.firstLevelCache(id);
         hBook.setName("hibernate的一级缓存");
         return hBook;
     }
 
-    public HBook lazyLoad(long id){
+    public HBook lazyLoad(long id) {
         HBook hBook = hBookDao.lazyLoad(id);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        log.debug(" ==> " + hBook.getName());
         return hBook;
     }
 
-    public HBook lazyMoreToMoreLoad(long id){
-        return hBookDao.lazyMoreToMoreLoad(id);
+    public HBook lazyMoreToMoreLoad(long id) {
+        HBook hBook = hBookDao.lazyMoreToMoreLoad(id);
+        Set<HAuthor> set = hBook.gethAuthors();
+        for (HAuthor hAuthor : set) {
+            log.debug("关联级别的延迟加载 == " + hAuthor);
+        }
+        return hBook;
     }
 
-    public void hibernateSession(long id){
+    public void hibernateSession(long id) {
         hBookDao.get(id);
         log.debug("====");
         hBookDao.get(id);
         hBookDao.get(id);
-
     }
 
-}
+    public List<HBook> hqlSelectAll() {
+        return hBookDao.hqlSelectAll();
+    }
+
+    public HBook hqlSelectConditionalQuery(long id) {
+        return hBookDao.hqlSelectConditionalQuery(id);
+    }
+
+    public List<HBook> hqlprojectionQuery() {
+        return hBookDao.hqlprojectionQuery();
+    }
+
+    public List<HBook> hqlSort() {
+        return hBookDao.hqlSort();
+    }
+
+    public List<HBook> hqlPagin() {
+        return hBookDao.hqlPagin();
+    }
+
+    public Long hqlAggregate() {
+        return hBookDao.hqlAggregate();
+    }
+
+    public List<Object[]> hqlJoinSelect() {
+        return hBookDao.hqlJoinSelect();
+    }
+    }

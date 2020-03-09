@@ -19,6 +19,13 @@ public class HBook implements Serializable {
 
     private Set<HAuthor> hAuthors = new HashSet<>();
 
+    public HBook() {
+    }
+
+    public HBook(Long id) {
+        this.id = id;
+    }
+
     public HBookInfo gethBookInfo() {
         return hBookInfo;
     }

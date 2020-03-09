@@ -34,7 +34,7 @@
             <one-to-many class="HBookOrder"></one-to-many>
         </set>
 
-        <set name="hAuthors" table="h_author_book" inverse="true">
+        <set name="hAuthors" table="h_author_book" inverse="true" lazy="false">
             <key column="b_id"></key>
             <many-to-many class="HAuthor" column="author_id" />
         </set>

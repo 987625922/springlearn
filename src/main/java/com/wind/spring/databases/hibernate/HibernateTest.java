@@ -2,6 +2,7 @@ package com.wind.spring.databases.hibernate;
 
 import com.wind.spring.databases.hibernate.bean.HAuthor;
 import com.wind.spring.databases.hibernate.bean.HBook;
+import com.wind.spring.databases.hibernate.bean.HBookOrder;
 import com.wind.spring.databases.hibernate.service.HBookService;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
@@ -85,11 +86,103 @@ public class HibernateTest {
     }
 
     /**
-     *   HQL
+     * HQL
+     * =======================================
      */
-/**
- *   QBC
- */
+    @Test
+    public void hqlSelectAll() {
+        List<HBook> list = service.hqlSelectAll();
+        for (HBook hBook : list) {
+            log.debug("hqlSelectAll ==> " + hBook.getName());
+        }
+        HBook hBook = list.get(0);
+        for (HAuthor hAuthor : hBook.gethAuthors()) {
+            log.debug("hqlSelectAll ==> " + hAuthor.getName());
+        }
+    }
+
+    /**
+     * 条件查询
+     */
+    @Test
+    public void hqlSelectConditionalQuery() {
+        HBook hBook = service.hqlSelectConditionalQuery(1);
+        log.debug("hqlSelectConditionalQuery ==> " + hBook.getName());
+    }
+
+    /**
+     * 投影查询
+     * // * 注意：HBook必须提供相应的构造方法。
+     * // * 如果投影使用id，结果脱管态对象。
+     */
+    @Test
+    public void hqlprojectionQuery() {
+        List<HBook> list = service.hqlprojectionQuery();
+        for (HBook hBook : list) {
+            log.debug("hqlprojectionQuery ==> " + hBook.getId());
+        }
+    }
+
+    /**
+     * 排序查询
+     */
+    @Test
+    public void hqlSort() {
+        List<HBook> list = service.hqlSort();
+        for (HBook hBook : list) {
+            log.debug("hqlSelectAll ==> " + hBook.getName());
+        }
+    }
+
+    /**
+     * 分页查询
+     */
+    @Test
+    public void hqlPagin() {
+        List<HBook> list = service.hqlPagin();
+        for (HBook hBook : list) {
+            log.debug("hqlSelectAll ==> " + hBook.getName());
+        }
+    }
+
+    /**
+     * 聚合函数和分组
+     */
+    @Test
+    public void hqlAggregate() {
+        long num = service.hqlAggregate();
+        log.debug("hqlAggregate ==> " + num);
+    }
+
+    /**
+     *连接查询
+     *
+     * //左外连接
+     * //    List list = session.createQuery("from Customer c left outer join c.orderSet ").list();
+     * //迫切左外链接 (默认数据重复)
+     * //    List list = session.createQuery("from Customer c left outer join fetch
+     * c.orderSet ").list();
+     * //迫切左外链接 (去重复)
+     * List list = session.createQuery("select distinct c from Customer c left outer join f
+     * etch c.orderSet ").list();
+     */
+    @Test
+    public void hqlJoinSelect() {
+        List<Object[]> list = service.hqlJoinSelect();
+        for(Object[] objects:list){
+            log.debug("hqlJoinSelect ==> "+objects.length);
+        }
+    }
+
+    /**
+     *   HQL
+     *   END =======================================
+     */
+
+    /**
+     *   QBC
+     */
+
 
 
     /**
@@ -117,37 +210,30 @@ public class HibernateTest {
     /**
      * 类级别的延迟加载
      * load
-     *
-     * @todo 无效，有空看看
      */
     @Test
     public void lazyLoad() {
-        service.lazyLoad(1);
+        HBook hBook = service.lazyLoad(1);
     }
 
     /**
      * 关联级别的延迟加载（一对多：<set>）
-     * @todo 无效，有空看看
      */
     @Test
     public void lazyMoreToMoreLoad() {
         HBook hBook = service.lazyMoreToMoreLoad(1);
-        Set<HAuthor> set = hBook.gethAuthors();
-        for (HAuthor hAuthor : set) {
-            log.debug("关联级别的延迟加载 == " + hAuthor);
-        }
     }
 
     /**
-     *  抓取策略（使用下面两个策略，延迟加载就没用了）
-     *  默认<set fetch="select">
-     *
-     *  使用左外连接
+     * 抓取策略（使用下面两个策略，延迟加载就没用了）
+     * 默认<set fetch="select">
+     * <p>
+     * 使用左外连接
      * （一对多：<set fetch="join">）
-     *  使用子查询
+     * 使用子查询
      * （一对多：<set fetch="subselect">）
-     *  先获取一方的数据，再通过一方数据的id把所有多方查询出来，当需要大量查询
-     *  关联数据时使用，只会出现2个SQL语句
+     * 先获取一方的数据，再通过一方数据的id把所有多方查询出来，当需要大量查询
+     * 关联数据时使用，只会出现2个SQL语句
      */
     @Test
     public void test() {
@@ -160,16 +246,16 @@ public class HibernateTest {
 
     /**
      * 使用Threadload管理session
-     *
+     * <p>
      * 1) <!--        开启hibernate的threadlocal-->
-     *   <property name="current_session_context_class">thread</property>
-     *
+     * <property name="current_session_context_class">thread</property>
+     * <p>
      * 2) sessionFactory.getCurrentSession()
-     *
+     * <p>
      * 在同一个进程将会使用同一个session
      */
     @Test
-    public void hibernateSession(){
+    public void hibernateSession() {
         service.hibernateSession(1);
     }
 

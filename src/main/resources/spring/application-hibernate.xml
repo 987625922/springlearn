@@ -21,29 +21,30 @@
     <bean id="txManager"
           class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"></property>
+
     </bean>
 
     <!-- 事务声明配置 -->
-    <tx:advice id="txAdvice" transaction-manager="txManager">
-        <tx:attributes>
-            <tx:method name="save*" propagation="REQUIRED"/>
-            <tx:method name="create*" propagation="REQUIRED"/>
-            <tx:method name="remove*" propagation="REQUIRED"/>
-            <tx:method name="del*" propagation="REQUIRED"/>
-            <tx:method name="update*" propagation="REQUIRED"/>
-            <tx:method name="modify*" propagation="REQUIRED"/>
-            <tx:method name="get*" propagation="REQUIRED"/>
-            <tx:method name="find*" propagation="REQUIRED"/>
-            <tx:method name="do*" propagation="REQUIRED"/>
-            <!--            read-only="true" -->
-            <tx:method name="*" propagation="REQUIRED"/>
-        </tx:attributes>
-    </tx:advice>
-    <aop:config>
-        <aop:pointcut expression="execution (* com.wind.spring.databases.hibernate
-        .service.*Service.*(..))" id="txPointcut"/>
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
-    </aop:config>
+    <!--<tx:advice id="txAdvice" transaction-manager="txManager">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="save*" propagation="REQUIRED"/>-->
+            <!--<tx:method name="create*" propagation="REQUIRED"/>-->
+            <!--<tx:method name="remove*" propagation="REQUIRED"/>-->
+            <!--<tx:method name="del*" propagation="REQUIRED"/>-->
+            <!--<tx:method name="update*" propagation="REQUIRED"/>-->
+            <!--<tx:method name="modify*" propagation="REQUIRED"/>-->
+            <!--<tx:method name="get*" propagation="REQUIRED"/>-->
+            <!--<tx:method name="find*" propagation="REQUIRED"/>-->
+            <!--<tx:method name="do*" propagation="REQUIRED"/>-->
+            <!--&lt;!&ndash;            read-only="true" &ndash;&gt;-->
+            <!--<tx:method name="*" propagation="REQUIRED"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+    <!--<aop:config>-->
+        <!--<aop:pointcut expression="execution (* com.wind.spring.databases.hibernate-->
+        <!--.service.*Service.*(..))" id="txPointcut"/>-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>-->
+    <!--</aop:config>-->
     <!-- 注解事务 -->
     <tx:annotation-driven transaction-manager="txManager"/>
     <!-- =============  spring事务配置 ================ -->
