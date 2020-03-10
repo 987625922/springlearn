@@ -205,13 +205,41 @@
    批量：select * from t_order where customer_id in (?,?,?,?)
    ```
 
-5. ## JPA的使用
+5.  事务
+隔离级别
+read uncommittd，读未提交。存在3个问题。
+read committed，读已提交。解决：脏读。存在2个问题。
+repeatable read ，可重复读。解决：脏读、不可重复读。存在1个问题。
+serializable，串行化。单事务。没有问题。
+hibernate 中配置
+<property name="hibernate.connection.isolation">4</property>
+对照上面的分别是 1 2 4 8，0表示没有事务级别
 
-   
+锁
+悲观锁
+采用数据库锁机制。丢失更新肯定会发生。
+
+读锁：共享锁。
+  select .... from  ... lock in share mode;
+写锁：排他锁。（独占）
+  select ... from  ....  for update
+Hibernate 中使用
+Customer customer = (Customer) session.get(Customer.class, 1 ,LockMode.UPGRADE);
+乐观锁
+在表中提供一个字段（版本字段），用于标识记录。如果版本不一致，不允许操作。丢失更新肯定不会发生
+
+Hibernate 中使用
+在PO对象（javabean）提供字段，表示版本字段。
+ ...
+ private Integer version;
+ ...
+在配置文件中增加 version
+ <class ...>
+     ...
+     <version name="version" />
+     ...
 
 6. ## Hibernate 映射类型
-
-
 - 原始类型
 | 映射类型    | Java 类型                    | ANSI SQL 类型        |
 | :---------- | :--------------------------- | :------------------- |
@@ -256,7 +284,3 @@
 | locale   | java.util.Locale   | VARCHAR       |
 | timezone | java.util.TimeZone | VARCHAR       |
 | currency | java.util.Currency | VARCHAR       |
-
-
-
-

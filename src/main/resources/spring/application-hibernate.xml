@@ -85,6 +85,8 @@
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <!--        开启hibernate的threadlocal-->
                 <prop key="current_session_context_class">thread</prop>
+                <!-- 事务 -->
+                <!--<prop key="hibernate.connection.isolation"></prop>-->
 
             </props>
         </property>
