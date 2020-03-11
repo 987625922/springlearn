@@ -27,7 +27,9 @@
             validate (生成环境时候) 执行验证： 当映射文件的内容与数据库表结构不一样的时候就报错！-->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <!--        开启hibernate的threadlocal-->
-        <property name="current_session_context_class">thread</property>
+        <!--<property name="current_session_context_class">thread</property>-->
+        <property name="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</property>
+
         <!-- 3. 加载所有映射-->
         <mapping resource="hmapper/Book.hbm.xml"/>
         <mapping class="com.wind.spring.databases.hibernate.bean.HJPAONE"/>

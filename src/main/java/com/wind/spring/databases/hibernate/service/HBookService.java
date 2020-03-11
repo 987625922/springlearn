@@ -155,10 +155,10 @@ public class HBookService {
     }
 
     public void hibernateSession(long id) {
-        hBookDao.get(id);
-        log.debug("====");
-        hBookDao.get(id);
-        hBookDao.get(id);
+        for (int i = 0; i < 30; i++) {
+            hBookDao.get(id);
+            log.debug("====");
+        }
     }
 
     public List<HBook> hqlSelectAll() {
