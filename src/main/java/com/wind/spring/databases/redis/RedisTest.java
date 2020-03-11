@@ -1,24 +1,28 @@
 package com.wind.spring.databases.redis;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-/**
- * redis的基本使用
- */
+@Slf4j
+@RunWith(SpringJUnit4ClassRunner.class)
+//指定配置文件路径
+@ContextConfiguration(locations = {"/spring/application-redis.xml"})
 public class RedisTest {
+    @Autowired
+    JedisCacheClient jedisCacheClient;
 
-    private static Logger logger = LoggerFactory.getLogger(RedisTest.class);
-
-    private static ApplicationContext context =
-            new ClassPathXmlApplicationContext("spring/application-redis.xml");
-
-    public static void main(String[] args) {
-        JedisCacheClient jedisCacheClient = (JedisCacheClient) context.getBean("jedisCacheClient");
+    /**
+     * redis set和get
+     */
+    @Test
+    public void test(){
         jedisCacheClient.set("sign", "value为redis测试数据，key为sign");
-        logger.debug(jedisCacheClient.get("sign"));
+        log.debug(jedisCacheClient.get("sign"));
+
     }
 
 
