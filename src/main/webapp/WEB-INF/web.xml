@@ -12,7 +12,7 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>
                 classpath:spring/spring-web.xml,
-                classpath:spring/spring-shiro-web.xml
+                classpath:spring/spring-web-shiro.xml
             </param-value>
         </init-param>
     </servlet>
