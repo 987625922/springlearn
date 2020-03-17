@@ -20,25 +20,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class JdbcTemplateTest {
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private BookTxDao bookTxDao;
 
     @Test
     public void test() {
-//        ApplicationContext ac = getApplication();
-//        //spring jdbc的使用
-//        BookTxDao bookTxDao = (BookTxDao) ac.getBean("bookTxDao");
-//
-//        //xml实现事务
-//        bookTxDao.update();
-        //注解方式实现事务
-//        bookTxDao.upTxdate();
 
-//        bookTxDao.select();
+        //xml实现事务
+        bookTxDao.update();
+        //注解方式实现事务
+        bookTxDao.upTxdate();
+
+        bookTxDao.select();
     }
 
-//    private static ApplicationContext getApplication() {
-//        ApplicationContext ac = new
-//                ClassPathXmlApplicationContext("spring/application-jdbc.xml");
-//        return ac;
-//    }
 }

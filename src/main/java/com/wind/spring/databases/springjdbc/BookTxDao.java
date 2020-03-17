@@ -4,7 +4,6 @@ import com.wind.spring.other.bean.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +33,7 @@ public class BookTxDao {
     public void upTxdate() {
         String sql = "insert into book(name,number) values('事务的测试','100')";
         jdbcTemplate.update(sql);
-        int i = 1/0; //抛出异常
+        int i = 1 / 0; //抛出异常
     }
 
     public void select() {
