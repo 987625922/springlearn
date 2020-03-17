@@ -1,66 +1,51 @@
 package com.wind.spring.databases.mybatis;
 
-import com.wind.spring.other.bean.Book;
 import com.wind.spring.databases.mybatis.dao.BookAnnotationDao;
 import com.wind.spring.databases.mybatis.dao.BookDao;
+import com.wind.spring.other.bean.Book;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
 /**
  * spring 配合mybatis的使用
  */
+@Slf4j
+@RunWith(SpringJUnit4ClassRunner.class)
+//指定配置文件路径
+@ContextConfiguration(locations = {"/spring/application-mybatis.xml"})
 public class BookDaoMain {
 
-    private static Logger logger = LoggerFactory.getLogger(BookDaoMain.class);
+    @Autowired
+    private BookDao bookDao;
 
-    private static ApplicationContext ac = getApplication();
-
-    private static BookDao bookDao;
-
-    private static BookAnnotationDao bookAnnotationDao;
-
-    public static void main(String args[]) {
-
-        queryAll();
-
-        queryAll2();
-    }
-
+    @Autowired
+    private BookAnnotationDao bookAnnotationDao;
 
     /**
      * 基于mybatis xml的使用的搜索输出
      */
-    public static void queryAll() {
-        bookDao = (BookDao) ac.getBean("bookDao");
+    @Test
+    public void queryAll() {
         List<Book> books = bookDao.queryAll(0, 4);
         for (Book book : books) {
-            logger.debug("基于sql的xml的Mybatis搜索全部课本输出：" + book.toString());
+            log.debug("基于sql的xml的Mybatis搜索全部课本输出：" + book.toString());
         }
     }
 
-
-    public static void queryAll2() {
-        bookAnnotationDao = (BookAnnotationDao) ac.getBean("bookAnnotationDao");
+    @Test
+    public void queryAll2() {
         List<Book> books = bookAnnotationDao.queryAll(0, 4);
         for (Book book : books) {
-            logger.debug("基于注解的Mybatis搜索全部课本输出：" + book.toString());
+            log.debug("基于注解的Mybatis搜索全部课本输出：" + book.toString());
         }
-    }
-
-
-    /**
-     * 获取spring的配置文件，生成spring的applicationContext
-     *
-     * @return ApplicationContext spring上下文
-     */
-    private static ApplicationContext getApplication() {
-        ApplicationContext ac = new
-                ClassPathXmlApplicationContext("spring/application-jdbc.xml");
-        return ac;
     }
 
 }

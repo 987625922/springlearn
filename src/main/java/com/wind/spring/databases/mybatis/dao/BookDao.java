@@ -2,6 +2,8 @@ package com.wind.spring.databases.mybatis.dao;
 
 import com.wind.spring.other.bean.Book;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
