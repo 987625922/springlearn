@@ -12,6 +12,8 @@ public class User {
 
     private String username;
 
+    private String password;
+
     private Date createTime;
 
     private String salt;
@@ -21,14 +23,6 @@ public class User {
      * 角色集合
      */
     private List<Role> roleList;
-
-    public List<Role> getRoleList() {
-        return roleList;
-    }
-
-    public void setRoleList(List<Role> roleList) {
-        this.roleList = roleList;
-    }
 
     public int getId() {
         return id;
@@ -46,6 +40,14 @@ public class User {
         this.username = username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -60,5 +62,13 @@ public class User {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
     }
 }

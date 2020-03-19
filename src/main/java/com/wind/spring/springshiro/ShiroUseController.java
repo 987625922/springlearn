@@ -22,8 +22,8 @@ public class ShiroUseController {
      * @return
      */
     @RequiresRoles(value = {"admin", "editer"}, logical = Logical.OR)
-    @RequestMapping("list")
-    public Object list() {
+    @RequestMapping("getlist")
+    public Object getlist1() {
         return null;
     }
 
@@ -34,8 +34,8 @@ public class ShiroUseController {
      * @return
      */
     @RequiresPermissions(value = {"admin:add", "editer:add"}, logical = Logical.OR)
-    @RequestMapping("list")
-    public Object list1() {
+    @RequestMapping("getlist1")
+    public Object getlist2() {
         return null;
     }
 }
