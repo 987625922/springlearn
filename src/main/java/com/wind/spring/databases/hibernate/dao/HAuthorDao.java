@@ -20,4 +20,8 @@ public class HAuthorDao {
         getSession().save(hAuthor);
     }
 
+    public HAuthor get(long id){
+        return getSession().get(HAuthor.class,id);
+    }
+
 }
