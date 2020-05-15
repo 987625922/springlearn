@@ -1,68 +1,43 @@
 1. ## Hibernate核心API
 
-```
-   <details>
-<summary>hibernate几个重要的类</summary>
-   - Configuration 类
-   启动hibernate程序，加载hibernate.cfg.xml配置文件
-   - SeesionFactory 接口
-   加载连接数据，扩展参数，映射信息，通过这些映射信息帮助我们创建Session
-   - Session 接口
-     操作数据库
-     常用方法：
-     ​	save() 保存对象
-     ​	update() 更新对象
-     ​	delete() 删除对象
-     ​	get() 查询对象
-   - Transaction 接口
-     begin() 开启事务
-     commit() 提交事务
-     rollback() 回滚事务
-   - Query 接口
-     执行HQL查询
-   - Criteria
-     执行基于对象的查询(QBC查询)
-     </details>
-```
- 
     - Configuration 类
         启动hibernate程序，加载hibernate.cfg.xml配置文件
-   
+      
       - SeesionFactory 接口
-   
+     
         加载连接数据，扩展参数，映射信息，通过这些映射信息帮助我们创建Session
-   
+     
       - Session 接口
-   
+     
         操作数据库
-   
+     
         常用方法：
-   
+     
         ​	save() 保存对象
-   
+     
         ​	update() 更新对象
-   
+     
         ​	delete() 删除对象
-   
+     
         ​	get() 查询对象
-   
+     
       - Transaction 接口
-   
+     
         begin() 开启事务
-   
+     
         commit() 提交事务
-   
+     
         rollback() 回滚事务
-   
+     
       - Query 接口
-   
+     
         执行HQL查询
-   
+     
       - Criteria
-   
+     
         执行基于对象的查询(QBC查询)
 
-   
+
 2. ## 核心配置
 
    - 普通属性
@@ -154,8 +129,7 @@
        OID特点：有值
      - 脱管态：detached，session没有缓存对象，数据库有记录。
        OID特点：有值
-     - ![https://user-gold-cdn.xitu.io/2017/4/13/61ba9104130852790a6608803be72c0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1]()
-
+     
    - ### 一级缓存
 
      一级缓存：又称为session级别的缓存。当获得一次会话（session），hibernate在session中创建多个集合（map），用于存放操作数据（PO对象），为程序优化服务，如果之后需要相应的数据，hibernate优先从session缓存中获取，如果有就使用；如果没有再查询数据库。当session关闭时，一级缓存销毁。
@@ -180,6 +154,8 @@
 
      - session.evict(Object)
      - session.clear()  //清除session里面的一级缓存
+
+   
 
 4. ## 抓取策略
 
@@ -229,42 +205,52 @@
    批量：select * from t_order where customer_id in (?,?,?,?)
    ```
 
-5.  事务
-隔离级别
-read uncommittd，读未提交。存在3个问题。
-read committed，读已提交。解决：脏读。存在2个问题。
-repeatable read ，可重复读。解决：脏读、不可重复读。存在1个问题。
-serializable，串行化。单事务。没有问题。
-hibernate 中配置
-<property name="hibernate.connection.isolation">4</property>
-对照上面的分别是 1 2 4 8，0表示没有事务级别
+5. 事务
+   ##### 隔离级别
 
-锁
-悲观锁
-采用数据库锁机制。丢失更新肯定会发生。
+   - read uncommittd，读未提交。存在3个问题。
 
-读锁：共享锁。
-  select .... from  ... lock in share mode;
-写锁：排他锁。（独占）
-  select ... from  ....  for update
-Hibernate 中使用
-Customer customer = (Customer) session.get(Customer.class, 1 ,LockMode.UPGRADE);
-乐观锁
-在表中提供一个字段（版本字段），用于标识记录。如果版本不一致，不允许操作。丢失更新肯定不会发生
+   - read committed，读已提交。解决：脏读。存在2个问题。
 
-Hibernate 中使用
-在PO对象（javabean）提供字段，表示版本字段。
- ...
- private Integer version;
- ...
-在配置文件中增加 version
- <class ...>
-     ...
-     <version name="version" />
-     ...
+   - repeatable read ，可重复读。解决：脏读、不可重复读。存在1个问题。
+
+   - serializable，串行化。单事务。没有问题。
+
+     ```
+     hibernate 中配置
+     <property name="hibernate.connection.isolation">4</property>
+     对照上面的分别是 1 2 4 8，0表示没有事务级别
+     ```
+
+- 锁
+
+  - 悲观锁
+    采用数据库锁机制。丢失更新肯定会发生。
+
+  - 读锁：共享锁。
+      select .... from  ... lock in share mode;
+
+  - 写锁：排他锁。（独占）
+
+    select ... from  ....  for update
+
+  - 乐观锁
+
+    在表中提供一个字段（版本字段），用于标识记录。如果版本不一致，不允许操作。丢失更新肯定不会发
+
+    ```
+    Hibernate 中使用
+    在PO对象（javabean）提供字段，表示版本字段。
+     private Integer version;
+    在配置文件中增加 version
+     <class ...>
+         <version name="version" />
+    ```
 
 6. ## Hibernate 映射类型
 - 原始类型
+
+  
 | 映射类型    | Java 类型                    | ANSI SQL 类型        |
 | :---------- | :--------------------------- | :------------------- |
 | integer     | int 或 java.lang.Integer     | INTEGER              |
