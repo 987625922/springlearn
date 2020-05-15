@@ -1,44 +1,28 @@
 1. ## Hibernate核心API
 
+   <details>
+<summary>hibernate几个重要的类</summary>
    - Configuration 类
-     启动hibernate程序，加载hibernate.cfg.xml配置文件
-
+   启动hibernate程序，加载hibernate.cfg.xml配置文件
    - SeesionFactory 接口
-
-     加载连接数据，扩展参数，映射信息，通过这些映射信息帮助我们创建Session
-
+   加载连接数据，扩展参数，映射信息，通过这些映射信息帮助我们创建Session
    - Session 接口
-
      操作数据库
-
      常用方法：
-
      ​	save() 保存对象
-
      ​	update() 更新对象
-
      ​	delete() 删除对象
-
      ​	get() 查询对象
-
    - Transaction 接口
-
      begin() 开启事务
-
      commit() 提交事务
-
      rollback() 回滚事务
-
    - Query 接口
-
      执行HQL查询
-
    - Criteria
-
      执行基于对象的查询(QBC查询)
-
-     
-
+     </details>
+   
 2. ## 核心配置
 
    - 普通属性

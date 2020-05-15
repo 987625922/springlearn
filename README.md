@@ -1,12 +1,20 @@
-# springlearn学习
+# 视频管理后台
 
-- ### [spring bean](<https://github.com/987625922/springlearn/blob/master/SpringBean.md>)
+## 前言
 
-- ### [SpringAOP](<https://github.com/987625922/springlearn/blob/master/SpringAOP.md>)
+> 对spring学习和积累的记录
 
-- ### [SpringDAO](<https://github.com/987625922/springlearn/blob/master/SpringDAO.md>)
+### 组织结构
 
-- ### [SpringMVC](<https://github.com/987625922/springlearn/blob/master/SpringMVC.md>)
+### 各个学习的笔记
 
-- ### [MySql](<https://github.com/987625922/springlearn/blob/master/MySql.md>)
-- ### [JAVA](<https://github.com/987625922/springlearn/blob/master/java.md>)
+
+
+| 学习模块                                                     | 介绍                      |
+| ------------------------------------------------------------ | ------------------------- |
+| [spring-hibernate](./src/main/java/com/wind/spring/databases/hibernate) | spring整合hibernate的基础 |
+|                                                              |                           |
+|                                                              |                           |
+
+
+
