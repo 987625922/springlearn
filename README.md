@@ -9,12 +9,8 @@
 ### 各个学习的笔记
 
 
-
 | 学习模块                                                     | 介绍                      |
 | ------------------------------------------------------------ | ------------------------- |
 | [spring-hibernate](./src/main/java/com/wind/spring/databases/hibernate) | spring整合hibernate的基础 |
-|                                                              |                           |
-|                                                              |                           |
-
 
 
