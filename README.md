@@ -12,5 +12,6 @@
 | 学习模块                                                     | 介绍                      |
 | ------------------------------------------------------------ | ------------------------- |
 | [spring-hibernate](./src/main/java/com/wind/spring/databases/hibernate) | spring整合hibernate的基础 |
+| [spring-cache](./src/main/java/com/wind/spring/springcache) |  spring-cache 的基础使用 |
 
 

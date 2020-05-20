@@ -33,8 +33,6 @@ public class CacheUseService {
     }
 
     @CacheEvict(value = "cacheUse", allEntries = true)
-    public void reload() {
-    }
-
+    public void reload() {}
 
 }
