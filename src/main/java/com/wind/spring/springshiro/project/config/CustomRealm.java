@@ -50,7 +50,6 @@ public class CustomRealm extends AuthorizingRealm{
                     stringPermissionList.add(p.getName());
                 }
             }
-
         }
 
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();

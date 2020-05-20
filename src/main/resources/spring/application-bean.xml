@@ -27,7 +27,7 @@
     <!-- lazy-init 默认为false 只对singleton有效，默认false，为true时，在类使用时bean才创建 -->
     <!-- init-method  在对象创建时，执行这个方法-->
     <!-- destroy-method 在对象销毁时，执行这个方法 -->
-    <!-- Scope默认是单例模式，即scope="singleton",另外scope还有prototype、request、session、global session作用域 -->
+    <!-- scope默认是单例模式，即scope="singleton",另外scope还有prototype、request、session、global session作用域 -->
     <bean id="userbean" class="com.wind.spring.other.bean.User"
           scope="singleton" init-method="init"
           destroy-method="myDestroy"

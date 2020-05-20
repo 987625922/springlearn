@@ -1,69 +1,8 @@
 ## 一.Bean装配的基础
-
-1.[什么是ioc](#是控制反转)
-
-2.[spring配置文件](#spring的配置)
-
-3.[导入spirng的配置文件](#导入spirng的配置文件)
-
-4.[bean 容器的初始化](#bean容器的初始化)
-
-5.[Spring的注入](#spring的注入)
-
-6.[Bean配置项]()
-
-7.[Bean的作用域]()
-
-8.[Bean的生命周期]()
-
-9.[Aware]()
-
-10.[bean的自动装配]()
-
-11.Resources
-
-## 二.Bean管理的注解实现
-
-1.Classpath扫描与组件管理
-
-2.类的自动检测及Bean的注册
-
-3.\<context:annotation-config/\>
-
-4.使用过滤器进行自定义扫描
-
-5.定义Bean
-
-6.作用域(Scope)
-
-7.@Required(注解bean的setter方法)
-
-8.@Autowired
-
-9.@Qualifier
-
-10.@Bean
-
-11.@ImportResource和@Value注解
-
-12.@Bean and @Scope
-
-13.基于泛型的自动装配
-
-14.CustomAutowireConfigurer
-
-15.Spring对JSR支持的说明
-
 **1.什么是ioc**
-
 ```
  ioc是控制反转，应用本身不负责依赖对象的创建和维护，而是由外部容器负责创建和维护。DI（依赖注入）是其一种实现方式。目的是创建对象并组装对象之间的关系
 ```
-
-   
-
-
-
 **2.spring的配置**
 
 ```
@@ -82,35 +21,13 @@
    <bean id="oninterface" class="com.test.ioc.OneInterface"></bean>
    </beans>
 ```
-
-   
-
 **3.导入spirng的配置文件**
-
 ```
    ApplicationContext ac = new
                    ClassPathXmlApplicationContext("spring/applicationContext.xml");
-   UserBean userBean = (UserBean) ac.getBean("userbean");
+   UserBean userBean = (UserBean) ac.getBean("userbean");   
 ```
-
-   
-
-**4.bean容器的初始化**
-
-   ​	基础包
-
-   ​		org.springframework.beans和org.springframework.context,其中BeanFactory提供了配置架构和基本功能，加载并初始化bean，ApplicationContext保存了bean对象。Classpath为相对路径就是相对工程来说的位置
-
-   ​	初始化
-
-```
-   FileSytemXmlApplicationContext context = new FileSystemXmlApplicationContext("F:/appcontext.xml");
-   ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring-context.xml")
-```
-
-   
-
-**5.spring的注入**
+**4.spring的注入**
 
    ​	spring的注入指的是在启动spring容器加载bean配置的时候，完成对变量的赋值行为（常见的注入有2种，设值注入和构造注入）
 
@@ -122,14 +39,21 @@
            <property name="book" ref="book"/>
            <!-- 构造器注入-->
            <constructor-arg name="beanName" value="这个是bean的名称" />
-       </bean>
+       </bean> 
 ```
 
-   
+**5.Bean的配置项**
 
-**6.Bean的配置项**
+常用的如下：
 
-   ​	常用的如下：Id（整个ioc容器中bean的唯一标识）,Class（具体要实例化的类）,Scope（范围，作用域）,Constructor arguments（构造器的参数，构造器注入中说到）,Properties（类的属性，设值注入中用到）,Autowiring mode（自动装配模式）,lazy-initialization mode（懒加载模式）,Initialization/destruction method（初始化和销毁的方法）
+- id（整个ioc容器中bean的唯一标识）
+- class（具体要实例化的类）
+- scope（范围，作用域）
+- constructor-arg（构造器的参数，构造器注入中说到）
+- properties（类的属性，设值注入中用到）
+- autowiring mode（自动装配模式）
+- lazy-initialization mode（懒加载模式）
+- Initialization/destruction method（初始化和销毁的方法）
 
    
 
@@ -157,7 +81,7 @@
    生命周期（定义（在xml文件中写上bean的class和id），初始化（导入applicationContext文件，并生成bean的实例），使用（调用bean容器的方法），销毁（bean容器停止的时候去销毁由当前这个bean容器创建的实例））
 
    bean的初始化：配置init-method
-     
+  
     
 
 ```
@@ -285,14 +209,13 @@
     
 
    **1.Classpath扫描与组件管理**
-     
+   
    spring3.0开始，spring提供了通过java注解的方式定义bean，大大简化了xml文件，例如：在java的类名头定义@Component,@Bean,@Import,@DependsOn
-     
+   
    @Component是一个通用注解，可用于任何bean
-     
+   
    @Repository,@Service,@Controller是更有针对性的注解
-     
-
+   
 - @Repository通常用于注解DAO类，即持久层
 
 - @Service通常用于注解service类，即服务层
@@ -302,11 +225,11 @@
   ​    
 
    **2.类的自动检测及Bean的注册**
-     
+  
    Spring可以自动检测类并注册Bean到ApplicationContext中,不需要在配置文件中写bean，直接在代码中getBean（"simpleMovieLister"）就可以获取到SimpleMovieLister的实例
-     
+  
    为了能够检测到这些类并注册相应的Bean(注解了@Component等等的类)，需要在xml文件中导入<context:component-scan base-package="com.wind.spring"/>，\<context:component-scan/\>包含\<context:annotation-config/\>,通常在使用前者后，不用再使用后者，AutowiredAnnotationBeanPostProcessor和CommonAnnotationBeanPostProcessor也会被包含进来
-    
+  
 
 ```
    <?xml version="1.0" encoding="UTF-8"?>
@@ -469,8 +392,7 @@ public interface MovieFinder {
 - @Autowired是由spring BeanPostProcessor处理的，所以不能在自己的BeanPostProcessor或BeanFactoryPostProcessor类型应用这些注解，这些类型必须通过XML合作Spring的@Bean注解加载
 
    **9.@Qualifier**
-     
-
+   
 - 按类型自动装配可能有多个bean实例的情况，可以使用spring的@Qualifier注解缩小范围（或指定唯一），也可以用于指定单独的构造器参数或方法参数
 
 - 可用于注解集合类型变量
