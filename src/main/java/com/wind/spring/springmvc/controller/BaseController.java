@@ -1,4 +1,4 @@
-package com.wind.spring.web.controller;
+package com.wind.spring.springmvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -85,7 +85,7 @@ public class BaseController {
 
     /**
      * 拦截器的使用
-     * 在spring-web.xml中配置了对/api/interceptor/* 这个链接下的拦截（拦截器为LoginInterceptor）
+     * 在spring-springmvc.xml中配置了对/api/interceptor/* 这个链接下的拦截（拦截器为LoginInterceptor）
      *
      * @return
      */

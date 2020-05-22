@@ -60,7 +60,7 @@ sherlon_log/
 #target/ssm/WEB-INF/classes/mybatis-config.xml
 #target/ssm/WEB-INF/classes/spring/
 #target/ssm/WEB-INF/jsp/
-#target/ssm/WEB-INF/web.xml
+#target/ssm/WEB-INF/springmvc.xml
 #target/ssm/index.jsp
 #target/classes/file/
 #target/classes/hmapper/
@@ -88,7 +88,7 @@ sherlon_log/
 #target/springlearn/WEB-INF/classes/spring/
 #target/springlearn/WEB-INF/jsp/
 #target/springlearn/WEB-INF/templates/
-#target/springlearn/WEB-INF/web.xml
+#target/springlearn/WEB-INF/springmvc.xml
 #target/ssm/WEB-INF/classes/com/
 #target/ssm/WEB-INF/classes/file/
 #target/ssm/WEB-INF/lib/

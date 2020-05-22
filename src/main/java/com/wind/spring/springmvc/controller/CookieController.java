@@ -1,4 +1,4 @@
-package com.wind.spring.web.controller;
+package com.wind.spring.springmvc.controller;
 
 import com.wind.spring.other.dto.JsonData;
 import org.springframework.web.bind.annotation.CookieValue;

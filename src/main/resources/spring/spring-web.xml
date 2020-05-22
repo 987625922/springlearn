@@ -8,9 +8,9 @@
     <!-- 声明 handlerMapping -->
     <!-- 声明 BeanNameURI 处理器映射，其为默认的处理器映射 -->
     <!--    <bean id="beanNameUrlHandlerMapping"-->
-    <!--          class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>-->
+    <!--          class="org.springframework.springmvc.servlet.handler.BeanNameUrlHandlerMapping"/>-->
 
-    <context:component-scan base-package="com.wind.spring.web"/>
+    <context:component-scan base-package="com.wind.spring.springmvc"/>
 
     <!--<mvc:annotation-driven /> 是一种简写形式，完全可以手动配置替代这种简写形式，
     简写形式可以让初学都快速应用默认配置方案。
@@ -23,13 +23,13 @@
         <!--<mvc:interceptor>-->
             <!--<mvc:mapping path="/api/interceptor/userinfo"/>-->
             <!--&lt;!&ndash;<mvc:mapping path="/api/interceptor/*"/>&ndash;&gt;-->
-            <!--<bean class="com.wind.spring.web.interceptor.LoginInterceptor"/>-->
+            <!--<bean class="com.wind.spring.springmvcingmvc.interceptor.LoginInterceptor"/>-->
         <!--</mvc:interceptor>-->
     <!--</mvc:interceptors>-->
 
     <!-- InternalResourceViewResolver视图解析器，这个视图解析器一般会用来解析JSP视图 -->
     <!--<bean id="viewResolver"-->
-    <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+    <!--class="org.springframework.springmvc.servlet.view.InternalResourceViewResolver">-->
     <!--<property name="prefix" value="/WEB-INF/jsp/"/>-->
     <!--<property name="suffix" value=".jsp"/>-->
     <!--</bean>-->

@@ -1,4 +1,4 @@
-package com.wind.spring.web.controller;
+package com.wind.spring.springmvc.controller;
 
 import com.wind.spring.other.bean.Book;
 import org.springframework.web.bind.annotation.*;

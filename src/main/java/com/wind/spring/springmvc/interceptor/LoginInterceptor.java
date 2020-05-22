@@ -1,4 +1,4 @@
-package com.wind.spring.web.interceptor;
+package com.wind.spring.springmvc.interceptor;
 
 import com.wind.spring.other.bean.User;
 import org.springframework.web.servlet.HandlerInterceptor;
