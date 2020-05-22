@@ -109,7 +109,7 @@
         <!--//必须设置securityManager-->
         <property name="securityManager" ref="securityManager"/>
         <!--//需要登录的接口，如果访问某个接口，需要登录却没登录，则调用此接口(如果不是前后端分离，则跳转页面)-->
-        <property name="loginUrl" value="/pub/need_login"/>
+        <property name="loginUrl" value="/api/pub/need_login"/>
         <!--//登录成功，跳转url，如果前后端分离，则没这个调用-->
         <property name="successUrl" value="/"/>
         <!--//没有权限，未授权就会调用此方法， 先验证登录-》再验证是否有权限-->
@@ -119,18 +119,16 @@
                 <!--//退出过滤器-->
                 /logout = logout
                 <!-- //匿名可以访问，也是就游客模式 -->
-                /pub/** = anon
-                /params/** = anon
+                /** = anon
                 <!-- //登录用户才可以访问 -->
-                /authc/** = authc
+                /api/authc/** = authc
                 <!-- //管理员角色才可以访问 -->
-                /admin/** = roles[admin]
+                /api/admin/** = roles[admin]
                 <!-- //有编辑权限才可以访问 -->
-                /video/update = perms[video_update]
+                /api/video/update = perms[video_update]
                 <!--//坑二: 过滤链是顺序执行，从上而下，一般讲/** 放到最下面-->
                 <!--//authc : url定义必须通过认证才可以访问-->
                 <!--//anon  : url可以匿名访问-->
-                /api/base/** = anon
             </value>
         </property>
     </bean>
