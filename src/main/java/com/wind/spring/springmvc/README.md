@@ -20,6 +20,7 @@
 2. <details>
    <summary> 配置 web.xml 文件，主要是配置 DispatcherServlet，即核心分发器</summary>
    <pre><code>
+   ```
    <?xml version="1.0" encoding="UTF-8"?>
    <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -57,7 +58,8 @@
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    </web-app>  
+    </web-app> 
+    ```
     </code></pre>
    </details>
 
