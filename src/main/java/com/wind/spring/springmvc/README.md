@@ -1,8 +1,7 @@
 ## Spring MVC
 1. <details>
    <summary>Spring MVC的jar包</summary>
-   <pre><code>
-<p>spring-aop-3.2.2.jar                        AOP</p>
+   <pre><code><p>spring-aop-3.2.2.jar                        AOP</p>
 <p>      spring-aspects-3.2.2.jar                    AOP</p>
 <p>      spring-beans-3.2.2.jar                      核心包</p>
 <p>      spring-context-3.2.2.jar                    扩展包</p>
