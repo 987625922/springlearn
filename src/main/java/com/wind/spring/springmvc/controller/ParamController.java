@@ -157,6 +157,23 @@ public class ParamController {
         return "post4 book: " + book;
     }
 
+
+    /**
+     * 1.http://localhost:8080/params/post4
+     * Content-Type: application/json
+     * 在raw中
+     * {
+     * 	"id":1
+     * }
+     *
+     * @param book
+     * @return
+     */
+    @PostMapping(path = "post5")
+    public String post5(@RequestBody Book book) {
+        return "post5 book: " + book;
+    }
+
     /** =========================== post ========================= */
 
 }

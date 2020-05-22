@@ -11,20 +11,12 @@ import javax.servlet.http.HttpServletResponse;
  * springmvc拦截器的使用
  *
  * @需要在spring的xml配置文件中写在<mvc:interceptors>，
- * 方法过于繁琐推荐使用继承WebMvcConfigurer类配置拦截器配置类的方式
  */
 public class LoginInterceptor implements HandlerInterceptor {
 
     /**
-     * 拦截器拦截的请求首先进入这个方法，处理完成时候会处理请求接口内部的方法
-     * 即2:interceptor===>search
-     *
-     * @param httpServletRequest
-     * @param httpServletResponse
-     * @param o
-     * @return
-     * @throws Exception
-     */
+     * 最先进入
+     * 拦截器拦截的请求首先进入这个方法，处理完成时候会处理请求接口内部的方法*/
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest,
                              HttpServletResponse httpServletResponse, Object o)
@@ -39,31 +31,14 @@ public class LoginInterceptor implements HandlerInterceptor {
     }
 
 
-    /**
-     * 在请求的方法完成之后会执行，即2:interceptor===>search
-     *
-     * @param httpServletRequest
-     * @param httpServletResponse
-     * @param o
-     * @param modelAndView
-     * @throws Exception
-     */
+    /*** 在请求的接口方法完成之后会执行，即2:interceptor===>search*/
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o,
                            ModelAndView modelAndView) throws Exception {
         System.out.println("3:interceptor===>postHandle");
 
     }
-
-    /**
-     * 拦截器最后执行
-     *
-     * @param httpServletRequest
-     * @param httpServletResponse
-     * @param o
-     * @param e
-     * @throws Exception
-     */
+    /*** 拦截器最后执行*/
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
                                 Object o, Exception e) throws Exception {
