@@ -1,9 +1,5 @@
 package com.wind.spring.springshiro.project.config;
 
-import com.wind.spring.springshiro.project.domain.Permission;
-import com.wind.spring.springshiro.project.domain.Role;
-import com.wind.spring.springshiro.project.domain.User;
-import com.wind.spring.springshiro.project.service.UserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -12,78 +8,80 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
-public class CustomRealm extends AuthorizingRealm{
-
-    @Autowired
-    private UserService userService;
-
-    /**
-     * 进行权限校验的时候回调用
-     *
-     * @param principals
-     * @return
-     */
+public class CustomRealm extends AuthorizingRealm {
+    //进行权限校验的时候会调用
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        System.out.println("授权 doGetAuthorizationInfo");
-        String username = (String) principals.getPrimaryPrincipal();
-        User user = userService.findAllUserInfoByUsername(username);
-
-        List<String> stringRoleList = new ArrayList<>();
-        List<String> stringPermissionList = new ArrayList<>();
-
-
-        List<Role> roleList = user.getRoleList();
-
-        for (Role role : roleList) {
-            stringRoleList.add(role.getName());
-
-            List<Permission> permissionList = role.getPermissionList();
-
-            for (Permission p : permissionList) {
-                if (p != null) {
-                    stringPermissionList.add(p.getName());
-                }
-            }
-        }
-
+        System.out.println("权限 doGetAuthorizationInfo");
+        String name = (String) principals.getPrimaryPrincipal();
+        Set<String> permissions = getPermissionsByNameFromDB(name);
+        Set<String> roles = getRolesByNameFromDB(name);
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-        simpleAuthorizationInfo.addRoles(stringRoleList);
-        simpleAuthorizationInfo.addStringPermissions(stringPermissionList);
-
+        simpleAuthorizationInfo.setRoles(roles);
+        simpleAuthorizationInfo.setStringPermissions(permissions);
         return simpleAuthorizationInfo;
     }
-
-
-    /**
-     * 用户登录的时候会调用
-     *
-     * @param token
-     * @return
-     * @throws AuthenticationException
-     */
+    //当用户登陆的时候会调用
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-
         System.out.println("认证 doGetAuthenticationInfo");
-
-        //从token获取用户信息，token代表用户输入
-        String username = (String) token.getPrincipal();
-
-        User user = userService.findAllUserInfoByUsername(username);
-
-        //取密码
-        String pwd = user.getPassword();
+        //从token获取身份信息，token代表用户输入的信息
+        String name = (String) token.getPrincipal();
+        //模拟从数据库中取密码
+        String pwd = getPwdByUserNameFromDB(name);
         if (pwd == null || "".equals(pwd)) {
             return null;
         }
-
-        return new SimpleAuthenticationInfo(username, user.getPassword(), this.getClass().getName());
+        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(name, pwd, this.getName());
+        return simpleAuthenticationInfo;
     }
 
+    private final Map<String, String> userInfoMap = new HashMap<>();{
+        userInfoMap.put("jack", "123");
+        userInfoMap.put("xdclass", "456");
+    }
+
+    //role -> permission
+    private final Map<String, Set<String>> permissionMap = new HashMap<>();{
+        Set<String> set1 = new HashSet<>();
+        Set<String> set2 = new HashSet<>();
+        set1.add("video:find");
+        set1.add("video:buy");
+        set2.add("video:add");
+        set2.add("video:delete");
+        permissionMap.put("jack", set1);
+        permissionMap.put("xdclass", set2);
+    }
+
+    //user - role
+    private final Map<String, Set<String>> roleMap = new HashMap<>();{
+        Set<String> set1 = new HashSet<>();
+        Set<String> set2 = new HashSet<>();
+        set1.add("role1");
+        set1.add("role2");
+        set2.add("root");
+        roleMap.put("jack", set1);
+        roleMap.put("xdclass", set2);
+    }
+    /**
+     * 模拟从数据库获取用户角色集合
+     */
+    private Set<String> getRolesByNameFromDB(String name) {
+        return roleMap.get(name);
+    }
+    /**
+     * 模拟从数据库获取权限集合
+     */
+    private Set<String> getPermissionsByNameFromDB(String name) {
+        return permissionMap.get(name);
+    }
+    private String getPwdByUserNameFromDB(String name) {
+        return userInfoMap.get(name);
+    }
 }
