@@ -190,7 +190,32 @@
 
 6. 过滤器(Filter)
 
+   <details>
+<summary>过滤器接口Filter的使用</summary><pre><code>
+   	   @Slf4j
+       public class LearnFilter implements Filter {
+       	@Override
+       	public void init(FilterConfig filterConfig) throws ServletException {
+           	log.info("======>> filter init()");
+       	}
+       	@Override
+       	public void doFilter(ServletRequest request, ServletResponse response, FilterChain 		chain) throws IOException, ServletException {
+           	log.info("======>> filter doFilter()");
+       	}
+       	@Override
+       	public void destroy() {
+           	log.info("======>> filter destroy()");
+       	}	
+       	}
+       </code></pre>
+       </details>
+   - 1.二者适用范围不同。Filter是Servlet规范规定的，只能用于Web程序中，而拦截器既可以用于Web程序，也可以用于Application、Swing程序中。
    
-
+   - 2.规范不同。Filter是在Servlet规范定义的，是Servlet容器支持的，而拦截器是在Spring容器内的，是Spring框架支持的。
+   
+   - 3.使用的资源不同。同其他代码块一样，拦截器也是一个Spring的组件，归Spring管理，配置在Spring文件中，因此能使用Spring里的任何资源、对象(各种bean)，而Filter不行。
+   
+   - 4.深度不同。Filter只在Servlet前后起作用，而拦截器能够深入到方法前后、异常跑出前后等，拦截器的使用有更大的弹性。
+   
    
 
