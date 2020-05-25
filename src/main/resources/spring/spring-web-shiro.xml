@@ -55,7 +55,7 @@
                 <!-- //登录用户才可以访问 -->
 <!--                /api/authc/** = authc-->
                 <!-- //管理员角色才可以访问 -->
-<!--                /api/admin/** = roles[admin]-->
+                /api/shiro/admin = roles[admin]
                 <!-- //有编辑权限才可以访问 -->
 <!--                /api/video/update = perms[video_update]-->
                 <!--//坑二: 过滤链是顺序执行，从上而下，一般讲/** 放到最下面-->

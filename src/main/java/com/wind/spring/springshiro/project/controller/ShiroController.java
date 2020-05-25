@@ -1,5 +1,6 @@
 package com.wind.spring.springshiro.project.controller;
 
+import com.wind.spring.other.bean.User;
 import com.wind.spring.other.dto.JsonData;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -42,4 +43,11 @@ public class ShiroController {
         return null;
     }
 
+
+    @RequestMapping("/admin")
+    public Object adminUserTest() {
+        User user = new User();
+        user.setBeanName("只有admin身份有权限请求的接口");
+        return user;
+    }
 }
