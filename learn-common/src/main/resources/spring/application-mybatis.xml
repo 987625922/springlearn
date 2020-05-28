@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd"
+>
+    <context:component-scan base-package="com.wind.spring.databases.mybatis"/>
+
+    <!-- jdbc配置  -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!-- 配置c3p0数据库连接池 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!-- c3p0连接池的私有属性 -->
+        <property name="maxPoolSize" value="30"/>
+        <property name="minPoolSize" value="10"/>
+        <!-- 关闭连接后不自动commit -->
+        <property name="autoCommitOnClose" value="false"/>
+        <!-- 获取连接超时时间 -->
+        <property name="checkoutTimeout" value="10000"/>
+        <!-- 当获取连接失败重试次数 -->
+        <property name="acquireRetryAttempts" value="2"/>
+    </bean>
+
+    <!-- =========== mybatis =============== -->
+    <!-- 1.配置SqlSessionFactory对象（把连接池对象导入到mybatis中） -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 配置MyBaties全局配置文件:mybatis-config.xml -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!-- 扫描entity包 使用别名 -->
+        <property name="typeAliasesPackage" value="org.learn.common.bean"/>
+        <!-- 扫描sql配置文件:mapper需要的xml文件 -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+    </bean>
+
+    <!-- 2.配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 注入sqlSessionFactory -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!-- 给出需要扫描Dao接口包 -->
+        <property name="basePackage" value="com.wind.spring.databases.mybatis.dao"/>
+    </bean>
+    <!-- =========== mybatis =============== -->
+
+    <!-- =============  spring事务配置 ================ -->
+    <!--1.配置事务的管理器类-->
+    <bean id="txManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--引用数据库连接池-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 注解事务的使用（推荐使用，上面的xml事务更加灵活，按照需求使用） -->
+    <!-- 开启以注解的方式实现事务控制 -->
+    <tx:annotation-driven transaction-manager="txManage"/>
+    <!-- =============  spring事务配置 ================ -->
+
+
+    <!--&lt;!&ndash; xml事务的使用 &ndash;&gt;-->
+    <!--&lt;!&ndash; 第二步：配置事务增强 &ndash;&gt;-->
+    <!--<tx:advice id="txadvice" transaction-manager="txManage">-->
+    <!--&lt;!&ndash; 做事务操作 &ndash;&gt;-->
+    <!--<tx:attributes>-->
+    <!--&lt;!&ndash; 设置进行事务操作的方法匹配规则 &ndash;&gt;-->
+    <!--&lt;!&ndash; account开头的所有方法 &ndash;&gt;-->
+    <!--&lt;!&ndash;-->
+    <!--propagation:事务传播行为；-->
+    <!--isolation：事务隔离级别；-->
+    <!--read-only：是否只读；-->
+    <!--rollback-for：发生那些异常时回滚-->
+    <!--timeout:事务过期时间-->
+    <!--&ndash;&gt;-->
+    <!--<tx:method name="account*" propagation="REQUIRED"-->
+    <!--isolation="DEFAULT" read-only="false" rollback-for="" timeout="-1"/>-->
+    <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+
+    <!--&lt;!&ndash; 第三步：配置切面 切面即把增强用在方法的过程 &ndash;&gt;-->
+    <!--<aop:config>-->
+    <!--&lt;!&ndash; 切入点 &ndash;&gt;-->
+    <!--<aop:pointcut expression="execution(* com.wind.spring.databases.springjdbc.*.*(..))"-->
+    <!--id="aoppoint"/>-->
+    <!--&lt;!&ndash; 切面 &ndash;&gt;-->
+    <!--<aop:advisor advice-ref="txadvice" pointcut-ref="aoppoint"/>-->
+    <!--</aop:config>-->
+    <!--&lt;!&ndash; xml事务的使用 &ndash;&gt;-->
+</beans>

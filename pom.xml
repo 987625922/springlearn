@@ -1,18 +1,38 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.wind.springlearn</groupId>
     <artifactId>springlearn</artifactId>
-    <packaging>war</packaging>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>springlearn</name>
+    <packaging>pom</packaging>
+    <version>2.0</version>
+
+    <modules>
+        <module>learn-common</module>
+        <module>learn-aop</module>
+        <module>learn-other</module>
+        <module>learn-hibernate</module>
+        <module>learn-dao</module>
+        <module>learn-redis</module>
+        <module>learn-mybatis</module>
+        <module>learn-spring-bean</module>
+        <module>learn-cache</module>
+        <module>learn-spring-cache</module>
+        <module>spring-mvc</module>
+        <module>learn-spring-web</module>
+        <module>learn-shiro</module>
+    </modules>
+
+    <name>spring的学习</name>
     <url>https://github.com/987625922/springlearn</url>
+
     <properties>
         <spring.version>5.2.2.RELEASE</spring.version>
         <kotlin.version>1.3.50</kotlin.version>
         <shiro.version>1.4.0</shiro.version>
         <hibernate.version>5.4.12.Final</hibernate.version>
     </properties>
+
     <dependencies>
         <!--              spring                   -->
         <!--              spring                   -->
@@ -148,6 +168,7 @@
             <artifactId>lombok</artifactId>
             <version>1.18.6</version>
         </dependency>
+
         <!-- 单元测试 -->
         <dependency>
             <groupId>junit</groupId>
@@ -234,29 +255,29 @@
         <finalName>springlearn</finalName>
         <plugins>
             <!-- jetty插件 -->
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.25</version>
-                <configuration>
-                    <connectors>
-                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>8001</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                    </connectors>
-                    <contextPath>/bbs</contextPath>
-                    <scanIntervalSeconds>0</scanIntervalSeconds>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+            <!--<groupId>org.mortbay.jetty</groupId>-->
+            <!--<artifactId>maven-jetty-plugin</artifactId>-->
+            <!--<version>6.1.25</version>-->
+            <!--<configuration>-->
+            <!--<connectors>-->
+            <!--<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">-->
+            <!--<port>8001</port>-->
+            <!--<maxIdleTime>60000</maxIdleTime>-->
+            <!--</connector>-->
+            <!--</connectors>-->
+            <!--<contextPath>/bbs</contextPath>-->
+            <!--<scanIntervalSeconds>0</scanIntervalSeconds>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
 
+            <!-- 打包时跳过测试 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.17</version>
                 <configuration>
-                    <parallel>methods</parallel>
-                    <threadCount>10</threadCount>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
             <plugin>
@@ -285,4 +306,30 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
 </project>
