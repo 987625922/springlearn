@@ -13,11 +13,19 @@
     <name>其他功能学习的模块</name>
 
     <dependencies>
+
         <dependency>
             <groupId>com.wind.springlearn</groupId>
-            <artifactId>springlearn</artifactId>
+            <artifactId>learn-common</artifactId>
             <version>2.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.wind.springlearn</groupId>
+            <artifactId>learn-log</artifactId>
+            <version>2.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>

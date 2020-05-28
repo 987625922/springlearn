@@ -12,7 +12,7 @@
     http://www.springframework.org/schema/aop
     http://www.springframework.org/schema/aop/spring-aop.xsd"
 >
-    <context:component-scan base-package="com.wind.spring.databases.mybatis"/>
+    <context:component-scan base-package="org.learn.mybatis"/>
 
     <!-- jdbc配置  -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
@@ -65,7 +65,6 @@
     <!-- 开启以注解的方式实现事务控制 -->
     <tx:annotation-driven transaction-manager="txManage"/>
     <!-- =============  spring事务配置 ================ -->
-
 
     <!--&lt;!&ndash; xml事务的使用 &ndash;&gt;-->
     <!--&lt;!&ndash; 第二步：配置事务增强 &ndash;&gt;-->

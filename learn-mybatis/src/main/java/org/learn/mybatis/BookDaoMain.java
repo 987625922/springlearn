@@ -1,11 +1,11 @@
 package org.learn.mybatis;
 
-import com.wind.spring.databases.mybatis.dao.BookAnnotationDao;
-import com.wind.spring.databases.mybatis.dao.BookDao;
 import org.learn.common.bean.Book;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.learn.mybatis.dao.BookAnnotationDao;
+import org.learn.mybatis.dao.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 //指定配置文件路径
-@ContextConfiguration(locations = {"/spring/application-mybatis.xml"})
+@ContextConfiguration(locations = {"/application-mybatis.xml"})
 public class BookDaoMain {
 
     @Autowired
