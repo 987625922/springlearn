@@ -1,14 +1,14 @@
 package org.learn.hibernate.service;
 
-import com.wind.spring.databases.hibernate.bean.HAuthor;
-import com.wind.spring.databases.hibernate.bean.HBook;
-import com.wind.spring.databases.hibernate.bean.HBookInfo;
-import com.wind.spring.databases.hibernate.bean.HBookOrder;
-import com.wind.spring.databases.hibernate.dao.HAuthorDao;
-import com.wind.spring.databases.hibernate.dao.HBookDao;
-import com.wind.spring.databases.hibernate.dao.HBookInfoDao;
-import com.wind.spring.databases.hibernate.dao.HBookOrderDao;
 import lombok.extern.slf4j.Slf4j;
+import org.learn.hibernate.bean.HAuthor;
+import org.learn.hibernate.bean.HBook;
+import org.learn.hibernate.bean.HBookInfo;
+import org.learn.hibernate.bean.HBookOrder;
+import org.learn.hibernate.dao.HAuthorDao;
+import org.learn.hibernate.dao.HBookDao;
+import org.learn.hibernate.dao.HBookInfoDao;
+import org.learn.hibernate.dao.HBookOrderDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -188,4 +188,4 @@ public class HBookService {
     public List<Object[]> hqlJoinSelect() {
         return hBookDao.hqlJoinSelect();
     }
-    }
+}

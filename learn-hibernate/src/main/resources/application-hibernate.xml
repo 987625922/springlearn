@@ -12,7 +12,7 @@
     http://www.springframework.org/schema/aop
     http://www.springframework.org/schema/aop/spring-aop.xsd"
 >
-    <context:component-scan base-package="com.wind.spring.databases.hibernate"/>
+    <context:component-scan base-package="org.learn.hibernate"/>
 
 
     <!-- =============  spring事务配置 ================ -->
@@ -99,10 +99,10 @@
         <!-- jpa注解的类       -->
         <property name="annotatedClasses">
         <list>
-            <value>com.wind.spring.databases.hibernate.bean.HJPAONE</value>
-            <value>com.wind.spring.databases.hibernate.bean.HJPAONE2</value>
-            <value>com.wind.spring.databases.hibernate.bean.HJPAMORE1</value>
-            <value>com.wind.spring.databases.hibernate.bean.HJPAMORE2</value>
+            <value>org.learn.hibernate.bean.HJPAONE</value>
+            <value>org.learn.hibernate.bean.HJPAONE2</value>
+            <value>org.learn.hibernate.bean.HJPAMORE1</value>
+            <value>org.learn.hibernate.bean.HJPAMORE2</value>
         </list>
         </property>
     </bean>

@@ -1,9 +1,8 @@
 package org.learn.hibernate.dao;
 
-import com.wind.spring.databases.hibernate.bean.HBook;
-import com.wind.spring.databases.hibernate.bean.HBookOrder;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.learn.hibernate.bean.HBookOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

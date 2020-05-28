@@ -1,15 +1,16 @@
 package org.learn.hibernate.dao;
 
-import com.wind.spring.databases.hibernate.bean.HBook;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
+import org.learn.hibernate.bean.HBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 
 @Slf4j
 @Repository

@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>springlearn</artifactId>
         <groupId>com.wind.springlearn</groupId>
         <version>2.0</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>learn-common</artifactId>
-    <name>公共模块</name>
+    <artifactId>learn-log</artifactId>
 
     <dependencies>
-
-
-        <!-- 工具 -->
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.6</version>
-        </dependency>
         <!-- 日志 -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -38,6 +30,13 @@
             <artifactId>jcl-over-slf4j</artifactId>
             <version>1.7.29</version>
         </dependency>
+        <!-- lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.6</version>
+        </dependency>
 
     </dependencies>
+
 </project>

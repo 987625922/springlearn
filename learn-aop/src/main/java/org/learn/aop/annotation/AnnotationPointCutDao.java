@@ -1,8 +1,6 @@
 package org.learn.aop.annotation;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 
@@ -10,15 +8,15 @@ import org.springframework.stereotype.Repository;
  * 基于注解的aop的目标类
  */
 @Repository
+@Slf4j
 public class AnnotationPointCutDao {
 
-    private Logger logger = LoggerFactory.getLogger(AnnotationPointCutDao.class);
 
     /**
      * 基于注解的aop的目标方法
      */
     public void save() {
-        logger.debug("基于注解的aop使用");
+        log.info("基于注解的aop使用");
     }
 
 }

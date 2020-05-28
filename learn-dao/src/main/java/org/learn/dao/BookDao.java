@@ -11,9 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-//Spring 事务的使用
+/**
+ * Spring 事务的使用
+ */
 @Repository
-public class BookTxDao {
+public class BookDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -30,13 +32,13 @@ public class BookTxDao {
 
     //使用注解的方式实现事务
     @Transactional
-    public void upTxdate() {
+    public void upTransactionaldate() {
         String sql = "insert into book(name,number) values('事务的测试','100')";
         jdbcTemplate.update(sql);
         int i = 1 / 0; //抛出异常
     }
 
-    public void select() {
+    public List<Book> select() {
         String sql = "select * from book";
         List<Book> books = jdbcTemplate.query(sql, new RowMapper<Book>() {
             @Override
@@ -48,7 +50,6 @@ public class BookTxDao {
                 return book;
             }
         });
-
-        System.out.println(books);
+        return books;
     }
 }

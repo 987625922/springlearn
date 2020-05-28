@@ -1,26 +1,29 @@
 package org.learn.aop.annotation;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 
+/**
+ * 如果切点目标的类没有接口就会使用cglib来做aop
+ * 如果有接口就使用jdk来做aop
+ */
 @Component
 @Aspect//切面
+@Slf4j
 public class AnnotationAOP {
 
-    private Logger logger = LoggerFactory.getLogger(AnnotationPointCutDao.class);
 
     /**
      * 定义一个公共的切入点，供下面的切面方法使用
      * 相当于配置文件中的<aop:pointcut />
      */
-    @Pointcut("execution(* com.wind.spring.springaop.annotation.*Dao.*(..))")
+    @Pointcut("execution(* org.learn.aop.annotation.*Dao.*(..))")
     public void aspect() {
     }
 
@@ -31,7 +34,7 @@ public class AnnotationAOP {
      */
     @Before("aspect()")
     public void aopBefore(JoinPoint joinPoint) {
-        logger.debug("@Before,通知方法会在目标方法执行之前执行");
+        log.info("@Before,通知方法会在目标方法执行之前执行");
         // 获得类名，方法名，参数和参数名称。
         Signature signature = joinPoint.getSignature();
         String className = joinPoint.getTarget().getClass().getName();
@@ -49,7 +52,7 @@ public class AnnotationAOP {
             sb.append(argument != null ? argument.toString() : "null ");
         }
         sb.append(")" + ",signature：" + signature);
-        logger.info(sb.toString());
+        log.info(sb.toString());
 
     }
 
@@ -60,7 +63,7 @@ public class AnnotationAOP {
      */
     @AfterReturning("aspect()")
     public void aopAfterReturning() {
-        logger.debug("@AfterReturning,通知方法会在目标方法返回后调用");
+        log.info("@AfterReturning,通知方法会在目标方法返回后调用");
     }
 
     /**
@@ -69,7 +72,7 @@ public class AnnotationAOP {
      */
     @AfterThrowing("aspect()")
     public void aopAfterThrowing() {
-        logger.debug("@AfterThrowing,目标方法发生异常时调用此通知方法");
+        log.info("@AfterThrowing,目标方法发生异常时调用此通知方法");
     }
 
 
@@ -79,7 +82,7 @@ public class AnnotationAOP {
      */
     @After("aspect()")
     public void aopAfter() {
-        logger.debug("@After,通知方法会在目标方法返回或抛出异常后调用");
+        log.info("@After,通知方法会在目标方法返回或抛出异常后调用");
     }
 
     /**
@@ -92,11 +95,11 @@ public class AnnotationAOP {
     @Around("aspect()")
     public void aopAround(ProceedingJoinPoint jp) {
         try {
-            logger.debug("@Around 环绕通知，执行方法前");
+            log.info("@Around 环绕通知，执行方法前");
             jp.proceed();//执行方法
-            logger.debug("@Around 环绕通知，执行方法后");
+            log.info("@Around 环绕通知，执行方法后");
         } catch (Throwable e) {
-            logger.debug("@Around 环绕通知，执行方法Throwable后报错");
+            log.info("@Around 环绕通知，执行方法Throwable后报错");
         }
     }
 

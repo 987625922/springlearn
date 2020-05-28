@@ -1,9 +1,5 @@
-package org.learn.hibernate;
+package org;
 
-import com.wind.spring.databases.hibernate.bean.HAuthor;
-import com.wind.spring.databases.hibernate.bean.HBook;
-import com.wind.spring.databases.hibernate.bean.HBookOrder;
-import com.wind.spring.databases.hibernate.service.HBookService;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,6 +8,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.learn.hibernate.bean.HAuthor;
+import org.learn.hibernate.bean.HBook;
+import org.learn.hibernate.service.HBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -21,7 +20,7 @@ import java.util.Set;
 
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/spring/application-hibernate.xml"})
+@ContextConfiguration(locations = {"/application-hibernate.xml"})
 public class HibernateTest {
 
 
@@ -82,7 +81,7 @@ public class HibernateTest {
      */
     @Test
     public void getAndLoad() {
-        log.debug("hibernate中get和load的使用=》" + service.getAndLoad(1).toString());
+        log.info("hibernate中get和load的使用=》" + service.getAndLoad(1).toString());
     }
 
     /**
@@ -93,11 +92,11 @@ public class HibernateTest {
     public void hqlSelectAll() {
         List<HBook> list = service.hqlSelectAll();
         for (HBook hBook : list) {
-            log.debug("hqlSelectAll ==> " + hBook.getName());
+            log.info("hqlSelectAll ==> " + hBook.getName());
         }
         HBook hBook = list.get(0);
         for (HAuthor hAuthor : hBook.gethAuthors()) {
-            log.debug("hqlSelectAll ==> " + hAuthor.getName());
+            log.info("hqlSelectAll ==> " + hAuthor.getName());
         }
     }
 
@@ -107,7 +106,7 @@ public class HibernateTest {
     @Test
     public void hqlSelectConditionalQuery() {
         HBook hBook = service.hqlSelectConditionalQuery(1);
-        log.debug("hqlSelectConditionalQuery ==> " + hBook.getName());
+        log.info("hqlSelectConditionalQuery ==> " + hBook.getName());
     }
 
     /**
@@ -119,7 +118,7 @@ public class HibernateTest {
     public void hqlprojectionQuery() {
         List<HBook> list = service.hqlprojectionQuery();
         for (HBook hBook : list) {
-            log.debug("hqlprojectionQuery ==> " + hBook.getId());
+            log.info("hqlprojectionQuery ==> " + hBook.getId());
         }
     }
 
@@ -130,7 +129,7 @@ public class HibernateTest {
     public void hqlSort() {
         List<HBook> list = service.hqlSort();
         for (HBook hBook : list) {
-            log.debug("hqlSelectAll ==> " + hBook.getName());
+            log.info("hqlSelectAll ==> " + hBook.getName());
         }
     }
 
@@ -141,7 +140,7 @@ public class HibernateTest {
     public void hqlPagin() {
         List<HBook> list = service.hqlPagin();
         for (HBook hBook : list) {
-            log.debug("hqlSelectAll ==> " + hBook.getName());
+            log.info("hqlSelectAll ==> " + hBook.getName());
         }
     }
 
@@ -151,12 +150,12 @@ public class HibernateTest {
     @Test
     public void hqlAggregate() {
         long num = service.hqlAggregate();
-        log.debug("hqlAggregate ==> " + num);
+        log.info("hqlAggregate ==> " + num);
     }
 
     /**
-     *连接查询
-     *
+     * 连接查询
+     * <p>
      * //左外连接
      * //    List list = session.createQuery("from Customer c left outer join c.orderSet ").list();
      * //迫切左外链接 (默认数据重复)
@@ -169,8 +168,8 @@ public class HibernateTest {
     @Test
     public void hqlJoinSelect() {
         List<Object[]> list = service.hqlJoinSelect();
-        for(Object[] objects:list){
-            log.debug("hqlJoinSelect ==> "+objects.length);
+        for (Object[] objects : list) {
+            log.info("hqlJoinSelect ==> " + objects.length);
         }
     }
 
@@ -184,7 +183,6 @@ public class HibernateTest {
      */
 
 
-
     /**
      * Hibernate SQL
      */
@@ -192,7 +190,7 @@ public class HibernateTest {
     public void sqlList() {
         List<HBook> list = service.listSQL();
         for (int i = 0; i < list.size(); i++) {
-            log.debug("hibernate SQL的使用   " + list.get(i).getName());
+            log.info("hibernate SQL的使用   " + list.get(i).getName());
         }
     }
 
@@ -240,7 +238,7 @@ public class HibernateTest {
         HBook hBook = service.lazyMoreToMoreLoad(1);
         Set<HAuthor> set = hBook.gethAuthors();
         for (HAuthor hAuthor : set) {
-            log.debug("关联级别的延迟加载 == " + hAuthor);
+            log.info("关联级别的延迟加载 == " + hAuthor);
         }
     }
 
@@ -276,7 +274,7 @@ public class HibernateTest {
         sessionFactory.close();
 
         for (HBook book : list) {
-            log.debug("hibernate使用输出：" + book);
+            log.info("hibernate使用输出：" + book);
         }
     }
 
