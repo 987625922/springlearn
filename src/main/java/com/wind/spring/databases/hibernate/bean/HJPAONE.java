@@ -17,7 +17,7 @@ public class HJPAONE {
     /**
      * jpa的一对多配置中的一方
      */
-    //mappdBy 映射的是哪一个属性
+    //mappdBy 映射的是另一个表中要映射的参数名
     @OneToMany(targetEntity = HJPAMORE1.class,mappedBy = "hjpaone")
     private Set<HJPAMORE1> hjpamore1Set = new HashSet<>();
 
