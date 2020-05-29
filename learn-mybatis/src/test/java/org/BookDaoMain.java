@@ -1,4 +1,4 @@
-package org.learn.mybatis;
+package org;
 
 import org.learn.common.bean.Book;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,7 @@ public class BookDaoMain {
     public void queryAll() {
         List<Book> books = bookDao.queryAll(0, 4);
         for (Book book : books) {
-            log.debug("基于sql的xml的Mybatis搜索全部课本输出：" + book.toString());
+            log.info("基于sql的xml的Mybatis搜索全部课本输出：" + book.toString());
         }
     }
 
@@ -42,7 +42,7 @@ public class BookDaoMain {
     public void queryAll2() {
         List<Book> books = bookAnnotationDao.queryAll(0, 4);
         for (Book book : books) {
-            log.debug("基于注解的Mybatis搜索全部课本输出：" + book.toString());
+            log.info("基于注解的Mybatis搜索全部课本输出：" + book.toString());
         }
     }
 

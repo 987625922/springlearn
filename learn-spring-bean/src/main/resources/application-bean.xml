@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"
+
+>
+    <context:component-scan base-package="org.learn.autodiscovery"/>
+
+    <!-- springbean bean 的学习  -->
+    <!-- 学习网站https://www.imooc.com/video/3665 -->
+
+    <!-- lazy-init 默认为false 只对singleton有效，默认false，为true时，
+    在类使用时bean才创建 -->
+    <!-- init-method  在对象创建时，执行这个方法-->
+    <!-- destroy-method 在对象销毁时，执行这个方法 -->
+    <!-- scope默认是单例模式，即scope="singleton",另外scope还有prototype、
+    request、session、global session作用域 -->
+    <bean id="userbean" class="org.learn.common.bean.User"
+          scope="singleton" init-method="init"
+          destroy-method="myDestroy"
+          p:userName="bean方法p标签的使用"
+    >
+        <!-- 设值注入 -->
+        <property name="book" ref="book"/>
+        <property name="city">
+            <null/>
+        </property>
+
+        <!-- 构造器注入-->
+        <constructor-arg name="beanName" value="这个是bean的名称"/>
+    </bean>
+
+    <bean id="book" class="org.learn.common.bean.Book"/>
+    <!-- 第三 bean的自动装配-->
+    <!-- 在xml头添加default-autowire="byName" 或者在bean中配置autowire="constructor" -->
+    <bean id="autobean" class="org.learn.common.bean.AutoWiringBean"
+          autowire="constructor"/>
+
+    <!-- Aware的使用 -->
+    <bean id="springContextAware" class="org.learn.aware.SpringContextAware"/>
+
+
+</beans>

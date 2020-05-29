@@ -7,7 +7,7 @@
 	 http://www.springframework.org/schema/context
 	  http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.wind.spring.databases.redis"/>
+    <context:component-scan base-package="org.learn.redis"/>
     <!-- 导入配置文件 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
 

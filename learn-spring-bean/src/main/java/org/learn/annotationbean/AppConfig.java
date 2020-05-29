@@ -1,5 +1,6 @@
 package org.learn.annotationbean;
 
+import lombok.extern.slf4j.Slf4j;
 import org.learn.common.bean.Book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +20,8 @@ import javax.sql.DataSource;
  */
 @Configuration
 @PropertySource("classpath:jdbc.properties") //导入资源文件
+@Slf4j
 public class AppConfig {
-
-    private static Logger logger = LoggerFactory.getLogger(AppConfig.class);
 
     //获取配置文件的
     @Value("${jdbc.driver}")
@@ -60,8 +60,8 @@ public class AppConfig {
 
     @Bean(name = "storeTest")
     public Store storeTest() {
-        logger.debug("自动装填到的s1:" + s1.getClass().getName());
-        logger.debug("自动装填到的s2:" + s2.getClass().getName());
+        log.info("自动装填到的s1:" + s1.getClass().getName());
+        log.info("自动装填到的s2:" + s2.getClass().getName());
         return new StringStore();
     }
 
@@ -88,7 +88,7 @@ public class AppConfig {
 
         @Override
         public void print() {
-            System.out.println("这个是IntegerStore");
+            log.info("这个是IntegerStore");
         }
     }
 
@@ -97,7 +97,7 @@ public class AppConfig {
 
         @Override
         public void print() {
-            System.out.println("这个是StringStore");
+            log.info("这个是StringStore");
         }
     }
 

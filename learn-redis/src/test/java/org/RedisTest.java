@@ -1,8 +1,9 @@
-package org.learn.redis;
+package org;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.learn.redis.JedisCacheClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -10,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 //指定配置文件路径
-@ContextConfiguration(locations = {"/spring/application-redis.xml"})
+@ContextConfiguration(locations = {"/application-redis.xml"})
 public class RedisTest {
     @Autowired
     JedisCacheClient jedisCacheClient;
