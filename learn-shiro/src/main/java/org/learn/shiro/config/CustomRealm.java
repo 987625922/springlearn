@@ -1,4 +1,4 @@
-package org.learn.shiro.project.config;
+package org.learn.shiro.config;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;

@@ -1,4 +1,4 @@
-package org.learn.shiro.project.config;
+package org.learn.shiro.config;
 
 import lombok.Data;
 import org.apache.shiro.authc.AuthenticationToken;

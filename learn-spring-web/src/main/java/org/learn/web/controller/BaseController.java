@@ -99,7 +99,8 @@ public class BaseController {
      * @param response
      * @return
      */
-    @RequestMapping("cookie")
+    @RequestMapping("/cookie")
+    @ResponseBody
     public Object addCookie(@CookieValue(value = USERNAME,required = false) String username, HttpServletResponse response) {
         if (username != null) {
             return new JsonData(200, "",
@@ -137,13 +138,15 @@ public class BaseController {
     /**
      * 如果有session就获取session输出，没有就为他添加
      */
-    @RequestMapping("session")
+    @RequestMapping("/session")
+    @ResponseBody
     public Object addSession(HttpServletRequest request) {
         String username = (String) request.getSession().getAttribute(USERNAME);
         if (username == null) {
             String uuid = UUID.randomUUID().toString();
             request.getSession().setAttribute(USERNAME, uuid);
-            return new JsonData(200, "", "该用户还没有session，已为他添加用户名为" + uuid);
+            return new JsonData(200, "", "该用户还没有session，" +
+                    "已为他添加用户名为" + uuid);
         }
         return new JsonData(200, "",
                 "该用户已有session，用户名为" + username);

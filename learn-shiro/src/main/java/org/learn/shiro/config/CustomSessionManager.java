@@ -1,4 +1,4 @@
-package org.learn.shiro.project.config;
+package org.learn.shiro.config;
 
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;

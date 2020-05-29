@@ -1,4 +1,4 @@
-package org.learn.shiro.project.controller;
+package org.learn.shiro.controller;
 
 import org.learn.common.bean.User;
 import org.learn.common.dto.JsonData;

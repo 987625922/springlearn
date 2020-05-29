@@ -11,8 +11,8 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
-                classpath:spring/spring-web-shiro.xml,
-                classpath:spring/spring-web.xml
+                <!--classpath:spring/spring-web-shiro.xml,-->
+                classpath:spring-web.xml
             </param-value>
         </init-param>
     </servlet>
@@ -23,26 +23,26 @@
 
 
     <!-- shiro filter start -->
-    <filter>
-        <filter-name>shiroFilter</filter-name>
-        <filter-class>
-            org.springframework.web.filter.DelegatingFilterProxy
-        </filter-class>
-        <init-param>
-            <param-name>targetFilterLifecycle</param-name>
-            <param-value>true</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>shiroFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    <!--<filter>-->
+        <!--<filter-name>shiroFilter</filter-name>-->
+        <!--<filter-class>-->
+            <!--org.springframework.web.filter.DelegatingFilterProxy-->
+        <!--</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>targetFilterLifecycle</param-name>-->
+            <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>shiroFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
     <!-- shiro filter end -->
 
     <!-- 过滤器的使用 -->
     <filter>
         <filter-name>filtertest</filter-name>
-        <filter-class>com.wind.spring.springmvc.filter.LearnFilter</filter-class>
+        <filter-class>org.learn.web.filter.LearnFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>filtertest</filter-name>

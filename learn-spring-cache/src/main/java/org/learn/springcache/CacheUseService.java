@@ -21,7 +21,7 @@ public class CacheUseService {
 
     @Cacheable(value = "cacheUse")
     public Book getValueByName(String bookName) {
-        log.debug("===>>未使用缓存：" + bookName);
+        log.info("===>>未使用缓存：" + bookName);
         Book book = new Book();
         book.setName(bookName);
         return book;
@@ -29,7 +29,7 @@ public class CacheUseService {
 
     @CachePut(value = "cacheUse", key = "#book.getName()")
     public void updateAccount(Book book) {
-        log.debug("更新数据");
+        log.info("更新数据");
     }
 
     @CacheEvict(value = "cacheUse", allEntries = true)

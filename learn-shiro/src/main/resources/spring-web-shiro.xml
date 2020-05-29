@@ -12,7 +12,7 @@
     <!--</bean>-->
 
     <!-- 自定义域 -->
-    <bean id="userShiroRealm" class="com.wind.spring.springshiro.project.config.CustomRealm">
+    <bean id="userShiroRealm" class="org.learn.shiro.config.CustomRealm">
         <!--<property name="credentialsMatcher" ref="hashedCredentialsMatcher"/>-->
     </bean>
 
@@ -33,7 +33,7 @@
         <!--<property name="path" value="/"/>-->
     <!--</bean>-->
 
-    <bean id="jwtFilter" class="com.wind.spring.springshiro.project.config.JWTFilter"/>
+    <bean id="jwtFilter" class="org.learn.shiro.config.JWTFilter"/>
 
     <!-- Shiro的web过滤器 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">

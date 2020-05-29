@@ -2,15 +2,13 @@ package org.learn.annotationbean;
 
 import lombok.extern.slf4j.Slf4j;
 import org.learn.common.bean.Book;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.*;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import javax.sql.DataSource;
 
 
 /**
@@ -52,12 +50,10 @@ public class AppConfig {
      *
      * @return
      */
-    @Bean
-    public DataSource dataSource() {
-        return new DriverManagerDataSource(jdbcUrl, user, password);
-    }
-
-
+//    @Bean
+//    public DataSource dataSource() {
+//        return new DriverManagerDataSource(jdbcUrl, user, password);
+//    }
     @Bean(name = "storeTest")
     public Store storeTest() {
         log.info("自动装填到的s1:" + s1.getClass().getName());

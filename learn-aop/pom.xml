@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>learn-aop</artifactId>
-    <name>AOP的模块</name>
+    <name>learn-aop</name>
 
     <dependencies>
         <dependency>

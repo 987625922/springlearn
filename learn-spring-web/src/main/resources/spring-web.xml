@@ -10,7 +10,7 @@
     <!--    <bean id="beanNameUrlHandlerMapping"-->
     <!--          class="org.springframework.springmvc.servlet.handler.BeanNameUrlHandlerMapping"/>-->
 
-    <context:component-scan base-package="com.wind.spring.springmvc"/>
+    <context:component-scan base-package="org.learn.web.controller"/>
 
     <!--<mvc:annotation-driven /> 是一种简写形式，完全可以手动配置替代这种简写形式，
     简写形式可以让初学都快速应用默认配置方案。
@@ -23,34 +23,8 @@
         <mvc:interceptor>
             <!--<mvc:mapping path="/api/base/*"/>-->
             <mvc:mapping path="/api/base/userinfo"/>
-            <bean class="com.wind.spring.springmvc.interceptor.LoginInterceptor"/>
+            <bean class="org.learn.web.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
-
-    <!-- InternalResourceViewResolver视图解析器，这个视图解析器一般会用来解析JSP视图 -->
-    <!--<bean id="viewResolver"-->
-    <!--class="org.springframework.springmvc.servlet.view.InternalResourceViewResolver">-->
-    <!--<property name="prefix" value="/WEB-INF/jsp/"/>-->
-    <!--<property name="suffix" value=".jsp"/>-->
-    <!--</bean>-->
-
-    <!-- ============= thymeleaf ================ -->
-    <!-- 模板解析器  -->
-    <!--<bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">-->
-        <!--<constructor-arg ref="servletContext"/>-->
-        <!--<property name="prefix" value="/WEB-INF/templates/"/>-->
-        <!--<property name="suffix" value=".html"/>-->
-        <!--<property name="templateMode" value="HTML5"/>-->
-        <!--<property name="cacheable" value="false"/>-->
-        <!--<property name="characterEncoding" value="UTF-8"/>-->
-    <!--</bean>-->
-    <!--<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">-->
-        <!--<property name="templateResolver" ref="templateResolver"/>-->
-    <!--</bean>-->
-    <!--<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">-->
-        <!--<property name="templateEngine" ref="templateEngine"/>-->
-        <!--<property name="characterEncoding" value="UTF-8"/>-->
-    <!--</bean>-->
-    <!-- ============= thymeleaf ================ -->
 
 </beans>

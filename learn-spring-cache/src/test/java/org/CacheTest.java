@@ -1,8 +1,9 @@
-package org.learn.springcache;
+package org;
 
-import org.learn.common.bean.Book;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.learn.common.bean.Book;
+import org.learn.springcache.CacheUseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -10,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //指定单元测试环境
 @RunWith(SpringJUnit4ClassRunner.class)
 //指定配置文件路径
-@ContextConfiguration(locations = {"/spring/application-bean.xml"})
+@ContextConfiguration(locations = {"/application-caches.xml"})
 public class CacheTest {
 
     @Autowired
