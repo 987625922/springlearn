@@ -3,7 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:cache="http://www.springframework.org/schema/cache" xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
@@ -22,70 +21,55 @@
 
     <!--            spring cache 整合 redis （未完成）        -->
     <!-- JedisPool资源池设置 -->
-    <!--<bean class="redis.clients.jedis.JedisPoolConfig" id="poolConfig">-->
-        <!--<property name="maxIdle" value="${redis.maxIdle}"/>-->
-        <!--<property name="maxTotal" value="${redis.maxActive}"/>-->
-        <!--<property name="maxWaitMillis" value="${redis.maxWait}"/>-->
-        <!--<property name="testOnBorrow" value="${redis.testOnBorrowconfig}"/>-->
-        <!--<property name="blockWhenExhausted" value="${redis.blockWhenExhausted}"/>-->
-    <!--</bean>-->
+    <bean class="redis.clients.jedis.JedisPoolConfig" id="poolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}"/>
+        <property name="maxTotal" value="${redis.maxActive}"/>
+        <property name="maxWaitMillis" value="${redis.maxWait}"/>
+        <property name="testOnBorrow" value="${redis.testOnBorrowconfig}"/>
+        <property name="blockWhenExhausted" value="${redis.blockWhenExhausted}"/>
+    </bean>
 
-    <!--&lt;!&ndash;获取redis的连接工厂&ndash;&gt;-->
-    <!--<bean id="jedisConnectionFactory"-->
-          <!--class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"-->
-          <!--p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}"-->
-          <!--p:pool-config-ref="poolConfig"-->
-    <!--/>-->
+    <!--获取redis的连接工厂-->
+    <bean id="jedisConnectionFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}"
+          p:pool-config-ref="poolConfig"
+    />
 
-    <!--&lt;!&ndash;获取redisTemplate,template需要redis连接工厂&ndash;&gt;-->
-    <!--<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">-->
-        <!--<property name="connectionFactory" ref="jedisConnectionFactory"/>-->
-        <!--&lt;!&ndash; 序列化器：能够把我们储存的key与value做序列化处理的对象，是一个类似于converter的工具。-->
-           <!--可以实现传入的java对象->redis可以识别的数据类型。 如：字符串。-->
-           <!--默认的Serializer是StringRedisSerializer。-->
-           <!--设定默认的序列化器是字符串序列化器，原因是redis可以存储的数据只有字符串和字节数组。-->
-           <!--一般来说，我们代码中操作的数据对象都是java对象。-->
-           <!--如果代码中，使用的数据载体就是字符串对象，那么使用Jackson2JsonRedisSerializer来做序列化器是否会有问题？-->
-           <!--如果jackson插件的版本不合适，有错误隐患的话，可能将字符串数据转换为json字符串 -> {chars:[], bytes:[]}-->
-           <!--使用StringRedisSerializer就没有这个问题。不处理字符串转换的。认为代码中操作的key和value都是字符串。-->
-        <!--&ndash;&gt;-->
-        <!--&lt;!&ndash; 配置默认的序列化器 &ndash;&gt;-->
-        <!--&lt;!&ndash; keySerializer、valueSerializer 配置Redis中的String类型key与value的序列化器 &ndash;&gt;-->
-        <!--&lt;!&ndash; HashKeySerializer、HashValueSerializer 配置Redis中的Hash类型key与value的序列化器 &ndash;&gt;-->
-        <!--<property name="keySerializer">-->
-            <!--<bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>-->
-        <!--</property>-->
-        <!--<property name="valueSerializer">-->
-            <!--<bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>-->
-        <!--</property>-->
-    <!--</bean>-->
-
-    <!--<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">-->
-        <!--<property name="caches">-->
-            <!--<set>-->
-                <!--&lt;!&ndash; 这里可以配置多个redis &ndash;&gt;-->
-                <!--<bean class="org.learn.springcache.cache.RedisCache">-->
-                    <!--<property name="redisTemplate" ref="redisTemplate" />-->
-                    <!--<property name="name" value="content"/>-->
-                    <!--&lt;!&ndash; name对应的名称要在类或方法的注解中使用 &ndash;&gt;-->
-                <!--</bean>-->
-            <!--</set>-->
-        <!--</property>-->
-    <!--</bean>-->
-
-    <bean id="cacheManager"
-          class="org.springframework.cache.support.SimpleCacheManager">
+    <!--获取redisTemplate,template需要redis连接工厂-->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="jedisConnectionFactory"/>
+        <property name="keySerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+        </property>
+        <property name="valueSerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+        </property>
+    </bean>
+    <!--  redis缓存的spring cache manager-->
+    <bean id="cacheManager" class="org.learn.springcache.cache.RedisCacheManager">
         <property name="caches">
-            <!-- 配置普通的缓存 -->
             <set>
-                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
-                    <property name="name" value="default"/>
-                </bean>
-                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
-                    <property name="name" value="cacheUse"/>
-                </bean>
+                <!--        redis缓存的spring cache 的逻辑实现        -->
+                <bean class="org.learn.springcache.cache.RedisCache" p:name="cacheUse"/>
             </set>
         </property>
     </bean>
+
+    <!--      Spring 默认的CacheManager      -->
+    <!--    <bean id="cacheManager"-->
+    <!--          class="org.springframework.cache.support.SimpleCacheManager">-->
+    <!--        <property name="caches">-->
+    <!--            &lt;!&ndash; 配置普通的缓存 &ndash;&gt;-->
+    <!--            <set>-->
+    <!--                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">-->
+    <!--                    <property name="name" value="default"/>-->
+    <!--                </bean>-->
+    <!--                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">-->
+    <!--                    <property name="name" value="cacheUse"/>-->
+    <!--                </bean>-->
+    <!--            </set>-->
+    <!--        </property>-->
+    <!--    </bean>-->
 
 </beans>
