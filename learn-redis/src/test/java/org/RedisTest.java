@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //指定配置文件路径
 @ContextConfiguration(locations = {"/application-redis.xml"})
 public class RedisTest {
+
     @Autowired
     JedisCacheClient jedisCacheClient;
 

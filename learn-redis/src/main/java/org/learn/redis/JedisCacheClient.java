@@ -6,7 +6,10 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 /**
- * redis使用封装
+ * 基本redis使用封装
+ *
+ * springdata的redis直接注入
+ * RedisTemplate<String, Object> redisTemplate
  */
 @Component
 public class JedisCacheClient {
