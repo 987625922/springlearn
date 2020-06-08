@@ -37,9 +37,15 @@
                 <property name="generateDdl" value="true"/>
                 <!--数据库方言-->
                 <property name="databasePlatform"
-                          value="org.hibernate.dialect.MySQLDialect"/>
+                          value="org.hibernate.dialect.MySQL57Dialect"/>
             </bean>
         </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+        <!--jpa方言:高级特性-->
     </bean>
 
     <!-- jdbc配置  -->
