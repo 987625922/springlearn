@@ -20,6 +20,7 @@
         <module>learn-spring-web</module>
         <module>learn-shiro</module>
         <module>learn-log</module>
+        <module>learn-spring-data-jpa</module>
     </modules>
 
     <name>spring的学习</name>
