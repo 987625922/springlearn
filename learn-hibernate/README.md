@@ -4,37 +4,38 @@
         启动hibernate程序，加载hibernate.cfg.xml配置文件
       
       - SeesionFactory 接口
-     
+    
         加载连接数据，扩展参数，映射信息，通过这些映射信息帮助我们创建Session
-     
+    
       - Session 接口
-     
+    
         操作数据库
-     
+    
         常用方法：
-     
-        ​	save() 保存对象
-     
-        ​	update() 更新对象
-     
-        ​	delete() 删除对象
-     
-        ​	get() 查询对象
-     
-      - Transaction 接口
-     
-        begin() 开启事务
-     
-        commit() 提交事务
-     
-        rollback() 回滚事务
-     
-      - Query 接口
-     
-        执行HQL查询
-     
-      - Criteria
-     
+    
+        - save() 保存对象
+      - update() 更新对象
+        - delete() 删除对象
+      - get() 查询对象
+        - saveOrUpdate() 根据Id判断是调用save或者update方法,该方法更倾向于不缺定是插入还是更新，而且你不需要得到他的主键。
+      - clear() 调用clear方法会清除session已经存在的所有缓存的实例
+        - evict(obj) 会把指定的缓冲对象进行清除
+      - flush() flush默认是在Transaction.commit()时被调用,底层持久化存储和内存中的持久化状态的同步过程
+      
+    - Transaction 接口
+      
+      begin() 开启事务
+      
+      commit() 提交事务
+      
+      rollback() 回滚事务
+      
+    - Query 接口
+      
+      执行HQL查询
+      
+    - Criteria
+      
         执行基于对象的查询(QBC查询)
 
 
@@ -123,12 +124,12 @@
 
    - #### 三种状态
 
-     - 瞬时态：transient，session没有缓存对象，数据库也没有对应记录。
-       OID特点：没有值
-     - 持久态：persistent，session缓存对象，数据库最终会有记录。（事务没有提交）
-       OID特点：有值
-     - 脱管态：detached，session没有缓存对象，数据库有记录。
-       OID特点：有值
+     - 瞬时态：transient，session没有缓存对象，数据库也没有对应记录。(new 出来的对象)
+       对象的id：没有值
+     - 持久态：persistent，session缓存对象，数据库最终会有记录。（在事务内，事务没有提交）
+       对象的id：有值
+     - 脱管态：detached，session没有缓存对象，数据库有记录。（事务已经提交后）
+       对象的id：有值
      
    - ### 一级缓存
 
