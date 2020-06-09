@@ -296,18 +296,8 @@
 | timezone | java.util.TimeZone | VARCHAR       |
 | currency | java.util.Currency | VARCHAR       |
 
-7. 解决json输出多对多时循环（不好的方法，只是写笔记记住，后续解决）
+7. 解决json输出一对多，多对多时循环
 ```
- 1.一方要在注解上这样写
- @ManyToMany(mappedBy = "permissions",fetch = FetchType.EAGER)
-     @JsonBackReference
- 2.并且要重写toString，注意多对多的参数不能出现在toString中
- 3.另一方注解
- @ManyToMany(targetEntity = Permission.class
-             ,cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-     @JoinTable(name = "t_role_permission",
-             joinColumns = @JoinColumn(name = "role_id"),
-             inverseJoinColumns = @JoinColumn(name = "permission_id"))
- 4，：已知问题：
-    1.只能一方导入数据是才有多对多的依赖，从另一方就不行
+    在实体类上
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 ```
