@@ -7,6 +7,12 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
+/**
+ * JpaRepository封装了crud、统计、排序、分页的常见操作，
+ * 而JpaSpecificationExecutor基于JPA的criteria查询封装了另一种查询方式(标准查询)
+ */
 public interface UserDao extends
         JpaRepository<JpaUser, Integer>, JpaSpecificationExecutor<JpaUser> {
     /**
@@ -45,7 +51,18 @@ public interface UserDao extends
     @Modifying
     public Integer updateNameById(@Param("id") int id, @Param("name") String userName);
 
-    @Query(value = "select * from j_jpa_user where name = :name and age = :age",nativeQuery = true)
-    public JpaUser findUserByNameSql(@Param("name") String userName,@Param("age") int age);
+    @Query(value = "select * from j_jpa_user where name = :name and age = :age", nativeQuery = true)
+    public JpaUser findUserByNameSql(@Param("name") String userName, @Param("age") int age);
+
+    /**
+     * jpa制定了一些约定，如果按照这些约定来定义方法名，则会自动解析出sql语句
+     * @param name
+     * @return
+     */
+    public JpaUser findByName(String name);
+    public JpaUser findByNameLike(String name);
+    public JpaUser findByNameLikeAndAge(String name, int age);
+    public List<JpaUser> findByIdBetween(int idMin, int idMax);
+
 
 }
