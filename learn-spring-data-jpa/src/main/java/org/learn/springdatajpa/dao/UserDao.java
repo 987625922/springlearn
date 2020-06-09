@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -49,6 +50,7 @@ public interface UserDao extends
      */
     @Query(value = "update JpaUser set name = :name where id = :id")
     @Modifying
+    @Transactional
     public Integer updateNameById(@Param("id") int id, @Param("name") String userName);
 
     @Query(value = "select * from j_jpa_user where name = :name and age = :age", nativeQuery = true)

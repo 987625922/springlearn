@@ -104,14 +104,8 @@ public class SpringDataJpaTest {
     }
 
     @Test
-    @Transactional(rollbackFor = Exception.class)
     public void testUpdateNameById() {
-        JpaUser user = userDao.findUserByName("用户名1",22);
-        System.out.println(user);
-
-        userDao.updateNameById(user.getId(),"lili_2");
-
-//        userDao.updateNameById(3, "jack1");
+        userDao.updateNameById(3, "jack1");
     }
 
     @Test
