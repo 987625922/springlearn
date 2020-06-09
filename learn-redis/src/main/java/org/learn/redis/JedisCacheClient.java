@@ -37,7 +37,7 @@ public class JedisCacheClient {
     /**
      * (存入redis数据)
      */
-    public void expire(String key, String value, Integer times) {
+    public void set(String key, String value, Integer times) {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
