@@ -34,7 +34,7 @@ public class RedisTest {
          * 结合起来 PRO:USER:USERID:18
          */
         jedisCacheClient.set("XXX:BBB:CCC", "value为redis测试数据，key为sign");
-        log.debug(jedisCacheClient.get("sign"));
+        log.info(jedisCacheClient.get("XXX:BBB:CCC"));
 
     }
 

@@ -15,10 +15,13 @@
     
         - save() 保存对象
       - update() 更新对象
+        
         - delete() 删除对象
       - get() 查询对象
+        
         - saveOrUpdate() 根据Id判断是调用save或者update方法,该方法更倾向于不缺定是插入还是更新，而且你不需要得到他的主键。
       - clear() 调用clear方法会清除session已经存在的所有缓存的实例
+        
         - evict(obj) 会把指定的缓冲对象进行清除
       - flush() flush默认是在Transaction.commit()时被调用,底层持久化存储和内存中的持久化状态的同步过程
       
