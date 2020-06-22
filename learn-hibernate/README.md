@@ -302,5 +302,7 @@
 7. 解决json输出一对多，多对多时循环
 ```
     在实体类上
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    1. @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+     property = "id")
+    2. @JsonIgnore 作用在字段或方法上，用来完全忽略被注解的字段和方法对应的属性.
 ```

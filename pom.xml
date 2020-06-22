@@ -21,6 +21,8 @@
         <module>learn-shiro</module>
         <module>learn-log</module>
         <module>learn-spring-data-jpa</module>
+        <module>spring-quartz</module>
+        <module>learn-quartz</module>
     </modules>
 
     <name>spring的学习</name>

@@ -21,7 +21,7 @@
 
     <!--            spring cache 整合 redis （未完成）        -->
     <!-- JedisPool资源池设置 -->
-    <bean class="redis.clients.jedis.JedisPoolConfig" id="poolConfig">
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxIdle" value="${redis.maxIdle}"/>
         <property name="maxTotal" value="${redis.maxActive}"/>
         <property name="maxWaitMillis" value="${redis.maxWait}"/>
