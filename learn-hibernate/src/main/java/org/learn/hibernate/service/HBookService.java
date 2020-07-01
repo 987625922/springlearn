@@ -105,11 +105,28 @@ public class HBookService {
         hAuthor1.gethBooks().add(hBook);
         hAuthor1.gethBooks().add(hBook1);
 //
-//        hBookDao.save(hBook);
-//        hBookDao.save(hBook1);
-        hAuthorDao.save(hAuthor);
-        hAuthorDao.save(hAuthor1);
+        hBookDao.save(hBook);
+        hBookDao.save(hBook1);
+//        hAuthorDao.save(hAuthor);
+//        hAuthorDao.save(hAuthor1);
     }
+
+    /**
+     * 级联多对多更新
+     */
+    public void saveBookAndAuthorMoreToMore2() {
+        HBook hBook = new HBook();
+        hBook.setName("多对多映射1");
+
+        HAuthor hAuthor = new HAuthor();
+        hAuthor.setName("多对多映射1");
+
+        hBook.gethAuthors().add(hAuthor);
+        hAuthor.gethBooks().add(hBook);
+
+        hAuthorDao.save(hAuthor);
+    }
+
 
     public void selectBookAndAuthorMoreToMore() {
 
