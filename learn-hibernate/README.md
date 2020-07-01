@@ -306,3 +306,18 @@
      property = "id")
     2. @JsonIgnore 作用在字段或方法上，用来完全忽略被注解的字段和方法对应的属性.
 ```
+8. hibernate笔记
+    1. 多对多问题
+        - 当进行关联保存时，只能在维护多对多表的那个bean进行
+            ```
+             /**
+             * 只能在这个表级联更新Video，而当想使用video来级联关联这个course表时是不行的
+             */
+                 @ManyToMany(targetEntity = Video.class,
+                         cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+                 @JoinTable(
+                         name = "t_course_video",
+                         joinColumns = @JoinColumn(name = "course_id"),
+                         inverseJoinColumns = @JoinColumn(name = "video_id"))
+                 private Set<Video> videos = new HashSet<>();
+            ```
