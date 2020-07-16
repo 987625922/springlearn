@@ -105,10 +105,10 @@ public class HBookService {
         hAuthor1.gethBooks().add(hBook);
         hAuthor1.gethBooks().add(hBook1);
 //
-        hBookDao.save(hBook);
-        hBookDao.save(hBook1);
-//        hAuthorDao.save(hAuthor);
-//        hAuthorDao.save(hAuthor1);
+//        hBookDao.save(hBook);
+//        hBookDao.save(hBook1);
+        hAuthorDao.save(hAuthor);
+        hAuthorDao.save(hAuthor1);
     }
 
     /**
