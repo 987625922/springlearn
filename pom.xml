@@ -23,6 +23,7 @@
         <module>learn-spring-data-jpa</module>
         <module>learn-quartz</module>
         <module>learn-jackson</module>
+        <module>learn-utils</module>
     </modules>
 
     <name>spring的学习</name>
