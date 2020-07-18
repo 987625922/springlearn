@@ -1,0 +1,326 @@
+﻿----------------- docker ----------
+ECS上搭建Docker（CentOS7）https://help.aliyun.com/document_detail/51853.html
+腾讯云源加速：https://cloud.tencent.com/document/product/457/9113
+1、 常用命令（安装部署好Dokcer后，执行的命令是docker开头）,xxx是镜像名称
+
+			搜索镜像：docker search xxx
+
+			列出当前系统存在的镜像：docker images
+
+			拉取镜像：docker pull xxx
+				xxx是具体某个镜像名称(格式 REPOSITORY:TAG)
+				REPOSITORY：表示镜像的仓库源,TAG：镜像的标签
+
+			运行一个容器：docker run -d --name "xdclass_mq" -p 5672:5672 -p 15672:15672 rabbitmq:management
+				docker run - 运行一个容器
+				-d 后台运行
+				-p 端口映射
+				rabbitmq:management  (格式 REPOSITORY:TAG)，如果不指定tag，默认使用最新的
+				--name "xxx"
+
+			列举当前运行的容器：docker ps
+			加-a 查询所有的
+
+			检查容器内部信息：docker inspect 容器名称
+
+			删除镜像：docker rmi IMAGE_NAME
+				 强制移除镜像不管是否有容器使用该镜像 增加 -f 参数，
+
+			停止某个容器：docker stop 容器名称
+
+			启动某个容器：docker start 容器名称
+
+			移除某个容器： docker rm 容器名称 （容器必须是停止状态）
+
+			进入容器： docker exec -it name bash
+
+			从容器复制文件: docker container cp -a 34ab0e:/usr/local/tomcat/info.geling-log.log /home/ftp/ftpuser/
+
+
+------------------- docker 1.vsftpd 2.rabbitmq 3.mysql 4.redis 5.nginx 6.tomcat
+1.docker pull fauria/vsftpd
+docker run -d -v /home/ftp:/home/vsftpd -p 20:20 -p 21:21 -p 21100-21110:21100-21110 -e FTP_USER=ftpuser -e FTP_PASS=LONGJINFEI -e PASV_ADDRESS=你的外网ip -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 --name vsftpd --restart=always fauria/vsftpd
+路径为 /home/ftp/ftpuser
+端口号为21 账号为ftupuser 密码为LONGJINFEI
+
+2.docker pull rabbitmq:management
+docker run -d --name mq_docker -p 5672:5672 -p 15672:15672 rabbitmq:management
+
+3.docker run -itd --name mysql-docker -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7.5
+- -p 3306:3306 ：映射容器服务的 3306 端口到宿主机的 3306 端口，外部主机可以直接通过 宿主机ip:3306 访问到 MySQL 的服务。
+- MYSQL_ROOT_PASSWORD=123456：设置 MySQL 服务 root 用户的密码。
+进入docker容器中的mysql使用
+docker exec -it mysql-docker bash
+mysql -u root -p
+
+4.redis
+拉取redis docker pull redis:latest
+运行 docker run -itd --name redis-test -p 6379:6379 redis
+进入redis docker exec -it redis-test /bin/bash
+
+5.nginx
+ docker run --name nginx-docker -p 80:80 -d -v /usr/local/software/app:/usr/share/nginx/html nginx
+
+
+-----centos7 网络配置
+1.进入 /etc/sysconfig/network-scripts 目录
+
+2.cd /etc/sysconfig/network-scripts
+
+3.打开配置文件 vi ifcfg-ens33
+
+4.将文件里的 ONBOOT=no，改为ONBOOT=yes
+
+5.重启网络服务   service network restart
+
+-------- JAVA配置
+yum安装 yum install java-1.8.0-openjdk.x86_64 -y
+
+把jdk解压到指定目录下
+1.解压jdk-8u231-linux-x64.tar.gz到目录下
+
+2.修改文件
+vi /etc/profile
+
+3. 添加以下配置：
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-3.b13.el7_5.x86_64
+export JRE_HOME=$JAVA_HOME/jre
+export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+:wq保存退出。
+
+ 守护进程启动springboot项目：nohup java -jar springbootproject-0.0.1-SNAPSHOT.jar -Dspring.config.location=application.properties &
+
+
+4. 让配置生效
+source  /etc/profile
+
+删除java
+rpm -qa|grep java
+rpm -e --nodeps [jdk名称]
+
+-------- tomcat配置
+1.下载 wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.49/bin/apache-tomcat-8.5.49.tar.gz
+2.解压 tar -zxvf
+3.启动tomcat ./usr/local/tomcat8/bin/startup.sh
+4.修改tomcat.service
+vi /lib/systemd/system/tomcat.service
+[Unit]
+Description=tomcat
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/tomcat/apache-tomcat-9.0.16/bin/startup.sh   //自已的tomcat目录
+ExecStop=/usr/local/tomcat/apache-tomcat-9.0.16/bin/shutdown.sh
+ExecReload=/bin/kill -s HUP $MAINPID
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+5.启动服务
+systemctl start tomcat.service
+6.查看服务状态
+systemctl status tomcat.service
+7.设置开机启动
+systemctl enable tomcat.service
+
+-----------------------------  停止进程
+1.比如 先查看 httpd 进程 
+ps aux |grep httpd 
+
+2.这个就是 apache 的所有进程 
+我们可以用  kill -9 加进程ID
+
+
+-----------------------  redis
+一、安装redis
+1.第一步：下载redis安装包
+wget http://download.redis.io/releases/redis-4.0.6.tar.gz
+
+2.第二步：解压压缩包
+tar -zxvf redis-4.0.6.tar.gz
+
+3.第三步：yum安装gcc依赖
+yum install gcc
+
+4.第四步：跳转到redis解压目录下
+cd redis-4.0.6
+
+5.第五步：编译安装
+make MALLOC=libc　　
+[root@iZwz991stxdwj560bfmadtZ redis-4.0.6]# make MALLOC=libc
+ 
+6.将/usr/local/redis-4.0.6/src目录下的文件加到/usr/local/bin目录
+
+7.cd src && make install
+[root@iZwz991stxdwj560bfmadtZ redis-4.0.6]# cd src && make install
+
+8.先切换到redis src目录下
+
+9。直接启动redis
+./redis-server
+./redis-server /opt/local/redis/redis-4.0.6/redis.conf
+按 ctrl + c可以关闭窗口。
+
+10、以后台进程方式启动redis
+11.第一步：修改redis.conf文件
+将
+daemonize no
+修改为
+daemonize yes
+　
+
+12.第二步：指定redis.conf文件启动
+./redis-server /usr/local/redis-4.0.6/redis.conf
+[root@iZwz991stxdwj560bfmadtZ src]# ./redis-server /usr/local/redis-4.0.6/redis.conf
+18713:C 13 Dec 13:07:41.109 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+18713:C 13 Dec 13:07:41.109 # Redis version=4.0.6, bits=64, commit=00000000, modified=0, pid=18713, just started
+18713:C 13 Dec 13:07:41.109 # Configuration loaded
+
+13.第三步：关闭redis进程
+首先使用ps -aux | grep redis查看redis进程
+
+14.使用kill命令杀死进程
+
+15.设置redis开机自启动
+16.在/etc目录下新建redis目录
+mkdir redis
+
+17、将/usr/local/redis-4.0.6/redis.conf 文件复制一份到/etc/redis目录下，并命名为6379.conf　　
+[root@iZwz991stxdwj560bfmadtZ redis]# cp /usr/local/redis-4.0.6/redis.conf /etc/redis/6379.conf
+
+18、将redis的启动脚本复制一份放到/etc/init.d目录下
+[root@iZwz991stxdwj560bfmadtZ init.d]# cp /usr/local/redis-4.0.6/utils/redis_init_script /etc/init.d/redisd
+
+19、设置redis开机自启动
+先切换到/etc/init.d目录下
+然后执行自启命令 chkconfig redisd on
+
+现在可以直接已服务的形式启动和关闭redis了
+启动：service redisd start　
+
+关闭：service redisd stop
+
+https://www.cnblogs.com/zuidongfeng/p/8032505.html
+
+
+--------------  防火墙命令
+#查看版本：
+firewall-cmd --version
+#查看帮助：
+firewall-cmd --help
+#显示状态：
+firewall-cmd --state
+#查看端口：
+firewall-cmd --list-port
+#开放端口：
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=20000-20010/tcp --permanent
+#禁用端口：
+firewall-cmd --remove-port=80/tcp --permanent
+firewall-cmd --remove-port=20000-20010/tcp --permanent
+
+#重新加载防火墙规则：
+firewall-cmd --reload
+
+#开放/关闭服务端口：
+#打开FTP服务：
+firewall-cmd --add-service=ftp --permanent
+#关闭FTP服务：
+firewall-cmd --remove-service=ftp --permanent
+
+## 参数 --permanent，表示永久生效
+
+
+-----------------------  elasticsearch
+1、添加用户
+
+elastic 无法直接从root用户直接启动，所以先添加用户
+
+ groupadd elsearch
+ useradd elsearch -g elsearch -p elasticsearch
+
+2、下载elastic并解压
+
+tar -zxvf  elasticsearch-6.5.4.tar.gz
+
+3、设置权限
+
+chown -R elsearch:elsearch    elasticsearch-6.5.4
+
+4、切换用户
+
+su elsearch
+
+5、启动elastic
+
+cd elasticsearch-6.5.4
+
+#-d 表示后台启动
+
+sh bin/elasticsearch -d
+
+启动成功后浏览器访问：
+
+http://IP地址:9200
+
+如果需要远程连接
+
+修改 config/elasticsearch.yml 文件
+network.host: 0.0.0.0
+
+
+------------------------------- activemq
+需要先 安装 JDK 并配置环境变量（略） JAVA_HOME=/usr/local/java/jdk1.7.0_72
+1.wget 下载tar包
+2.解压tar
+3.进入activemq文件夹
+4. ./activemq start 启动
+5.查看activemq进程：ps -ef| grep activemq
+6.防火墙的设置添加8161和61616端口号：
+firewall-cmd --zone=public --add-port=8161/tcp --permanent （--permanent永久生效，没有此参数重启后失效）
+7.重新载入 firewall-cmd --reload
+查看端口是否设置成功：firewall-cmd --zone=public --list-ports
+8.最后验证结果输入 http://ip地址:8161/admin   用户名:admin 密码：admin
+
+
+----------- rocketmq
+官方整合文档：https://rocketmq-1.gitbook.io/rocketmq-connector/quick-start/qian-qi-zhun-bei/dan-ji-huan-jing
+
+1、快速开始 http://rocketmq.apache.org/docs/quick-start/
+	   下载安装包：wget https://www.apache.org/dyn/closer.cgi?path=rocketmq/4.2.0/rocketmq-all-4.2.0-bin-release.zip
+2.解压下载下来的包 unzip
+3.进入bin命令
+4.输入 nohup sh bin/mqnamesrv &   启动namesrv
+5.ctrl+c 退出
+6.vi nohup.out 查看是否有 tail -f ~/logs/rocketmqlogs/namesrv.log
+The Name Server boot success. serializeType=JSON
+有就表示成功了
+7.查看  ps -ef |grep java 是否有org.apache.rocketmq.namesrv.NamesrvStartup
+8.启动broker   nohup sh bin/mqbroker -n 127.0.0.1:9876 autoCreateTopicEnable=true -c /dlp/rocketmq4/conf/broker.conf &
+//autoCreateTopicEnable=true为允许用户自定创建topic
+//-c 后面添加的为使用的rocketmq参数
+tail -f ~/logs/rocketmqlogs/broker.log
+
+9.外网访问
+10.修改rocketmq文件夹下的conf/broker.conf
+vi conf/broker.conf
+在文件最后添加以下内容
+#InetAddress用于网络接口,如果是虚拟机则配置的是虚拟机的外网ip
+brokerIP1=192.168.85.132
+brokerIP2=192.168.85.132
+namesrvAddr=192.168.85.132:9876
+
+11.修改后执行启动命令： nohup sh bin/mqbroker -c conf/broker.conf &
+关闭服务
+# 关闭 broker
+> sh bin/mqshutdown broker
+The mqbroker(36695) is running...
+Send shutdown request to mqbroker(36695) OK
+​
+# 关闭 namesrv
+> sh bin/mqshutdown namesrv
+The mqnamesrv(36664) is running...
+Send shutdown request to mqnamesrv(36664) OK
+
