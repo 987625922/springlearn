@@ -4,5 +4,19 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
-
+    <!--    当我们需要实现并发、异步等操作时，通常都会使用到 ThreadPoolTaskExecutor-->
+    <bean id="executor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="8"/> <!--核心线程数 -->
+        <property name="maxPoolSize" value="16"/> <!--最大线程数 -->
+        <property name="keepAliveSeconds" value="3000"/> <!--线程最大空闲时间 -->
+        <property name="queueCapacity" value="200"/> <!-- 队列大小 -->
+        <property name="threadNamePrefix" value="TASK_EXECUTOR"/><!--  线程前缀名称 -->
+        <property name="rejectedExecutionHandler"><!--配置拒绝策略 -->
+            <bean class="java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy"/>
+            <!--     AbortPolicy，用于被拒绝任务的处理程序，它将抛出RejectedExecutionException。
+            CallerRunsPolicy，用于被拒绝任务的处理程序，它直接在execute方法的调用线程中运行被拒绝的任务。
+            DiscardOldestPolicy，用于被拒绝任务的处理程序，它放弃最旧的未处理请求，然后重试execute。
+            DiscardPolicy，用于被拒绝任务的处理程序，默认情况下它将丢弃被拒绝的任务。       -->
+        </property>
+    </bean>
 </beans>
