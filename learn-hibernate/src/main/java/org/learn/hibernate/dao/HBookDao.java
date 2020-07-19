@@ -31,10 +31,6 @@ public class HBookDao {
         return getSession().get(HBook.class, id);
     }
 
-    public void saveTransaction(HBook book) {
-        sessionFactory.getCurrentSession().save(book);
-    }
-
     public List<HBook> list() {
         Query query = getSession().createQuery("FROM HBook"); // HQL语句，它类似于SQL语句
         List<HBook> list = query.list();

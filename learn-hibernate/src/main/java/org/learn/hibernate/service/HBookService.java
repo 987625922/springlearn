@@ -21,7 +21,6 @@ import java.util.Set;
  *
  * @author LL
  */
-@Transactional
 @Slf4j
 @Service
 public class HBookService {
@@ -38,18 +37,15 @@ public class HBookService {
     @Autowired
     private HAuthorDao hAuthorDao;
 
+    @Transactional
     public void save(HBook book) {
         hBookDao.save(book);
     }
 
-    public void saveTransaction(HBook book) {
-        hBookDao.saveTransaction(book);
-        int i = 1 / 0;
-        HBook book1 = new HBook();
-        book1.setName("测试事务");
-        hBookDao.saveTransaction(book1);
-    }
-
+    /**
+     * 一对多关系映射
+     * HBookOrder表对HBook设置了级联更新和保存
+     */
     public void saveBookAndOrderOneToMore() {
         HBook book = new HBook();
         book.setName("测试一对多关系映射");
@@ -61,16 +57,14 @@ public class HBookService {
 
         hBookOrder.sethBook(book);
         hBookOrder1.sethBook(book);
-
-//        book.gethBookOrders().add(hBookOrder);
-//        book.gethBookOrders().add(hBookOrder1);
-
         hBookOrderDao.save(hBookOrder);
         hBookOrderDao.save(hBookOrder1);
         hBookDao.save(book);
-
     }
 
+    /**
+     * 一对一关系映射
+     */
     public void saveBookAndInfoOneToOne() {
         HBookInfo hBookInfo = new HBookInfo();
         hBookInfo.setName("一对一关系映射");
@@ -85,7 +79,9 @@ public class HBookService {
         authorDao.save(hBookInfo);
     }
 
-
+    /**
+     * 多对多更新映射
+     */
     public void saveBookAndAuthorMoreToMore() {
         HBook hBook = new HBook();
         hBook.setName("多对多映射1");
@@ -131,20 +127,19 @@ public class HBookService {
         hAuthorDao.save(hAuthor);
     }
 
-
-    public void selectBookAndAuthorMoreToMore() {
-
-    }
-
-    public List<HBook> list() {
-        return hBookDao.list();
-    }
-
-
+    /**
+     * 根据id获取
+     * @param id
+     * @return
+     */
     public HBook getAndLoad(long id) {
         return hBookDao.getAndLoad(id);
     }
 
+    /**
+     * 运行mysql
+     * @return
+     */
     public List<HBook> listSQL() {
         return hBookDao.listSQL();
     }
@@ -155,6 +150,11 @@ public class HBookService {
         return hBook;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public HBook lazyLoad(long id) {
         HBook hBook = hBookDao.lazyLoad(id);
         try {

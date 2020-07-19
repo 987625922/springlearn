@@ -38,17 +38,6 @@ public class HibernateTest {
     }
 
     /**
-     * 测试事务
-     */
-    @Test
-    public void testTransaction() {
-        HBook hBook = new HBook();
-        hBook.setName("测试xml事务");
-        service.saveTransaction(hBook);
-    }
-
-
-    /**
      * 一对多关系映射 inverse
      * 级联 cascade
      */
