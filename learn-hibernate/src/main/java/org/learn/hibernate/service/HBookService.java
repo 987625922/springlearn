@@ -18,7 +18,7 @@ import java.util.Set;
 
 /**
  * hibernate 学习的service
- *
+ * xml的使用
  * @author LL
  */
 @Slf4j
