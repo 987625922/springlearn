@@ -11,13 +11,17 @@ import org.learn.hibernate.dao.HBookInfoDao;
 import org.learn.hibernate.dao.HBookOrderDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Set;
 
-@Transactional(propagation = Propagation.REQUIRED)
+/**
+ * hibernate 学习的service
+ *
+ * @author LL
+ */
+@Transactional
 @Slf4j
 @Service
 public class HBookService {
