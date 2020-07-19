@@ -144,11 +144,6 @@ public class HBookService {
         return hBookDao.listSQL();
     }
 
-    public HBook firstLevelCache(long id) {
-        HBook hBook = hBookDao.firstLevelCache(id);
-        hBook.setName("hibernate的一级缓存");
-        return hBook;
-    }
 
     /**
      *

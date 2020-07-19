@@ -6,7 +6,9 @@ import org.learn.hibernate.bean.HAuthor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
+/**
+ *
+ */
 @Repository
 public class HAuthorDao {
 
@@ -24,5 +26,4 @@ public class HAuthorDao {
     public HAuthor get(long id){
         return getSession().get(HAuthor.class,id);
     }
-
 }
