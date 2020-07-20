@@ -24,6 +24,8 @@
         <module>learn-quartz</module>
         <module>learn-jackson</module>
         <module>learn-utils</module>
+        <module>leanrn-mybatis-plus</module>
+        <module>learn-mybatis-plus</module>
     </modules>
 
     <name>spring的学习</name>
