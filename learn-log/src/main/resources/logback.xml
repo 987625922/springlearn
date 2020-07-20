@@ -13,9 +13,14 @@
         </encoder>
     </appender>
 
+    <!--  因为mp有很多日志是要 TRACE 级别输出的，
+    所以特别指定这个包的日志输出级别 -->
+    <logger name="org.learn.mp.mapper" level="debug">
+        <appender-ref ref="console"/>
+    </logger>
+
     <!--普通日志输出到控制台 TRACE < DEBUG < INFO <  WARN < ERROR-->
     <root level="info">
         <appender-ref ref="console"/>
     </root>
-
 </configuration>

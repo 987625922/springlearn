@@ -3,10 +3,16 @@ package service;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.learn.mp.domain.Book;
 import org.learn.mp.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: LL
@@ -19,11 +25,77 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = {"/application-mybatis.xml"})
 public class BookServiceTest {
 
+    /**
+     * 书本实体类的service
+     */
     @Autowired
     private BookService bookService;
 
+    /**
+     * 获取所有的书本
+     */
     @Test
     public void selectAll() {
         bookService.getAllList().forEach(System.out::println);
+    }
+
+    /**
+     * 添加一个课本
+     */
+    @Test
+    public void insert() {
+        Book book = new Book();
+        book.setName("测试的课本");
+        book.setNumber(12);
+        bookService.insert(book);
+    }
+
+    /**
+     * 根据id搜索课本
+     */
+    @Test
+    public void selectById() {
+        log.info("selectById() =====> " + bookService.selectById(1L));
+    }
+
+    /**
+     * 根据创建时间搜索书本
+     */
+    @Test
+    public void selectByMap() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("create_time", "2020-07-20 00:00:00.000000");
+        bookService.selectByMap(map).forEach(System.out::println);
+    }
+
+    /**
+     * 根据id列表搜索书本
+     */
+    @Test
+    public void selectBatchIds() {
+        List<Long> idList = new ArrayList<>();
+        idList.add(1L);
+        idList.add(2L);
+        idList.add(3L);
+        bookService.selectBatchIds(idList).forEach(System.out::println);
+    }
+
+    /**
+     * mapper的selectOne的使用
+     * 如果不止一个就会抛出异常
+     */
+    @Test
+    public void selectOne(){
+        log.info("selectOne()======>"+bookService.selectOne("测试的课本1"));
+    }
+
+    /**
+     * 删除数据库中create_time为2020-07-20 23:16:30.447000的item
+     */
+    @Test
+    public void deleteByMap() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("create_time", "2020-07-20 23:16:30.447000");
+        bookService.deleteByMap(map);
     }
 }
