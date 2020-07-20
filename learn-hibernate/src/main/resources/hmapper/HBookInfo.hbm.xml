@@ -4,7 +4,8 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="org.learn.hibernate.bean">
     <!--
-    dynamic-insert 和 dynamic-update 为 true 时，sql语句中只有值变化或者不为空的属性才会加上，用于更新部分属性
+    dynamic-insert 和 dynamic-update 为 true 时，sql语句中只有值变化或者不为空的属性才会加上，
+    用于更新部分属性
     -->
     <class name="HBookInfo" table="h_author_info" dynamic-insert="true"
            dynamic-update="true">

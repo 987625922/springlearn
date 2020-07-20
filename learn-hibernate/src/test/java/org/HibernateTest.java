@@ -8,263 +8,142 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.learn.hibernate.bean.HAuthor;
 import org.learn.hibernate.bean.HBook;
-import org.learn.hibernate.service.HBookService;
+import org.learn.hibernate.dao.HBookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
-import java.util.Set;
 
+/**
+ * hibernate的测试类
+ */
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/application-hibernate.xml"})
 public class HibernateTest {
 
-
+    /**
+     * HBook实体类的service
+     */
     @Autowired
-    private HBookService service;
+    private HBookDao dao;
 
     /**
-     * 插入数据
+     * 保存课本
      */
     @Test
     public void save() {
         HBook hBook = new HBook();
-        hBook.setName("书本名字");
-        service.save(hBook);
+        hBook.setName("测试书本");
+        dao.save(hBook);
     }
 
     /**
-     * 一对多关系映射 inverse
-     * 级联 cascade
+     * 根据id获取课本
      */
     @Test
-    public void testOneToMany() {
-        service.saveBookAndOrderOneToMore();
+    public void getById() {
+        log.info("=====>" + dao.get(1));
     }
 
     /**
-     * 一对一关系映射 inverse
-     * 级联 cascade
+     * jqpl 获取所有的课本
      */
     @Test
-    public void testOneToOne() {
-        service.saveBookAndInfoOneToOne();
+    public void selectAllList() {
+        dao.selectAllList().forEach(System.out::println);
     }
 
-
     /**
-     * 多对多关系映射 inverse
-     * 级联 cascade
+     * 根据id获取课本
      */
     @Test
-    public void testMoreToMore() {
-        service.saveBookAndAuthorMoreToMore();
+    public void selectById() {
+        log.info("selectById()=====>" + dao.selectById(1L));
     }
 
     /**
-     * get和load的使用
+     * 排序获取
      */
     @Test
-    public void getAndLoad() {
-        log.info("hibernate中get和load的使用=》" + service.getAndLoad(1).toString());
+    public void selectSort() {
+        log.info("selectSort()=====>" + dao.selectSort());
     }
 
     /**
-     * HQL
-     * =======================================
+     * bewteen的使用
      */
     @Test
-    public void hqlSelectAll() {
-        List<HBook> list = service.hqlSelectAll();
-        for (HBook hBook : list) {
-            log.info("hqlSelectAll ==> " + hBook.getName());
-        }
-        HBook hBook = list.get(0);
-        for (HAuthor hAuthor : hBook.gethAuthors()) {
-            log.info("hqlSelectAll ==> " + hAuthor.getName());
-        }
+    public void selectBetweenAnd() {
+        dao.selectBetweenAnd(1L, 10L)
+                .forEach(System.out::println);
     }
 
+
     /**
-     * 条件查询
+     * hibernate sql的使用
      */
     @Test
-    public void hqlSelectConditionalQuery() {
-        HBook hBook = service.hqlSelectConditionalQuery(1);
-        log.info("hqlSelectConditionalQuery ==> " + hBook.getName());
+    public void sqlTest() {
+        dao.listSQL().forEach(hBook -> log.info("sqlTest()=====>" + hBook));
     }
 
     /**
-     * 投影查询
-     * // * 注意：HBook必须提供相应的构造方法。
-     * // * 如果投影使用id，结果脱管态对象。
+     * 搜索没有作者的课本（size的使用）
      */
     @Test
-    public void hqlprojectionQuery() {
-        List<HBook> list = service.hqlprojectionQuery();
-        for (HBook hBook : list) {
-            log.info("hqlprojectionQuery ==> " + hBook.getId());
-        }
+    public void selectSize() {
+        dao.selectSize().forEach(System.out::println);
     }
 
     /**
-     * 排序查询
+     * 隐式内连接的使用
      */
     @Test
-    public void hqlSort() {
-        List<HBook> list = service.hqlSort();
-        for (HBook hBook : list) {
-            log.info("hqlSelectAll ==> " + hBook.getName());
-        }
+    public void hideInnerJoin() {
+        dao.hideInnerJoin().forEach(System.out::println);
     }
 
     /**
-     * 分页查询
+     * 内连接的使用
+     */
+    @Test
+    public void innerJoin() {
+        dao.innerJoin().forEach(System.out::println);
+    }
+
+    /**
+     * hibernate聚合函数和分组的使用
+     */
+    @Test
+    public void aggregateAndGroup() {
+        dao.aggregateAndGroup().forEach(System.out::println);
+    }
+
+    /**
+     * 子查询
+     */
+    @Test
+    public void chilcSelect() {
+        dao.chileSelect().forEach(System.out::println);
+    }
+
+    /**
+     * hibernate分页查询
      */
     @Test
     public void hqlPagin() {
-        List<HBook> list = service.hqlPagin();
-        for (HBook hBook : list) {
-            log.info("hqlSelectAll ==> " + hBook.getName());
-        }
+        dao.hqlPagin().forEach(System.out::println);
     }
 
     /**
-     * 聚合函数和分组
+     * 查总行数
      */
     @Test
     public void hqlAggregate() {
-        long num = service.hqlAggregate();
-        log.info("hqlAggregate ==> " + num);
-    }
-
-    /**
-     * 连接查询
-     * <p>
-     * //左外连接
-     * //    List list = session.createQuery("from Customer c left outer join c.orderSet ").list();
-     * //迫切左外链接 (默认数据重复)
-     * //    List list = session.createQuery("from Customer c left outer join fetch
-     * c.orderSet ").list();
-     * //迫切左外链接 (去重复)
-     * List list = session.createQuery("select distinct c from Customer c left outer join f
-     * etch c.orderSet ").list();
-     */
-    @Test
-    public void hqlJoinSelect() {
-        List<Object[]> list = service.hqlJoinSelect();
-        for (Object[] objects : list) {
-            log.info("hqlJoinSelect ==> " + objects.length);
-        }
-    }
-
-    /**
-     *   HQL
-     *   END =======================================
-     */
-
-    /**
-     *   QBC
-     */
-
-
-    /**
-     * Hibernate SQL
-     */
-    @Test
-    public void sqlList() {
-        List<HBook> list = service.listSQL();
-        for (int i = 0; i < list.size(); i++) {
-            log.info("hibernate SQL的使用   " + list.get(i).getName());
-        }
-    }
-
-    /**
-     * hibernate 的一级缓存
-     * <p>
-     * 当一个对象处于持久态时，修改其参数不需要update这个对象也可以
-     * 修改数据库，当事务提交了之后就会对比快照里面的这个对象是否修改了数据，然后修改数据库
-     */
-    @Test
-    public void firstLevelCache() {
-        service.firstLevelCache(1);
-    }
-
-    /**
-     * 类级别的延迟加载
-     * load
-     */
-    @Test
-    public void lazyLoad() {
-        HBook hBook = service.lazyLoad(1);
-    }
-
-    /**
-     * 关联级别的延迟加载（一对多：<set>）
-     */
-    @Test
-    public void lazyMoreToMoreLoad() {
-        HBook hBook = service.lazyMoreToMoreLoad(1);
-    }
-
-    /**
-     * 抓取策略（使用下面两个策略，延迟加载就没用了）
-     * 默认<set fetch="select">
-     * <p>
-     * 使用左外连接
-     * （一对多：<set fetch="join">）
-     * 使用子查询
-     * （一对多：<set fetch="subselect">）
-     * 先获取一方的数据，再通过一方数据的id把所有多方查询出来，当需要大量查询
-     * 关联数据时使用，只会出现2个SQL语句
-     */
-    @Test
-    public void test() {
-        HBook hBook = service.lazyMoreToMoreLoad(1);
-        Set<HAuthor> set = hBook.gethAuthors();
-        for (HAuthor hAuthor : set) {
-            log.info("关联级别的延迟加载 == " + hAuthor);
-        }
-    }
-
-    /**
-     * 使用Threadload管理session
-     * <p>
-     * 1) <!--        开启hibernate的threadlocal-->
-     * <property name="current_session_context_class">thread</property>
-     * <p>
-     * 2) sessionFactory.getCurrentSession()
-     * <p>
-     * 在同一个进程将会使用同一个session
-     */
-    @Test
-    public void hibernateSession() {
-        service.hibernateSession(1);
-    }
-
-    /**
-     * 最基础的hibernate使用
-     * 搜索
-     */
-    @Test
-    public void selectBook() {
-        Configuration config = new Configuration().configure(); // Hibernate框架加载hibernate.cfg.xml文件
-        SessionFactory sessionFactory = config.buildSessionFactory();
-        Session session = sessionFactory.openSession(); // 相当于得到一个Connection
-        // 根据业务来编写代码
-        Query query = session.createQuery("FROM hbook"); // HQL语句，它类似于SQL语句
-        List<HBook> list = query.list();
-
-        session.close();
-        sessionFactory.close();
-
-        for (HBook book : list) {
-            log.info("hibernate使用输出：" + book);
-        }
+        log.info("hqlAggregate()======>" + dao.hqlAggregate());
     }
 
     /**
@@ -275,7 +154,7 @@ public class HibernateTest {
     public void insertBook() {
         //创建对象
         HBook book = new HBook();
-//        book.setNumber("121");
+        //book.setNumber("121");
         book.setName("测试");
         //获取加载配置管理类
         Configuration configuration = new Configuration();
@@ -298,5 +177,22 @@ public class HibernateTest {
         factory.close();
     }
 
-
+    /**
+     * 最基础的hibernate使用
+     * 搜索
+     */
+    @Test
+    public void selectBook() {
+        Configuration config = new Configuration().configure(); // Hibernate框架加载hibernate.cfg.xml文件
+        SessionFactory sessionFactory = config.buildSessionFactory();
+        Session session = sessionFactory.openSession(); // 相当于得到一个Connection
+        // 根据业务来编写代码
+        Query query = session.createQuery("FROM hbook"); // HQL语句，它类似于SQL语句
+        List<HBook> list = query.list();
+        session.close();
+        sessionFactory.close();
+        for (HBook book : list) {
+            log.info("hibernate使用输出：" + book);
+        }
+    }
 }

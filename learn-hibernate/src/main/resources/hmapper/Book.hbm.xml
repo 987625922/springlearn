@@ -23,24 +23,27 @@
         -->
         <!--非主键映射，属性和列名一一对应-->
         <property name="name" column="name" length="100"></property>
+        <property name="number" column="number" length="100"></property>
 
         <!--
                 inverse 为 true 表示放弃维护关系，留给对方来维护，
                 一般是一对多中 一的一方放弃，由多的一放维护，
                 这个时候删除对象时，需要手动将关联的对象外键引用移除
          -->
-        <set name="hBookOrders" inverse="true" >
+        <set name="hBookOrders" inverse="true">
             <key column="book_id"></key>
             <one-to-many class="HBookOrder"></one-to-many>
         </set>
-
+        <!-- lazy 表示是否延迟加载
+             cascade 级联级别
+         -->
         <set name="hAuthors" table="h_author_book" inverse="true" lazy="false"
              cascade="save-update">
             <key column="b_id"></key>
-            <many-to-many class="HAuthor" column="author_id" />
+            <many-to-many class="HAuthor" column="author_id"/>
         </set>
 
-        <one-to-one name="hBookInfo" class="org.learn.hibernate.bean.HBookInfo"  />
+        <one-to-one name="hBookInfo" class="org.learn.hibernate.bean.HBookInfo"/>
 
     </class>
 </hibernate-mapping>

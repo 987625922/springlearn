@@ -1,15 +1,21 @@
 package org.learn.hibernate.bean;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- *hiberante的mapper
+ * hiberante的mapper的实体类
  * 地址：
  * resource/hmapper/Book.hbm.xml
+ *
  * @author LL
  */
+@Setter
+@Getter
 public class HBook implements Serializable {
 
     private static final long serialVersionUID = 8153103603243117845L;
@@ -17,16 +23,34 @@ public class HBook implements Serializable {
     private Long id;
 
     private String name;
+    /**
+     * 课本数量
+     */
+    private Long number;
 
+    /**
+     * 一对一
+     */
     private HBookInfo hBookInfo;
 
+    /**
+     * 一对多
+     */
     private Set<HBookOrder> hBookOrders = new HashSet<>();
 
+    /**
+     * 多对多
+     */
     private Set<HAuthor> hAuthors = new HashSet<>();
 
     public HBook() {
     }
 
+    /**
+     * 用于hibernate的投影查询
+     *
+     * @param id
+     */
     public HBook(Long id) {
         this.id = id;
     }
@@ -45,22 +69,6 @@ public class HBook implements Serializable {
 
     public void sethBookOrders(Set<HBookOrder> hBookOrders) {
         this.hBookOrders = hBookOrders;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Set<HAuthor> gethAuthors() {

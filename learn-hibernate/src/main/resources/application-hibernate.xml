@@ -92,10 +92,11 @@
         <!-- jpa注解的类       -->
         <property name="annotatedClasses">
             <list>
-                <value>org.learn.hibernate.bean.HJPAONE</value>
-                <value>org.learn.hibernate.bean.HJPAONE2</value>
-                <value>org.learn.hibernate.bean.HJPAMORE1</value>
-                <value>org.learn.hibernate.bean.HJPAMORE2</value>
+                <!-- 因为会在数据库中生成表，所以注释掉 -->
+                <!--<value>org.learn.hibernate.bean.HJPAONE</value>-->
+                <!--<value>org.learn.hibernate.bean.HJPAONE2</value>-->
+                <!--<value>org.learn.hibernate.bean.HJPAMORE1</value>-->
+                <!--<value>org.learn.hibernate.bean.HJPAMORE2</value>-->
             </list>
         </property>
     </bean>

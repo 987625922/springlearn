@@ -17,7 +17,7 @@
     <!-- destroy-method 在对象销毁时，执行这个方法 -->
     <!-- scope默认是单例模式，即scope="singleton",另外scope还有prototype、
     request、session、global session作用域 -->
-    <bean id="userbean" class="org.learn.common.bean.User"
+    <bean id="userbean" class="org.learn.domain.User"
           scope="singleton" init-method="init"
           destroy-method="myDestroy"
           p:userName="bean方法p标签的使用"
@@ -35,7 +35,7 @@
     <bean id="book" class="org.learn.common.bean.Book"/>
     <!-- 第三 bean的自动装配-->
     <!-- 在xml头添加default-autowire="byName" 或者在bean中配置autowire="constructor" -->
-    <bean id="autobean" class="org.learn.common.bean.AutoWiringBean"
+    <bean id="autobean" class="org.learn.domain.AutoWiringBean"
           autowire="constructor"/>
 
     <!-- Aware的使用 -->

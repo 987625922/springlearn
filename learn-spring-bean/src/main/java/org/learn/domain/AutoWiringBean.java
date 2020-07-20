@@ -1,6 +1,7 @@
-package org.learn.common.bean;
+package org.learn.domain;
 
 import lombok.ToString;
+import org.learn.common.bean.Book;
 
 @ToString
 public class AutoWiringBean {

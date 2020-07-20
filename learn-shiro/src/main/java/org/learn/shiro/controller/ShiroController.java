@@ -1,10 +1,9 @@
 package org.learn.shiro.controller;
 
-import org.learn.common.bean.User;
-import org.learn.common.dto.JsonData;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.learn.common.dto.JsonData;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/shiro")
 public class ShiroController {
-
 
     @RequestMapping("/not_permit")
     public Object noPermit() {
@@ -43,11 +41,4 @@ public class ShiroController {
         return null;
     }
 
-
-    @RequestMapping("/admin")
-    public Object adminUserTest() {
-        User user = new User();
-        user.setBeanName("只有admin身份有权限请求的接口");
-        return user;
-    }
 }
