@@ -18,11 +18,9 @@
             </generator>
         </id>
         <property name="name" column="name" length="100"></property>
-
         <!--
          需要在同步主键的一方加上 constrained="true" 使用给主键加上外键约束
           -->
         <one-to-one name="hBook" class="HBook" constrained="true"/>
-
     </class>
 </hibernate-mapping>

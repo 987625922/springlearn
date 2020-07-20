@@ -4,8 +4,13 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ *hiberante的mapper
+ * 地址：
+ * resource/hmapper/Book.hbm.xml
+ * @author LL
+ */
 public class HBook implements Serializable {
-
 
     private static final long serialVersionUID = 8153103603243117845L;
 

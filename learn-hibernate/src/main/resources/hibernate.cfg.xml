@@ -32,6 +32,6 @@
 
         <!-- 3. 加载所有映射-->
         <mapping resource="hmapper/Book.hbm.xml"/>
-        <mapping class="com.wind.spring.databases.hibernate.bean.HJPAONE"/>
+        <mapping class="org.learn.hibernate.bean.HJPAONE"/>
     </session-factory>
 </hibernate-configuration>
