@@ -85,8 +85,19 @@ public class BookServiceTest {
      * 如果不止一个就会抛出异常
      */
     @Test
-    public void selectOne(){
-        log.info("selectOne()======>"+bookService.selectOne("测试的课本1"));
+    public void selectOne() {
+        log.info("selectOne()======>" + bookService.selectOne("测试的课本1"));
+    }
+
+    /**
+     * 根据id更新课本
+     */
+    @Test
+    public void updateById() {
+        Book book = new Book();
+        book.setId(1L);
+        book.setName("更新过的课本");
+        bookService.updateById(book);
     }
 
     /**

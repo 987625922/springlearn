@@ -13,5 +13,20 @@
 
         <!-- 开启驼峰命名转换:Table{create_time} -> Entity{createTime} -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 避免部署到Tomcat中时，log4j日志被忽略 -->
+        <setting name="logImpl" value="SLF4J"/>
     </settings>
+    <!-- 类型别名(类型别名可为 Java 类型设置一个缩写名字。
+    它仅用于 XML 配置，意在降低冗余的全限定类名书写) -->
+    <typeAliases>
+        <!-- 当这样配置时，Blog 可以用在任何使用 domain.blog.Blog 的地方。 -->
+        <!--<typeAlias alias="Author" type="domain.blog.Author"/>-->
+        <!--也可以指定一个包名，MyBatis 会在包名下面搜索需要的 Java Bean-->
+        <!--<package name="domain.blog"/>-->
+        <!--每一个在包 domain.blog 中的 Java Bean，在没有注解的情况下，会使用 Bean 的首字母小写的非限定类名来作为它的别名。
+         比如 domain.blog.Author 的别名为 author；若有注解，则别名为其注解值。见下面的例子： -->
+        <!-- @Alias("author")
+            public class Author {
+            } -->
+    </typeAliases>
 </configuration>

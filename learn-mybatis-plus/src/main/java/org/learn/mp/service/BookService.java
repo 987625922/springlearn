@@ -1,7 +1,6 @@
 package org.learn.mp.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.learn.mp.domain.Book;
 import org.learn.mp.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,6 +74,8 @@ public class BookService {
 
     /**
      * 根据名字搜索书本
+     * <p>
+     * 如果不止一个就会抛出异常
      *
      * @param name
      * @return
@@ -112,5 +113,12 @@ public class BookService {
      */
     public void deleteByMap(Map<String, Object> map) {
         bookMapper.deleteByMap(map);
+    }
+
+    /**
+     * 根据id更改一个课本
+     */
+    public void updateById(Book book) {
+        bookMapper.updateById(book);
     }
 }
