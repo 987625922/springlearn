@@ -90,6 +90,38 @@ public class BookServiceTest {
     }
 
     /**
+     * 模糊搜索课本名
+     */
+    @Test
+    public void selectList() {
+        bookService.selectList("课本").forEach(System.out::println);
+    }
+
+    /**
+     * 有选择的搜索几个列名
+     */
+    @Test
+    public void selectMaps() {
+        bookService.selectMaps("课本").forEach(System.out::println);
+    }
+
+    /**
+     * 输出聚合函数的值(selectMaps的场景)
+     */
+    @Test
+    public void selectMaps2() {
+        bookService.selectMaps2("课本").forEach(System.out::println);
+    }
+
+    /**
+     * 返回总记录数
+     */
+    @Test
+    public void selectCount() {
+        log.info("总记录数=====>" + bookService.selectCount("课本"));
+    }
+
+    /**
      * 根据id更新课本
      */
     @Test

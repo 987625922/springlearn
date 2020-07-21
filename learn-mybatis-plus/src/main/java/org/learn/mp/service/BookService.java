@@ -53,7 +53,7 @@ public class BookService {
     }
 
     /**
-     * 根据key-value搜索
+     * 根据key-value搜索（根据map的键等于值搜索list）
      *
      * @param map key为数据库表中的列名，value为值
      * @return
@@ -63,7 +63,7 @@ public class BookService {
     }
 
     /**
-     * 根据id列表搜索
+     * 根据id列表搜索（根据id的list搜索list）
      *
      * @param idList
      * @return
@@ -73,7 +73,7 @@ public class BookService {
     }
 
     /**
-     * 根据名字搜索书本
+     * 根据名字搜索书本(搜索一个item)
      * <p>
      * 如果不止一个就会抛出异常
      *
@@ -84,6 +84,48 @@ public class BookService {
         QueryWrapper<Book> wrapper = new QueryWrapper<>();
         wrapper.eq("name", name);
         return bookMapper.selectOne(wrapper);
+    }
+
+    /**
+     * 根据书本名模糊搜索（模糊搜索list，QueryWrapper的使用）
+     * @param name
+     * @return
+     */
+    public List<Book> selectList(String name){
+        QueryWrapper<Book> wrapper = new QueryWrapper<>();
+        wrapper.like("name", name);
+        return bookMapper.selectList(wrapper);
+    }
+
+    /**
+     * 只需要搜索表中的几个列，就可以使用这个方法
+     * @return
+     */
+    public List<Map<String, Object>> selectMaps(String name){
+        QueryWrapper<Book> wrapper = new QueryWrapper<>();
+        wrapper.select("id","name").like("name", name);
+        return bookMapper.selectMaps(wrapper);
+    }
+
+    /**
+     * 输出聚合函数的值(selectMaps的场景)
+     * @return
+     */
+    public List<Map<String, Object>> selectMaps2(String name){
+        QueryWrapper<Book> wrapper = new QueryWrapper<>();
+        wrapper.select("name","MIN(number) min","MAX(number) max","AVG(number)").groupBy("id").having("name LIKE {0}","%"+name+"%");
+        return bookMapper.selectMaps(wrapper);
+    }
+
+    /**
+     * 返回总记录数
+     * @param name
+     * @return
+     */
+    public Integer selectCount(String name){
+        QueryWrapper<Book> wrapper = new QueryWrapper<>();
+        wrapper.like("name", name);
+        return bookMapper.selectCount(wrapper);
     }
 
     /**
