@@ -296,3 +296,30 @@
 
 ## 主从复制
 
+##### redis主从配置，只要在redis.conf文件中配置指向的宿主机器。
+
+##### 修改conf文件
+
+```
+slaveof 102.168.1.155 6379
+```
+
+- ### 主从复制的容灾处理
+
+  - ###### 当Master服务出现故障，手动将slave中的一个提升为master，剩下的slave挂至新的maseter上（手动）
+
+  - ###### 使用哨兵模式（自动）
+
+## 哨兵模式（自动的容灾处理）
+
+#### 修改sentine.conf文件
+
+```
+sentinel monitor mymaster 192.168.1.1(masterip地址) 6379(master端口)
+```
+
+#### 启动哨兵
+
+```
+./bin/reids-sentinel sentinel.conf
+```

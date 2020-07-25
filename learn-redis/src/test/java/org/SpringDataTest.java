@@ -16,14 +16,18 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * spring-data的使用
+ *
+ * @Author:LL
  */
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 //指定配置文件路径
 @ContextConfiguration(locations = {"/application-redis.xml"})
-
 public class SpringDataTest {
 
+    /**
+     * spring data redis
+     */
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
@@ -135,5 +139,4 @@ public class SpringDataTest {
         // 删除有效期
         this.redisTemplate.persist("usersjson");
     }
-
 }
