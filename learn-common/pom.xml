@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>learn-common</artifactId>
-    <name>公共模块</name>
+    <name>learn-common</name>
 
     <dependencies>
 

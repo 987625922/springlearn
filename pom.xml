@@ -23,16 +23,18 @@
         <module>learn-spring-data-jpa</module>
         <module>learn-quartz</module>
         <module>learn-jackson</module>
-        <module>learn-utils</module>
-        <module>leanrn-mybatis-plus</module>
         <module>learn-mybatis-plus</module>
+        <module>learn-spring-dubbo-service</module>
+        <module>learn-spring-dubbo-client</module>
+        <module>learn-spring-dubbo-common</module>
+        <module>learn-elasticjob</module>
     </modules>
 
-    <name>spring的学习</name>
+    <name>springlearn</name>
     <url>https://github.com/987625922/springlearn</url>
 
     <properties>
-        <spring.version>5.2.2.RELEASE</spring.version>
+        <spring.version>5.2.6.RELEASE</spring.version>
         <kotlin.version>1.3.50</kotlin.version>
         <shiro.version>1.4.0</shiro.version>
         <hibernate.version>5.4.12.Final</hibernate.version>
@@ -106,6 +108,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
                 <executions>
                     <execution>
                         <id>compile</id>

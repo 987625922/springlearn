@@ -1,6 +1,6 @@
 package org.learn.web.interceptor;
 
-import org.learn.common.bean.User;
+import org.learn.domain.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
