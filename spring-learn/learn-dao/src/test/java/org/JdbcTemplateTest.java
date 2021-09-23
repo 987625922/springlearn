@@ -26,7 +26,7 @@ public class JdbcTemplateTest {
     //xml实现事务
     @Test
     public void update() {
-        bookDao.update();
+        bookDao.updateTranscactionalXml();
     }
 
     //注解方式实现事务

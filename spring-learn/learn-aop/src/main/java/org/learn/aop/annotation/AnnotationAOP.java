@@ -18,7 +18,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class AnnotationAOP {
 
-
     /**
      * 定义一个公共的切入点，供下面的切面方法使用
      * 相当于配置文件中的<aop:pointcut />
@@ -55,7 +54,6 @@ public class AnnotationAOP {
         log.info(sb.toString());
 
     }
-
 
     /**
      * 通知方法
@@ -102,6 +100,4 @@ public class AnnotationAOP {
             log.info("@Around 环绕通知，执行方法Throwable后报错");
         }
     }
-
-
 }

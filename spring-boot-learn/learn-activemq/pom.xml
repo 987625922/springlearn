@@ -20,13 +20,13 @@
         <dependency>
             <groupId>com.wind.springlearn</groupId>
             <artifactId>common</artifactId>
-            <version>2.0</version>
+            <version>1.0</version>
         </dependency>
         <!-- 引入消息队列ActiveMQ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>
-            <version>1.5.14.RELEASE</version>
+            <version>2.3.10.RELEASE</version>
         </dependency>
         <!--   ActiveMQ线程池     -->
         <dependency>

@@ -17,6 +17,7 @@ import java.util.List;
 @Repository
 public class BookDao {
 
+    // JdbcTemplate是Spring对JDBC的封装
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -24,7 +25,7 @@ public class BookDao {
     /**
      * 已在application-jdbc中配置本方法是基于xml的事务
      */
-    public void update() {
+    public void updateTranscactionalXml() {
         String sql = "insert into book(name,number) values('事务的测试','100')";
         jdbcTemplate.update(sql);
 //        int i = 1/0; //抛出异常

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * aop的切面类
- * application-aop.xml 中配置使用
+ * @XML application-aop.xml 中配置使用
  */
 @Slf4j
 public class TransactionAop {
@@ -28,7 +28,7 @@ public class TransactionAop {
         log.info("[返回后通知]");
     }
 
-    //异常通知,在后置通知执行，todo 这里有疑惑，为什么是在提交事务了之后才执行
+    //异常通知,在后置通知执行，
     public void afterThrowing() {
         log.info("[异常通知]");
     }

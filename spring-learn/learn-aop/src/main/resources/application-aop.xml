@@ -9,7 +9,6 @@
 	http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop.xsd"
-
 >
 
     <!-- =============   aop ===============   -->
@@ -43,6 +42,5 @@
             <aop:after-throwing method="afterThrowing" pointcut-ref="transactionPointcut"/>
         </aop:aspect>
     </aop:config>
-
 
 </beans>
