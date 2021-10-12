@@ -23,12 +23,6 @@
             <version>2.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.wind.springlearn</groupId>
-            <artifactId>learn-log</artifactId>
-            <version>2.0</version>
-        </dependency>
-
         <!-- 高级映射持久层框架 mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>

@@ -10,24 +10,18 @@
     <modules>
         <module>learn-common</module>
         <module>learn-aop</module>
-        <module>learn-other</module>
         <module>learn-hibernate</module>
         <module>learn-dao</module>
-        <module>learn-redis</module>
         <module>learn-mybatis</module>
         <module>learn-spring-bean</module>
         <module>learn-spring-cache</module>
         <module>learn-spring-web</module>
         <module>learn-shiro</module>
-        <module>learn-log</module>
         <module>learn-spring-data-jpa</module>
-        <module>learn-quartz</module>
-        <module>learn-jackson</module>
         <module>learn-mybatis-plus</module>
         <module>learn-spring-dubbo-service</module>
         <module>learn-spring-dubbo-client</module>
         <module>learn-spring-dubbo-common</module>
-        <module>learn-elasticjob</module>
     </modules>
 
     <name>springlearn</name>
