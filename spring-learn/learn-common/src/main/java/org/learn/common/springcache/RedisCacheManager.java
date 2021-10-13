@@ -1,4 +1,4 @@
-package org.learn.springcache.cache;
+package org.learn.common.springcache;
 
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.AbstractCacheManager;

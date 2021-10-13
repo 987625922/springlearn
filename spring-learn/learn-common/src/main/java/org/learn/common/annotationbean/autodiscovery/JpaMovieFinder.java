@@ -1,4 +1,4 @@
-package org.learn.autodiscovery;
+package org.learn.common.annotationbean.autodiscovery;
 
 import org.springframework.stereotype.Repository;
 

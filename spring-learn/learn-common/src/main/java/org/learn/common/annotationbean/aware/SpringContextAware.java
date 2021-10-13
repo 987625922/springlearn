@@ -1,8 +1,6 @@
-package org.learn.aware;
+package org.learn.common.annotationbean.aware;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -48,10 +46,10 @@ import org.springframework.context.ApplicationContextAware;
 public class SpringContextAware implements ApplicationContextAware {
 
 
-
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        log.info("获取到的：" + applicationContext.getBean("springContextAware") + "可以通过他对application的" +
+        log.info("获取到的：" + applicationContext.getBean("springContextAware")
+                + "可以通过他对application的" +
                 "初始化进行一些操作");
     }
 }

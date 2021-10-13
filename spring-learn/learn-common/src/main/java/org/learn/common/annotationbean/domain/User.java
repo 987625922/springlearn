@@ -1,4 +1,4 @@
-package org.learn.domain;
+package org.learn.common.annotationbean.domain;
 
 import lombok.Getter;
 import lombok.Setter;

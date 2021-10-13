@@ -15,7 +15,7 @@
     <import resource="classpath*:/spring/application-base.xml"/>
 
     <!-- 自动扫描包名下的Component的bean -->
-    <context:component-scan base-package="org.learn.springcache"/>
+    <context:component-scan base-package="org.learn.common.springcache"/>
 
     <cache:annotation-driven/>
 
@@ -47,11 +47,11 @@
         </property>
     </bean>
     <!--  redis缓存的spring cache manager-->
-    <bean id="cacheManager" class="org.learn.springcache.cache.RedisCacheManager">
+    <bean id="cacheManager" class="org.learn.common.springcache.RedisCacheManager">
         <property name="caches">
             <set>
                 <!--        redis缓存的spring cache 的逻辑实现        -->
-                <bean class="org.learn.springcache.cache.RedisCache" p:name="cacheUse"/>
+                <bean class="org.learn.common.springcache.RedisCache" p:name="cacheUse"/>
             </set>
         </property>
     </bean>

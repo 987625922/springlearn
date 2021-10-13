@@ -1,4 +1,4 @@
-package org.learn.springcache;
+package org.learn.common.springcache;
 
 import lombok.extern.slf4j.Slf4j;
 import org.learn.common.bean.Book;
