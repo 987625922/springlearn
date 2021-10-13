@@ -35,6 +35,12 @@
             <!--<scope>provided</scope>-->
         </dependency>
 
+        <dependency>
+            <groupId>com.wind.springlearn</groupId>
+            <artifactId>learn-spring-dubbo-common</artifactId>
+            <version>2.0</version>
+        </dependency>
+
         <!-- jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
