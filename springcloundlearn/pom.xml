@@ -10,10 +10,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>common</module>
-        <module>service</module>
-        <module>eureka</module>
-        <module>web</module>
-        <module>zuul</module>
+        <module>springclound-common</module>
+        <module>springclound-service</module>
+        <module>springclound-eureka</module>
+        <module>springclound-web</module>
+        <module>springclound-zuul</module>
     </modules>
 </project>
