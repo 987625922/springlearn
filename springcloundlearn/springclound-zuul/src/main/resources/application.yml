@@ -1,0 +1,15 @@
+server:
+  port: 8764
+spring:
+  application:
+    name: learn-zuul
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+# 与路由的URL关联，用于截取实际的请求URL
+zuul:
+  routes:
+    learn-web:
+      path: /auth/**
+      serviceId: learn-web

@@ -5,7 +5,7 @@
 <mapper namespace="org.learn.mybatis.dao.BookDao">
     <!-- 目的：为dao接口方法提供sql语句配置 -->
 
-    <select id="queryById" resultType="Book" parameterType="long">
+    <select id="queryById" resultType="org.learn.common.bean.Book" parameterType="long">
         <!-- 具体的sql -->
         SELECT
         id,
@@ -17,7 +17,7 @@
         id = #{id}
     </select>
 
-    <select id="queryAll" resultType="Book">
+    <select id="queryAll" resultType="org.learn.common.bean.Book">
 		SELECT
 			id,
 			name,

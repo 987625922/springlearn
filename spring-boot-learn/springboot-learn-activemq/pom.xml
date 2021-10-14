@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>learn-activemq</artifactId>
+    <artifactId>springboot-learn-activemq</artifactId>
 
     <properties>
         <java.version>1.8</java.version>
@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>com.wind.springlearn</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>springboot-common</artifactId>
             <version>1.0</version>
         </dependency>
         <!-- 引入消息队列ActiveMQ -->
