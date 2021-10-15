@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * 启动dubbo服务端
  */
-public class AppAnnotation {
+public class DubboServiceApp {
 
     public static void main(String[] args) throws IOException {
         AnnotationConfigApplicationContext context
