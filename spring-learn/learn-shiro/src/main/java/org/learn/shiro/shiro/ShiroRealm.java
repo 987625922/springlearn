@@ -85,8 +85,8 @@ public class ShiroRealm extends AuthorizingRealm {
                 getName()
         );
         //验证成功开始踢人(清除缓存和Session)
-        // 有一个NoSuchMethodError: redis.clients.jedis.ScanResult.getStringCursor()Ljava/lang/String问题
-        //是因为spring-shiro和shiro-redis两个版本不和的问题
+        //有一个NoSuchMethodError: redis.clients.jedis.ScanResult.getStringCursor()Ljava/lang/String问题
+        //因为spring-shiro和shiro-redis两个版本不和的问题
         try {
             ShiroUtils.deleteCache(username, true);
         }catch (Error error){
