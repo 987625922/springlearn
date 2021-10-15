@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <!--        shiro              -->
+    <!-- 安全管理器 -->
+    <!--<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">-->
+        <!--<property name="realm" ref="userShiroRealm"/>-->
+        <!--<property name="sessionManager" ref="sessionManager"/>-->
+    <!--</bean>-->
+
+    <!-- 自定义域 -->
+<!--    <bean id="userShiroRealm" class="org.learn.shiro.config.CustomRealm">-->
+<!--        &lt;!&ndash;<property name="credentialsMatcher" ref="hashedCredentialsMatcher"/>&ndash;&gt;-->
+<!--    </bean>-->
+
+    <!--&lt;!&ndash; 自定义凭证(密码)匹配器 &ndash;&gt;-->
+    <!--<bean id="hashedCredentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">-->
+        <!--<property name="hashAlgorithmName" value="md5"/>-->
+        <!--<property name="hashIterations" value="2"/>-->
+    <!--</bean>-->
+
+    <!-- session管理器 -->
+    <!--在shiro的DefaultWebSessionManager类中，默认Cookie名称是JSESSIONID，这样的话与servlet容器名冲突,
+    如jetty, tomcat等默认JSESSIONID, 当跳出shiro servlet时如error-page容器会为JSESSIONID重新分配值导致登录会话丢失!-->
+    <!--<bean id="sessionManager" class="com.wind.spring.springshiro.project.config.CustomSessionManager">-->
+        <!--<property name="sessionIdCookie" ref="simpleCookie"/>-->
+    <!--</bean>-->
+    <!--<bean id="simpleCookie" class="org.apache.shiro.web.servlet.SimpleCookie">-->
+        <!--<constructor-arg name="name" value="token"/>-->
+        <!--<property name="path" value="/"/>-->
+    <!--</bean>-->
+
+<!--    <bean id="jwtFilter" class="org.learn.shiro.config.JWTFilter"/>-->
+
+    <!-- Shiro的web过滤器 -->
+<!--    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">-->
+<!--        &lt;!&ndash;//必须设置securityManager&ndash;&gt;-->
+<!--        <property name="securityManager" ref="securityManager"/>-->
+<!--        &lt;!&ndash;//需要登录的接口，如果访问某个接口，需要登录却没登录，则调用此接口(如果不是前后端分离，则跳转页面)&ndash;&gt;-->
+<!--        &lt;!&ndash;        <property name="loginUrl" value="/api/pub/need_login"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;//登录成功，跳转url，如果前后端分离，则没这个调用&ndash;&gt;-->
+<!--        <property name="successUrl" value="/"/>-->
+<!--        &lt;!&ndash;//没有权限，未授权就会调用此方法， 先验证登录-》再验证是否有权限&ndash;&gt;-->
+<!--        <property name="unauthorizedUrl" value="/api/shiro/not_permit"/>-->
+<!--        <property name="filters">-->
+<!--            <map>-->
+<!--                <entry key="jwt" value-ref="jwtFilter"/>-->
+<!--            </map>-->
+<!--        </property>-->
+<!--        <property name="filterChainDefinitionMap">-->
+<!--            <map>-->
+<!--                <entry key="/api/shiro/**" value="jwt"/>-->
+<!--            </map>-->
+<!--            &lt;!&ndash;<value>&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash;//退出过滤器&ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash;/logout = logout&ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash; //匿名可以访问，也是就游客模式 &ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;/** = anon&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash; //登录用户才可以访问 &ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash;                /api/authc/** = authc&ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash; //管理员角色才可以访问 &ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash;/api/shiro/admin = roles[admin]&ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash; //有编辑权限才可以访问 &ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash;                /api/video/update = perms[video_update]&ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash;//坑二: 过滤链是顺序执行，从上而下，一般讲/** 放到最下面&ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash;//authc : url定义必须通过认证才可以访问&ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;&lt;!&ndash;//anon  : url可以匿名访问&ndash;&gt;&ndash;&gt;-->
+<!--            &lt;!&ndash;</value>&ndash;&gt;-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">-->
+<!--        <property name="realm" ref="userShiroRealm"/>-->
+<!--    </bean>-->
+
+
+</beans>
