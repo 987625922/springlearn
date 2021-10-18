@@ -1,4 +1,4 @@
-package com.learn.config;
+package com.learn.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;

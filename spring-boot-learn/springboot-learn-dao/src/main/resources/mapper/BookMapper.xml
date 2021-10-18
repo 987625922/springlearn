@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learn.dao.IBookMapper">
+    <resultMap id="BaseResultMap" type="com.learn.bean.Book">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="number" jdbcType="INTEGER" property="number"/>
+        <result column="book_index" jdbcType="VARCHAR" property="bookIndex"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id,name,number,book_index
+    </sql>
+
+    <select id="selectList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from book
+    </select>
+
+    <select id="selectById" parameterType="java.lang.Integer" resultType="com.learn.bean.Book">
+        select
+        <include refid="Base_Column_List"/>
+        from book where id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.learn.bean.Book">
+        insert into book
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="number != null">
+                number,
+            </if>
+            <if test="bookIndex != null">
+                book_index,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="number != null">
+                #{number},
+            </if>
+            <if test="bookIndex != null">
+                #{bookIndex},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.learn.bean.Book">
+        update book
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="number != null">
+                number = #{number},
+            </if>
+            <if test="bookIndex != null">
+                book_index = #{bookIndex},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from book
+        where id = #{id} and name = #{name}
+    </delete>
+
+    <delete id="deleteById">
+        delete from book
+        where id = #{id}
+    </delete>
+</mapper>

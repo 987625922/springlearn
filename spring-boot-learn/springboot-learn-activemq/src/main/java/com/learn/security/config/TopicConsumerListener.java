@@ -1,4 +1,4 @@
-package com.learn.config;
+package com.learn.security.config;
 
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;

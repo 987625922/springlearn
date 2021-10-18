@@ -1,4 +1,4 @@
-package com.learn.config;
+package com.learn.security.config;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
