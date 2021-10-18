@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.learn.dao.IBookMapper">
-    <resultMap id="BaseResultMap" type="com.learn.bean.Book">
+    <resultMap id="BaseResultMap" type="com.learn.dao.bean.Book">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="number" jdbcType="INTEGER" property="number"/>
@@ -18,13 +18,13 @@
         from book
     </select>
 
-    <select id="selectById" parameterType="java.lang.Integer" resultType="com.learn.bean.Book">
+    <select id="selectById" parameterType="java.lang.Integer" resultType="com.learn.dao.bean.Book">
         select
         <include refid="Base_Column_List"/>
         from book where id = #{id}
     </select>
 
-    <insert id="insert" parameterType="com.learn.bean.Book">
+    <insert id="insert" parameterType="com.learn.dao.bean.Book">
         insert into book
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -56,7 +56,7 @@
         </trim>
     </insert>
 
-    <update id="update" parameterType="com.learn.bean.Book">
+    <update id="update" parameterType="com.learn.dao.bean.Book">
         update book
         <set>
             <if test="id != null">

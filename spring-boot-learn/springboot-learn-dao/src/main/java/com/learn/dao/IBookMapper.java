@@ -1,6 +1,6 @@
 package com.learn.dao;
 
-import com.learn.bean.Book;
+import com.learn.dao.bean.Book;
 
 import java.util.List;
 

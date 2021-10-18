@@ -1,6 +1,6 @@
 package com.learn.service;
 
-import com.learn.bean.Book;
+import com.learn.dao.bean.Book;
 import com.learn.dao.IBookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

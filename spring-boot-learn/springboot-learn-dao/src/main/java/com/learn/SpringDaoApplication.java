@@ -14,7 +14,5 @@ public class SpringDaoApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(SpringDaoApplication.class, args);
-        BookService bookService = (BookService) context.getBean("bookService");
-        log.info("selectList ==>", bookService.selectById(2));
     }
 }

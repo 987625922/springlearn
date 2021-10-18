@@ -1,7 +1,7 @@
 package test;
 
 import com.learn.SpringDaoApplication;
-import com.learn.bean.Book;
+import com.learn.dao.bean.Book;
 import com.learn.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
@@ -25,6 +25,7 @@ public class DaoTest {
     BookService bookService;
 
     @Test
+    //事务使用
     @Transactional(rollbackFor = Exception.class)
     public void insert() {
         log.info("deleteById ==> {}", 1);

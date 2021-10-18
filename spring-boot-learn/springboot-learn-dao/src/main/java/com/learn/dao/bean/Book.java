@@ -1,4 +1,4 @@
-package com.learn.bean;
+package com.learn.dao.bean;
 
 import lombok.Data;
 import lombok.ToString;

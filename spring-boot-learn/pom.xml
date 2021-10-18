@@ -14,6 +14,7 @@
         <module>springboot-learn-activemq</module>
         <module>springboot-learn-security</module>
         <module>springboot-learn-dao</module>
+        <module>springboot-learn-web</module>
     </modules>
 
     <name>springbootlearn</name>
