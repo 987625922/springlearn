@@ -14,6 +14,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling //todo 开启定时任务，扫描定时任务
 @EnableAsync //todo 开启一个异步任务
 @EnableJms //todo @EnableJms，开启支持jms activeMQ消息队列需要使用
+/**
+ * 成熟的产品，在很多公司得到应用；有较多的文档；各种协议支持较好
+ * 但是并发不如RabbitMQ
+ * 社区也没有RabbitMQ活跃
+ */
 public class SpringMqApplication {
 
     public static void main(String[] args) {
