@@ -16,6 +16,7 @@
         <module>springboot-learn-dao</module>
         <module>springboot-learn-web</module>
         <module>springboot-learn-rabbitmq</module>
+        <module>springboot-learn-mongodb</module>
     </modules>
 
     <name>springbootlearn</name>

@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.*;
  * @ApiModelProperty：用于修饰实体类的属性，当实体类是请求参数或返回结果时，直接生成相关文档信息
  */
 @Api(tags = "欢迎查看接口", description = "商品品牌管理")
-@RestController("/swagger")
+@RestController
+@RequestMapping("/swagger")
 public class SwaggerController {
 
     @ApiOperation("获取所有品牌列表")
-    @RequestMapping(value = "listAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     public Object listAll() {
         Book book = new Book();
         book.setId(2);
