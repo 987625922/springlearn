@@ -47,6 +47,7 @@ public class UserPermissionEvaluator implements PermissionEvaluator {
         }
         return false;
     }
+
     @Override
     public boolean hasPermission(Authentication authentication, Serializable targetId, String targetType, Object permission) {
         return false;

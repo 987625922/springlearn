@@ -7,4 +7,7 @@ package com.learn.rabbitmq;
  */
 public class SpringRabbitMqApplication {
 
+    public static void main(String[] args) {
+
+    }
 }

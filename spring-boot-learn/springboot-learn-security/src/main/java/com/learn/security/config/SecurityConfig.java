@@ -2,6 +2,7 @@ package com.learn.security.config;
 
 import com.learn.security.UserAuthenticationProvider;
 import com.learn.security.UserPermissionEvaluator;
+import com.learn.security.core.entity.SysUserEntity;
 import com.learn.security.handler.*;
 import com.learn.security.jwt.JWTAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,18 +55,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserAuthenticationProvider userAuthenticationProvider;
 
+
     /**
      * 加密方式
      */
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     /**
      * 注入自定义PermissionEvaluator
      */
     @Bean
-    public DefaultWebSecurityExpressionHandler userSecurityExpressionHandler(){
+    public DefaultWebSecurityExpressionHandler userSecurityExpressionHandler() {
         DefaultWebSecurityExpressionHandler handler = new DefaultWebSecurityExpressionHandler();
         handler.setPermissionEvaluator(new UserPermissionEvaluator());
         return handler;
@@ -75,19 +78,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * 配置登录验证逻辑
      */
     @Override
-    protected void configure(AuthenticationManagerBuilder auth){
+    protected void configure(AuthenticationManagerBuilder auth) {
         //这里可启用我们自己的登陆验证逻辑
         auth.authenticationProvider(userAuthenticationProvider);
     }
+
     /**
      * 配置security的控制逻辑
-     * @Param  http 请求
+     *
+     * @Param http 请求
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // 不进行权限验证的请求或资源(从配置文件中读取)
-               .antMatchers(JWTConfig.antMatchers.split(",")).permitAll()
+                .antMatchers(JWTConfig.antMatchers.split(",")).permitAll()
                 // 其他的需要登陆后才能访问
                 .anyRequest().authenticated()
                 .and()
@@ -122,5 +127,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().cacheControl();
         // 添加JWT过滤器
         http.addFilter(new JWTAuthenticationTokenFilter(authenticationManager()));
+
+    }
+
+    public static void main(String[] args) throws CloneNotSupportedException {
+        SysUserEntity entity = new SysUserEntity();
+        entity.setUsername("password");
+        entity.getClass().getMethods();
     }
 }
