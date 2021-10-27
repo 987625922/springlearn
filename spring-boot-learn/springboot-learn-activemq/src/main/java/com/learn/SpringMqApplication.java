@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @ServletComponentScan //todo 扫描代码中的@WebServlet @WebFilter @WebListener 注解自动注册（servlet 3.0功能）
 @MapperScan("com.wind.springbootlearn2.mapper")//todo 扫描mapper下面的类，开启mybatis的mapper使用
-@EnableScheduling //todo 开启定时任务，扫描定时任务
 @EnableAsync //todo 开启一个异步任务
 @EnableJms //todo @EnableJms，开启支持jms activeMQ消息队列需要使用
 /**
