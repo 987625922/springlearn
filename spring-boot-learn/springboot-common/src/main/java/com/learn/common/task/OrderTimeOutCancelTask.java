@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderTimeOutCancelTask {
 
-    @Scheduled(cron = "0 0/10 * ? * ?")
+    @Scheduled(cron = "0 0/1 * ? * ?")
     private void cancelTimeOutOrder() {
         // TODO: 此处应调用取消订单的方法
         log.info("取消订单，并根据sku编号释放锁定库存");
