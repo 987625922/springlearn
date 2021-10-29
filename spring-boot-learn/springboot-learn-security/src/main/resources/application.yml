@@ -6,12 +6,3 @@ jwt:
   tokenPrefix: wind-
   expiration: 86400
   antMatchers: /index/**,/login/**,/favicon.ico
-spring:
-    datasource:
-        url: jdbc:mysql://localhost:3306/learn?characterEncoding=utf8&useSSL=false
-        username: root
-        password: root
-        driver-class-name: com.mysql.jdbc.Driver
-    mybatis:
-        mapper-locations: classpath:mapper/*.xml
-        type-aliases-package: com.learn.dao.bean

@@ -9,7 +9,7 @@ import org.apache.shiro.subject.Subject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.learn.shiro.config.CustomRealm;
+//import org.learn.shiro.config.CustomRealm;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -54,12 +54,12 @@ public class ShiroTest {
     /**
      * =========== 自定义的Realm ========================
      */
-    private CustomRealm enceladusShiroRealm = new CustomRealm();
+//    private CustomRealm enceladusShiroRealm = new CustomRealm();
     private DefaultSecurityManager enceladusDefaultSecurityManager = new DefaultSecurityManager();
 
     @Before
     public void init1() {
-        enceladusDefaultSecurityManager.setRealm(enceladusShiroRealm);
+//        enceladusDefaultSecurityManager.setRealm(enceladusShiroRealm);
         SecurityUtils.setSecurityManager(enceladusDefaultSecurityManager);
     }
 

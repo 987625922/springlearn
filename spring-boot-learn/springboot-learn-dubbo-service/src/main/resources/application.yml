@@ -1,0 +1,22 @@
+server:
+  port: 8862
+spring:
+  application:
+    name: springboot-service-name
+  main:
+    # 解决Bean重复定义问题
+    allow-bean-definition-overriding: true
+dubbo:
+  scan:
+    base-packages: com.learn.dubbo.service
+  application:
+    name: springboot-dubbo-service-name
+    id: springboot-dubbo-service-id
+    # 禁用QOS同一台机器可能会有端口冲突现象
+    qos-enable: false
+    qos-accept-foreign-ip: false
+  registry:
+    address: zookeeper://localhost:2181
+  protocol:
+    name: dubbo
+    port: 20880

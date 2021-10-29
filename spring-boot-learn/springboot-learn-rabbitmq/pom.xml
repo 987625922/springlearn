@@ -12,6 +12,11 @@
     <artifactId>springboot-learn-rabbitmq</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
         <!--消息队列相关依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

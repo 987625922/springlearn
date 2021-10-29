@@ -1,9 +1,14 @@
+server:
+  port: 8080
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/learn?characterEncoding=utf8&useSSL=false
-    username: root
-    password: root
-    driver-class-name: com.mysql.jdbc.Driver
-  mybatis:
-    mapper-locations: classpath:mapper/*.xml
-    type-aliases-package: com.learn.dao.bean
+  application:
+    name: springboot-web-name
+dubbo:
+  application:
+    name: springboot-dubbo-web-name
+    id: springboot-dubbo-service-id
+    # 禁用QOS同一台机器可能会有端口冲突现象
+    qos-enable: false
+    qos-accept-foreign-ip: false
+  registry:
+    address: zookeeper://127.0.0.1:2181

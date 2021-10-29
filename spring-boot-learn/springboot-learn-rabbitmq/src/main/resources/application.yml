@@ -5,13 +5,3 @@ rabbitmq:
   username: guest # rabbitmq的用户名
   password: guest # rabbitmq的密码
   publisher-confirms: true #如果对异步消息需要回调必须设置为true
-
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/learn?characterEncoding=utf8&useSSL=false
-    username: root
-    password: root
-    driver-class-name: com.mysql.jdbc.Driver
-  mybatis:
-    mapper-locations: classpath:mapper/*.xml
-    type-aliases-package: com.learn.dao.bean

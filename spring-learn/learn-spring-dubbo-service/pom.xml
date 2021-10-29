@@ -22,6 +22,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>com.wind.springlearn</groupId>
             <artifactId>learn-spring-dubbo-common</artifactId>
