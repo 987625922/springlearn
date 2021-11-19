@@ -18,6 +18,7 @@
         <module>springboot-learn-rabbitmq</module>
         <module>springboot-learn-mongodb</module>
         <module>springboot-learn-dubbo-service</module>
+        <module>springboot-learn-elasticsearch</module>
     </modules>
 
     <name>springbootlearn</name>
@@ -53,6 +54,24 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.30</version>
+        </dependency>
+
+        <!-- 日志 -->
+        <dependency>
+            <groupId>org.logback-extensions</groupId>
+            <artifactId>logback-ext-spring</artifactId>
+            <version>0.1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.29</version>
+        </dependency>
+        <!-- 日志 配置文件为logback.xml -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
     </dependencies>
 
