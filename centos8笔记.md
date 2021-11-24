@@ -40,7 +40,7 @@
 
 2、在/usr/local/mysql目录下创建data目录
 
-4、编译安装并初始化mysql,务必记住初始化输出日志末尾的密码（数据库管理员临时密码）.T6Jhj(Gh8zX
+4、编译安装并初始化mysql,务必记住初始化输出日志末尾的密码（数据库管理员临时密码）kZf3;X#xe%i>
 
 [root@localhost /]# cd /usr/local/mysql/bin [root@localhost bin]# ./mysqld --initialize --user=root --datadir=/usr/local/mysql/data --basedir=/usr/local/mysql
 
@@ -49,14 +49,15 @@
 
   　注意：记录日志最末尾位置root@localhost:后的字符串，此字符串为mysql管理员临时登录密码。
  6、编辑配置文件my.cnf，添加配置如下
-  +1e4,Xy3MG+P
   
- [root@localhost bin]# vi /etc/my.cnf [mysqld] 
+ [root@localhost bin]# vi /etc/my.cnf 
+ [mysqld] 
  datadir=/usr/local/mysql/data 
  port = 3306 
  sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES 
  symbolic-links=0 
- max_connections=400 innodb_file_per_table=1 #表名大小写不明感，敏感为 lower_case_table_names=1
+ max_connections=400 
+ innodb_file_per_table=1 #表名大小写不明感，敏感为 lower_case_table_names=1
  user=root
   
  7、启动mysql服务器
@@ -85,14 +86,17 @@
  [root@localhost /]# ln -s /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql [root@localhost /]# ln -s /usr/local/mysql/bin/mysql /usr/bin/mysql [root@localhost /]# service mysql restart
  9、登录mysql，修改密码(密码为步骤5生成的临时密码)
  
- [root@localhost /]# mysql -u root -p Enter password: mysql>set password for root@localhost = password('你的密码');
+ [root@localhost /]# mysql -u root -p Enter password: 
+ mysql>set password for root@localhost = password('你的密码');
   
  
  
   
  10、开放远程连接
  
- mysql>use mysql; msyql>update user set user.Host='%' where user.User='root'; mysql>flush privileges;
+ mysql>use mysql; 
+ msyql>update user set user.Host='%' where user.User='root'; 
+ mysql>flush privileges;
  
  
   11、设置开机自动启动
@@ -223,3 +227,236 @@ source /etc/profile
 
 添加软链接
 ln -s /usr/local/java/jdk1.8.0_171/bin/java /usr/bin/java
+
+#================== nginx
+1.安装编译工具及库文件
+yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel
+
+2.首先要安装 PCRE
+  PCRE 作用是让 Nginx 支持 Rewrite 功能。
+  
+  1、下载 PCRE 安装包，下载地址： http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz
+  进入安装包目录
+  mv pcre-8.35 /usr/local 
+  [root@bogon src]# cd pcre-8.35
+  4、编译安装 
+  
+  [root@bogon pcre-8.35]# ./configure
+  [root@bogon pcre-8.35]# make && make install
+  5、查看pcre版本
+  
+  [root@bogon pcre-8.35]# pcre-config --version
+
+3.安装nginx
+wget http://nginx.org/download/nginx-1.15.4.tar.gz
+
+安装包
+
+[root@bogon src]# tar zxvf nginx-1.6.2.tar.gz
+3、进入安装包目录
+
+[root@bogon src]# cd nginx-1.6.2
+4、编译安装
+
+[root@bogon nginx-1.6.2]# ./configure --prefix=/usr/local/webserver/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre=/usr/local/src/pcre-8.35
+[root@bogon nginx-1.6.2]# make
+[root@bogon nginx-1.6.2]# make install
+5、查看nginx版本
+
+[root@bogon nginx-1.6.2]# /usr/local/webserver/nginx/sbin/nginx -v
+到此，nginx安装完成。
+
+启动
+/usr/local/webserver/nginx/sbin/nginx
+
+[root@bogon conf]# /usr/local/webserver/nginx/sbin/nginx -t
+以下包含了 Nginx 常用的几个命令：
+/usr/local/webserver/nginx/sbin/nginx -s reload            # 重新载入配置文件
+/usr/local/webserver/nginx/sbin/nginx -s reopen            # 重启 Nginx
+/usr/local/webserver/nginx/sbin/nginx -s stop              # 停止 Nginx
+
+
+6. nginx设置成开机自动启动服务
+
+1)在/etc/init.d下创建文件nginx，文件的内容拷贝官网内容，主要修改下面两个参数的值
+nginx="/usr/sbin/nginx" #修改成nginx执行程序的路径。
+NGINX_CONF_FILE="/etc/nginx/nginx.conf" #修改成nginx.conf文件的路径。
+目前我的环境修改成如下内容
+nginx=”/usr/local/nginx/sbin/nginx”
+NGINX_CONF_FILE=”/usr/local/nginx/conf/nginx.conf”
+
+#!/bin/sh
+#
+# nginx - this script starts and stops the nginx daemon
+#
+# chkconfig:   - 85 15
+# description:  NGINX is an HTTP(S) server, HTTP(S) reverse \
+#               proxy and IMAP/POP3 proxy server
+# processname: nginx
+# config:      /etc/nginx/nginx.conf
+# config:      /etc/sysconfig/nginx
+# pidfile:     /var/run/nginx.pid
+ 
+# Source function library.
+. /etc/rc.d/init.d/functions
+ 
+# Source networking configuration.
+. /etc/sysconfig/network
+ 
+# Check that networking is up.
+[ "$NETWORKING" = "no" ] && exit 0
+ 
+nginx="/usr/local/nginx/sbin/nginx"
+prog=$(basename $nginx)
+ 
+NGINX_CONF_FILE="/usr/local/nginx/conf/nginx.conf"
+ 
+[ -f /etc/sysconfig/nginx ] && . /etc/sysconfig/nginx
+ 
+lockfile=/var/lock/subsys/nginx
+ 
+make_dirs() {
+   # make required directories
+   user=`$nginx -V 2>&1 | grep "configure arguments:.*--user=" | sed 's/[^*]*--user=\([^ ]*\).*/\1/g' -`
+   if [ -n "$user" ]; then
+      if [ -z "`grep $user /etc/passwd`" ]; then
+         useradd -M -s /bin/nologin $user
+      fi
+      options=`$nginx -V 2>&1 | grep 'configure arguments:'`
+      for opt in $options; do
+          if [ `echo $opt | grep '.*-temp-path'` ]; then
+              value=`echo $opt | cut -d "=" -f 2`
+              if [ ! -d "$value" ]; then
+                  # echo "creating" $value
+                  mkdir -p $value && chown -R $user $value
+              fi
+          fi
+       done
+    fi
+}
+ 
+start() {
+    [ -x $nginx ] || exit 5
+    [ -f $NGINX_CONF_FILE ] || exit 6
+    make_dirs
+    echo -n $"Starting $prog: "
+    daemon $nginx -c $NGINX_CONF_FILE
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && touch $lockfile
+    return $retval
+}
+ 
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog -QUIT
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && rm -f $lockfile
+    return $retval
+}
+ 
+restart() {
+    configtest || return $?
+    stop
+    sleep 1
+    start
+}
+ 
+reload() {
+    configtest || return $?
+    echo -n $"Reloading $prog: "
+    killproc $nginx -HUP
+    RETVAL=$?
+    echo
+}
+ 
+force_reload() {
+    restart
+}
+ 
+configtest() {
+  $nginx -t -c $NGINX_CONF_FILE
+}
+ 
+rh_status() {
+    status $prog
+}
+ 
+rh_status_q() {
+    rh_status >/dev/null 2>&1
+}
+ 
+case "$1" in
+    start)
+        rh_status_q && exit 0
+        $1
+        ;;
+    stop)
+        rh_status_q || exit 0
+        $1
+        ;;
+    restart|configtest)
+        $1
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        ;;
+    force-reload)
+        force_reload
+        ;;
+    status)
+        rh_status
+        ;;
+    condrestart|try-restart)
+        rh_status_q || exit 0
+            ;;
+    *)
+        echo $"Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest}"
+        exit 2
+esac
+
+修改权限
+chmod +x /etc/init.d/nginx
+
+将nginx服务加入chkconfig管理列表：
+chkconfig --add /etc/init.d/nginx
+
+加完这个之后，就可以使用service对nginx进行启动，重启等操作。
+service nginx start
+service nginx stop
+service nginx restart
+
+修改完配置文件需要重新加载一下自启
+[root@hecs-94308 sbin]# systemctl daemon-reload
+[root@hecs-94308 sbin]# systemctl restart nginx
+[root@hecs-94308 sbin]# systemctl status nginx
+
+
+#======== tomcat
+wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.73/bin/apache-tomcat-8.5.73-fulldocs.tar.gz
+
+#========= rabbitmq
+
+安装erlang 
+wget https://github.com/rabbitmq/erlang-rpm/releases/download/v21.3.8.15/erlang-21.3.8.15-1.el8.x86_64.rpm
+
+rpm -Uvh erlang-21.3.8.15-1.el8.x86_64.rpm
+
+安装socat
+yum install -y socat
+
+安装rabbitmq
+wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.26/rabbitmq-server-3.7.26-1.el8.noarch.rpm
+ 
+rpm -Uvh rabbitmq-server-3.7.26-1.el8.noarch.rpm
+
+启动 
+systemctl start rabbitmq-server
+systemctl status rabbitmq-server
+加入开机自启
+systemctl enable rabbitmq-server
+
+配置文件位置
+/usr/lib/rabbitmq/lib/rabbitmq_server-3.7.26/ebin/rabbit.app

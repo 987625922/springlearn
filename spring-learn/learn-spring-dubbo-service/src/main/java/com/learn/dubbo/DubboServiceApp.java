@@ -15,6 +15,7 @@ public class DubboServiceApp {
                 = new AnnotationConfigApplicationContext(DubboConfiguration.class);
         context.start();
         //让程序不运行结束
+        System.out.println("DubboServiceApp is running. ================>");
         System.in.read();
     }
 }
