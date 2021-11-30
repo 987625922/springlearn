@@ -19,6 +19,7 @@
         <module>springboot-learn-mongodb</module>
         <module>springboot-learn-dubbo-service</module>
         <module>springboot-learn-elasticsearch</module>
+        <module>springboot-learn-zookeeper</module>
     </modules>
 
     <name>springbootlearn</name>

@@ -435,7 +435,23 @@ service nginx restart
 
 
 #======== tomcat
-wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.73/bin/apache-tomcat-8.5.73-fulldocs.tar.gz
+wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.tar.gz
+
+解压到usr/local/
+
+启动tomcat
+/tomcat/bin/startup.sh
+
+把war项目放在
+/usr/local/tomcat/webapps
+
+在conf中的server.xml中的最后一个<Host></Host>中添加
+<Context path="" docBase="/opt/app/tomcat/webapps/lcop-manager-web"  debug="0" reloadable="true"></Context>
+
+tomcat配置登录用户名和密码
+①，当tomcat安装完成之后，访问http://ip:8080即可以看到tomcat发布的网站，这时候需要管理我们发布网站，就需要登录tomcat，那么在centos中如何设置登录名和密码。
+②，在tomcat安装包下面的conf文件下含有一个tomcat-user.xml文件，修改此文件即可，命令为：vim tomcat-users.xml
+③，在打开的xml配置文件最后面写入下面这段配置文件之后保存并且退出即可
 
 #========= rabbitmq
 
@@ -460,3 +476,8 @@ systemctl enable rabbitmq-server
 
 配置文件位置
 /usr/lib/rabbitmq/lib/rabbitmq_server-3.7.26/ebin/rabbit.app
+
+访问不了15672
+cd /usr/lib/rabbitmq/bin/
+ ./rabbitmq-plugins enable rabbitmq_management
+ 重新启动rabbitmq
