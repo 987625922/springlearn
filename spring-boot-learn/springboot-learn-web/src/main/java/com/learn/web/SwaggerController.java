@@ -3,6 +3,9 @@ package com.learn.web;
 import com.learn.web.bean.Book;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -17,11 +20,18 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "欢迎查看接口", description = "商品品牌管理")
 @RestController
 @RequestMapping("/swagger")
+@Slf4j
 public class SwaggerController {
+
+    private static final Logger log2 = LogManager.getLogger();
 
     @ApiOperation("获取所有品牌列表")
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     public Object listAll() {
+
+        String username = "${java:vm}";
+        log2.info("================》》 HELLO, ${java:vm} ,{}!",username);
+
         Book book = new Book();
         book.setId(2);
         book.setName("swagger1的使用");

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/book")
 public class BookController {
 
-    @RequestMapping("/book1")
+    @RequestMapping("/book2")
     public Object selectBook() {
         Book book = new Book();
         book.setId(1);
