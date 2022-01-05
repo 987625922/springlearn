@@ -3,6 +3,7 @@ package basis.collection;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -13,8 +14,9 @@ import java.util.List;
  */
 public class ArrayListTest {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         List list = new ArrayList();
+        HashMap hashMap = new HashMap();
+        System.out.println(1 << 4);
     }
 }

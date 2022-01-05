@@ -7,3 +7,6 @@ spring:
   mybatis:
     mapper-locations: classpath:mapper/*.xml
     type-aliases-package: com.learn.dao.bean
+  redis:
+    host: 127.0.0.1
+    port: 6379
