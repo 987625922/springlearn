@@ -32,15 +32,6 @@ public class Main {
         System.out.println("可变参数使用：" + sb.toString());
     }
 
-    /**
-     * java8
-     * 函数式接口
-     */
-    @Test
-    public void testFunctionalInterface() {
-        Converter<String, Integer> converter = i -> i + "";
-        System.out.println(converter.run(123));
-    }
 
     /**
      * 方法引用

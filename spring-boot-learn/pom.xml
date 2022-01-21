@@ -20,6 +20,7 @@
         <module>springboot-learn-dubbo-service</module>
         <module>springboot-learn-elasticsearch</module>
         <module>springboot-learn-zookeeper</module>
+        <module>springboot-learn-shiro</module>
     </modules>
 
     <name>springbootlearn</name>

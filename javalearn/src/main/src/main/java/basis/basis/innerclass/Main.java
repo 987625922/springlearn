@@ -7,11 +7,16 @@ package basis.basis.innerclass;
  */
 public class Main {
     public static void main(String[] args) {
+        /**
+         * 创建一个类
+         */
         OuterClass outerClass = new OuterClass();
+
         /**
          * 内部类只有与外部类相关联的时候才能被创建
          */
         OuterClass.InnerClass innerClass = outerClass.getInnerClass();
+
         /**
          * 创建一个内部类
          */
@@ -24,8 +29,10 @@ public class Main {
          * 静态内部类
          */
         OuterClass.SInnerClass innerClass2 = new OuterClass.SInnerClass();
+
         /**
          * 这就是匿名内部类
+         * 最常用的内部类
          */
         new Thread() {
             @Override

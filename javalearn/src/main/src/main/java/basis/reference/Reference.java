@@ -36,7 +36,8 @@ public class Reference {
     // 虚引用的主要作用是跟踪对象被垃圾回收的状态，仅仅是提供了一种确保对象被finalize以后，
     // 做某些事情的机制。
     Object pRef = new Object();
-    //引用队列是为了配合SoftReference、WeakReference、PhantomReference使用，
+
+    // 引用队列是为了配合SoftReference、WeakReference、PhantomReference使用，
     // 它们三个在GC回收之前会被放到引用队列里ReferenceQueue.保存下。
     ReferenceQueue queue = new ReferenceQueue();
     PhantomReference phantomRef = new PhantomReference(pRef, queue);

@@ -20,8 +20,8 @@ import aop.bean.AopTestBean;
  */
 public class CglibTest {
     public static void main(String args[]) {
-        AopTestBean xiaoMing = new AopTestBean();
-        AopTestBean factory = (AopTestBean) new ProxyFactory(xiaoMing).getProxyInstance();
+        AopTestBean bean = new AopTestBean();
+        AopTestBean factory = (AopTestBean) new ProxyFactory(bean).getProxyInstance();
         factory.sing("在CglibTest中调用此方法");
 
     }

@@ -1,0 +1,9 @@
+shiro:
+  sessionManager:
+    sessionIdCookieEnabled: true
+    sessionIdUrlRewritingEnabled: true
+  unauthorizedUrl: /unauthorizedurl
+  web:
+    enabled: true
+  successUrl: /index
+  loginUrl: /login

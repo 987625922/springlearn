@@ -15,7 +15,8 @@ import java.lang.reflect.Method;
 public class Method_learn {
 
     @Test
-    public void test() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void test() throws ClassNotFoundException, NoSuchMethodException,
+            InvocationTargetException, IllegalAccessException {
         TargetClass targetClass = new TargetClass();
         Class<?> target = Class.forName("basis.reflex.TargetClass");
         //获取set方法

@@ -9,29 +9,22 @@ package basis.basis.classcodeloadingorder;
 public class ClassCodeLoadingOrder {
 
     static {
-        System.out.println("这是静态代码块");
+        System.out.println("① 这是静态代码块");
         System.out.println("静态块：用static申明，JVM加载类时执行，仅执行一次");
     }
 
     {
-        System.out.println("构造块：类中直接用{}定义，每一次创建对象时执行");
+        System.out.println("③ 构造块：类中直接用{}定义，每一次创建对象时执行");
     }
 
     public ClassCodeLoadingOrder() {
-        System.out.println("这是构造方法");
-    }
-
-    public static void show() {
-        System.out.println("这是静态方法");
+        System.out.println("④ 这是构造方法");
     }
 
     public static void main(String[] args) {
-        System.out.println("==============");
-
-        ClassCodeLoadingOrder.show();
+        System.out.println("② ==============");
 
         ClassCodeLoadingOrder c = new ClassCodeLoadingOrder();
-        c.test();
     }
 
     public void test() {

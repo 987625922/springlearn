@@ -8,7 +8,8 @@ import java.util.concurrent.*;
 public class CustomThreadFactory {
 
     public static void main(String[] args) throws InterruptedException {
-        ExecutorService es = new ThreadPoolExecutor(5, 5, 0l, TimeUnit.MILLISECONDS,
+        ExecutorService es = new ThreadPoolExecutor(5, 5,
+                0l, TimeUnit.MILLISECONDS,
                 new SynchronousQueue<Runnable>(),
                 new ThreadFactory() {
                     @Override

@@ -7,7 +7,7 @@ package basis.exception;
 public class ExceptionTest {
 
     public static void main(String args[]) {
-        //整个流程就是正常的try catch走，而且2个finally都会走
+        //  整个流程就是正常的try catch走，而且2个finally都会走
         try {
             throw new ArrayIndexOutOfBoundsException();
         } catch (Exception e) {
