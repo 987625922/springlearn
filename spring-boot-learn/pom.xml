@@ -21,6 +21,7 @@
         <module>springboot-learn-elasticsearch</module>
         <module>springboot-learn-zookeeper</module>
         <module>springboot-learn-shiro</module>
+        <module>springboot-learn-seata</module>
     </modules>
 
     <name>springbootlearn</name>
