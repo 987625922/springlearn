@@ -104,6 +104,13 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
         </dependency>
+
+        <!--   java 高性能本地缓存     -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>3.0.5</version>
+        </dependency>
     </dependencies>
 
     <build>
