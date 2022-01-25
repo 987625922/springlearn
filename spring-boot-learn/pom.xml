@@ -22,6 +22,7 @@
         <module>springboot-learn-zookeeper</module>
         <module>springboot-learn-shiro</module>
         <module>springboot-learn-seata</module>
+        <module>springboot-learn-multiple-data-sources</module>
     </modules>
 
     <name>springbootlearn</name>
