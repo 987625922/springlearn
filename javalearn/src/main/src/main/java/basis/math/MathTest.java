@@ -3,6 +3,8 @@ package basis.math;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 /**
  * @Author: LL
  * @Description:Math类的使用
@@ -36,5 +38,28 @@ public class MathTest {
     @Test
     public void abs() {
         log.info(String.valueOf(Math.abs(-1)));
+    }
+
+    /**
+     * bigDecimal 一般用于浮点型高精度的计算（比如说金额的计算）
+     */
+    @Test
+    public void bigDecimal() {
+        //  根据阿里java手册，推荐使用字符串生成BigDecimal,不然会有精度丢失问题
+        BigDecimal bigDecimal = new BigDecimal("50.49");
+        BigDecimal bigDecimal1 = new BigDecimal("50.49");
+        System.out.println(bigDecimal);
+        System.out.println(bigDecimal.add(new BigDecimal("10")));  //加
+        System.out.println(bigDecimal.subtract(new BigDecimal("10")));  //减
+        System.out.println(bigDecimal.multiply(new BigDecimal("10")));  //乘
+        System.out.println(bigDecimal.divide(new BigDecimal("10")));  //除
+
+        //  BigDecimal 数据比较
+        //  equals等于，比较的是对象本身。包括很多东西。
+        //  compareTo比较，比较的是对象某一特定的内容。所以通常需要用compare来做比较函数
+        if (bigDecimal.compareTo(bigDecimal1) == 0) {
+            //  相等
+            System.out.println("=========>> 相等");
+        }
     }
 }

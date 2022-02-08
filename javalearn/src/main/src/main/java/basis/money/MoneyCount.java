@@ -1,4 +1,4 @@
-package money;
+package basis.money;
 
 import java.math.BigDecimal;
 
@@ -32,7 +32,7 @@ public class MoneyCount {
      *
      * 在Mysql中，可以用decimal字段记录金额：
      *
-     * `money` DECIMAL(18,2) not null comment '金额'
+     * `basis.money` DECIMAL(18,2) not null comment '金额'
      *
      * 同时也能用varchar以字符串的方式保存
      *
