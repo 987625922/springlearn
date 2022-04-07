@@ -24,7 +24,7 @@
     <dependencies>
         <dependency>
             <groupId>com.wind.springlearn</groupId>
-            <artifactId>learn-spring-bean</artifactId>
+            <artifactId>learn-common</artifactId>
             <version>2.0</version>
         </dependency>
         <!--   dubbo     -->
@@ -78,6 +78,12 @@
                     <artifactId>spring</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
