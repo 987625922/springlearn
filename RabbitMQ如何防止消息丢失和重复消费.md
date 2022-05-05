@@ -12,71 +12,16 @@
 事务机制：RabbitMQ 提供了事务功能，生产者发送数据之前开启 RabbitMQ 事务`channel.txSelect`，然后发送消息，如果消息没有成功被 RabbitMQ 接收到，那么生产者会收到异常报错，此时就可以回滚事务`channel.txRollback`，然后重试发送消息；如果收到了消息，那么可以提交事务`channel.txCommit`。
 
 ```
-ConnectionFactory factory=new ConnectionFactory();
-        factory.setHost("192.168.79.141");
-        factory.setPort(5672);
-        factory.setUsername("admin");
-        factory.setPassword("123456");
-
-        Connection connection=null;
-        Channel channel=null;
-        try {
-            connection=factory.newConnection();
-            channel=connection.createChannel();
-            channel.queueDeclare("transactionQueue",true,
-                    false,false,null);
-            /**创建交换机
-             * */
-            channel.exchangeDeclare("directTransactionExchange",
-                    "direct",true);
-            /**将交换机和队列进行绑定
-             * */
-            channel.queueBind("transactionQueue",
-                    "directTransactionExchange","transactionRoutingKey");
-            /**发送消息
-             * */
-            String message="事务测试消息";
-            /**启动事务，启动事务以后所有写入队列
-             * 中的消息，必须显示调用事务的txCommit()函数
-             * 来提交事务获取txRollback()回滚事务
-             * */
-            /**开启事务
-             * */
-            channel.txSelect();
-            /**发送消息到队列
-             * */
-            channel.basicPublish("directTransactionExchange",
-                    "transactionRoutingKey",null,
-                    message.getBytes("utf-8"));
-            /**提交事务
-             * */
-            channel.txCommit();
-            System.out.println("消息发送成功");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }finally{
-            if(channel!=null){
-                try {
-                    /**回滚事务
-                     * */
-                    channel.txRollback();
-                    channel.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (TimeoutException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(connection!=null){
-                try {
-                    connection.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+// 开启事务
+channel.txSelect;
+try {
+  // 这里发送消息
+} catch (Exception e) {
+ channel.txRollback
+ // 这里再次重发这条消息
+}
+// 提交事务
+channel.txCommit;
 ```
 
 confirm机制：RabbitMQ可以开启 `confirm` 模式，在生产者那里设置开启 `confirm` 模式之后，生产者每次写的消息都会分配一个唯一的 id，如果消息成功写入 RabbitMQ 中，RabbitMQ 会给生产者回传一个 `ack` 消息，告诉你说这个消息 ok 了。如果 RabbitMQ 没能处理这个消息，会回调你的一个 `nack` 接口，告诉你这个消息接收失败，生产者可以发送。而且你可以结合这个机制自己在内存里维护每个消息 id 的状态，如果超过一定时间还没接收到这个消息的回调，那么可以重发。
@@ -96,8 +41,8 @@ public static void main(String[] args) throws IOException, TimeoutException
     channel.confirmSelect();
     //设置confirm 监听 
     channel.addConfirmListener(new AngleConfirmListerner());
-    //生产消息 
-    channel.basicPublish("test.confirm.exchange", "test.confirm.key", null, "测试confirm消息".getBytes());
+    //生产消息  MessageProperties.PERSISTENT_TEXT_PLAIN 表示消息持久化  
+    channel.basicPublish("test.confirm.exchange", "test.confirm.key",  MessageProperties.PERSISTENT_TEXT_PLAIN, "测试confirm消息".getBytes());
 }
 ```
 
@@ -114,6 +59,8 @@ public static void main(String[] args) throws IOException, TimeoutException, Int
     Channel channel = connection.createChannel();
     //声明交换机队列以及绑定关系 
     channel.exchangeDeclare("test.confirm.exchange", "topic", true, true, false, null);
+    // queueDeclare的第二个参数为true，表示队列的持久化，保证了RabbitMQ挂掉了，重启之后，他会读取磁盘中的消息，不会导致消息的丢失。
+    // 解决了下面的第二个问题
     channel.queueDeclare("test.confirm.queue", true, false, true, null);
     channel.queueBind("test.confirm.queue", "test.confirm.exchange", "test.confirm.key");
     QueueingConsumer queueingConsumer = new QueueingConsumer(channel);
