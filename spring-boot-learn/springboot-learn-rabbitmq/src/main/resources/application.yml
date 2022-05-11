@@ -5,3 +5,14 @@ rabbitmq:
   username: guest # rabbitmq的用户名
   password: guest # rabbitmq的密码
   publisher-confirms: true #如果对异步消息需要回调必须设置为true
+spring:
+  rabbitmq:
+    listener:
+      simple:
+        acknowledge-mode: manual        # ACK机制改为手动，保证消费者一定会消费消息
+        retry:
+          enabled: true                 # 开启消费者重试
+          max-attempts: 3               # 重试次数
+          initial-interval: 3000        # 重试间隔
+    publisher-confirm-type: correlated  # 开启生产者发送确认，回调enableConfirmCallback
+    publisher-returns: true             # 开启发送失败回退，回调enableConfirmCallback
